@@ -49,15 +49,19 @@ export class ScoutcardComponent implements OnInit {
 callprompt(number) {
   
     ons.notification.confirm({
-      message: 'Contact '+' using',
+      message: 'Contact '+number+' using',
       title: 'Make a call',
-      buttonLabels: ['<ons-icon icon="fa-whatsapp" class="comm_button wa comm_div" style="color: green"></ons-icon>&nbsp;WhatsApp','SMS','Call'],
+      buttonLabels: ['<ons-icon icon="fa-whatsapp" style="color: green"></ons-icon>&nbsp;WhatsApp','<ons-icon icon="fa-comment-dots" style="color: #03a9f4"></ons-icon>&nbsp;SMS','<ons-icon icon="fa-phone" style="color: black"></ons-icon>&nbsp;Call'],
       callback: answer => {
         if (answer == '0') {
-          ons.notification.alert({message: 'That\'s the correct answer for WhatsApp!'+answer});
-        } else {
+           window.open("intent://send/+"+number+"#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end", "_top");
+          //ons.notification.alert({message: 'That\'s the correct answer for WhatsApp!'+answer});
+        } else if  (answer == '1') {
+           window.open("sms://+"+number, "_top");
       //     window.open("mailto:david.breakwell@gmail.com", "_top");
-          ons.notification.alert({message: 'Incorrect! Please try again!'+answer});
+       //   ons.notification.alert({message: 'Incorrect! Please try again!'+answer});
+        } else if  (answer == '2') {
+           window.open("call://"+number, "_top");
         }
       }
     });
