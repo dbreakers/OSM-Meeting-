@@ -1,0 +1,55 @@
+<ons-toolbar>
+	<div class="center">
+		{{globals.application}}
+	</div>
+	<div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+	<div class="right">
+		<ons-toolbar-button (click)="openMenu()">
+			<ons-icon icon="md-menu"></ons-icon>
+		</ons-toolbar-button>
+	</div>
+</ons-toolbar>
+
+<div class="content">
+  	<ons-card>
+		<div class="header_block">
+			<div class="member_header" *ngIf="null!=member.photo_guid">
+				<img *ngIf="null!=member.photo_guid" src={{member_image}} alt="{{cardTitle}}" class="member_photo">
+      </div>    
+        <div class="title member_name" *ngIf="null!=member.photo_guid">{{member.first_name}}<br>{{member.last_name}}</div>
+        <div class="title member_name" *ngIf="null==member.photo_guid">{{member.first_name}} {{member.last_name}}</div>
+    </div>
+  
+	</ons-card>
+	<ons-card *ngIf="''!=member.custom_data[9][24253]||''!=member.custom_data[9][24254]||''!=member.custom_data[9][24255]||''!=member.custom_data[9][24257]" >
+		
+        <div class="content">
+          <div *ngIf="''!=member.custom_data[9][24253]">
+            <p class="medical"><ons-icon  icon="fa-file-medical" class="list-item__icon" style="color: green;" ></ons-icon>Medical Information</p>
+            <p>{{member.custom_data[9][24253]}}</p>
+          </div>
+          
+          <div *ngIf="''!=member.custom_data[9][24254]">
+            <p class="allergy"><ons-icon  icon="fa-allergies" class="list-item__icon" style="color: red;" ></ons-icon>Allergies</p>
+            <p>{{member.custom_data[9][24254]}}</p>
+          </div>
+          <div *ngIf="''!=member.custom_data[9][24255]">
+            <p class="dietary"><ons-icon  icon="fa-utensils" class="list-item__icon" style="color: black;" ></ons-icon>Dietary</p>
+             <p>{{member.custom_data[9][24255]}}</p>
+          </div>
+          <div *ngIf="''!=member.custom_data[9][24257]">
+            <p class="other"><ons-icon  icon="fa-info-circle" class="list-item__icon" style="color: blue;" ></ons-icon>Other Information</p>
+             <p>{{member.custom_data[9][24257]}}</p>
+          </div>
+           
+          
+        </div>
+      </ons-card>
+      <ons-card>
+        <p (click)="goto_scoutcard($event,member);">Goto Contact Details > </p>
+      
+      </ons-card>
+     
+    </div>

@@ -1,0 +1,144 @@
+.member_initial {
+  display: table-cell;
+  border-radius: 40px;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  color: white; 
+  background-color: gray; 
+  font-size:25px;
+}
+
+.member_outer.selected .member_inner .member_initial {
+  background-color: #7413dc;
+}
+.member_box { 
+ display: table;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.member_name {color:black;text-align:center;font-size:10pt;padding:1pt;}
+.member_photo {
+  width:60px;
+  height:60px;
+  border-radius:40px;
+   vertical-align: middle;}
+
+.member_outer.selected .member_inner .member_photo {
+  width:50px;
+  height:50px;
+  border-radius:40px;
+   vertical-align: middle;}
+
+
+.member_outer { 
+  display: block;
+  float:left;
+  padding: 10px;
+  width: 60px;
+  height: 90px;
+  }
+
+.patrolheader { 
+  clear:left;
+  background-color: #00a794;
+  color: white;
+    padding: 10px;
+  }
+
+.member_inner {
+ /* background-color: red;
+width: 100px;
+height: 150px; */
+display: table-cell;
+float: left;
+}
+
+
+
+@keyframes FadeOut {
+  0% {
+    opacity: 1;
+    height: 90px;
+    width: 60px;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    height: 0;
+    width: 0px;
+    padding: 0px;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    padding: 0px
+  }
+  99% {
+    opacity: 1;
+    
+  }
+  100% {
+    height: 90px;
+    opacity: 1;
+    width: 60px;
+    padding: 10px;
+  }
+}
+
+
+@keyframes pulse_animation {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.08); }
+    40% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    60% { transform: scale(1); }
+    70% { transform: scale(1.05); }
+    80% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.notification {
+  position: absolute;
+  margin: -5px;
+  font-size: 10pt;
+  background: #7413dc;
+}
+.pulse {
+    animation-name: pulse_animation;
+    animation-duration: 2000ms;
+    transform-origin:7  0% 70%;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.box {  
+  transition: opacity 2s linear;  
+  transform:translate(0);
+  opacity: 1;
+}  
+.hidden {  
+   animation-name: FadeOut;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;  
+}
+.show {  
+   animation-name: FadeIn;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;  
+}
+
+.bottom-bar {
+  padding:10pt;
+}

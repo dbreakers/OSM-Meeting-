@@ -1,0 +1,75 @@
+<ons-toolbar>
+	<div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+  <div class="center">
+        {{globals.application}}
+      </div>
+	<div class="right">
+     
+		<ons-toolbar-button (click)="openMenu()">
+			<ons-icon icon="md-menu"></ons-icon>
+		</ons-toolbar-button>
+	</div>
+</ons-toolbar>
+
+<div class="content">
+	<ons-card>
+		<div class="header_block">
+			<div class="member_header" *ngIf="null!=member.photo_guid">
+				<img *ngIf="null!=member.photo_guid" src={{member_image}} alt="{{cardTitle}}" class="member_photo">
+      </div>    
+        <div class="title member_name" *ngIf="null!=member.photo_guid">{{member.first_name}}<br>{{member.last_name}}</div>
+        <div class="title member_name" *ngIf="null==member.photo_guid">{{member.first_name}} {{member.last_name}}</div>
+    </div>
+  
+	</ons-card>
+  <ons-card>
+    <div class="table">
+    <div class="table_row detailcard detailcard_left">Date of Birth</div>
+    <div class="table_row detailcard_right">{{member.date_of_birth}}</div>
+    </div><div class="table">
+    <div class="table_row detailcard detailcard_left">Age</div>
+    <div class="table_row detailcard_right">{{member.age}}</div>
+    </div><div class="table">
+    <div class="table_row detailcard detailcard_left">Member Since</div>
+    <div class="table_row detailcard_right">{{member.joined}}</div>
+    </div><div class="table">
+    <div class="table_row detailcard detailcard_left">Patrol</div>
+    <div class="table_row detailcard_right">{{member.patrol}}</div>
+    </div><div class="table">
+    <div class="table_row detailcard detailcard_left" *ngIf="member.patrol_role_level_label!=''">Role</div>
+    <div class="table_row detailcard_right" *ngIf="member.patrol_role_level_label!=''">{{member.patrol_role_level_label}}</div>
+</div>
+
+    
+  </ons-card> 
+  <div  *ngFor="let card of globals.sectiondata[1].meta.structure ; index as z" >
+  <ons-card>  
+  <p class="card_title">{{ card.name }} </p>
+  
+  <span  *ngFor="let field of card.columns; index as j">
+  <!--<div *ngIf="member.custom_data[card.group_id][field.column_id]!=''">-->
+  <div *ngIf="field.type!='email'">  
+  <div class="table">     
+  <div *ngIf="member.custom_data[card.group_id][field.column_id]!=''" class="table_row detailcard_left">{{field.label}}</div>
+  <div *ngIf="member.custom_data[card.group_id][field.column_id]!=''" class="table_row detailcard_right">{{ member.custom_data[card.group_id][field.column_id] }}
+  <span *ngIf="field.type=='telephone'"><br><a [attr.href]= "'tel:' + member.custom_data[card.group_id][field.column_id]" ><ons-icon icon="fa-phone" class="comm_button comm_div phone"></ons-icon></a></span>     
+  <span *ngIf="field.type=='telephone'"><a [attr.href]="sanitize('sms:+' + member.custom_data[card.group_id][field.column_id])" ><ons-icon icon="fa-comment-alt" class="comm_div comm_button sms"></ons-icon></a></span>
+  <span *ngIf="field.type=='telephone'"><a [attr.href]= "'https://wa.me/' + member.custom_data[card.group_id][field.column_id]" ><ons-icon icon="fa-whatsapp" class="comm_button wa comm_div"></ons-icon></a></span>
+  </div>
+  </div>
+  </div>
+  <div *ngIf="field.type=='email'&&member.custom_data[card.group_id][field.column_id]!=''">  
+  <div class="table"> 
+  <div *ngIf="member.custom_data[card.group_id][field.column_id]!=''" class="table_row detailcard_left"><!--<ons-icon icon="fa-envelope" class="comm_button email"></ons-icon>--><a [attr.href]= "'mailto:' + member.custom_data[card.group_id][field.column_id]" >{{field.label}}</a></div>
+  <!--<div class="table_row detailcard_right"><ons-icon icon="fa-envelope" class="comm_button email"></ons-icon></div>-->
+  <div class="table_row100"><a [attr.href]= "'mailto:' + member.custom_data[card.group_id][field.column_id]" >{{ member.custom_data[card.group_id][field.column_id] }}</a></div>
+  </div>
+  </div>
+  </span>
+  
+    
+  </ons-card>  
+  </div>
+</div> 

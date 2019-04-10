@@ -1,0 +1,10 @@
+p.medical{ font-weight: bold; clear:left;}
+p.dietary{ font-weight: bold;clear:left;}
+p.other{ font-weight: bold;clear:left;}
+p.allergy{ font-weight: bold; clear:left;}
+.member_photo {border-radius: 50px; width: 75px; height: 75px;} 
+.member_header {align-content: center;    
+     width: 100px; float: left;}
+.member_name {    color: #7413dc;
+    font-weight: bolder; width: 75%; font-size: 20pt; }    
+.header_block {height: 100%; overflow: auto;}

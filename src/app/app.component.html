@@ -1,0 +1,60 @@
+<ons-splitter>
+	<!--[attr.collapse]="'collapse'"-->
+	<ons-splitter-side #menu side="right" width="220px" [attr.collapse]="'(max-width: 600px)'" [attr.swipeable]="'swipeable'">
+		<ons-page>
+			<ons-list>
+				<ons-list-item (click)="loadPage(home)" tappable>
+					<div class="left">
+						<ons-icon icon="fa-home" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Home
+					</div>
+				</ons-list-item>
+				<ons-list-item *ngIf="globals.configread==true" (click)="loadPage(cards)" tappable>
+					<div class="left">
+						<ons-icon icon="fa-exchange-alt" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Switch Sections
+					</div>
+				</ons-list-item>
+				<ons-list-item (click)="loadPage(main)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-cog" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Settings
+					</div>
+				</ons-list-item>
+        <ons-list-item (click)="loadPage(medical)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-ambulance" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Emergency Info
+					</div>
+				</ons-list-item>
+        <ons-list-item (click)="loadPage(globalsearch)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-search" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Global Search
+					</div>
+				</ons-list-item>
+      <ons-list-item (click)="logout(home)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-sign-out-alt" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Logout
+					</div>
+				</ons-list-item>
+			</ons-list>
+		</ons-page>
+	</ons-splitter-side>
+	<ons-splitter-content>
+		<ons-navigator #navi [page]="home"></ons-navigator>
+	</ons-splitter-content>
+</ons-splitter>
