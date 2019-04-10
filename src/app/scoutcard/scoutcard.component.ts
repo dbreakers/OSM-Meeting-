@@ -61,7 +61,7 @@ callprompt(number) {
       //     window.open("mailto:david.breakwell@gmail.com", "_top");
        //   ons.notification.alert({message: 'Incorrect! Please try again!'+answer});
         } else if  (answer == '2') {
-           window.open("call://"+number, "_top");
+           window.open("tel://"+number, "_top");
         }
       }
     });
