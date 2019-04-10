@@ -51,6 +51,7 @@ callprompt(number) {
     ons.notification.confirm({
       message: 'Contact '+number+' using',
       title: 'Make a call',
+      cancelable: true,
       buttonLabels: ['<ons-icon icon="fa-whatsapp" style="color: green"></ons-icon>&nbsp;WhatsApp','<ons-icon icon="fa-comment-dots" style="color: #03a9f4"></ons-icon>&nbsp;SMS','<ons-icon icon="fa-phone" style="color: black"></ons-icon>&nbsp;Call'],
       callback: answer => {
         if (answer == '0') {

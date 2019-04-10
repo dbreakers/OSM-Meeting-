@@ -9,13 +9,13 @@
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
-    <ons-bottom-toolbar>
+   <!-- <ons-bottom-toolbar>
       <div class="left bottom-bar">
   <ons-icon icon="fa-users">&nbsp;</ons-icon><b>{{counter}}</b>/{{members.length}} {{lastclick}}
  <ons-toolbar-button>Add</ons-toolbar-button> </div>
   <div class="right"></div>
 </ons-bottom-toolbar>
-
+-->
         <div class="content">
            <ons-search-input id="text" placeholder="Type here" [(value)]="namefilter" (keyup)="update_search($event)" style="width:100%" ></ons-search-input>
       <div *ngIf="globals.secret!=''">    

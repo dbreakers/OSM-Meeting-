@@ -181,19 +181,21 @@ export class GlobalsearchComponent implements OnInit {
   }
 
   go(event, member) {
-    if (!(event.currentTarget.classList.contains("selected"))) {
-      event.currentTarget.classList.add("selected");
-      event.currentTarget.classList.add("pulse");
-      this.counter = this.counter + 1;
-      this.lastclick = member.first_name + " " + member.last_name;
-      this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.member_id } });
+    this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.member_id } });
 
-    } else {
-      event.currentTarget.classList.remove("selected");
-      event.currentTarget.classList.remove("pulse");
-      this.counter = this.counter - 1;
-      this.lastclick = "";
-    }
+//    if (!(event.currentTarget.classList.contains("selected"))) {
+//      event.currentTarget.classList.add("selected");
+//      event.currentTarget.classList.add("pulse");
+//      this.counter = this.counter + 1;
+//      this.lastclick = member.first_name + " " + member.last_name;
+//     this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.member_id } });
+
+ //   } else {
+ //     event.currentTarget.classList.remove("selected");
+ //     event.currentTarget.classList.remove("pulse");
+ //     this.counter = this.counter - 1;
+ //     this.lastclick = "";
+ //   }
   }
   section_data_return(data) {
     this.globals.sectiondata = data;
