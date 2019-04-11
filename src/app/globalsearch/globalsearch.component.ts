@@ -33,6 +33,7 @@ export class GlobalsearchComponent implements OnInit {
   lastclick = "";
   namefilter = "";
   finditem = false;
+  grid_list = 0;
   constructor(
     private inj: Injector,
     private globals: Globals,
@@ -40,6 +41,9 @@ export class GlobalsearchComponent implements OnInit {
     private logonService: LogonService,
     private photoURL: PhotoURLService) { }
 
+   grid_list_toggle() {
+     if (this.grid_list==1) {this.grid_list = 0;} else {this.grid_list = 1;} 
+   }
   update_search(event) {
     //alert(event);
     //var v = document.getElementById("339550");
