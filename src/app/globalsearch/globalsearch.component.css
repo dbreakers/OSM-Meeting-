@@ -9,6 +9,11 @@
   background-color: gray; 
   font-size:25px;
 }
+.member_initial2 {
+width: 60px !important;
+  height: 60px !important;
+  
+}
 
 .member_outer.selected .member_inner .member_initial {
   background-color: #7413dc;
@@ -25,6 +30,13 @@
   height:60px;
   border-radius:40px;
    vertical-align: middle;}
+
+.member_photo2 {
+  width:60px;
+  height:60px;
+  border-radius:40px;
+   vertical-align: middle;}
+
 
 .member_outer.selected .member_inner .member_photo {
   width:50px;
