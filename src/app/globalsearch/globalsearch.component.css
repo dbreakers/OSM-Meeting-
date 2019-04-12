@@ -91,7 +91,7 @@ float: left;
 @keyframes FadeOut2 {
   0% {
     opacity: 1;
-    height: 90px;
+    height: 94px;
 
   }
   99% {
@@ -135,9 +135,9 @@ float: left;
     
   }
   100% {
-    height: 90px;
+    height: 94px;
     opacity: 1;
-    padding: 10px;
+    padding: 12px;
   }
 }
 
