@@ -71,10 +71,10 @@
      
       <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> 
       <div class="list-item__thumbnail"  >    
-    <img  src="{{get_photo_url(member)}}"  class="member_photo2" >
+    <img  src="{{get_photo_url(member)}}" class="list-item__thumbnail"  >
     </div>
     </div>
-    <div class="member_box" *ngIf="null==member.photo_guid">
+    <div class="list-item__thumbnail" *ngIf="null==member.photo_guid">
          <!-- <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> -->
     <div class="member_initial member_initial2"  >{{member.first_name.substring(0,1)}}<span *ngIf="no_matches(member.first_name)!=1">{{member.last_name.substring(0,1)}}</span>
      </div> 
@@ -86,7 +86,7 @@
 </ons-list-item>
   </span>
   </ons-list>
-</div>>  <!--List-->
+</div><!--List-->
       </div>
     </div>
     </ons-page>

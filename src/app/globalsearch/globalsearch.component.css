@@ -173,10 +173,11 @@ float: left;
   opacity: 1;
 }
 .hidden2 {  
-   animation-name: FadeOut2;
-    animation-duration: 1000ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;  
+  /* animation-name: FadeOut2; */
+  /*  animation-duration: 1000ms; */
+  /*  animation-iteration-count: 1;*/
+  /*  animation-fill-mode: forwards; */
+  display: none; 
 }  
 .hidden {  
    animation-name: FadeOut;
@@ -191,12 +192,15 @@ float: left;
     animation-fill-mode: forwards;  
 }
 
-.show2 {  
-   animation-name: FadeIn2;
-    animation-duration: 1000ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;  
+.show2 {
+display: fl;
+   
 }
+
+/* animation-name: FadeIn2; */
+  /*  animation-duration: 1000ms; */
+    /* animation-iteration-count: 1; */
+  /* animation-fill-mode: forwards; */
 
 .bottom-bar {
   padding:10pt;
