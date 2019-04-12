@@ -88,6 +88,23 @@ float: left;
   }
 }
 
+@keyframes FadeOut2 {
+  0% {
+    opacity: 1;
+    height: 90px;
+
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    height: 0;
+    padding: 0px;
+  }
+}
+
 @keyframes FadeIn {
   0% {
     opacity: 0;
@@ -103,6 +120,23 @@ float: left;
     height: 90px;
     opacity: 1;
     width: 60px;
+    padding: 10px;
+  }
+}
+
+@keyframes FadeIn2 {
+  0% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px
+  }
+  99% {
+    opacity: 1;
+    
+  }
+  100% {
+    height: 90px;
+    opacity: 1;
     padding: 10px;
   }
 }
@@ -137,6 +171,12 @@ float: left;
   transition: opacity 2s linear;  
   transform:translate(0);
   opacity: 1;
+}
+.hidden2 {  
+   animation-name: FadeOut2;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;  
 }  
 .hidden {  
    animation-name: FadeOut;
@@ -146,6 +186,13 @@ float: left;
 }
 .show {  
    animation-name: FadeIn;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;  
+}
+
+.show2 {  
+   animation-name: FadeIn2;
     animation-duration: 1000ms;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;  

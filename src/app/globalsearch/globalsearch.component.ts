@@ -54,13 +54,25 @@ export class GlobalsearchComponent implements OnInit {
       var v = document.getElementById(this.members[i].member_id);
 
       if (this.searchObj(this.members[i])) {
+        if (this.grid_list==0){
         v.classList.add("show"); 
-        v.classList.remove("hidden");   
+        v.classList.remove("hidden");
+        }  else {
+  v.classList.add("show2"); 
+        v.classList.remove("hidden2");
+        } 
       } else {
+        if (this.grid_list==0){
          v.classList.add("hidden"); 
         v.classList.remove("show");
+        
+      } else {
+v.classList.add("hidden2"); 
+        v.classList.remove("show2");
+        
       }
     }
+ }
   }
 
   searchObj(member) {
