@@ -10,8 +10,9 @@
   font-size:25px;
 }
 .member_initial2 {
-width: 60px !important;
-  height: 60px !important;
+width: 45px !important;
+  height: 45px !important;
+  font-size:20px;
   
 }
 
@@ -88,22 +89,6 @@ float: left;
   }
 }
 
-@keyframes FadeOut2 {
-  0% {
-    opacity: 1;
-    height: 94px;
-
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    height: 0;
-    opacity: 0;
-    height: 0;
-    padding: 0px;
-  }
-}
 
 @keyframes FadeIn {
   0% {
@@ -124,22 +109,7 @@ float: left;
   }
 }
 
-@keyframes FadeIn2 {
-  0% {
-    opacity: 0;
-    height: 0px;
-    padding: 0px
-  }
-  99% {
-    opacity: 1;
-    
-  }
-  100% {
-    height: 94px;
-    opacity: 1;
-    padding: 12px;
-  }
-}
+
 
 
 @keyframes pulse_animation {
@@ -193,7 +163,7 @@ float: left;
 }
 
 .show2 {
-display: fl;
+display: flex;
    
 }
 
