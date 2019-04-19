@@ -13,6 +13,7 @@ import {
 } from 'ngx-onsenui';
 
 import { TermpickerComponent } from '../termpicker/termpicker.component';
+import { MedicalComponent } from '../medical/medical.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
 import { Globals } from '../globals';
@@ -31,6 +32,7 @@ export class MainComponent implements OnInit {
   counter = 0.
   lastclick=""
   termselect =  TermpickerComponent;
+  medical = MedicalComponent;
 
   @ViewChild('navi') private navi: OnsNavigator;
 
