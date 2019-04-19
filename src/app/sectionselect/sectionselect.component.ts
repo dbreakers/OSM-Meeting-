@@ -28,6 +28,7 @@ import * as ons from 'onsenui';
 export class SectionselectComponent implements OnInit, OnChanges {
   section = new Array;
   localsection = "";
+  localname = "";
 
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
@@ -44,15 +45,10 @@ export class SectionselectComponent implements OnInit, OnChanges {
       document.getElementById(index.sectionid).checked = true;
     }
     this.localsection = index.sectionid;
-    
+      
   }
 
-  select_section() {
-    this.globals.config = this.section;
-    this.globals.configread = true;
-    this.globals.mysection = this.localsection;
-    this._navigator.element.replacePage(MainComponent);
-   
+find_current_term() {
     var current_term = -1;
     for (var i = 0; i < this.globals.config[2][this.globals.mysection].length; i++) {
       if (this.globals.config[2][this.globals.mysection][i].past == true) { current_term = i }
@@ -60,7 +56,27 @@ export class SectionselectComponent implements OnInit, OnChanges {
     var term = this.globals.config[2][this.globals.mysection][current_term].termid;
     this.globals.current_term = current_term;
 
+}
 
+
+ section_data_return(data) {
+    //alert("heelo");
+  this.globals.sectiondata = data;
+  this._navigator.element.replacePage(MainComponent);
+  }
+
+
+  select_section() {
+    this.globals.config = this.section;
+    this.globals.configread = true;
+    this.globals.mysection = this.localsection;
+    this.find_current_term();
+    var f = this.globals.config[1].find(obj => obj.sectionid == this.localsection);
+    this.globals.sectionname = f.groupname + ":" + f.sectionname;
+  this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+
+
+    
   }
 
   check()

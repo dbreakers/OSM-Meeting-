@@ -33,23 +33,31 @@ export class TermpickerComponent implements OnInit {
     private globals: Globals,
     private logonService: LogonService) { }
 
-  push(event, index) {
+  push(event, index, i) {
     
-    if (document.getElementById(this.localterm) != null) {
-      document.getElementById(this.localterm).checked = false;
-    };
-    if (document.getElementById(index.sectionid) != null) {
+  //  if (document.getElementById(this.localterm) != null) {
+     // document.getElementById(this.localterm).checked = false;
+  //  };
+  //  if (document.getElementById(index.sectionid) != null) {
 
-      document.getElementById(index.sectionid).checked = true;
-    }
-    this.localterm = index.termid;
+    //  document.getElementById(index.sectionid).checked = true;
+ //   }
+    this.localterm = i;
     
   }
 
+   section_data_return(data) {
+    //alert("heelo");
+  this.globals.sectiondata = data;
+  this._navigator.element.replacePage(MainComponent);
+  }
+
+
   select_term() {
     this.globals.current_term = this.localterm;
-    this._navigator.element.replacePage(MainComponent);
-   
+//    this._navigator.element.replacePage(MainComponent);
+   this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+ 
   }
 
   openMenu() {

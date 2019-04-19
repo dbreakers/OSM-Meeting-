@@ -53,6 +53,11 @@ find_current_term() {
 
 }
 
+section_data_return(data) {
+  this.globals.sectiondata = data;
+  this._navigator.element.replacePage(MainComponent);
+}
+
 section_config_return(s) {
   this.globals.configread = true;
     this.globals.config = s;
@@ -75,9 +80,11 @@ section_config_return(s) {
     this._navigator.element.replacePage(SectionselectComponent);
     
   } else
-  {this._navigator.element.replacePage(MainComponent);}
+  {
+     this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+    //this._navigator.element.replacePage(MainComponent);}
 }
-
+}
   post_logon(api_return : any)
   {
     if (api_return.hasOwnProperty('error'))
