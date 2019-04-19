@@ -16,17 +16,10 @@
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
-   <!-- <ons-bottom-toolbar>
-      <div class="left bottom-bar">
-  <ons-icon icon="fa-users">&nbsp;</ons-icon><b>{{counter}}</b>/{{members.length}} {{lastclick}}
- <ons-toolbar-button>Add</ons-toolbar-button> </div>
-  <div class="right"></div>
-</ons-bottom-toolbar>
--->
+   
         <div class="content">
-           <ons-search-input id="text" placeholder="Type here" [(value)]="namefilter" (keyup)="update_search($event)" style="width:100%" ></ons-search-input>
       <div *ngIf="globals.secret!=''">    
-      <h2>Global Search</h2>
+      <h2>Birthday</h2>
       <!--<p style="text-align: center; opacity: 0.6; padding-top: 20px;">
         {{globals.mysection}}
         {{globals.current_term}}
@@ -34,39 +27,11 @@
         
       </p>
     -->
-    <div *ngIf="grid_list==0"><!--Grid-->
-    <div  id="gridcontainer" *ngFor="let member of members; index as i"> 
-    <!--<div *ngIf="((i==0)||(member.patrol!=members[i-1].patrol))" class="patrolheader">
-    <span *ngIf="member.patrol==''">No Patrol</span>  
-    <span *ngIf="member.patrol!=''">{{member.patrol}}</span>
-    </div>-->  
-    <!--<div class="member_outer" (click)="go($event,member);" *ngIf="searchObj(member)==true" id="{{member.member_id}}">-->
-      <div class="member_outer" (click)="go($event,member);"  id="{{member.member_id}}">
-
-    <div class="member_inner">
-      
-    <div class="member_box" *ngIf="null!=member.photo_guid">  
-     
-      <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> 
-      <div class="member_initial"  >    
-    <img  src="{{get_photo_url(member)}}" class="member_photo" >
-    </div>
-    </div>
-    <div class="member_box" *ngIf="null==member.photo_guid">
-          <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> 
-    <div class="member_initial"  >{{member.first_name.substring(0,1)}}<span *ngIf="no_matches(member.first_name)!=1">{{member.last_name.substring(0,1)}}</span>
-     </div> 
-    </div>
-    <div class="member_name"> {{member.first_name}}</div>
-    </div>
-   
-    </div>
-
-    </div>  
-    </div> <!--Grid-->
-<div *ngIf="grid_list==1"> <!--List-->
+    
+<div > <!--List-->
   <ons-list>
   <span  id="gridcontainer" *ngFor="let member of members; index as i">
+     <ons-list-header *ngIf="((i==0)||(member.date_of_birth.substring(5,7)!=members[i-1].date_of_birth.substring(5,7)))">{{monthname(member.date_of_birth)}}</ons-list-header>
 <ons-list-item (click)="go($event,member);" id="{{member.member_id}}" modifier="chevron">
       
         <span class="left">
@@ -85,7 +50,7 @@
               
         </span>
         <span class="list-item__title">{{member.first_name}} {{member.last_name}}</span>
-        <span class="list-item__subtitle">{{member.patrol_role_level_label}}<span *ngIf="member.patrol_role_level_label!=''">, </span>{{member.patrol}}</span>
+        <span class="list-item__subtitle">{{subhead(member.date_of_birth)}}</span>
 </ons-list-item>
   </span>
   </ons-list>

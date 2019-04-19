@@ -14,8 +14,11 @@ import {
 
 import { TermpickerComponent } from '../termpicker/termpicker.component';
 import { MedicalComponent } from '../medical/medical.component';
+import {GlobalsearchComponent} from '../globalsearch/globalsearch.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
+import {SectionselectComponent} from '../sectionselect/sectionselect.component';
+import {BirthdayComponent} from '../birthday/birthday.component';
 import { Globals } from '../globals';
 import { LogonService } from '../logon.service';
 import {  PhotoURLService } from '../photoUrl';
@@ -33,7 +36,9 @@ export class MainComponent implements OnInit {
   lastclick=""
   termselect =  TermpickerComponent;
   medical = MedicalComponent;
-
+  globalsearch = GlobalsearchComponent;
+  sectionselect = SectionselectComponent;
+  birthday = BirthdayComponent;
   @ViewChild('navi') private navi: OnsNavigator;
 
   constructor(
@@ -48,7 +53,7 @@ loadPage(page) {
    
   //  this.menu.nativeElement.close();
   //  this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
-   this._navigator.element.pushPage(page);
+   this._navigator.element.pushPage(page, { animation: 'fade' });
   }
 
 section_has_roles()

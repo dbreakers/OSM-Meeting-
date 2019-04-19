@@ -223,6 +223,6 @@ v.classList.add("hidden2");
 this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
     this.members.sort(this.compareValuesArray(["patrol", "patrol_role_level", "age_years", "age_months"], "desc"))
     this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});
-    
+    this.grid_list = 1;
   }
 }

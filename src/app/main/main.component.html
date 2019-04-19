@@ -5,7 +5,7 @@
       </div>
       <div class="right">
         <ons-toolbar-button (click)="openMenu()">
-          <ons-icon icon="md-menu"></ons-icon>
+          <ons-icon icon="fa-bars"></ons-icon>
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
@@ -20,14 +20,10 @@
       <div *ngIf="globals.secret!=''">    
       <h2>Welcome</h2>
       <p>
-      
-       {{globals.config[2][globals.mysection][globals.current_term].name}}
-        
+      <b>Current Term:</b> {{globals.config[2][globals.mysection][globals.current_term].name}}&nbsp;<ons-icon (click)="loadPage(termselect)" icon="fa-exchange-alt"></ons-icon>
       </p>
       <p>
-      
-        {{globals.sectionname}}
-        
+      <b>Section:</b>  {{globals.sectionname}}&nbsp;<ons-icon icon="fa-exchange-alt" (click)="loadPage(sectionselect)"></ons-icon>    
       </p>
         <div class="member_outer" (click)="loadPage(medical)">
            <div class="member_inner">
@@ -35,13 +31,13 @@
           <div class="member_name">Health</div>
          </div> 
       </div>
-      <div class="member_outer">
+      <div class="member_outer" (click)="loadPage(globalsearch)">   
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"><ons-icon icon="fa-search"></ons-icon></div></div>
           <div class="member_name">Global</div>
          </div> 
       </div>
-      <div class="member_outer">
+      <div class="member_outer" (click)="loadPage(birthday)">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"><ons-icon icon="fa-birthday-cake"></ons-icon></div></div>
           <div class="member_name">Birthdays</div>
@@ -65,7 +61,7 @@
           <div class="member_name">Programme</div>
          </div> 
       </div>
-      <div class="member_outer">
+      <div class="member_outer" (click)="loadPage(sectionselect)">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"><ons-icon icon="fa-exchange-alt"></ons-icon></div></div>
           <div class="member_name">Section</div>

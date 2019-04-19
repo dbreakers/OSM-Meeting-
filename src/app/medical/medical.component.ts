@@ -31,7 +31,8 @@ export class MedicalComponent implements OnInit {
   members = new Array;
   namefilter = "";
   typefilter = 1;
-  filterdisplay = new Array;    
+  filterdisplay = new Array;  
+  matches = new Object;  
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private globals: Globals,
@@ -62,6 +63,7 @@ compareValues(key, order='asc') {
     );
   };
 }
+ no_matches(n) { return this.matches[n] }
 
 sort_list(name,order){
   
@@ -123,8 +125,9 @@ get_photo_url(member) {
 
   
   ngOnInit() {
-    
+
   this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+  this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});  
   for (var i = 0; i < this.members.length; i++) {
   
     this.filterdisplay.push(true);//

@@ -21,6 +21,7 @@ import { ScoutcardComponent } from './scoutcard/scoutcard.component';
 import { TermpickerComponent } from './termpicker/termpicker.component';
 import { MedicalcardComponent } from './medicalcard/medicalcard.component';
 import { MedicalsummaryComponent } from './medicalsummary/medicalsummary.component';
+import { BirthdayComponent } from './birthday/birthday.component';
 import { GlobalsearchComponent } from './globalsearch/globalsearch.component';
 import { SectionselectComponent } from './sectionselect/sectionselect.component';
 import { MainComponent } from './main/main.component';
@@ -31,8 +32,8 @@ import { Globals } from './globals';
 
 @NgModule({
   imports: [OnsenModule, HttpClientModule],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent],
-  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent],
+  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]

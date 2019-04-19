@@ -1,0 +1,17 @@
+.member_initial {
+  display: table-cell;
+  border-radius: 40px;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  text-align: center;
+  color: white; 
+  background-color: gray; 
+  font-size:25px;
+}
+.member_initial2 {
+width: 40px !important;
+  height: 40px !important;
+  font-size:20px;
+  background-color: #7413dc;
+}
