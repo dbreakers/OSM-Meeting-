@@ -50,8 +50,18 @@ export class BirthdayComponent implements OnInit {
   
   }
 
+getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
   
-     nth(d) {
+nth(d) {
       if(d>3 && d<21) return 'th'; // thanks kennebec
       switch (d % 10) {
             case 1:  return "st";
@@ -63,7 +73,7 @@ export class BirthdayComponent implements OnInit {
 
   subhead(date) {
     var d = new Date(date);
-    return d.getDay()+nth(d.getDay)+" "+date
+    return this.getAge(date)+" "+d.getDate()+this.nth(d.getDate())+" "+date
   }
   
   section_has_roles() {
