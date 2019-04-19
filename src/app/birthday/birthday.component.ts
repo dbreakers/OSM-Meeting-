@@ -34,7 +34,8 @@ export class BirthdayComponent implements OnInit {
   namefilter = "";
   finditem = false;
   grid_list = 0;
-  monthnames= ["January","February","March","April","May","June","July","August","September","October","November","December"]
+  monthnames= ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  daynames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
   constructor(
     private inj: Injector,
     private globals: Globals,
@@ -73,7 +74,14 @@ nth(d) {
 
   subhead(date) {
     var d = new Date(date);
-    return this.getAge(date)+" "+d.getDate()+this.nth(d.getDate())+" "+date
+    var now2 = Date.now();
+    var d2 =  new Date(now2.getYear(),now2.getMonth(),now2.getDate());
+    var d3 =  new Date(now2.getYear(),d.getMonth(),d.getDate());
+    var year = now.getYear();
+    var ss = this.getAge(date)+" Next Birthday ";
+    if (d3<d2) { year = year + 1;}
+    var d4 = new Date(year,d.getMonth(),d.getDate());
+    ss = ss + this.daynames[d4.getDay()] + " " +d.getDate()+this.nth(d.getDate())+" "+year;
   }
   
   section_has_roles() {
