@@ -82,3 +82,11 @@ float: left;
 .bottom-bar {
   padding:10pt;
 }
+
+.menu-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: blue;
+  color: white;
+}
