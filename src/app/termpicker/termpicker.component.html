@@ -18,7 +18,13 @@
 
       <ons-list>
         <ons-list-item (click)="push($event, sections)" *ngFor="let sections of section[2][globals.mysection]">
-      
+       <span class="left" >
+        <ons-icon *ngIf="localterm==sections.termid" icon="fa-check-circle" size="50px" style="color: #00a794;" class="list-item__icon">
+        </ons-icon>
+        <ons-icon *ngIf="localterm!=sections.termid" icon="fa-circle" size="50px" style="color: LightGray;" class="list-item__icon">
+        </ons-icon>
+                
+        </span>
        
         <span class="list-item__title">{{sections.name}}</span>
         <span class="list-item__subtitle">{{sections.startdate}} to {{sections.enddate}}</span>

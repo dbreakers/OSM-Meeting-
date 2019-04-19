@@ -44,8 +44,9 @@ export class MainComponent implements OnInit {
 
 loadPage(page) {
    
-    this.menu.nativeElement.close();
-    this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
+  //  this.menu.nativeElement.close();
+  //  this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
+   this._navigator.element.pushPage(page);
   }
 
 section_has_roles()
