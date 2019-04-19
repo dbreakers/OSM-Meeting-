@@ -63,7 +63,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
-
+/** 
   section_config_return(config) {
     this.section = config;
     this.globals.configread = true;
@@ -95,7 +95,7 @@ promise.then(
 )
   };
   }
-  
+  */
 
 
   ngOnInit() {

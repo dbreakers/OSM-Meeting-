@@ -1,0 +1,29 @@
+<ons-toolbar>
+   <div class="center">
+        {{globals.application}}
+      </div>
+	<div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+	<div class="right">
+		<ons-toolbar-button (click)="openMenu()">
+			<ons-icon icon="md-menu"></ons-icon>
+		</ons-toolbar-button>
+	</div>
+</ons-toolbar>
+
+<div class="content">
+	<ons-list-title  *ngIf="section">Select a Term</ons-list-title>
+
+
+      <ons-list>
+        <ons-list-item (click)="push($event, sections)" *ngFor="let sections of section[2][globals.mysection]">
+      
+       
+        <span class="list-item__title">{{sections.name}}</span>
+        <span class="list-item__subtitle">{{sections.startdate}} to {{sections.enddate}}</span>
+        </ons-list-item>
+       
+      </ons-list>
+      
+</div>

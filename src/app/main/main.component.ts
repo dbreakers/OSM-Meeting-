@@ -12,6 +12,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from 'ngx-onsenui';
 
+import { TermpickerComponent } from '../termpicker/termpicker.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
 import { Globals } from '../globals';
@@ -29,12 +30,23 @@ export class MainComponent implements OnInit {
   matches =  new Object;
   counter = 0.
   lastclick=""
+  termselect =  TermpickerComponent;
+
+  @ViewChild('navi') private navi: OnsNavigator;
+
   constructor(
     private inj: Injector,
     private globals: Globals,
     private _navigator: OnsNavigator,
     private logonService: LogonService,
     private photoURL: PhotoURLService) { }
+
+
+loadPage(page) {
+   
+    this.menu.nativeElement.close();
+    this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
+  }
 
 section_has_roles()
 {

@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PageNav1Component } from './PageNav1/PageNav1.component';
 import { ScoutcardComponent } from './scoutcard/scoutcard.component';
+import { TermpickerComponent } from './termpicker/termpicker.component';
 import { MedicalcardComponent } from './medicalcard/medicalcard.component';
 import { MedicalsummaryComponent } from './medicalsummary/medicalsummary.component';
 import { GlobalsearchComponent } from './globalsearch/globalsearch.component';
@@ -30,8 +31,8 @@ import { Globals } from './globals';
 
 @NgModule({
   imports: [OnsenModule, HttpClientModule],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent],
-  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent],
+  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]
