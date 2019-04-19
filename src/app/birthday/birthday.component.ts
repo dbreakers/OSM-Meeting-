@@ -74,14 +74,15 @@ nth(d) {
 
   subhead(date) {
     var d = new Date(date);
-    var now2 = Date.now();
-    var d2 =  new Date(now2.getYear(),now2.getMonth(),now2.getDate());
-    var d3 =  new Date(now2.getYear(),d.getMonth(),d.getDate());
-    var year = now.getYear();
+    var now2 = new Date();
+    var d2 =  new Date(now2.getFullYear(),now2.getMonth(),now2.getDate());
+    var d3 =  new Date(now2.getFullYear(),d.getMonth(),d.getDate());
+    var year = now2.getFullYear();
     var ss = this.getAge(date)+" Next Birthday ";
     if (d3<d2) { year = year + 1;}
     var d4 = new Date(year,d.getMonth(),d.getDate());
     ss = ss + this.daynames[d4.getDay()] + " " +d.getDate()+this.nth(d.getDate())+" "+year;
+    return ss;
   }
   
   section_has_roles() {
