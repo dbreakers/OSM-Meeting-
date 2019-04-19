@@ -43,6 +43,16 @@ export class HomeComponent  {
     this._navigator.element.pushPage(PageNav1Component);
   }
 
+find_current_term() {
+    var current_term = -1;
+    for (var i = 0; i < this.globals.config[2][this.globals.mysection].length; i++) {
+      if (this.globals.config[2][this.globals.mysection][i].past == true) { current_term = i }
+    }
+    var term = this.globals.config[2][this.globals.mysection][current_term].termid;
+    this.globals.current_term = current_term;
+
+}
+
 section_config_return(s) {
   this.globals.configread = true;
     this.globals.config = s;
@@ -52,6 +62,7 @@ section_config_return(s) {
       {
         found = true;
         this.globals.sectionname = this.globals.config[1][i].groupname + ":" + this.globals.config[1][i].sectionname;
+        this.find_current_term();
       }
     }
     if ((this.globals.mysection=="")||(found==false))
