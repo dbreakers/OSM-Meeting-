@@ -14,6 +14,7 @@ export class Globals {
   sectiondata: any;
   sectiondatasection: string = "";
   current_term: string  = "-1";
+  sectionname: string = "No Section";
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
  beavers: ["","ALL","LL","SLL"]};

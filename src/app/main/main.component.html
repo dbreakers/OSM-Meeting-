@@ -19,6 +19,16 @@
         <div class="content">
       <div *ngIf="globals.secret!=''">    
       <h2>Welcome</h2>
+      <p>
+      
+        {{globals.config[2][globals.mysection][globals.current_term].name}}
+        
+      </p>
+      <p>
+      
+        {{globls.sectionname}}
+        
+      </p>
         <div class="member_outer">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"><ons-icon icon="fa-ambulance"></ons-icon></div></div>
@@ -67,12 +77,7 @@
           <div class="member_name">Terms</div>
          </div> 
       </div>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        {{globals.mysection}}
-        {{globals.current_term}}
-        {{globals.config[2][globals.mysection][globals.current_term].name}}
-        
-      </p>
+      
     
     <div  id="gridcontainer" *ngFor="let member of members; index as i"> 
     <div *ngIf="((i==0)||(member.patrol!=members[i-1].patrol))" class="patrolheader">

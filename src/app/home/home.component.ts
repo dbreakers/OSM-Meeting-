@@ -51,6 +51,7 @@ section_config_return(s) {
       if (this.globals.config[1][i].sectionid==this.globals.mysection)
       {
         found = true;
+        this.globals.sectionname = this.globals.config[1][i].groupname + ":" + this.globals.config[1][i].sectionname;
       }
     }
     if ((this.globals.mysection=="")||(found==false))
