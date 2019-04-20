@@ -73,6 +73,11 @@ section_config_return(s) {
     if ((this.globals.mysection=="")||(found==false))
     {
       this.globals.mysection = this.globals.config[1][0].sectionid;
+      if (this.globals.config[1].length==1){
+        found = true;
+        this.globals.sectionname = this.globals.config[1][0].groupname + ":" + this.globals.config[1][0].sectionname;
+        this.find_current_term();
+      }
     }
   
   if (found!=true)
