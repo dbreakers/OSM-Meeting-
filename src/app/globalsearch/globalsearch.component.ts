@@ -24,7 +24,7 @@ import * as ons from 'onsenui';
   styleUrls: ['./globalsearch.component.css']
 })
 
-export class GlobalsearchComponent implements OnInit {
+export class GlobalsearchComponent implements OnInit  {
   members = new Array;
   search_strings = new Array;
   search_match = new Array;
@@ -43,8 +43,7 @@ export class GlobalsearchComponent implements OnInit {
 
    grid_list_toggle() {
      if (this.grid_list==1) {this.grid_list = 0;} else {this.grid_list = 1;} 
-     this.update_search(1);
-   }
+      }
   update_search(event) {
     //alert(event);
     //var v = document.getElementById("339550");
@@ -226,4 +225,6 @@ this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globa
     this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});
     this.grid_list = 1;
   }
+
+
 }
