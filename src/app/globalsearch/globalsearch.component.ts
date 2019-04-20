@@ -24,7 +24,7 @@ import * as ons from 'onsenui';
   styleUrls: ['./globalsearch.component.css']
 })
 
-export class GlobalsearchComponent implements OnInit  {
+export class GlobalsearchComponent implements OnInit, AfterViewChecked  {
   members = new Array;
   search_strings = new Array;
   search_match = new Array;
@@ -225,6 +225,6 @@ this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globa
     this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});
     this.grid_list = 1;
   }
-
+ngAfterViewChecked() {this.update_search(1) }
 
 }
