@@ -1,3 +1,4 @@
+
 <ons-page>
 	<ons-toolbar>
 		<div class="center">
@@ -18,19 +19,19 @@
 		</div>
 	</ons-toolbar>
 	<ons-speed-dial position="bottom right" direction="up">
-		<ons-fab  style="background-color: #7413dc; color: white;">
+		<ons-fab  >
 			<ons-icon icon="md-eye"></ons-icon>
 		</ons-fab>
-		<ons-speed-dial-item (click)="summary(1)" style="background-color: #00a794; color: white;">
+		<ons-speed-dial-item (click)="summary(1)" >
 			<ons-icon icon="fa-file-medical"></ons-icon>
 		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(2)" style="background-color: #00a794;  color: white;">
+		<ons-speed-dial-item (click)="summary(2)" >
 			<ons-icon icon="fa-allergies"></ons-icon>
 		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(3)" style="background-color: #00a794; color: white;">
+		<ons-speed-dial-item (click)="summary(3)" >
 			<ons-icon icon="fa-utensils"></ons-icon>
 		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(4)" style="background-color: #00a794; color: white;">
+		<ons-speed-dial-item (click)="summary(4)">
 			<ons-icon icon="fa-info-circle"></ons-icon>
 		</ons-speed-dial-item>
 	</ons-speed-dial>
@@ -38,10 +39,10 @@
 	<div class="content">
 		<ons-segment #segment id="segment" style="width: 100%; margin-top: 8px;">
 			<button (click)="update_search($event,1)">All</button>
-            <button  (click)="update_search($event,2)"><ons-icon  icon="fa-file-medical" style="color: green;"></ons-icon></button>
-            <button (click)="update_search($event,3)"><ons-icon  icon="fa-allergies" style="color: red;"></ons-icon></button>
-            <button (click)="update_search($event,4)"><ons-icon  icon="fa-utensils" style="color: black;"></ons-icon></button>
-            <button (click)="update_search($event,5)"><ons-icon  icon="fa-info-circle" style="color: blue;"></ons-icon></button>
+            <button  (click)="update_search($event,2)"><ons-icon  icon="fa-file-medical" ></ons-icon><span class="segmed">Medical</span></button>
+            <button (click)="update_search($event,3)"><ons-icon  icon="fa-allergies" ></ons-icon><span class="segmed">Allergy</span></button>
+            <button (click)="update_search($event,4)"><ons-icon  icon="fa-utensils" ></ons-icon><span class="segmed">Diet</span></button>
+            <button (click)="update_search($event,5)"><ons-icon  icon="fa-info-circle" ></ons-icon><span class="segmed">Other</span></button>
           </ons-segment>
           <ons-search-input id="text" placeholder="Type here" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
 

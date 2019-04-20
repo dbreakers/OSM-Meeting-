@@ -7,10 +7,7 @@
 		<ons-back-button>Back</ons-back-button>
 	</div>
       <div class="right">
-        <ons-toolbar-button (click)="grid_list_toggle()">
-          <ons-icon style="color: 7413dc;" icon="fa-th" *ngIf="grid_list==1"></ons-icon>
-          <ons-icon style="color: 7413dc;" icon="fa-th-list" *ngIf="grid_list==0"></ons-icon>
-        </ons-toolbar-button>
+        
         <ons-toolbar-button (click)="openMenu()">
           <ons-icon icon="fa-bars"></ons-icon>
         </ons-toolbar-button>
@@ -19,7 +16,7 @@
    
         <div class="content">
       <div *ngIf="globals.secret!=''">    
-      <h2>Birthday</h2>
+      <h2>Birthdays</h2>
       <!--<p style="text-align: center; opacity: 0.6; padding-top: 20px;">
         {{globals.mysection}}
         {{globals.current_term}}

@@ -43,6 +43,7 @@ export class GlobalsearchComponent implements OnInit {
 
    grid_list_toggle() {
      if (this.grid_list==1) {this.grid_list = 0;} else {this.grid_list = 1;} 
+     this.update_search(1);
    }
   update_search(event) {
     //alert(event);

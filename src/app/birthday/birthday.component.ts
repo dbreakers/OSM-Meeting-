@@ -78,10 +78,14 @@ nth(d) {
     var d2 =  new Date(now2.getFullYear(),now2.getMonth(),now2.getDate());
     var d3 =  new Date(now2.getFullYear(),d.getMonth(),d.getDate());
     var year = now2.getFullYear();
-    var ss = this.getAge(date)+" Next Birthday ";
+    var ss = this.getAge(date)+" years old";
+    if (d==now2) { ss = ss + " today" } else {
+    ss = ss + ". Next birthday ";
     if (d3<d2) { year = year + 1;}
     var d4 = new Date(year,d.getMonth(),d.getDate());
-    ss = ss + this.daynames[d4.getDay()] + " " +d.getDate()+this.nth(d.getDate())+" "+year;
+    ss = ss + this.daynames[d4.getDay()] + " " +d.getDate()+this.nth(d.getDate());
+    if (year!=now2.getFullYear()) { ss = ss + ", "+year; }
+    }
     return ss;
   }
   
