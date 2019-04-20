@@ -43,6 +43,14 @@
 						Global Search
 					</div>
 				</ons-list-item>
+         <ons-list-item (click)="loadPage(birthday)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-birthday-cake" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Birthdays
+					</div>
+				</ons-list-item>
       <ons-list-item (click)="logout(home)" tappable *ngIf="globals.configread==true">
 					<div class="left">
 						<ons-icon icon="fa-sign-out-alt" class="list-item__icon"></ons-icon>

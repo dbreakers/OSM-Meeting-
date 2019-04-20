@@ -17,6 +17,7 @@ import {SectionselectComponent} from './sectionselect/sectionselect.component';
 import {MainComponent} from './main/main.component';
 import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
+import {BirthdayComponent} from './birthday/birthday.component';
 import { Globals } from './globals';
 
 @Component({
@@ -36,6 +37,7 @@ constructor(private globals: Globals ) { }
   cards = SectionselectComponent;
   main = MainComponent;
   medical = MedicalComponent;
+  birthday = BirthdayComponent;
   globalsearch = GlobalsearchComponent;
 
   loadPage(page) {
