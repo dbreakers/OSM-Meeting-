@@ -17,6 +17,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 import { PageNav1Component } from './PageNav1/PageNav1.component';
 import { ScoutcardComponent } from './scoutcard/scoutcard.component';
 import { TermpickerComponent } from './termpicker/termpicker.component';
@@ -34,8 +35,8 @@ import { Globals } from './globals';
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
   ServiceWorkerModule.register('/ngsw-worker.js')],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent],
-  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent,RegisterComponent],
+  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]

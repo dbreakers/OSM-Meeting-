@@ -17,6 +17,7 @@ import { MedicalComponent } from '../medical/medical.component';
 import {GlobalsearchComponent} from '../globalsearch/globalsearch.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
+import {RegisterComponent } from '../register/register.component';
 import {SectionselectComponent} from '../sectionselect/sectionselect.component';
 import {BirthdayComponent} from '../birthday/birthday.component';
 import { Globals } from '../globals';
@@ -35,6 +36,7 @@ export class MainComponent implements OnInit {
   counter = 0.
   lastclick=""
   termselect =  TermpickerComponent;
+  register = RegisterComponent;
   medical = MedicalComponent;
   globalsearch = GlobalsearchComponent;
   sectionselect = SectionselectComponent;

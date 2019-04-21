@@ -20,11 +20,11 @@ import {  PhotoURLService } from '../photoUrl';
 import * as ons from 'onsenui';
 @Component({
   selector: 'ons-page[settings]',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 
-export class MainComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   members = new Array;
   matches =  new Object;
   counter = 0.
@@ -135,21 +135,11 @@ compareValues(key, order='asc') {
       this.lastclick="";
       }
   }
-  section_data_return(data) {
-    //alert("heelo");
-    this.globals.sectiondata = data;
+ 
+  ngOnInit() {
+
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
-  }
-  ngOnInit() {
-
-    var current_term = -1;
-    for (var i = 0; i < this.globals.config[2][this.globals.mysection].length; i++) {
-      if (this.globals.config[2][this.globals.mysection][i].past == true) { current_term = i }
-    }
-    var term = this.globals.config[2][this.globals.mysection][current_term].termid;
-    this.globals.current_term = current_term;
-    this.logonService.getSectionData(this.globals.mysection,term).subscribe(SectionConfig => this.section_data_return(SectionConfig));
   }
 }
