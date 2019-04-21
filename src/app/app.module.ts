@@ -13,8 +13,9 @@ import {
 } from 'ngx-onsenui';
 
 import { HttpClientModule }    from '@angular/common/http';
-
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { PageNav1Component } from './PageNav1/PageNav1.component';
 import { ScoutcardComponent } from './scoutcard/scoutcard.component';
@@ -31,7 +32,8 @@ import { Globals } from './globals';
 //import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @NgModule({
-  imports: [OnsenModule, HttpClientModule],
+  imports: [OnsenModule, HttpClientModule, 
+   environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],],
   declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent],
   entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent],
   bootstrap: [AppComponent],
