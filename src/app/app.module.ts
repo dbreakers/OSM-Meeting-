@@ -41,6 +41,6 @@ import { Globals } from './globals';
   providers: [ Globals ]
 })
 
-export class AppModule { }
+export class AppModule {}
 
 //platformBrowserDynamic().bootstrapModule(AppModule);
