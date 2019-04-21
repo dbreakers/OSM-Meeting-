@@ -56,10 +56,13 @@ export class TermpickerComponent implements OnInit {
   select_term() {
     this.globals.current_term = this.localterm;
 //    this._navigator.element.replacePage(MainComponent);
+  if (this.globals.current_term!='-1') {
    this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
- 
+  } else
+  {
+    this.logonService.getSectionData(this.globals.mysection,'-1').subscribe(SectionConfig => this.section_data_return(SectionConfig));
   }
-
+  }
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
