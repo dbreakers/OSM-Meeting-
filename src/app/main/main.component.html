@@ -20,7 +20,7 @@
       <div *ngIf="globals.secret!=''">    
       <h2>Welcome</h2>
       <p>
-      <b>Current Term:</b> {{globals.config[2][globals.mysection][globals.current_term].name}}&nbsp;<ons-icon (click)="loadPage(termselect)" icon="fa-exchange-alt"></ons-icon>
+      <b>Current Term:</b> <span *ngIf="globals.current_term!='-1'">{{globals.config[2][globals.mysection][globals.current_term].name}}</span>&nbsp;<ons-icon (click)="loadPage(termselect)" icon="fa-exchange-alt"></ons-icon>
       </p>
       <p>
       <b>Section:</b>  {{globals.sectionname}}&nbsp;<ons-icon icon="fa-exchange-alt" (click)="loadPage(sectionselect)"></ons-icon>    
