@@ -13,12 +13,15 @@
 		</div>
 	</ons-toolbar>
 	<ons-bottom-toolbar>
+    <div>
 		<div class="left bottom-bar">
 			<ons-icon icon="fa-users">&nbsp;</ons-icon><b>{{counter}}</b>/{{members.length}} {{lastclick}}
- <ons-toolbar-button>Add</ons-toolbar-button> </div>
-  <div class="right"></div>
-</ons-bottom-toolbar>
-
+ </div>
+  
+</div></ons-bottom-toolbar>
+<ons-fab  position="right bottom" (click)="select_section()">
+        <ons-icon icon="md-check"></ons-icon>
+      </ons-fab>
         <div class="content">
       <div *ngIf="globals.secret!=''">    
       <h2>Register</h2>
