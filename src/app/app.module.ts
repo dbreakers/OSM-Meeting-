@@ -33,7 +33,7 @@ import { Globals } from './globals';
 
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
-   environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],],
+  ServiceWorkerModule.register('/ngsw-worker.js')],
   declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent],
   entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent],
   bootstrap: [AppComponent],
