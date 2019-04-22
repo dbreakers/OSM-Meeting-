@@ -13,7 +13,7 @@ export class Globals {
   config: any;
   sectiondata: any;
   event: any;
-  ecentA: any;
+  eventA: any;
   sectiondatasection: string = "";
   current_term: string  = "-1";
   sectionname: string = "No Section";
