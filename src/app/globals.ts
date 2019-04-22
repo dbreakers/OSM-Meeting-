@@ -12,6 +12,8 @@ export class Globals {
   configread: boolean = false;
   config: any;
   sectiondata: any;
+  event: any;
+  ecentA: any;
   sectiondatasection: string = "";
   current_term: string  = "-1";
   sectionname: string = "No Section";

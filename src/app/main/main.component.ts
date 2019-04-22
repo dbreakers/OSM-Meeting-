@@ -159,7 +159,6 @@ compareValues(key, order='asc') {
   }
 
 do_events(e){
-  alert("Event");
   this.globals.event = e;
 }
 
