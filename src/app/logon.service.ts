@@ -55,8 +55,24 @@ getSectionData(sectionid, term): Observable<any> {
     return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body2, httpOptions), this.http.post(fullURL3, body, httpOptions),this.http.post(fullURL4, body, httpOptions),this.http.post(fullURL5, body, httpOptions));
   }
 
-getEventData(event): Observable<any> {
+getEventAData(event): Observable<any> {
 let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getAttendance&eventid="+event;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.current_term;
+ let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+ return this.http.post(fullURL,body,httpOptions)
+}  
+
+getEventsAData(): Observable<any> {
+   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventAData(event.eventid) )
+return forkJoin(singleObservables);
+}
+
+//https://www.onlinescoutmanager.co.uk/ext/events/event/?action=getStructureForEvent&sectionid=3320&eventid=23958
+
+getEventData(event): Observable<any> {
+let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getStructureForEvent&eventid="+event;
 fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.current_term;
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
@@ -68,5 +84,7 @@ getEventsData(): Observable<any> {
    let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid) )
 return forkJoin(singleObservables);
 }
+
+
 
 }

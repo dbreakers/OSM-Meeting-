@@ -159,7 +159,12 @@ compareValues(key, order='asc') {
   }
 
 do_events(e){
-  debugger;
+  alert("Event");
+  this.globals.event = e;
+}
+
+do_eventsA(e){
+  this.globals.eventA = e;
 }
 
   section_data_return(data) {
@@ -175,7 +180,7 @@ do_events(e){
    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
-     this.logonService.getEventsData().subscribe(Events => this.do_events(Events));
-    
+     this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
+    this.logonService.getEventsData().subscribe(Events => this.do_events(Events));
   }
 }
