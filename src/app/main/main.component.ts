@@ -157,6 +157,11 @@ compareValues(key, order='asc') {
       this.lastclick="";
       }
   }
+
+do_events(e){
+  debugger;
+}
+
   section_data_return(data) {
     //alert("heelo");
     this.globals.sectiondata = data;
@@ -170,5 +175,7 @@ compareValues(key, order='asc') {
    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
+     this.logonService.getEventsData().subscribe(Events => this.do_events(Events));
+    
   }
 }
