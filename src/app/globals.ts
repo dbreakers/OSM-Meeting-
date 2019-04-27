@@ -12,8 +12,8 @@ export class Globals {
   configread: boolean = false;
   config: any;
   sectiondata: any;
-  event: any;
-  eventA: any;
+  event: Array<any>= [];
+  eventA:  Array<any> = [];
   sectiondatasection: string = "";
   current_term: string  = "-1";
   sectionname: string = "No Section";
