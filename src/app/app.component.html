@@ -51,6 +51,14 @@
 						Birthdays
 					</div>
 				</ons-list-item>
+        <ons-list-item (click)="loadPage(birthday)" tappable  *ngIf="globals.event.length>0&&globals.eventA.length>0">
+					<div class="left">
+						<ons-icon icon="fa-cube" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Events
+					</div>
+				</ons-list-item>
       <ons-list-item (click)="logout(home)" tappable *ngIf="globals.configread==true">
 					<div class="left">
 						<ons-icon icon="fa-sign-out-alt" class="list-item__icon"></ons-icon>
