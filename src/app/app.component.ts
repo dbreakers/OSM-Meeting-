@@ -14,6 +14,7 @@ import {
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HomeComponent} from './home/home.component';
 import {SectionselectComponent} from './sectionselect/sectionselect.component';
+import {EventsComponent} from './events/events.component';
 import {MainComponent} from './main/main.component';
 import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
@@ -39,6 +40,7 @@ constructor(private globals: Globals ) { }
   medical = MedicalComponent;
   birthday = BirthdayComponent;
   globalsearch = GlobalsearchComponent;
+  events = EventsComponent;
 
   loadPage(page) {
     if ((page==this.home)&&(this.globals.configread==true))
