@@ -24,15 +24,15 @@
     
 
   <ons-list>
-  <span  id="gridcontainer" *ngFor="let event of members; index as i">
-<ons-list-item (click)="go($event,member);" id="{{member.member_id}}" modifier="chevron">
+  <span  id="gridcontainer" *ngFor="let event of globals.event; index as i">
+<ons-list-item (click)="go($event,member);" modifier="chevron">
       
         <span class="left">
         
               
         </span>
-        <span class="list-item__title">{{member.first_name}} {{member.last_name}}</span>
-        <span class="list-item__subtitle">{{member.patrol_role_level_label}}<span *ngIf="member.patrol_role_level_label!=''">, </span>{{member.patrol}}</span>
+        <span class="list-item__title">{{event.name}} </span>
+        <span class="list-item__subtitle">{{event.startdate}} {{event.enddate}}</span>
 </ons-list-item>
   </span>
   </ons-list>
