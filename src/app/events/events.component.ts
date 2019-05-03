@@ -22,10 +22,27 @@ import * as ons from 'onsenui';
 })
 
 export class EventsComponent implements OnInit {
+
+ monthnames= ["January","February","March","April","May","June","July","August","September","October","November","December"];
+ daynames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
 constructor(
     private inj: Injector,
     private globals: Globals,
     private _navigator: OnsNavigator) { }
+
+
+
+eventdates(s,e) {
+  var subtitle = "";
+  if (e!=null) { subtitle = "From"; }
+
+  if (e!=null) {
+    subtitle = subtitle + " until ";
+    subtitle = subtitle + "(" + "days)";
+  }
+  return subtitle
+}
 
 ngOnInit() {
 }
