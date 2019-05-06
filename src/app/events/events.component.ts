@@ -31,7 +31,9 @@ constructor(
     private globals: Globals,
     private _navigator: OnsNavigator) { }
 
-
+ openMenu() {
+    this.inj.get(AppComponent).menu.nativeElement.open();
+  }
 
 eventdates(s,e) {
   var subtitle = "";
