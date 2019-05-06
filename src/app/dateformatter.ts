@@ -55,6 +55,16 @@ date_format_dayname(d,ls) {
   }
 }
 
+date_format_days_between(s,e) {
+  var one_day=1000*60*60*24;
+   var date1 = new Date(s);
+    var date2 = new Date(e);
+   var difference_ms = date2 - date1;
+    
+  // Convert back to days and return
+  return Math.round(difference_ms/one_day)+1; 
+}
+
  date_format_date(d,ls) {
    var today = new Date();
    var date = new Date(d);

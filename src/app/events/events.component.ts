@@ -46,7 +46,7 @@ eventdates(s,e) {
   if (e!=null) {
     subtitle = subtitle + " until ";
     subtitle = subtitle + this.dateFormat.date_format_date(e,false);
-    subtitle = subtitle + "(" + "days)";
+    subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
   }
   return subtitle
 }
