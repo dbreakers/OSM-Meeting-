@@ -16,6 +16,10 @@ import * as ons from 'onsenui';
 import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import {  PhotoURLService } from '../photoUrl';
+import { PersontabComponent } from './persontab/persontab.component';
+import { EventtabComponent } from './eventtab/eventtab.component';
+
+
 @Component({
   selector: 'ons-page[scoutcard]',
   templateUrl: './scoutcard.component.html',

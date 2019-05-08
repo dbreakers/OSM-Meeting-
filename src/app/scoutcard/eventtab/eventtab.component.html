@@ -1,0 +1,10 @@
+ <ons-card>
+    <p class="card_title">Events</p>
+    <ons-list-item expandable>
+      Events List
+      <div class="expandable-content" > 
+      <ons-list-item *ngFor="let ev of events_list ; index as z">{{ev.name}}<span class="right">{{ev.attending}}</span></ons-list-item>
+      
+      </div>
+    </ons-list-item>
+  </ons-card>
