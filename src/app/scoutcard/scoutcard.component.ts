@@ -28,6 +28,7 @@ export class ScoutcardComponent implements OnInit {
     member_image = "";
     member = "";
     member_find="";
+    events_list =  new Array;
   constructor(
     private _params: Params, 
   private inj: Injector,
@@ -81,6 +82,17 @@ callprompt(number) {
       this.member_index = this.members.indexOf(this.member);
       this.cardTitle = this.member.first_name+" "+this.member.last_name;
       this.member_image = this.get_photo_url(this.member);
+      for ( var i = 0; i < this.globals.eventA.length; i++ ) {
+          var event = this.globals.event.find(f=>f.eventid==this.globals.eventA[i].eventid);
+          var ev = new Object;
+          var att = event.items.find(g=>g.scoutid==this._params.data.index);
+          ev.name = this.globals.eventA[i].name;
+          ev.eventid = event.eventid;
+          if (att!=undefined){
+          ev.attending = att.attending;} else {ev.attending = "No"}
+          this.events_list.push(ev);
+      }
+      
     }  
   }
 

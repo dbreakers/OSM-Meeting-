@@ -182,6 +182,6 @@ do_eventsA(e){
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
      this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
-    this.logonService.getEventsData().subscribe(Events => this.do_events(Events));
+    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events));
   }
 }
