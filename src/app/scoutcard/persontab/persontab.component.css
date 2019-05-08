@@ -1,0 +1,51 @@
+.member_photo {border-radius: 50px; width: 75px; height: 75px;} 
+.member_header {align-content: center;    
+     width: 100px; float: left;}
+.member_name {    color: #7413dc;
+    font-weight: bolder; width: 75%; font-size: 20pt; }    
+.header_block {height: 100%; overflow: auto;}
+.detailcard_left {
+  font-weight: 600;
+}
+.detailcard_right {
+ font-weight: 100;
+}
+.card_title { color: #7413dc; font-size: 16pt; font-weight: 600; }
+.comm_button { font-size: 20px; padding: 2px;}
+.comm_div { color: white;font-size: 15pt;float: left;
+    height: 25pt;
+    width: 25pt;
+    margin-right: 5pt;
+    border-radius: 25%;}
+.wa { background-color: #25D366;}
+.sms {background-color: blue;}
+.phone {background-color: black;}
+.email {color: red;}
+.table{ display: flex; flex-wrap: wrap;}
+.table_row{ 
+flex-grow: 1;
+  width: 50%;
+  padding-bottom: 10px;
+}
+.table_row100 {
+  width: 100%;
+  padding-bottom: 10px;
+}
+@media (min-width: 375px) {
+  .table_row100 {
+  width: 50%;
+  padding-bottom: 10px;
+}
+}
+
+
+
+a:link {
+  text-decoration: none; color: black;
+}
+
+a:visited {
+  text-decoration: none; color: black;
+}
+ a:hover { text-decoration: none; color: black;}
+
