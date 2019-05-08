@@ -6,5 +6,5 @@ ons-speed-dial-item.fab:active { background-color:  rgb(0, 167, 148); color: whi
 .segment__button { border-color: black}
 span.notification.blue { background: #7413dc}
 span.notification.red { background:  #e22e12;}
-span.notification.amber { background: #ffe627;}
+span.notification.amber { background: #ffe627; color: black}
 span.notification.green { background: #23a950;}
