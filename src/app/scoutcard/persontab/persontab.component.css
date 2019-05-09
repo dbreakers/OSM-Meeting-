@@ -3,7 +3,7 @@
      width: 100px; float: left;}
 .member_name {    color: #7413dc;
     font-weight: bolder; width: 75%; font-size: 20pt; }    
-.header_block {height: 100%; overflow: auto;}
+.header_block { overflow: auto;}
 .detailcard_left {
   font-weight: 600;
 }
