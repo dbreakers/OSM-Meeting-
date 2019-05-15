@@ -3,6 +3,7 @@ import { Security } from './security';
 //import { SECURITY } from './mock-security';
 import { Observable, forkJoin, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 
 const httpOptions = {
@@ -24,7 +25,7 @@ export class LogonService {
     let body = new HttpParams();
     body = body.set('email', user);
     body = body.set('password', password);
-    return this.http.post<Security>(authURL, body, httpOptions)
+    return this.http.post<Security>(authURL, body, httpOptions).pipe(catchError(error => of(error)))
   }
 
   getSectionConfig(): Observable<any> {
@@ -61,7 +62,7 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.cu
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
- return this.http.post(fullURL,body,httpOptions)
+ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of("error")))
 }  
 
 getEventsAData(): Observable<any> {
@@ -77,11 +78,12 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.cu
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
- return this.http.post(fullURL,body,httpOptions)
+ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
 }  
 
 getEventsData(): Observable<any> {
-   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid) )
+ //  let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid) )
+   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid))
 return forkJoin(singleObservables);
 }
 
