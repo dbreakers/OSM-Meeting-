@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Globals } from '../../globals';
 import {  PhotoURLService } from '../../photoUrl';
+import {  Sortservice } from '../../sort';
 import * as ons from 'onsenui';
 
 @Component({
@@ -12,6 +13,7 @@ export class EventtabComponent implements OnInit {
 
   constructor( 
     private globals: Globals,
+    private sorting: Sortservice,
     private photoURL: PhotoURLService) {  }
  members = new Array;
  cardTitle: string = 'Custom Card';
@@ -35,11 +37,12 @@ for ( var i = 0; i < this.globals.eventA.length; i++ ) {
           var att = event.items.find(g=>g.scoutid==this.globals.scoutcard);
           ev.name = this.globals.eventA[i].name;
           ev.eventid = event.eventid;
+          ev.date = this.globals.eventA[i].startdate;
           if (att!=undefined){
           ev.attending = att.attending;} else {ev.attending = "No"}
           this.events_list.push(ev);
       }
-
+  this.events_list.sort(this.sorting.compareValuesArray(["date"],"desc"))
 
   }
 

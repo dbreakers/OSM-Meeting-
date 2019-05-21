@@ -11,11 +11,20 @@
 
  <ons-card>
     <p class="card_title">Events</p>
-    <ons-list-item expandable>
-      Events List
-      <div class="expandable-content" > 
-      <ons-list-item *ngFor="let ev of events_list ; index as z">{{ev.name}}<span class="right">{{ev.attending}}</span></ons-list-item>
-      
+    
+      <ons-list-item *ngFor="let ev of events_list ; index as z">
+      <div class="left" *ngIf="ev.attending=='Yes'">
+        <ons-icon  class="list-item__icon" icon="fa-check-circle" style="color:  #23a950"></ons-icon>
       </div>
-    </ons-list-item>
+      <div class="left" class="list-item__icon"  *ngIf="ev.attending=='No'">
+        <ons-icon icon="fa-times-circle" style="color: #e22e12"></ons-icon>
+      </div>
+      <div class="left" *ngIf="ev.attending!='Yes'&&ev.attending!='No'">
+        <ons-icon class="list-item__icon" icon="fa-question-circle" style="color:  #003982"></ons-icon>
+      </div>
+      
+      <span>{{ev.name}}</span>
+            </ons-list-item>
+      
+      
   </ons-card>
