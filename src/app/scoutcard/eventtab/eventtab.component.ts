@@ -24,8 +24,8 @@ export class EventtabComponent implements OnInit {
   get_photo_url(member) {
    return this.photoURL.get_osmphoto_url(member);
   }
-
-
+   
+  
   ngOnInit() {
  this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
     this.member = this.members.find(o => o.member_id === this.globals.scoutcard);
