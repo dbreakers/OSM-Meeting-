@@ -15,6 +15,7 @@ import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import {  DateformatService } from '../dateformatter';
 import * as ons from 'onsenui';
+import {  Sortservice } from '../sort';
 
 @Component({
   selector: 'ons-page[events]',
@@ -28,6 +29,7 @@ export class EventsComponent implements OnInit {
 constructor(
     private inj: Injector,
     private globals: Globals,
+    private sorting: Sortservice,
     private _navigator: OnsNavigator,
     private dateFormat: DateformatService) { }
 
@@ -79,5 +81,7 @@ eventdates(s,e) {
 }
 
 ngOnInit() {
+  this.globals.eventA.sort(this.sorting.compareValuesArray(["startdate"],"desc"))
+
 }
 }
