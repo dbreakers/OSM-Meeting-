@@ -39,9 +39,11 @@ constructor(
 
 event_option(eventid,s){
  var list = this.globals.event.find(f=>f.eventid==eventid);
+ var evt = this.globals.eventA.find(f=>f.eventid==eventid);
  var count = 0;
  for ( var i = 0; i < list.items.length; i++ ) {
    if (list.items[i].attending == s)
+   if(((evt.limitincludesleaders==1))||((evt.limitincludesleaders==0)&&(list.items[i].patrolid!=-2)))
    { count++; }
  }
  return count;
