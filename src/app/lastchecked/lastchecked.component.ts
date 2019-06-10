@@ -27,7 +27,7 @@ export class LastcheckedComponent implements OnInit {
   members = new Array;
   namefilter = "";
   typefilter = 1;
-  filterdisplay = new Array;  
+  membersdates = new Array;  
   matches = new Object;  
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
@@ -67,10 +67,7 @@ sort_list(name,order){
   this.update_search(0,-1);
 }
 
-summary(option)
-{
-    this._navigator.element.pushPage(MedicalsummaryComponent, { data: { index: option } });
-}
+
 
 update_search(s,x) {
   if (x!=-1) {this.typefilter = x;}
@@ -107,12 +104,7 @@ get_photo_url(member) {
     return this.photoURL.get_osmphoto_url(member);
   }
 
-  push(event, index, i) {
   
-    this._navigator.element.pushPage(MedicalcardComponent, { data: { index: this.members[i].member_id } });
-
-  }
-
  
 
   openMenu() {
@@ -125,8 +117,17 @@ get_photo_url(member) {
   this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
   this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});  
   for (var i = 0; i < this.members.length; i++) {
-  
-    this.filterdisplay.push(true);//
+    var mbr = new Object;
+    mbr.name = this.members[i].first_name + " " + this.members[i].last_name;
+    mbr.last_name = this.members[i].last_name;
+    mbr.first_name = this.members[i].first_name;
+    mbr.photo_guid = this.members[i].photo_guid;
+    mbr.member_id = this.members[i].member_id;
+    mbr.check = this.members[i].custom_data[9][24267];
+    mbr.time = mbr.check.substring(mbr.check.lastIndexOf(" ")+1);
+    mbr.date = mbr.check.substring(0,mbr.check.lastIndexOf(" "));
+    mbr.date = mbr.date.substring(mbr.date.lastIndexOf(" ")+1);
+    this.membersdates.push(mbr);//
   }
 }
 

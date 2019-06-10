@@ -16,6 +16,7 @@ import { TermpickerComponent } from '../termpicker/termpicker.component';
 import { MedicalComponent } from '../medical/medical.component';
 import {GlobalsearchComponent} from '../globalsearch/globalsearch.component';
 import {EventsComponent} from '../events/events.component';
+import {LastcheckedComponent} from '../lastchecked/lastchecked.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
 import {RegisterComponent } from '../register/register.component';
@@ -36,6 +37,7 @@ export class MainComponent implements OnInit {
   matches =  new Object;
   counter = 0.
   lastclick=""
+  lastcheck = LastcheckedComponent;
   termselect =  TermpickerComponent;
   register = RegisterComponent;
   medical = MedicalComponent;
