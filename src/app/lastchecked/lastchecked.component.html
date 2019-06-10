@@ -33,11 +33,11 @@
        <!-- <ons-icon  icon="fa-user-circle" class="list-item__icon" style="color: LightGray;" *ngIf="null==member.photo_guid"></ons-icon>-->
         <img class="list-item__thumbnail" src="{{get_photo_url(member)}}" *ngIf="null!=member.photo_guid">        
         </span>
-        <span class="right" >
+        <!--<span class="right" >
           {{member.date}}
-        </span>  
+        </span>-->  
         <span class="list-item__title">{{member.name}}</span>
-        <span class="list-item__subtitle"></span>
+        <span class="list-item__subtitle">{{member.full}}</span>
       
         </ons-list-item>
        </span>

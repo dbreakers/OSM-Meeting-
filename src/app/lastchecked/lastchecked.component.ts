@@ -16,6 +16,7 @@ import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import * as ons from 'onsenui';
 import {  PhotoURLService } from '../photoUrl';
+import {  Sortservice } from '../sort';
 
 @Component({
   selector: 'ons-page[lastcheck]',
@@ -32,6 +33,7 @@ export class LastcheckedComponent implements OnInit {
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private globals: Globals,
+    private sorting: Sortservice,
     private photoURL: PhotoURLService
     ) { }
 
@@ -123,12 +125,15 @@ get_photo_url(member) {
     mbr.first_name = this.members[i].first_name;
     mbr.photo_guid = this.members[i].photo_guid;
     mbr.member_id = this.members[i].member_id;
+    mbr.full = this.members[i].custom_data[9][24267];
+   // mbr.full = mbr.full.substring(0,mbr.full.indexOf(","));
     mbr.check = this.members[i].custom_data[9][24267];
     mbr.time = mbr.check.substring(mbr.check.lastIndexOf(" ")+1);
     mbr.date = mbr.check.substring(0,mbr.check.lastIndexOf(" "));
     mbr.date = mbr.date.substring(mbr.date.lastIndexOf(" ")+1);
     this.membersdates.push(mbr);//
   }
+  this.membersdates.sort(this.sorting.compareValuesArray(["date"],"desc"))
 }
 
 

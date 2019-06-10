@@ -15,6 +15,7 @@ export class Globals {
   sectiondata: any;
   event: Array<any>= [];
   eventA:  Array<any> = [];
+  eventsection: string = "";
   sectiondatasection: string = "";
   current_term: string  = "-1";
   sectionname: string = "No Section";
