@@ -16,6 +16,7 @@ import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import * as ons from 'onsenui';
 import {  PhotoURLService } from '../photoUrl';
+import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
 import {  Sortservice } from '../sort';
 
 @Component({
@@ -63,6 +64,9 @@ compareValues(key, order='asc') {
   };
 }
 
+push(event, member) {
+    this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.member_id } });
+}
 update_search(s,x) {
   
   for (var i = 0; i <  this.membersdates.length; i++) {

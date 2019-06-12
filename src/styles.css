@@ -9,3 +9,6 @@ span.notification.red { background:  #e22e12;}
 span.notification.amber { background: #ffe627; color: black}
 span.notification.green { background: #23a950;}
 h2 {text-align: center;}
+.button--material { background: #7413dc}
+.button { background: #7413dc}
+.text-input--material__label--active {color: #00a794;}

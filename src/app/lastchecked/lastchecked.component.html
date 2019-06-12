@@ -8,9 +8,9 @@
 	</div>
 		<div class="right">
 
-			<ons-toolbar-button (click)="filterDialog.show()">
+			<!--<ons-toolbar-button (click)="filterDialog.show()">
 				<ons-icon icon="fa-filter"></ons-icon>
-			</ons-toolbar-button>
+			</ons-toolbar-button>-->
 
 			<ons-toolbar-button (click)="openMenu()">
 				<ons-icon icon="fa-bars"></ons-icon>
@@ -20,10 +20,10 @@
 	
 
 	<div class="content">
-    <ons-search-input id="text" placeholder="Type here" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
+    <ons-search-input id="text" placeholder="Filter by name" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
 		<h2>Last Update</h2>
       <ons-list><span  *ngFor="let member of membersdates; index as i" >
-        <ons-list-item (click)="push($event, member,i)" *ngIf="true==filterdisplay[i]">
+        <ons-list-item (click)="push($event, member)" *ngIf="true==filterdisplay[i]">
       
         <span class="left" >
         <div class="list-item__thumbnail" *ngIf="null==member.photo_guid">

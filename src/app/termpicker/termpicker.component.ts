@@ -18,6 +18,7 @@ import { MainComponent } from '../main/main.component';
 import { LogonService } from '../logon.service';
 import { Globals } from '../globals';
 import * as ons from 'onsenui';
+import {  Sortservice } from '../sort';
 
 @Component({
   selector: 'ons-page[cards]',
@@ -31,6 +32,7 @@ export class TermpickerComponent implements OnInit {
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private globals: Globals,
+    private sorting: Sortservice,
     private logonService: LogonService) { }
 
   push(event, index, i) {
@@ -75,8 +77,10 @@ export class TermpickerComponent implements OnInit {
     if (!this.globals.configread) {
     //  this.logonService.getSectionConfig().subscribe(SectionConfig => this.section_config_return(SectionConfig));
     } else { this.section = this.globals.config;
-    this.localterm = this.globals.current_term; 
+    this.localterm = this.globals.current_term;
+    //this.section[2][this.globals.mysection].sort(this.sorting.compareValuesArray(["startdate"],"desc")) 
       }
+    
   }
   
 

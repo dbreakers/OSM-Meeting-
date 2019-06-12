@@ -37,6 +37,7 @@
 	</ons-speed-dial>
 
 	<div class="content">
+     <ons-search-input id="text" placeholder="Filter by Name" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
 		<ons-segment #segment id="segment" style="width: 100%; margin-top: 8px;">
 			<button (click)="update_search($event,1)">All</button>
             <button  (click)="update_search($event,2)"><ons-icon  icon="fa-file-medical" ></ons-icon><span class="segmed">Medical</span></button>
@@ -44,7 +45,7 @@
             <button (click)="update_search($event,4)"><ons-icon  icon="fa-utensils" ></ons-icon><span class="segmed">Diet</span></button>
             <button (click)="update_search($event,5)"><ons-icon  icon="fa-info-circle" ></ons-icon><span class="segmed">Other</span></button>
           </ons-segment>
-          <ons-search-input id="text" placeholder="Type here" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
+         
 
       <ons-list-title  *ngIf="section">Select a Member</ons-list-title>
       <ons-list><span  *ngFor="let member of members; index as i" >
