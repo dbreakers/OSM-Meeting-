@@ -20,6 +20,7 @@ import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
 import {BirthdayComponent} from './birthday/birthday.component';
 import { Globals } from './globals';
+import * as ons from 'onsenui';
 
 @Component({
   selector: 'my-app',
@@ -27,12 +28,13 @@ import { Globals } from './globals';
   styleUrls: [ './app.component.css' ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
 constructor(private globals: Globals ) { }
 
   @ViewChild('menu') private menu: OnsSplitterSide;
   @ViewChild('navi') private navi: OnsNavigator;
+
 
   home = HomeComponent;
   cards = SectionselectComponent;
@@ -41,6 +43,7 @@ constructor(private globals: Globals ) { }
   birthday = BirthdayComponent;
   globalsearch = GlobalsearchComponent;
   events = EventsComponent;
+  ons
 
   loadPage(page) {
     if ((page==this.home)&&(this.globals.configread==true))
@@ -50,6 +53,9 @@ constructor(private globals: Globals ) { }
     this.menu.nativeElement.close();
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
   } 
+
+
+
   logout(page) {
     this.globals.secret="";
     this.globals.userid="";
@@ -57,5 +63,17 @@ constructor(private globals: Globals ) { }
     this.globals.config = [];
     this.menu.nativeElement.close();
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
-  } 
+  }
+
+  
+   ngOnInit() {
+ ons.disableDeviceBackButtonHandler();
+ document.addEventListener('beforeunload', function(event) {
+  
+    ons.notification.alert('Page 1 is initiated.');
+    // Set up content...
+  
+}, false);
+    
+   }
 }
