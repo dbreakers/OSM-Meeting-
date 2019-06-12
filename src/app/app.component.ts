@@ -21,6 +21,7 @@ import {MedicalComponent} from './medical/medical.component';
 import {BirthdayComponent} from './birthday/birthday.component';
 import { Globals } from './globals';
 import * as ons from 'onsenui';
+import {HostListener} from "@angular/core";
 
 @Component({
   selector: 'my-app',
@@ -65,15 +66,23 @@ constructor(private globals: Globals ) { }
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
   }
 
+@HostListener('window:beforeunload', ['$event'])
+public doSomething($event) {
+        $event.returnValue = "Help"
+    //ons.notification.confirm({
+    //  message: 'This dialog can be canceled by tapping the background or using the back button on your device.',
+    //  cancelable: true,
+    //  callback: i => {
+    //    if (i == -1) {
+          //ons.notification.alert({message: 'You canceled it!'});
+    //      return false
+    //    } else {return true}
+    //  }
+    //})
+    //return false;
+}
   
    ngOnInit() {
- ons.disableDeviceBackButtonHandler();
- document.addEventListener('beforeunload', function(event) {
-  
-    ons.notification.alert('Page 1 is initiated.');
-    // Set up content...
-  
-}, false);
-    
+ 
    }
 }

@@ -28,6 +28,7 @@ export class LastcheckedComponent implements OnInit {
   members = new Array;
   namefilter = "";
   typefilter = 1;
+  filterdisplay = new Array;  
   membersdates = new Array;  
   matches = new Object;  
   constructor(private _navigator: OnsNavigator,
@@ -61,6 +62,15 @@ compareValues(key, order='asc') {
     );
   };
 }
+
+update_search(s,x) {
+  
+  for (var i = 0; i <  this.membersdates.length; i++) {
+    if (((this.membersdates[i].last_name.toUpperCase()).indexOf(this.namefilter.toUpperCase()) == -1)&&((this.membersdates[i].first_name.toUpperCase()).indexOf(this.namefilter.toUpperCase()) == -1))
+    {this.filterdisplay[i]=false} else {this.filterdisplay[i]=true}
+  }
+}
+
  no_matches(n) { return this.matches[n] }
 
 sort_list(name,order){
@@ -71,37 +81,7 @@ sort_list(name,order){
 
 
 
-update_search(s,x) {
-  if (x!=-1) {this.typefilter = x;}
-  for (var i = 0; i < this.members.length; i++) {
-    if (((this.members[i].last_name.toUpperCase()).indexOf(this.namefilter.toUpperCase()) == -1)&&((this.members[i].first_name.toUpperCase()).indexOf(this.namefilter.toUpperCase()) == -1))
-    {this.filterdisplay[i]=false} else {this.filterdisplay[i]=true}
-    if ((this.typefilter==2)&&(this.filterdisplay[i]==true)) {
-      if (this.members[i].custom_data[9][24253]=="")
-      {
-             this.filterdisplay[i]=false         
-      }
-    }
-    if ((this.typefilter==3)&&(this.filterdisplay[i]==true)) {
-      if (this.members[i].custom_data[9][24254]=="")
-      {
-             this.filterdisplay[i]=false         
-      }
-    }
-   if ((this.typefilter==4)&&(this.filterdisplay[i]==true)) {
-      if (this.members[i].custom_data[9][24255]=="")
-      {
-             this.filterdisplay[i]=false         
-      }
-    }
-    if ((this.typefilter==5)&&(this.filterdisplay[i]==true)) {
-      if (this.members[i].custom_data[9][24257]=="")
-      {
-             this.filterdisplay[i]=false         
-      }
-    }
-  }
-}
+
 get_photo_url(member) {
     return this.photoURL.get_osmphoto_url(member);
   }
@@ -131,7 +111,8 @@ get_photo_url(member) {
     mbr.time = mbr.check.substring(mbr.check.lastIndexOf(" ")+1);
     mbr.date = mbr.check.substring(0,mbr.check.lastIndexOf(" "));
     mbr.date = mbr.date.substring(mbr.date.lastIndexOf(" ")+1);
-    this.membersdates.push(mbr);//
+    this.membersdates.push(mbr);
+    this.filterdisplay.push(true);//
   }
   this.membersdates.sort(this.sorting.compareValuesArray(["date"],"desc"))
 }
