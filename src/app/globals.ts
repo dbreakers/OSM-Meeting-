@@ -8,6 +8,7 @@ export class Globals {
   userid: string = "";
   mysection: string = "3320";
   scoutcard: string = "";
+  eventcard: string = "";
   application: string = "OSM Meeting+";
   proxyURL: string = "https://www.2ndnewhawscouts.org.uk/osmr/osmrelay2.php";
   configread: boolean = false;
