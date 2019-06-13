@@ -16,7 +16,7 @@ export class PersontabComponent implements OnInit {
     private globals: Globals,
     private photoURL: PhotoURLService) {  }
  members = new Array;
- cardTitle: string = 'Custom Card';
+ //cardTitle: string = 'Custom Card';
  member = "";
  member_image = "";
   

@@ -16,7 +16,7 @@ export class EventtabComponent implements OnInit {
     private sorting: Sortservice,
     private photoURL: PhotoURLService) {  }
  members = new Array;
- cardTitle: string = 'Custom Card';
+ //cardTitle: string = 'Custom Card';
  member = "";
  member_image = "";
  events_list =  new Array;

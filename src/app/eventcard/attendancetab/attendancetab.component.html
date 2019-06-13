@@ -1,0 +1,24 @@
+<ons-card>
+  {{eventA.name}}  
+</ons-card>     
+  <ons-card>
+    <p class="card_title">Attendance</p>
+    <div *ngFor="let att of event.items ; index as z">
+      <ons-list-item *ngIf="att.attending === 'Yes'" >
+      
+      
+      
+      
+      <div class="left list-item__icon"> 
+       
+     
+      <ons-icon class="list-item__icon" icon="fa-times-circle" style="color: #e22e12" *ngIf="(att.attending == 'No')"></ons-icon>
+      <ons-icon  class="list-item__icon" icon="fa-check-circle" style="color:  #23a950" *ngIf="att.attending === 'Yes'"></ons-icon>
+      <ons-icon class="list-item__icon" icon="fa-question-circle" style="color:  #003982" *ngIf="att.attending!='Yes'&&att.attending!='No'"></ons-icon>
+      </div>
+
+      <div class="center">{{att.firstname}} {{att.lastname}}</div>
+            </ons-list-item>
+      </div>
+      
+  </ons-card>

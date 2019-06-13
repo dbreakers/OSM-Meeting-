@@ -16,6 +16,7 @@ import { Globals } from '../globals';
 import {  DateformatService } from '../dateformatter';
 import * as ons from 'onsenui';
 import {  Sortservice } from '../sort';
+import { EventcardComponent } from '../eventcard/eventcard.component';
 
 @Component({
   selector: 'ons-page[events]',
@@ -80,6 +81,10 @@ eventdates(s,e) {
     subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
   }
   return subtitle
+}
+
+go(e,event){
+   this._navigator.element.pushPage(EventcardComponent, { data: { index: event.eventid } });
 }
 
 ngOnInit() {

@@ -33,13 +33,16 @@ import { MedicalComponent } from './medical/medical.component';
 import { Globals } from './globals';
 import { EventtabComponent } from './scoutcard/eventtab/eventtab.component';
 import { PersontabComponent } from './scoutcard/persontab/persontab.component';
+import { EventcardComponent } from './eventcard/eventcard.component';
+import { SummarytabComponent } from './eventcard/summarytab/summarytab.component';
+import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.component';
 //import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
   ServiceWorkerModule.register('/ngsw-worker.js')],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, PersontabComponent,LastcheckedComponent],
-  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, PersontabComponent,LastcheckedComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AttendancetabComponent, EventcardComponent ],
+  entryComponents: [HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]

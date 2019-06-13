@@ -16,7 +16,7 @@ import * as ons from 'onsenui';
 import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import {  PhotoURLService } from '../photoUrl';
-import { AttendancetabComponent } from './attendancetab/attendance.component';
+import { AttendancetabComponent } from './attendancetab/attendancetab.component';
 import { SummarytabComponent } from './summarytab/summarytab.component';
 
 
@@ -26,7 +26,7 @@ import { SummarytabComponent } from './summarytab/summarytab.component';
   styleUrls: ['./eventcard.component.css']
 })
 
-export class EventtcardComponent implements OnInit {
+export class EventcardComponent implements OnInit {
     members = new Array;
     member_index = -1;
     member_image = "";
@@ -62,6 +62,7 @@ open(n) {
   ngOnInit() { 
     if (this._params.data && this._params.data.index){
       this.globals.eventcard = this._params.data.index;
+       this.event = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
     }
  }  
   
