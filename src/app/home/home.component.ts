@@ -3,6 +3,7 @@ import {
   Component,
   Injector,
   ViewChild,
+  ModalFactory,
   Params,
   OnInit,
   OnsSplitterSide,
@@ -93,11 +94,12 @@ section_config_return(s) {
   post_logon(api_return : any)
   {
     if (api_return.hasOwnProperty('error'))
-    { this.error_text = api_return.error } else
+    { this.error_text = api_return.error;    modal.hide(); } else
     { this.globals.secret = api_return.secret;
     this.globals.userid = api_return.userid;
     //this.globals.pageload = false;
     //this._navigator.element.replacePage(SectionselectComponent).then(alert("me"));
+ 
      this.logonService.getSectionConfig().subscribe(SectionConfig => this.section_config_return(SectionConfig));
 
     
@@ -109,7 +111,7 @@ section_config_return(s) {
     if (( this.error_text == "" ) && (password2=="")) {this.error_text = "You must enter a password";}
     if (this.error_text=="")
     {
-    
+          modal.show(); 
        this.logonService.doLogon(username2,password2).subscribe(Security=> this.post_logon(Security));
 
     }
