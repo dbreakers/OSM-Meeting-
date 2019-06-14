@@ -62,6 +62,8 @@ constructor(private globals: Globals ) { }
     this.globals.userid="";
     this.globals.configread=false;
     this.globals.config = [];
+    this.globals.event = [];
+    this.globals.eventA = [];
     this.menu.nativeElement.close();
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
   }
