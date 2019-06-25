@@ -26,7 +26,7 @@ export class SummarytabComponent implements OnInit {
   if (e!=null) {
     subtitle = subtitle + " - ";
     subtitle = subtitle + this.dateFormat.date_format_date(e,false);
-    subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
+  //  subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
   }
   return subtitle
 }

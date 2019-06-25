@@ -35,8 +35,9 @@ getAge(dateString) {
 }
   
 date_format_nth(d) {
-      if(d>3 && d<21) return 'th'; // thanks kennebec
-      switch (d % 10) {
+var day = d.getDate()
+      if(day>3 && day<21) return 'th'; // thanks kennebec
+      switch (day % 10) {
             case 1:  return "st";
             case 2:  return "nd";
             case 3:  return "rd";
