@@ -51,7 +51,24 @@ get_count(l){
  return count;
 
 }
-  
+
+get_total(il){
+   var count = 0;
+ for ( var i = 0; i < this.event.items.length; i++ ) {
+   if (this.event.items[i].attending == "Yes") {
+     if((this.event.items[i].patrolid==-2&&(il!=0)))
+        { count++; }
+     if((this.event.items[i].patrolid>0))
+        { count++; }    
+   }
+ }
+ return count;
+
+} 
+
+remain(count,total){
+  return (total-count);
+}
 
   
 

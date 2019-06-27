@@ -10,7 +10,12 @@
     <span *ngIf="eventA.attendancelimit != 0">
     There is an attendance limit of {{eventA.attendancelimit}} for this event
     <span  *ngIf="eventA.limitincludesleaders != 0"> which includes leaders</span>.  
-    </span><br><br>  
+    </span>
+    <span *ngIf="eventA.attendancelimit != 0">
+     There <span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0 ">are</span><span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 1">is</span> {{remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit)}} place<span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0">s</span> remaining.
+    </span>
+    Currently {{get_count(false)}} member<span *ngIf="get_count(false) > 1 || get_count(false) == 0">s</span> and  {{get_count(true)}} leader<span *ngIf="get_count(true) > 1 || get_count(true) == 0">s</span> are attending.
+    <br><br>  
     <ons-list>
     <ons-list-header>Members&nbsp;({{get_count(false)}})</ons-list-header>
     <div *ngFor="let att of event.items ; index as z">
