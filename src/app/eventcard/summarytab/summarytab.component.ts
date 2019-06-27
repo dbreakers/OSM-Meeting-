@@ -20,7 +20,7 @@ export class SummarytabComponent implements OnInit {
  
   eventdates(s) {
   var subtitle = "";
-  if (s=="1970-01-01"){ e=null}
+  if (s=="1970-01-01"){ s=null}
  // if (e!=null) { subtitle = "From "; }
  if (s!=null) {
   subtitle = this.dateFormat.date_format_date(s,false);

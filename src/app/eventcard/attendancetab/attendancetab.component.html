@@ -8,8 +8,7 @@
     There is no attendance limit for this event.  
     </span>
     <span *ngIf="eventA.attendancelimit != 0">
-    There is an attendance limit of {{eventA.attendancelimit}} for this event
-    <span  *ngIf="eventA.limitincludesleaders != 0"> which includes leaders</span>.  
+    There is an attendance limit of {{eventA.attendancelimit}} for this event<span  *ngIf="eventA.limitincludesleaders != 0"> which includes leaders</span>.  
     </span>
     <span *ngIf="eventA.attendancelimit != 0">
      There <span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0 ">are</span><span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 1">is</span> {{remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit)}} place<span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0">s</span> remaining.
