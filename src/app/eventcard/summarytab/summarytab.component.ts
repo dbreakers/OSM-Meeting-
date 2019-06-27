@@ -18,17 +18,24 @@ export class SummarytabComponent implements OnInit {
     private dateFormat: DateformatService,
     private photoURL: PhotoURLService) {  }
  
-  eventdates(s,e) {
+  eventdates(s) {
   var subtitle = "";
-  if (e=="1970-01-01"){ e=null}
+  if (s=="1970-01-01"){ e=null}
  // if (e!=null) { subtitle = "From "; }
-  subtitle = subtitle + this.dateFormat.date_format_date(s,false);
-  if (e!=null) {
-    subtitle = subtitle + " - ";
-    subtitle = subtitle + this.dateFormat.date_format_date(e,false);
-  //  subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
-  }
+ if (s!=null) {
+  subtitle = this.dateFormat.date_format_date(s,false);
+ }
   return subtitle
+}
+
+eventtime(t){
+  var h = t.substring(0, 2);
+  var m = t.substring(3, 5);
+  var s = t.substring(6, 8);
+  var ampm = h >= 12 ? 'pm' : 'am';
+  h = h % 12
+  h = h ? h : 12;
+  return h + ':' + m + ' ' + ampm;
 }
 
   

@@ -1,7 +1,22 @@
 <ons-card>
    <span class="head">{{eventA.name}}</span><br>  
-  <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span>
+  <!--<span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span>-->
 </ons-card>     
+<ons-card>
+  <ons-icon icon="fa-calendar"></ons-icon>&nbsp;
+  <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) == '' && eventA.starttime != null && eventA.endtime != null" >
+  {{eventdates(eventA.startdate)}} from {{eventtime(eventA.starttime)}} until {{eventtime(eventA.endtime)}}</span>
+  <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) != '' && eventA.starttime != null && eventA.endtime != null" >
+  From {{eventtime(eventA.starttime)}} on {{eventdates(eventA.startdate)}} until {{eventtime(eventA.endtime)}} on {{eventdates(eventA.enddate)}}</span>
+  <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) != '' && eventA.starttime != null && eventA.endtime == null" >
+  From {{eventtime(eventA.starttime)}} on {{eventdates(eventA.startdate)}} until {{eventdates(eventA.enddate)}}</span>
+ <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) == '' && eventA.starttime != null && eventA.endtime == null" >
+  Starts at {{eventtime(eventA.starttime)}} on {{eventdates(eventA.startdate)}} </span>
+  <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) == '' && eventA.starttime == null && eventA.endtime == null" >
+  {{eventdates(eventA.startdate)}} </span>
+   <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) != '' && eventA.starttime == null && eventA.endtime == null" >
+  {{eventdates(eventA.startdate)}} until {{eventdates(eventA.enddate)}}</span>
+</ons-card>  
   <ons-card>
     <div [innerHTML]="eventA.publicnotes"></div>
   </ons-card>
