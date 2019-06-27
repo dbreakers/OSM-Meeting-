@@ -36,12 +36,12 @@ export class AttendancetabComponent implements OnInit {
 // members = new Array;
  cardTitle: string = 'Custom Card';
  event : object;
- members = new Array;
+ //members = new Array;
 // member_image = "";
 
 goto_scoutcard(event, member) {
  //debugger;
- members = new Array;
+ //members = new Array;
      this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.scoutid } });
   }
   
