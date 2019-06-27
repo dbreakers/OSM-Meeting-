@@ -1,3 +1,15 @@
+import {
+  Component,
+  Injector,
+  ViewChild,
+  Params,
+  OnInit,
+  OnsSplitterSide,
+  OnsNavigator,
+  OnsenModule,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA
+} from 'ngx-onsenui';
 import { Component, OnInit } from '@angular/core';
 import { Globals } from '../../globals';
 import {  PhotoURLService } from '../../photoUrl';
@@ -5,6 +17,7 @@ import * as ons from 'onsenui';
 import {DomSanitizer} from '@angular/platform-browser'
 import {  DateformatService } from '../../dateformatter';
 import {  Sortservice } from '../../sort';
+import { ScoutcardComponent } from '../../scoutcard/scoutcard.component';
 
 @Component({
   selector: 'ons-page[attendancetab]',
@@ -15,6 +28,7 @@ export class AttendancetabComponent implements OnInit {
 
   constructor(
     private sanitizer: DomSanitizer, 
+    private _navigator: OnsNavigator,
     private globals: Globals,
     private dateFormat: DateformatService,
     private sorting: Sortservice,
@@ -22,8 +36,14 @@ export class AttendancetabComponent implements OnInit {
 // members = new Array;
  cardTitle: string = 'Custom Card';
  event : object;
-// member = "";
+ members = new Array;
 // member_image = "";
+
+goto_scoutcard(event, member) {
+ //debugger;
+ members = new Array;
+     this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.scoutid } });
+  }
   
 eventdates(s,e) {
   var subtitle = "";
@@ -80,6 +100,8 @@ remain(count,total){
  this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
    this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
    this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
+ this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+ 
   }
 
 }
