@@ -3,23 +3,42 @@
   <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span>
 </ons-card>     
   <ons-card>
-    <p class="card_title">Attendance</p>
+    <p class="card_title"><ons-icon   icon="fa-users" ></ons-icon>&nbsp;Attendance</p>
+    <span *ngIf="eventA.attendancelimit == 0 ">
+    There is no attendance limit for this event.  
+    </span>
+    <span *ngIf="eventA.attendancelimit != 0">
+    There is an attendance limit of {{eventA.attendancelimit}} for this event
+    <span  *ngIf="eventA.limitincludesleaders != 0"> which includes leaders</span>.  
+    </span><br><br>  
+    <ons-list>
+    <ons-list-header>Members&nbsp;({{get_count(false)}})</ons-list-header>
     <div *ngFor="let att of event.items ; index as z">
-      <ons-list-item *ngIf="att.attending === 'Yes'" >
+      <ons-list-item *ngIf="att.attending === 'Yes' && att.patrolid > -1" >
       
       
       
       
-      <div class="left list-item__icon"> 
-       
-     
-      <ons-icon class="list-item__icon" icon="fa-times-circle" style="color: #e22e12" *ngIf="(att.attending == 'No')"></ons-icon>
+      <!--<div class="left list-item__icon"> 
       <ons-icon  class="list-item__icon" icon="fa-check-circle" style="color:  #23a950" *ngIf="att.attending === 'Yes'"></ons-icon>
-      <ons-icon class="list-item__icon" icon="fa-question-circle" style="color:  #003982" *ngIf="att.attending!='Yes'&&att.attending!='No'"></ons-icon>
-      </div>
+      </div>-->
 
       <div class="center">{{att.firstname}} {{att.lastname}}</div>
-            </ons-list-item>
+      </ons-list-item>
       </div>
+       <ons-list-header>Leaders&nbsp;({{get_count(true)}})</ons-list-header>
+        <div *ngFor="let att of event.items ; index as z">
+      <ons-list-item *ngIf="att.attending === 'Yes' && att.patrolid < 0" >
       
+      
+      
+      
+      <!--<div class="left list-item__icon"> 
+      <ons-icon  class="list-item__icon" icon="fa-check-circle" style="color:  #23a950" *ngIf="att.attending === 'Yes'"></ons-icon>
+      </div>-->
+
+      <div class="center">{{att.firstname}} {{att.lastname}}</div>
+      </ons-list-item>
+      </div>
+    </ons-list>
   </ons-card>

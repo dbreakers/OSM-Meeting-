@@ -4,6 +4,7 @@ import {  PhotoURLService } from '../../photoUrl';
 import * as ons from 'onsenui';
 import {DomSanitizer} from '@angular/platform-browser'
 import {  DateformatService } from '../../dateformatter';
+import {  Sortservice } from '../../sort';
 
 @Component({
   selector: 'ons-page[attendancetab]',
@@ -16,9 +17,11 @@ export class AttendancetabComponent implements OnInit {
     private sanitizer: DomSanitizer, 
     private globals: Globals,
     private dateFormat: DateformatService,
+    private sorting: Sortservice,
     private photoURL: PhotoURLService) {  }
 // members = new Array;
  cardTitle: string = 'Custom Card';
+ event : object;
 // member = "";
 // member_image = "";
   
@@ -35,7 +38,19 @@ eventdates(s,e) {
   return subtitle
 }
   
+get_count(l){
+   var count = 0;
+ for ( var i = 0; i < this.event.items.length; i++ ) {
+   if (this.event.items[i].attending == "Yes") {
+     if((this.event.items[i].patrolid==-2&&(l==true)))
+        { count++; }
+     if((this.event.items[i].patrolid>0&&(l==false)))
+        { count++; }    
+   }
+ }
+ return count;
 
+}
   
 
   
@@ -47,6 +62,7 @@ eventdates(s,e) {
    // this.member_image = this.get_photo_url(this.member);
  this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
    this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
+   this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
   }
 
 }
