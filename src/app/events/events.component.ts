@@ -70,6 +70,16 @@ event_limit(eventid){
   } else return 0
 }
 
+signup(date) {
+  var d = new Date(date);
+  var now2 = new Date();
+  var d2 =  new Date(now2.getFullYear(),now2.getMonth(),now2.getDate());
+    var diff =(d.getTime() - d2.getTime()) / 1000;
+  diff /= (60 * 60 * 24);
+ // return Math.abs(Math.round(diff));
+ return Math.round(diff);
+ }
+
 eventdates(s,e) {
   var subtitle = "";
   if (e=="1970-01-01"){ e=null}
@@ -78,7 +88,9 @@ eventdates(s,e) {
   if (e!=null) {
     subtitle = subtitle + " - ";
     subtitle = subtitle + this.dateFormat.date_format_date(e,false);
-    subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
+    subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" day";
+    if (this.dateFormat.date_format_days_between(s,e)>1) {subtitle=subtitle+"s"}
+    subtitle = subtitle + ")"; 
   }
   return subtitle
 }

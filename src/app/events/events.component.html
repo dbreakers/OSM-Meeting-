@@ -28,10 +28,15 @@
         
               
         </span>
-        <span class="list-item__title">{{event.name}} </span>
+        <span class="list-item__title">  
+          {{event.name}} 
+           
+          </span>
         <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
         <span class="right" >
-          <span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="signup(event.confdate) >= 0"></ons-icon>  
+         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>
+          &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
         </span>
 </ons-list-item>
   </span>

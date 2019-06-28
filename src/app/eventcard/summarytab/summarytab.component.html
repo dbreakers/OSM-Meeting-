@@ -22,7 +22,7 @@
   <p *ngIf="signup(eventA.confdate) > 0"><ons-icon icon="fa-check-circle" style="color:green;"></ons-icon>&nbsp;Signup for this event closes in {{signup(eventA.confdate)}} days on {{eventdates(eventA.confdate)}}.</p>
   <p *ngIf="signup(eventA.confdate) < 0"><ons-icon icon="fa-times-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closed  on {{eventdates(eventA.confdate)}}.</p>
 </ons-card>  
-  <ons-card>
+  <ons-card *ngIf="eventA.publicnotes != ''">
      <ons-icon icon="fa-info-circle"></ons-icon>&nbsp;Information<br>
     <div [innerHTML]="eventA.publicnotes"></div>
   </ons-card>
