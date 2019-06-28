@@ -38,7 +38,17 @@ eventtime(t){
   return h + ':' + m + ' ' + ampm;
 }
 
-  
+signup(date) {
+  var d = new Date(date);
+  var now2 = new Date();
+  var d2 =  new Date(now2.getFullYear(),now2.getMonth(),now2.getDate());
+    var diff =(d.getTime() - d2.getTime()) / 1000;
+  diff /= (60 * 60 * 24);
+ // return Math.abs(Math.round(diff));
+ return Math.round(diff);
+ }
+
+ 
 
   ngOnInit() {
    this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
