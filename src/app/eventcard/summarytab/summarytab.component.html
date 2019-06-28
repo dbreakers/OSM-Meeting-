@@ -17,6 +17,7 @@
    <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) != '' && eventA.starttime == null && eventA.endtime == null" >
   {{eventdates(eventA.startdate)}} until {{eventdates(eventA.enddate)}}</span>
   <br>
+  <p><ons-icon icon="fa-map-marker-alt"></ons-icon>&nbsp;{{eventA.location}}</p>
   <p *ngIf="signup(eventA.confdate) == 0"><ons-icon icon="fa-exclamation-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closes today</p>
   <p *ngIf="signup(eventA.confdate) > 0"><ons-icon icon="fa-check-circle" style="color:green;"></ons-icon>&nbsp;Signup for this event closes in {{signup(eventA.confdate)}} days on {{eventdates(eventA.confdate)}}.</p>
   <p *ngIf="signup(eventA.confdate) < 0"><ons-icon icon="fa-times-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closed  on {{eventdates(eventA.confdate)}}.</p>
@@ -25,6 +26,8 @@
      <ons-icon icon="fa-info-circle"></ons-icon>&nbsp;Information<br>
     <div [innerHTML]="eventA.publicnotes"></div>
   </ons-card>
-  <ons-card>
-   
-  </ons-card>    
+   <ons-card *ngIf="eventA.notepad != ''">
+     <ons-icon icon="fa-info-circle"></ons-icon>&nbsp;Notepad<br>
+    <div [innerHTML]="eventA.notepad"></div>
+  </ons-card>
+  
