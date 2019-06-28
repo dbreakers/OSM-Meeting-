@@ -23,7 +23,7 @@
       <div class="center">{{att.firstname}} {{att.lastname}}</div>
       <div class="expandable-content">
         <ons-list>
-         <ons-list-item modifier="chevron" (click)="goto_scoutcard($event,att);" >Contact Details</ons-list-item>
+         <ons-list-item modifier="chevron" (click)="goto_scoutcard($event,att);" > <ons-icon icon="fa-user"></ons-icon>&nbsp;Contact Details</ons-list-item>
         </ons-list>
        </div>  
       </ons-list-item>
@@ -35,7 +35,7 @@
       <div class="center">{{att.firstname}} {{att.lastname}}</div>
        <div class="expandable-content">
         <ons-list>
-         <ons-list-item (click)="goto_scoutcard($event,att);">Goto Contact Details >Contact Details</ons-list-item>
+         <ons-list-item (click)="goto_scoutcard($event,att);">Goto Contact Details > <ons-icon icon="fa-user"></ons-icon>&nbsp;Contact Details</ons-list-item>
         </ons-list>
        </div>  
       </ons-list-item>

@@ -64,7 +64,7 @@ get_count(l){
    if (this.event.items[i].attending == "Yes") {
      if((this.event.items[i].patrolid==-2&&(l==true)))
         { count++; }
-     if((this.event.items[i].patrolid>0&&(l==false)))
+     if((this.event.items[i].patrolid>-1&&(l==false)))
         { count++; }    
    }
  }
@@ -78,7 +78,7 @@ get_total(il){
    if (this.event.items[i].attending == "Yes") {
      if((this.event.items[i].patrolid==-2&&(il!=0)))
         { count++; }
-     if((this.event.items[i].patrolid>0))
+     if((this.event.items[i].patrolid>-1))
         { count++; }    
    }
  }

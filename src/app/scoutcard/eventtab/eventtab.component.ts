@@ -28,7 +28,7 @@ export class EventtabComponent implements OnInit {
   
   ngOnInit() {
  this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
-    this.member = this.members.find(o => o.member_id === this.globals.scoutcard);
+    this.member = this.members.find(o => o.member_id == this.globals.scoutcard);
     this.cardTitle = this.member.first_name+" "+this.member.last_name;
     this.member_image = this.get_photo_url(this.member);
 for ( var i = 0; i < this.globals.eventA.length; i++ ) {
