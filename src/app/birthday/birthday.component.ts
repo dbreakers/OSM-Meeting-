@@ -79,7 +79,7 @@ nth(d) {
     var d3 =  new Date(now2.getFullYear(),d.getMonth(),d.getDate());
     var year = now2.getFullYear();
     var ss = this.getAge(date)+" years old";
-    if (d==now2) { ss = ss + " today" } else {
+    if ((d2-d3)==0) { ss = ss + " today"; } else {
     ss = ss + ". Next birthday ";
     if (d3<d2) { year = year + 1;}
     var d4 = new Date(year,d.getMonth(),d.getDate());
