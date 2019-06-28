@@ -64,6 +64,7 @@ open(n) {
     if (this._params.data && this._params.data.index){
       this.globals.scoutcard = this._params.data.index;
     }
+    this.member = this.members.find(o => o.member_id == this.globals.scoutcard);
  }  
   
 
