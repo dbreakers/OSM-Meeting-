@@ -35,6 +35,7 @@ export class MedicalComponent implements OnInit {
   matches = new Object;  
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
+    private _params: Params, 
     private globals: Globals,
     private photoURL: PhotoURLService
     ) { }
@@ -128,6 +129,12 @@ get_photo_url(member) {
 
   this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
   this.matches = this.members.reduce((acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0) + 1, acc), {});  
+  if (this._params.data && this._params.data.filtername){
+      this.filtername = this._params.data.filtername;
+    }
+  if (this._params.data && this._params.data.filterlist){
+      this.filterlist = this._params.data.filterlist;
+    }
   for (var i = 0; i < this.members.length; i++) {
   
     this.filterdisplay.push(true);//
