@@ -1,4 +1,7 @@
 /* Add application setyles & imports to this file! */
+:root {
+  --scoutpurple: #7413dc; 
+}
 :checked+.segment__button {  background-color: #00a794; color: white !important}
 button.fab, button.fab:active, ons-fab.fab:active, ons-fab.fab { background-color:  #7413dc; color: white !important }
 ons-speed-dial-item.fab:active { background-color:  rgb(0, 167, 148); color: white !important}
@@ -12,3 +15,6 @@ h2 {text-align: center;}
 .button--material { background: #7413dc}
 .button { background: #7413dc}
 .text-input--material__label--active {color: #00a794;}
+.toolbar-button { color: var(--scoutpurple)}
+.back-button__label {color: var(--scoutpurple)}
+.back-button__icon {fill:var(--scoutpurple)}
