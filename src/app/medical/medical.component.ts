@@ -32,7 +32,9 @@ export class MedicalComponent implements OnInit {
   namefilter = "";
   typefilter = 1;
   filterdisplay = new Array;  
-  matches = new Object;  
+  matches = new Object; 
+  filtername = "";
+  filterlist = new Array;
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private _params: Params, 
@@ -106,6 +108,11 @@ update_search(s,x) {
              this.filterdisplay[i]=false         
       }
     }
+    if (this.filterlist.length>0){
+      if (this.filterlist.find( o => o == this.members[i].member_id)!=this.members[i].member_id)
+      { this.filterdisplay[i]=false   ; }
+    }
+
   }
 }
 get_photo_url(member) {
@@ -136,8 +143,11 @@ get_photo_url(member) {
       this.filterlist = this._params.data.filterlist;
     }
   for (var i = 0; i < this.members.length; i++) {
-  
-    this.filterdisplay.push(true);//
+    if (this.filterlist.length>0){
+      if (this.filterlist.find( o => o == this.members[i].member_id)==this.members[i].member_id)
+      { this.filterdisplay.push(true); } else { this.filterdisplay.push(false); }}
+     else 
+    { this.filterdisplay.push(true); }//
   }
 }
 

@@ -47,7 +47,13 @@ export class SummarytabComponent implements OnInit {
 }
 
 goto_medical() {
-this._navigator.element.pushPage(MedicalComponent, { data: { filtername: this.eventA.name, filterlist: this.event.items } });
+  var list = new Array;
+ for ( var i = 0; i < this.event.items.length; i++ ) {
+   if (this.event.items[i].attending == "Yes") {
+     list.push(this.event.items[i].scoutid)
+   }
+ }  
+this._navigator.element.pushPage(MedicalComponent, { data: { filtername: this.eventA.name, filterlist: list } });
 }
 
 eventtime(t){
