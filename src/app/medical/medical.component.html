@@ -47,7 +47,7 @@
           </ons-segment>
          
 
-      <ons-list-title  *ngIf="filtername != ''"><ons-icon icon="fa-filter"></ons-icon>&nbsp;{{filtername}}</ons-list-title>
+      <ons-list-title  *ngIf="filtername != ''"><ons-icon icon="fa-filter"></ons-icon>&nbsp;{{filtername}}&nbsp;({{filterlist.length}})</ons-list-title>
       <ons-list><span  *ngFor="let member of members; index as i" >
         <ons-list-item (click)="push($event, member,i)"*ngIf="true==filterdisplay[i]">
       
