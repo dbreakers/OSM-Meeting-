@@ -1,9 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+
+import {
+  Component,
+  Injector,
+  ViewChild,
+  Params,
+  OnInit,
+  OnsSplitterSide,
+  OnsNavigator,
+  OnsenModule,
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA
+} from 'ngx-onsenui';
+//import { Component, OnInit } from '@angular/core';
 import { Globals } from '../../globals';
 import {  PhotoURLService } from '../../photoUrl';
 import * as ons from 'onsenui';
 import {DomSanitizer} from '@angular/platform-browser'
 import {  DateformatService } from '../../dateformatter';
+import { MedicalComponent } from '../../medical/medical.component';
 
 @Component({
   selector: 'ons-page[summarytab]',
@@ -15,9 +29,13 @@ export class SummarytabComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer, 
     private globals: Globals,
+     private _navigator: OnsNavigator,
     private dateFormat: DateformatService,
     private photoURL: PhotoURLService) {  }
  
+  event : object;
+  eventA : object;
+
   eventdates(s) {
   var subtitle = "";
   if (s=="1970-01-01"){ s=null}
@@ -26,6 +44,10 @@ export class SummarytabComponent implements OnInit {
   subtitle = this.dateFormat.date_format_date(s,false);
  }
   return subtitle
+}
+
+goto_medical() {
+this._navigator.element.pushPage(MedicalComponent, { data: { filtername: this.eventA.name, filterpeople: this.event.items } });
 }
 
 eventtime(t){
