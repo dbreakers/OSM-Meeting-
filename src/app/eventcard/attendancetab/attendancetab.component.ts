@@ -36,6 +36,7 @@ export class AttendancetabComponent implements OnInit {
 // members = new Array;
  cardTitle: string = 'Custom Card';
  event : object;
+ gender
  //members = new Array;
 // member_image = "";
 
@@ -89,6 +90,7 @@ get_total(il){
 remain(count,total){
   return (total-count);
 }
+
 
   
 
