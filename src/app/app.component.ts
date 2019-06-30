@@ -64,6 +64,7 @@ constructor(private globals: Globals ) { }
     this.globals.config = [];
     this.globals.event = [];
     this.globals.eventA = [];
+    this.globals.eventsection = "";
     this.menu.nativeElement.close();
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
   }
