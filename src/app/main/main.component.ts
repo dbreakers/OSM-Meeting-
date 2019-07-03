@@ -26,6 +26,9 @@ import { Globals } from '../globals';
 import { LogonService } from '../logon.service';
 import {  PhotoURLService } from '../photoUrl';
 import * as ons from 'onsenui';
+import * as pdfMake from 'pdfmake/build/pdfmake.js';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
+
 @Component({
   selector: 'ons-page[settings]',
   templateUrl: './main.component.html',
@@ -68,6 +71,18 @@ section_has_roles()
   return this.globals.patrolroles.hasOwnProperty(this.globals.config[0][this.globals.mysection].section_type);
   } else 
   { return false}
+}
+
+doPDF(){
+  var dd = {
+	content: [
+		'First paragraph',
+		'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+	]
+	
+}
+//pdfMake.createPdf(docDefinition, tableLayouts, fonts, vfs)
+pdfMake.createPdf(dd,"","",pdfFonts.pdfMake.vfs).open();
 }
 
 compareValuesArray(key, order='asc') {
