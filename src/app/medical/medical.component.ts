@@ -81,7 +81,7 @@ var today = new Date();
       var yyyy = today.getFullYear();
 
 
-      pdf_header.text = '\n\nPrinted from Online Scout Manager on '+dd+"."+mm+"."+yyyy;
+      pdf_header.text = '\nPrinted from OSM Meeting+ on '+dd+"."+mm+"."+yyyy;
       pdf_header.margin = [20,0,0,0];
       pdf_doc.header = pdf_header;
 
@@ -89,56 +89,67 @@ var today = new Date();
       pdf_doc.footer = pdf_footer;
       pdf_doc.content = new Array;
  var pdf_table = new Object ;
+ var pdf_cell = new Object;
  var table_row = new Array;
       pdf_table.table = new Object;
       pdf_table.table.headerRows = 1;
       pdf_table.table.body = new Array;
       var table_row = new Array;  
+      var sel_option = document.getElementById('segment').getActiveButtonIndex() + 1;
       table_row.push("Member");
+      if (sel_option == 1) {
       table_row.push("Type");
+      }
       table_row.push("Description");
       pdf_table.table.body.push(table_row);
-  var sel_option = document.getElementById('segment').getActiveButtonIndex() + 1;
+  
       //pdf_doc.content.push(document.getElementById('segment').getActiveButtonIndex());
 for (var i = 0; i < this.members.length; i++) {
   table_row = []; 
   if (this.filterdisplay[i]){
-  table_row.push(this.members[i].first_name+" "+this.members[i].last_name);
+    pdf_cell.text = this.members[i].first_name+" "+this.members[i].last_name;
+    if (sel_option == 1) {pdf_cell.rowSpan = 4} else {pdf_cell.rowSpan = 1}
+  table_row.push(pdf_cell);
+
   if ((sel_option == 1)||(sel_option == 2))
   {
-    table_row.push("Medical");
+    if (sel_option == 1) {table_row.push("Medical");}
     table_row.push(this.members[i].custom_data[9][24253]);
     pdf_table.table.body.push(table_row);
     table_row = [];
-    table_row.push("")
+    table_row.push(pdf_cell);
   }
   if ((sel_option == 1)||(sel_option == 3))
   {
-    table_row.push("Allergy");
+    if (sel_option == 1) {table_row.push("Allergy");}
     table_row.push(this.members[i].custom_data[9][24254]);
     pdf_table.table.body.push(table_row);
     table_row = [];
-    table_row.push("")
+    table_row.push(pdf_cell);
   }
   if ((sel_option == 1)||(sel_option == 4))
   {
-    table_row.push("Dietary");
+    if (sel_option == 1) {table_row.push("Dietary");}
     table_row.push(this.members[i].custom_data[9][24255]);
     pdf_table.table.body.push(table_row);
     table_row = [];
-    table_row.push("")
+    table_row.push(pdf_cell);
   }
   if ((sel_option == 1)||(sel_option == 5))
   {
-    table_row.push("Other");
+    if (sel_option == 1) {table_row.push("Other");}
     table_row.push(this.members[i].custom_data[9][24257]);
     pdf_table.table.body.push(table_row);
     table_row = [];
   }
   
 }
-} 
-pdf_doc.content = pdf_table; 
+}
+pdf_doc.content = new Array 
+//if (sel_option != 1) {
+  pdf_doc.content.push("IMportant Header")
+//}
+pdf_doc.content.push(pdf_table); 
 //pdfMake.createPdf(docDefinition, tableLayouts, fonts, vfs)
 pdfMake.createPdf(pdf_doc,"","",pdfFonts.pdfMake.vfs).open();
 }
