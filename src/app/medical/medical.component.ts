@@ -73,6 +73,7 @@ compareValues(key, order='asc') {
 no_matches(n) { return this.matches[n] }
 
 make_PDF(){
+  var headings = ["","Essential","Medical","Allergy","Dietary","Other"]
       var pdf_doc = new Object;
  var pdf_header = new Object;
 var today = new Date();
@@ -107,6 +108,7 @@ var today = new Date();
 for (var i = 0; i < this.members.length; i++) {
   table_row = []; 
   if (this.filterdisplay[i]){
+var pdf_cell = new Object;
     pdf_cell.text = this.members[i].first_name+" "+this.members[i].last_name;
     if (sel_option == 1) {pdf_cell.rowSpan = 4} else {pdf_cell.rowSpan = 1}
   table_row.push(pdf_cell);
@@ -147,10 +149,36 @@ for (var i = 0; i < this.members.length; i++) {
 }
 pdf_doc.content = new Array 
 //if (sel_option != 1) {
-  pdf_doc.content.push("IMportant Header")
 //}
+var pdf_cell = new Object;
+
+pdf_cell.text = headings[sel_option]+" Information\n";
+pdf_cell.style = "header";
+pdf_doc.content.push(pdf_cell);
+if (this.filtername!="") {
+var pdf_cell = new Object;
+pdf_cell.text = "For Event: "+this.filtername;
+pdf_cell.style = "subheader";  
+} else {
+var pdf_cell = new Object;
+pdf_cell.text = "For complete section"; 
+pdf_cell.style = "subheader";  
+}
+pdf_doc.content.push("\n");
+pdf_doc.content.push(pdf_cell);
+
 pdf_doc.content.push(pdf_table); 
 //pdfMake.createPdf(docDefinition, tableLayouts, fonts, vfs)
+
+pdf_doc.styles = {
+		header: {
+			fontSize: 18,
+			bold: true
+		},
+		subheader: {
+			fontSize: 15,
+			bold: true
+		}}
 pdfMake.createPdf(pdf_doc,"","",pdfFonts.pdfMake.vfs).open();
 }
 
