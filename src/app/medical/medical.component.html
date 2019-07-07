@@ -18,24 +18,15 @@
 			</ons-toolbar-button>
 		</div>
 	</ons-toolbar>
-	<ons-speed-dial position="bottom right" direction="up">
+	<ons-speed-dial id="speed" position="bottom right" direction="up">
 		<ons-fab  >
-			<ons-icon icon="md-eye"></ons-icon>
+			<ons-icon icon="fa-clipboard-list"></ons-icon>
 		</ons-fab>
     <ons-speed-dial-item (click)="make_PDF()" >
-			<ons-icon icon="fa-print"></ons-icon>
+			<ons-icon icon="fa-file-pdf"></ons-icon>
 		</ons-speed-dial-item>
 		<ons-speed-dial-item (click)="summary(1)" >
-			<ons-icon icon="fa-file-medical"></ons-icon>
-		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(2)" >
-			<ons-icon icon="fa-allergies"></ons-icon>
-		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(3)" >
-			<ons-icon icon="fa-utensils"></ons-icon>
-		</ons-speed-dial-item>
-		<ons-speed-dial-item (click)="summary(4)">
-			<ons-icon icon="fa-info-circle"></ons-icon>
+			<ons-icon icon="fa-file-alt"></ons-icon>
 		</ons-speed-dial-item>
 	</ons-speed-dial>
 

@@ -23,8 +23,11 @@ import {  PhotoURLService } from '../photoUrl';
 
 export class MedicalsummaryComponent implements OnInit {
     members = new Array;
+    filter = new Array;  
     option = -1;
-  
+    filtername = "";
+    headings = [ 'Essential','Medical','Allergy','Dietary','Other']
+    headingicon = [ 'fa-ambulance','fa-medical-file','fa-allergies','fa-utensils','fa-info-circle'] 
   constructor(
     private _params: Params, 
   private inj: Injector,
@@ -42,14 +45,22 @@ include_inreport(member)
      if ((this.option==4)&&(member.custom_data[9][24257]!="")) {return true}
      return false;
 }  
+
   get_photo_url(member) {
     return this.photoURL.get_osmphoto_url(member);
   }
 
   ngOnInit() { 
-     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+   //  this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
     if (this._params.data && this._params.data.index)
       this.option = this._params.data.index;
+if (this._params.data && this._params.data.members)
+      this.members = this._params.data.members;
+if (this._params.data && this._params.data.filter)
+      this.filter = this._params.data.filter;
+if (this._params.data && this._params.data.name)
+      this.filtername = this._params.data.name;
+
       
   }
 

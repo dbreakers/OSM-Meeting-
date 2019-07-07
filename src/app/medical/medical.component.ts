@@ -81,7 +81,7 @@ var today = new Date();
       var mm = today.getMonth()+1; //January is 0!
       var yyyy = today.getFullYear();
 
-
+document.getElementById('speed').hideItems()
       pdf_header.text = '\nPrinted from OSM Meeting+ on '+dd+"."+mm+"."+yyyy;
       pdf_header.margin = [20,0,0,0];
       pdf_doc.header = pdf_header;
@@ -190,7 +190,7 @@ sort_list(name,order){
 
 summary(option)
 {
-    this._navigator.element.pushPage(MedicalsummaryComponent, { data: { index: option } });
+    this._navigator.element.pushPage(MedicalsummaryComponent, { data: { index: document.getElementById('segment').getActiveButtonIndex() + 1, members: this.members, filter: this.filterdisplay, name:this.filtername } });
 }
 
 update_search(s,x) {

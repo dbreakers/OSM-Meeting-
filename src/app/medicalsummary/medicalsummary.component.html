@@ -15,14 +15,12 @@
 
 <div class="content">
 	<ons-card class="header">
-    <p *ngIf="1==option"><ons-icon  icon="fa-file-medical" class="list-item__icon" style="color: white;" ></ons-icon>Medical Summary</p>	
-		<p *ngIf="2==option"><ons-icon  icon="fa-allergies" class="list-item__icon" style="color: white;" ></ons-icon>Allergy Summary</p>	
-		<p *ngIf="3==option"><ons-icon  icon="fa-utensils" class="list-item__icon" style="color: white;" ></ons-icon>Dietary Summary</p>	
-		<p *ngIf="4==option"><ons-icon  icon="fa-info-circle" class="list-item__icon" style="color: white;" ></ons-icon>Other Summary</p>	
+     <p><ons-icon  icon="{{headingicon[option-1]}}" class="list-item__icon" style="color: white;" ></ons-icon>{{headings[option-1]}}&nbsp;Information
+    <span *ngIf="filtername != ''">&nbsp;For {{filtername}}</span><p>	
   </ons-card>
   
   <span  *ngFor="let member of members; index as i" >
-  <ons-card *ngIf="include_inreport(member)==true">
+  <ons-card *ngIf="filter[i]==true">
     <div class="card_header">
     <div class="photo"  *ngIf="null!=member.photo_guid" >
     <img *ngIf="null!=member.photo_guid" src="{{get_photo_url(member)}}" class="Photo" class="member_photo">
@@ -30,24 +28,25 @@
     <div class="name">
     <p class="title member_name">{{member.first_name}} {{member.last_name}}</p>
     </div>
+    <p *ngIf="null!=member.photo_guid" ></p>
     </div>
     <div class="detail_stuff">
-    <div *ngIf="(''!=member.custom_data[9][24253])&&(option==1)">
+    <div *ngIf="(''!=member.custom_data[9][24253])&&((option==2)||(option==1))">
             <!--<p class="medical"><ons-icon  icon="fa-file-medical" class="list-item__icon" style="color: green;" ></ons-icon>Medical Information</p>-->
-            <p>{{member.custom_data[9][24253]}}</p>
+            <p><span class="sbold" *ngIf="option==1">{{headings[1]}} : </span>{{member.custom_data[9][24253]}}</p>
           </div>
           
-          <div *ngIf="(''!=member.custom_data[9][24254])&&(option==2)">
+          <div *ngIf="(''!=member.custom_data[9][24254])&&((option==3)||(option==1))">
             <!--<p class="allergy"><ons-icon  icon="fa-allergies" class="list-item__icon" style="color: red;" ></ons-icon>Allergies</p>-->
-            <p>{{member.custom_data[9][24254]}}</p>
+            <p><span class="sbold" *ngIf="option==1">{{headings[2]}} : </span>{{member.custom_data[9][24254]}}</p>
           </div>
-          <div *ngIf="(''!=member.custom_data[9][24255])&&(option==3)">
+          <div *ngIf="(''!=member.custom_data[9][24255])&&((option==4)||(option==1))">
             <!--<p class="dietary"><ons-icon  icon="fa-utensils" class="list-item__icon" style="color: black;" ></ons-icon>Dietary</p>-->
-             <p>{{member.custom_data[9][24255]}}</p>
+             <p><span class="sbold" *ngIf="option==1">{{headings[3]}} : </span>{{member.custom_data[9][24255]}}</p>
           </div>
-          <div *ngIf="(''!=member.custom_data[9][24257])&&(option==4)">
+          <div *ngIf="(''!=member.custom_data[9][24257])&&((option==5)||(option==1))">
             <!--<p class="other"><ons-icon  icon="fa-info-circle" class="list-item__icon" style="color: blue;" ></ons-icon>Other Information</p>-->
-             <p>{{member.custom_data[9][24257]}}</p>
+             <p><span class="sbold" *ngIf="option==1">{{headings[4]}} : </span>{{member.custom_data[9][24257]}}</p>
           </div></div>
   </ons-card>  
 	
