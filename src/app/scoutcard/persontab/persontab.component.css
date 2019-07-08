@@ -6,9 +6,10 @@
 .header_block { overflow: auto;}
 .detailcard_left {
   font-weight: 600;
+  width: 35%;
 }
 .detailcard_right {
- font-weight: 100;
+ width:65%;
 }
 .card_title { color: #7413dc; font-size: 16pt; font-weight: 600; }
 .comm_button { font-size: 20px; padding: 2px;}
@@ -24,16 +25,16 @@
 .table{ display: flex; flex-wrap: wrap;}
 .table_row{ 
 flex-grow: 1;
-  width: 50%;
+
   padding-bottom: 10px;
 }
 .table_row100 {
-  width: 100%;
+  
   padding-bottom: 10px;
 }
 @media (min-width: 375px) {
   .table_row100 {
-  width: 50%;
+  width: 65%;
   padding-bottom: 10px;
 }
 }
