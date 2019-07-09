@@ -1,0 +1,45 @@
+<ons-page>
+<ons-toolbar>
+      <div class="center">
+        {{globals.application}}
+      </div>
+      <div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+      <div class="right">
+        
+        <ons-toolbar-button (click)="openMenu()">
+          <ons-icon icon="fa-bars"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+   
+        <div class="content">
+       
+      <h2>Events</h2>
+     
+    
+
+  <ons-list>
+  <span  id="gridcontainer" *ngFor="let event of globals.eventA; index as i">
+<ons-list-item (click)="go($event,event);" modifier="chevron">
+      
+        <span class="left">
+        
+              
+        </span>
+        <span class="list-item__title">  
+          {{event.name}} 
+           
+          </span>
+        <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
+        <span class="right" >
+           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="signup(event.confdate) >= 0"></ons-icon>  
+         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>
+          &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+        </span>
+</ons-list-item>
+  </span>
+  </ons-list>
+</div><!--List-->
+    </ons-page>
