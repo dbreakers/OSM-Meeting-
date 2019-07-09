@@ -14,6 +14,7 @@ import {
 
 import { TermpickerComponent } from '../termpicker/termpicker.component';
 import { MedicalComponent } from '../medical/medical.component';
+import { ProgrammeComponent } from '../programme/programme.component';
 import {GlobalsearchComponent} from '../globalsearch/globalsearch.component';
 import {EventsComponent} from '../events/events.component';
 import {LastcheckedComponent} from '../lastchecked/lastchecked.component';
@@ -42,6 +43,7 @@ export class MainComponent implements OnInit {
   lastcheck = LastcheckedComponent;
   termselect =  TermpickerComponent;
   register = RegisterComponent;
+  program =ProgrammeComponent;
   medical = MedicalComponent;
   events = EventsComponent;
   globalsearch = GlobalsearchComponent;

@@ -61,7 +61,7 @@ go(e,event){
 }
 
 ngOnInit() {
-  this.globals.eventA.sort(this.sorting.compareValuesArray(["startdate"],"desc"))
+ // this.globals.eventA.sort(this.sorting.compareValuesArray(["startdate"],"desc"))
 
 }
 }

@@ -16,27 +16,25 @@
    
         <div class="content">
        
-      <h2>Events</h2>
+      <h2>Programme</h2>
      
     
 
   <ons-list>
-  <span  id="gridcontainer" *ngFor="let event of globals.eventA; index as i">
-<ons-list-item (click)="go($event,event);" modifier="chevron">
+  <span  id="gridcontainer" *ngFor="let prog of globals.sectiondata[4].items; index as i">
+<ons-list-item (click)="go($event,prog);" modifier="chevron">
       
         <span class="left">
         
               
         </span>
         <span class="list-item__title">  
-          {{event.name}} 
+          {{prog.title}} 
            
           </span>
-        <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
+        <span class="list-item__subtitle">{{eventdates(prog.meetingdate,null)}}</span>
         <span class="right" >
-           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="signup(event.confdate) >= 0"></ons-icon>  
-         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>
-          &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+          
         </span>
 </ons-list-item>
   </span>
