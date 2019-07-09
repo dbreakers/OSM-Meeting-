@@ -91,6 +91,8 @@ remain(count,total){
   return (total-count);
 }
 
+//this.matches = this.members.reduce((acc, o) => (acc[o.patrol] = (acc[o.patrol] || 0 ) + 1, acc), {});
+//this.matches = this.members.reduce((acc, o) => (acc[o.custom_data[7][34]] = (acc[o.custom_data[7][34]] || 0) + 1, acc), {});
 
   
 
@@ -100,8 +102,8 @@ remain(count,total){
   //  this.cardTitle = this.member.first_name+" "+this.member.last_name;
    // this.member_image = this.get_photo_url(this.member);
  this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
-   this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
-   this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
+ this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
+ this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
  this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
  
   }
