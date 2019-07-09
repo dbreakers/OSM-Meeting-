@@ -32,7 +32,7 @@
           {{prog.title}} 
            
           </span>
-        <span class="list-item__subtitle">{{eventdates(prog.meetingdate,null)}}</span>
+        <span class="list-item__subtitle">{{eventdates(prog.meetingdate,null)}}<span *ngIf="prog.starttime != '00:00:00'"> from {{timeformat(prog.starttime)}}</span><span *ngIf="prog.endtime != '00:00:00'"> until {{timeformat(prog.endtime)}}</span></span>
         <span class="right" >
           
         </span>
