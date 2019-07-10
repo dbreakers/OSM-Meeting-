@@ -42,6 +42,7 @@ export class AttendancetabComponent implements OnInit {
   labels = new Array;
    values = new Array;
  group_label = ["Swim 50m","Gender","Patrol","Role","Age"];
+ target: boolean = false;
  //members = new Array;
 // member_image = "";
 
@@ -100,16 +101,22 @@ remain(count,total){
 //this.matches = this.members.reduce((acc, o) => (acc[o.custom_data[7][34]] = (acc[o.custom_data[7][34]] || 0) + 1, acc), {});
 
 collect_list() {
+  this.attendees = []
+  this.target = document.getElementById("incl").checked;
   for ( var i = 0; i < this.event.items.length; i++ ) {
    if (this.event.items[i].attending == "Yes") {
-      this.attendees.push(this.members.find(o => o.member_id == this.event.items[i].scoutid));
+     var m = this.members.find(o => o.member_id == this.event.items[i].scoutid);
+     if ((this.target)||(!this.target&&m.patrol_id>-1)){
+      this.attendees.push(this.members.find(o => o.member_id == this.event.items[i].scoutid));      
       if (this.attendees[this.attendees.length-1].age_years >=18) {this.attendees[this.attendees.length-1].age_years="18+";}
+    }
    }
   }
-  this.test = (this.create_array("7","34"))
-  this.labels = Object.keys(this.test)
-  this.values = Object.values(this.test)
-  document.getElementById('segment_summary').setActiveButton(1);
+  //this.test = (this.create_array("7","34"))
+  //this.labels = Object.keys(this.test)
+  //this.values = Object.values(this.test)
+  update_summary();
+ //document.getElementById('segment_summary').setActiveButton();
 }  
 
 create_array(custom,field)
@@ -126,6 +133,7 @@ create_array(custom,field)
 update_summary(){
   var sum = document.getElementById('segment_summary').getActiveButtonIndex();
   // ["Swim 50m","Gender","Patrol","Role","Age"]
+  this.test =[];
   if (sum==0) {  this.test = (this.create_array("9","24258")) };  
   if (sum==1) {  this.test = (this.create_array("7","34")) };
   if (sum==2) {  this.test = (this.create_array("","patrol")) };

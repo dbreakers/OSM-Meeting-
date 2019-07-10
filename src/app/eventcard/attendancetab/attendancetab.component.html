@@ -64,6 +64,7 @@
             <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon><span class="sum_seg"> Age</span></button>
             
           </ons-segment>
+          <div  style="padding: 10px">Include Leaders<ons-switch id="incl" style="float: right" [value]="target" (change)="collect_list()"></ons-switch></div>
    <span *ngFor="let value of labels ; index as z">
       <p>{{value}}<spaN *ngIf="value==''">No Value</spaN> : {{values[z]}}</p>
     </span>
