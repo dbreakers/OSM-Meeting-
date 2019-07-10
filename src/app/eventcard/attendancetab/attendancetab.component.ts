@@ -122,6 +122,7 @@ create_array(custom,field)
   }
 }
 
+
 update_summary(){
   var sum = document.getElementById('segment_summary').getActiveButtonIndex();
   // ["Swim 50m","Gender","Patrol","Role","Age"]
@@ -130,7 +131,6 @@ update_summary(){
   if (sum==2) {  this.test = (this.create_array("","patrol")) };
   if (sum==3) {  this.test = (this.create_array("","patrol_role_level_label")) };
   if (sum==4) {  this.test = (this.create_array("","age_years")) };
-
   this.labels = Object.keys(this.test)
   this.values = Object.values(this.test) 
 }
