@@ -50,10 +50,21 @@
          
         </ons-list>
        </div>
-      </ons-list-item>
+      </ons-list-item> 
       </div>
     </ons-list>
   </ons-card>
   <ons-card>
-    
+    List of Attendees grouped by 
+    <ons-segment #segment id="segment_summary" style="margin-top: 8px; width: 100%">
+            <button (click)="update_summary()"><ons-icon icon="fa-swimmer"></ons-icon> Swimmer</button>
+            <button (click)="update_summary()"><ons-icon icon="fa-venus-mars"></ons-icon> Gender</button>
+            <button (click)="update_summary()"><ons-icon icon="fa-users"></ons-icon> Patrol</button>
+            <button (click)="update_summary()"><ons-icon icon="fa-user-tag"></ons-icon> Role</button>
+            <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon> Age</button>
+            
+          </ons-segment>
+   <span *ngFor="let value of labels ; index as z">
+      <p>{{value}} : {{values[z]}}</p>
+    </span>
   </ons-card>  

@@ -36,7 +36,12 @@ export class AttendancetabComponent implements OnInit {
 // members = new Array;
  cardTitle: string = 'Custom Card';
  event : object;
- gender
+ attendees = new Array;
+ members = new Array;
+ test = new Array;
+  labels = new Array;
+   values = new Array;
+ group_label = ["Swim 50m","Gender","Patrol","Role","Age"];
  //members = new Array;
 // member_image = "";
 
@@ -91,10 +96,45 @@ remain(count,total){
   return (total-count);
 }
 
-//this.matches = this.members.reduce((acc, o) => (acc[o.patrol] = (acc[o.patrol] || 0 ) + 1, acc), {});
+//this.matches = this.members.reduce((acc, o) => (acc[o.patrol] = (acc[o.patrol] || 0 ) + 1, acc), {})
 //this.matches = this.members.reduce((acc, o) => (acc[o.custom_data[7][34]] = (acc[o.custom_data[7][34]] || 0) + 1, acc), {});
 
-  
+collect_list() {
+  for ( var i = 0; i < this.event.items.length; i++ ) {
+   if (this.event.items[i].attending == "Yes") {
+      this.attendees.push(this.members.find(o => o.member_id == this.event.items[i].scoutid));
+      if (this.attendees[this.attendees.length-1].age_years >=18) {this.attendees[this.attendees.length-1].age_years="18+";}
+   }
+  }
+  this.test = (this.create_array("7","34"))
+  this.labels = Object.keys(this.test)
+  this.values = Object.values(this.test)
+  document.getElementById('segment_summary').setActiveButton(1);
+}  
+
+create_array(custom,field)
+{
+  if (custom!="") {
+  return this.attendees.reduce((acc, o) => (acc[o.custom_data[custom][field]] = (acc[o.custom_data[custom][field]] || 0) + 1, acc), {});
+  } else
+  {
+    return this.attendees.reduce((acc, o) => (acc[o[field]] = (acc[o[field]] || 0) + 1, acc), {});
+  }
+}
+
+update_summary(){
+  var sum = document.getElementById('segment_summary').getActiveButtonIndex();
+  // ["Swim 50m","Gender","Patrol","Role","Age"]
+  if (sum==0) {  this.test = (this.create_array("9","24258")) };  
+  if (sum==1) {  this.test = (this.create_array("7","34")) };
+  if (sum==2) {  this.test = (this.create_array("","patrol")) };
+  if (sum==3) {  this.test = (this.create_array("","patrol_role_level_label")) };
+  if (sum==4) {  this.test = (this.create_array("","age_years")) };
+
+  this.labels = Object.keys(this.test)
+  this.values = Object.values(this.test) 
+}
+
 
   ngOnInit() {
 //    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
@@ -105,7 +145,7 @@ remain(count,total){
  this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
  this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
  this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
- 
+ this.collect_list();
   }
 
 }
