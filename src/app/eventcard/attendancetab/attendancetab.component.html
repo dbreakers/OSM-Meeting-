@@ -55,16 +55,16 @@
     </ons-list>
   </ons-card>
   <ons-card>
-    List of Attendees grouped by 
+  <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by 
     <ons-segment #segment id="segment_summary" style="margin-top: 8px; width: 100%">
-            <button (click)="update_summary()"><ons-icon icon="fa-swimmer"></ons-icon> Swimmer</button>
-            <button (click)="update_summary()"><ons-icon icon="fa-venus-mars"></ons-icon> Gender</button>
-            <button (click)="update_summary()"><ons-icon icon="fa-users"></ons-icon> Patrol</button>
-            <button (click)="update_summary()"><ons-icon icon="fa-user-tag"></ons-icon> Role</button>
-            <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon> Age</button>
+            <button (click)="update_summary()"><ons-icon icon="fa-swimmer"></ons-icon><span class="sum_seg"> Swimmer</span></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-venus-mars"></ons-icon><span class="sum_seg"> Gender</span></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-users"></ons-icon><span class="sum_seg"> Patrol</span></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-user-tag"></ons-icon><span class="sum_seg"> Role</span></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon><span class="sum_seg"> Age</span></button>
             
           </ons-segment>
    <span *ngFor="let value of labels ; index as z">
-      <p>{{value}} : {{values[z]}}</p>
+      <p>{{value}}<spaN *ngIf="value==''">No Value</spaN> : {{values[z]}}</p>
     </span>
   </ons-card>  
