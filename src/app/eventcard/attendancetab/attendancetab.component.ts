@@ -102,7 +102,7 @@ remain(count,total){
 
 collect_list() {
   this.attendees = []
-  this.target = document.getElementById("incl").checked;
+  //this.target = document.getElementById("incl").checked;
   for ( var i = 0; i < this.event.items.length; i++ ) {
    if (this.event.items[i].attending == "Yes") {
      var m = this.members.find(o => o.member_id == this.event.items[i].scoutid);
@@ -112,10 +112,10 @@ collect_list() {
     }
    }
   }
-  //this.test = (this.create_array("7","34"))
-  //this.labels = Object.keys(this.test)
-  //this.values = Object.values(this.test)
-  update_summary();
+  this.test = (this.create_array("7","34"))
+  this.labels = Object.keys(this.test)
+  this.values = Object.values(this.test)
+  //update_summary();
  //document.getElementById('segment_summary').setActiveButton();
 }  
 
