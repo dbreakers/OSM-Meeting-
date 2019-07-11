@@ -76,7 +76,17 @@ signup(date) {
  return Math.round(diff);
  }
 
- 
+invites_sent(v) {
+var t = 0;  
+  for ( var i = 0; i < this.event.items.length; i++ ) {
+    if ((this.event.items[i].attending != "")&&(v))
+    { t += 1; }
+    if ((this.event.items[i].attending == "")&&(!v))
+    { t += 1; }
+  }
+  return t;
+} 
+
 
   ngOnInit() {
    this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)

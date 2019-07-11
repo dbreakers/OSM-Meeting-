@@ -17,6 +17,7 @@ import { AppComponent } from '../app.component';
 import { Globals } from '../globals';
 import {  PhotoURLService } from '../photoUrl';
 import { AttendancetabComponent } from './attendancetab/attendancetab.component';
+import { AnswertabComponent } from './answertab/answertab.component';
 import { SummarytabComponent } from './summarytab/summarytab.component';
 
 
@@ -28,6 +29,7 @@ import { SummarytabComponent } from './summarytab/summarytab.component';
 
 export class EventcardComponent implements OnInit {
     members = new Array;
+    eventd = new Object;
     member_index = -1;
     member_image = "";
     member = "";
@@ -35,6 +37,7 @@ export class EventcardComponent implements OnInit {
     events_list =  new Array;
     summarytab = SummarytabComponent;
     attendancetab = AttendancetabComponent;
+    answertab = AnswertabComponent;
   constructor(
     private _params: Params, 
     private _navigator: OnsNavigator,
@@ -63,6 +66,7 @@ open(n) {
     if (this._params.data && this._params.data.index){
       this.globals.eventcard = this._params.data.index;
        this.event = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
+     //  this.eventd = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
     }
  }  
   

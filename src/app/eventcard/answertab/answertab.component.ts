@@ -20,11 +20,11 @@ import {  Sortservice } from '../../sort';
 import { ScoutcardComponent } from '../../scoutcard/scoutcard.component';
 
 @Component({
-  selector: 'ons-page[attendancetab]',
-  templateUrl: './attendancetab.component.html',
-  styleUrls: ['./attendancetab.component.css']
+  selector: 'ons-page[answertab]',
+  templateUrl: './answertab.component.html',
+  styleUrls: ['./answertab.component.css']
 })
-export class AttendancetabComponent implements OnInit {
+export class AnswertabComponent implements OnInit {
 
   constructor(
     private sanitizer: DomSanitizer, 
@@ -41,79 +41,10 @@ export class AttendancetabComponent implements OnInit {
  test = new Array;
   labels = new Array;
    values = new Array;
- group_label = ["Gender","Swim 50m","Patrol","Role","Age"];
- group_seg = 1;
- target: boolean = false;
+ 
  //members = new Array;
 // member_image = "";
 
-goto_scoutcard(event, member) {
- //debugger;
- //members = new Array;
-     this._navigator.element.pushPage(ScoutcardComponent, { data: { index: member.scoutid } });
-  }
-  
-eventdates(s,e) {
-  var subtitle = "";
-  if (e=="1970-01-01"){ e=null}
- // if (e!=null) { subtitle = "From "; }
-  subtitle = subtitle + this.dateFormat.date_format_date(s,false);
-  if (e!=null) {
-    subtitle = subtitle + " - ";
-    subtitle = subtitle + this.dateFormat.date_format_date(e,false);
-  //  subtitle = subtitle + " (" + this.dateFormat.date_format_days_between(s,e)+" days)";
-  }
-  return subtitle
-}
-  
-get_count(l){
-   var count = 0;
- for ( var i = 0; i < this.event.items.length; i++ ) {
-   if (this.event.items[i].attending == "Yes") {
-     if((this.event.items[i].patrolid==-2&&(l==true)))
-        { count++; }
-     if((this.event.items[i].patrolid>-1&&(l==false)))
-        { count++; }    
-   }
- }
- return count;
-//
-}
-
-get_undecided(l){
-   var count = 0;
- for ( var i = 0; i < this.event.items.length; i++ ) {
-   if (this.event.items[i].attending == "Invited") {
-     if((this.event.items[i].patrolid==-2&&(l==true)))
-        { count++; }
-     if((this.event.items[i].patrolid>-1&&(l==false)))
-        { count++; }    
-   }
- }
- return count;
-//
-}
-
-get_total(il){
-   var count = 0;
- for ( var i = 0; i < this.event.items.length; i++ ) {
-   if (this.event.items[i].attending == "Yes") {
-     if((this.event.items[i].patrolid==-2&&(il!=0)))
-        { count++; }
-     if((this.event.items[i].patrolid>-1))
-        { count++; }    
-   }
- }
- return count;
-
-} 
-
-remain(count,total){
-  return (total-count);
-}
-
-//this.matches = this.members.reduce((acc, o) => (acc[o.patrol] = (acc[o.patrol] || 0 ) + 1, acc), {})
-//this.matches = this.members.reduce((acc, o) => (acc[o.custom_data[7][34]] = (acc[o.custom_data[7][34]] || 0) + 1, acc), {});
 
 collect_list() {
   this.attendees = []

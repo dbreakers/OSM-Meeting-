@@ -36,14 +36,15 @@ import { EventtabComponent } from './scoutcard/eventtab/eventtab.component';
 import { PersontabComponent } from './scoutcard/persontab/persontab.component';
 import { EventcardComponent } from './eventcard/eventcard.component';
 import { SummarytabComponent } from './eventcard/summarytab/summarytab.component';
+import { AnswertabComponent } from './eventcard/answertab/answertab.component';
 import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.component';
 //import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
   ServiceWorkerModule.register('/ngsw-worker.js')],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, ProgrammeComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AttendancetabComponent, EventcardComponent ],
-  entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, ProgrammeComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AnswertabComponent, AttendancetabComponent, EventcardComponent ],
+  entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]

@@ -17,10 +17,12 @@
    <span *ngIf="eventdates(eventA.startdate) != '' && eventdates(eventA.enddate) != '' && eventA.starttime == null && eventA.endtime == null" >
   {{eventdates(eventA.startdate)}} until {{eventdates(eventA.enddate)}}</span>
   <br>
-  <p><ons-icon icon="fa-map-marker-alt"></ons-icon>&nbsp;{{eventA.location}}</p>
+  <p *ngIf="eventA.location != ''"><ons-icon icon="fa-map-marker-alt"></ons-icon>&nbsp;{{eventA.location}}</p>
   <p *ngIf="signup(eventA.confdate) == 0"><ons-icon icon="fa-exclamation-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closes today</p>
   <p *ngIf="signup(eventA.confdate) > 0"><ons-icon icon="fa-check-circle" style="color:green;"></ons-icon>&nbsp;Signup for this event closes in {{signup(eventA.confdate)}} day<span *ngIf="signup(eventA.confdate) > 1">s</span> on {{eventdates(eventA.confdate)}}.</p>
-  <p *ngIf="signup(eventA.confdate) < 0"><ons-icon icon="fa-times-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closed  on {{eventdates(eventA.confdate)}}.</p>
+  <p *ngIf="(signup(eventA.confdate) < 0) && (eventA.confdate != '1970-01-01')"><ons-icon icon="fa-times-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closed  on {{eventdates(eventA.confdate)}}.</p>
+  <p *ngIf="invites_sent(true) == 0">No invites sent<p>
+ <!-- <p *ngIf="invites_sent(false) != 0"> {{invites_sent()}} have not been invited</p> -->  
 </ons-card>  
 <ons-card>
   <ons-list-item (click)="goto_medical()" modifier="chevron nodivider"><ons-icon icon="fa-ambulance"></ons-icon>&nbsp;&nbsp;Attendees Medical Info</ons-list-item>
