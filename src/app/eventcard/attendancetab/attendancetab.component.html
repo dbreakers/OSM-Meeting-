@@ -55,17 +55,20 @@
     </ons-list>
   </ons-card>
   <ons-card>
-  <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by 
+  <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by {{group_label[group_seg]}}
     <ons-segment #segment id="segment_summary" style="margin-top: 8px; width: 100%">
-            <button (click)="update_summary()"><ons-icon icon="fa-swimmer"></ons-icon><span class="sum_seg"> Swimmer</span></button>
-            <button (click)="update_summary()"><ons-icon icon="fa-venus-mars"></ons-icon><span class="sum_seg"> Gender</span></button>
-            <button (click)="update_summary()"><ons-icon icon="fa-users"></ons-icon><span class="sum_seg"> Patrol</span></button>
-            <button (click)="update_summary()"><ons-icon icon="fa-user-tag"></ons-icon><span class="sum_seg"> Role</span></button>
-            <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon><span class="sum_seg"> Age</span></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-venus-mars"></ons-icon></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-swimmer"></ons-icon></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-users"></ons-icon></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-user-tag"></ons-icon></button>
+            <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon></button>
             
           </ons-segment>
-          <div  style="padding: 10px; display: none;">Include Leaders<ons-switch id="incl" style="float: right" [value]="target" (change)="collect_list()"></ons-switch></div>
-   <span *ngFor="let value of labels ; index as z">
-      <p>{{value}}<spaN *ngIf="value==''">No Value</spaN> : {{values[z]}}</p>
+          <div  style="padding-top: 10px;" class="table"><div class="table_row"><ons-checkbox id="reactive-checkbox" class="form-control left" (click)="inc_leaders()"></ons-checkbox> Include Leaders</div><!--<div  class="table_row"> Include Leaders</div>--></div>
+          <span *ngFor="let value of labels ; index as z">
+        <div  class="table">
+        <div class="table_row"><b>{{value}}<span *ngIf="value==''">No Value</span></b></div>
+        <div class="table_row">{{values[z]}}</div>
+    </div>
     </span>
   </ons-card>  

@@ -19,3 +19,4 @@ h2 {text-align: center;}
 .toolbar-button { color: var(--scoutpurple)}
 .back-button__label {color: var(--scoutpurple)}
 .back-button__icon {fill:var(--scoutpurple)}
+:checked+.checkbox__checkmark:before {background: var(--scoutpurple);}

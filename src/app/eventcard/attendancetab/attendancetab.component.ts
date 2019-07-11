@@ -41,7 +41,8 @@ export class AttendancetabComponent implements OnInit {
  test = new Array;
   labels = new Array;
    values = new Array;
- group_label = ["Swim 50m","Gender","Patrol","Role","Age"];
+ group_label = ["Gender","Swim 50m","Patrol","Role","Age"];
+ group_seg = 1;
  target: boolean = false;
  //members = new Array;
 // member_image = "";
@@ -112,12 +113,18 @@ collect_list() {
     }
    }
   }
-  this.test = (this.create_array("7","34"))
+ // this.test = (this.create_array("7","34"))
   this.labels = Object.keys(this.test)
   this.values = Object.values(this.test)
-  //update_summary();
+  this.update_summary();
  //document.getElementById('segment_summary').setActiveButton();
 }  
+
+
+inc_leaders() {
+  this.target =  ! this.target;
+  this.collect_list();
+}
 
 create_array(custom,field)
 {
@@ -134,13 +141,14 @@ update_summary(){
   var sum = document.getElementById('segment_summary').getActiveButtonIndex();
   // ["Swim 50m","Gender","Patrol","Role","Age"]
   this.test =[];
-  if (sum==0) {  this.test = (this.create_array("9","24258")) };  
-  if (sum==1) {  this.test = (this.create_array("7","34")) };
+  if (sum==1) {  this.test = (this.create_array("9","24258")) };  
+  if (sum==0) {  this.test = (this.create_array("7","34")) };
   if (sum==2) {  this.test = (this.create_array("","patrol")) };
   if (sum==3) {  this.test = (this.create_array("","patrol_role_level_label")) };
   if (sum==4) {  this.test = (this.create_array("","age_years")) };
   this.labels = Object.keys(this.test)
   this.values = Object.values(this.test) 
+  this.group_seg = sum;
 }
 
 
