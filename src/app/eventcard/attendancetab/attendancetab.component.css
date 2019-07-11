@@ -2,7 +2,7 @@
 .subhead { font-size: 10pt;}
 .list-header { background-color:  #00a794; color: white; }  
 .sum_seg {display: none}
-.table{ display: flex; flex-wrap: wrap;}
+.table{ border-top: solid; padding-top: 5px; display: flex; flex-wrap: wrap; border-width: 1px;}
 .table_row{ 
 flex-grow: 1;
 width: 40%;

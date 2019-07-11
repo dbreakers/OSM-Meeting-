@@ -67,7 +67,7 @@
           <div  style="padding-top: 10px;" class="table"><div (click)="inc_leaders()"class="table_row"><ons-checkbox id="reactive-checkbox" class="form-control left" ></ons-checkbox> Include Leaders</div><!--<div  class="table_row"> Include Leaders</div>--></div>
           <span *ngFor="let value of labels ; index as z">
         <div  class="table">
-        <div class="table_row"><b>{{value}}<span *ngIf="value==''">No Value</span></b></div>
+        <div class="table_row"><b>{{value}}<span *ngIf="value==''">&lt;Blank&gt;</span></b></div>
         <div class="table_row">{{values[z]}}</div>
     </div>
     </span>
