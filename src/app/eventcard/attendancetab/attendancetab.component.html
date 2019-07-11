@@ -64,7 +64,7 @@
             <button (click)="update_summary()"><ons-icon icon="fa-calendar"></ons-icon></button>
             
           </ons-segment>
-          <div  style="padding-top: 10px;" class="table"><div class="table_row"><ons-checkbox id="reactive-checkbox" class="form-control left" (click)="inc_leaders()"></ons-checkbox> Include Leaders</div><!--<div  class="table_row"> Include Leaders</div>--></div>
+          <div  style="padding-top: 10px;" class="table"><div (click)="inc_leaders()"class="table_row"><ons-checkbox id="reactive-checkbox" class="form-control left" ></ons-checkbox> Include Leaders</div><!--<div  class="table_row"> Include Leaders</div>--></div>
           <span *ngFor="let value of labels ; index as z">
         <div  class="table">
         <div class="table_row"><b>{{value}}<span *ngIf="value==''">No Value</span></b></div>
