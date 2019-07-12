@@ -58,7 +58,8 @@ getSectionData(sectionid, term): Observable<any> {
 
 getEventAData(event): Observable<any> {
 let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getAttendance&eventid="+event;
-fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.current_term;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+//this.globals.current_term;
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
@@ -74,7 +75,7 @@ return forkJoin(singleObservables);
 
 getEventData(event): Observable<any> {
 let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getStructureForEvent&eventid="+event;
-fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.current_term;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);

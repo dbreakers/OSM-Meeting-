@@ -1,1 +1,7 @@
 .head { color: #7413dc; font-size: 16pt; font-weight: 600;}
+.table{ border-top: solid; padding-top: 5px; display: flex; flex-wrap: wrap; border-width: 1px;}
+.table_row{ 
+flex-grow: 1;
+width: 40%;
+  padding-bottom: 10px;
+}

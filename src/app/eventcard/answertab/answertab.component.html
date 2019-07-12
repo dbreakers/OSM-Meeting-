@@ -2,3 +2,27 @@
     <span class="head">{{eventA.name}}</span>  
  <!-- <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span> -->
 </ons-card>     
+<ons-card>
+  <ons-select id="choose-sel" (change)="editSelects($event)" id="selectfield">
+    <option value="{{z}}" *ngFor="let value of eventA.structure[1].rows ; index as z" >        
+    {{eventA.structure[1].rows[z].name}}
+    </option>
+    </ons-select>  
+   
+       <span *ngFor="let value of labels ; index as z">
+        <div  class="table">
+        <div class="table_row"><b>{{value}}<span *ngIf="value==''">&lt;Blank&gt;</span></b></div>
+        <div class="table_row">{{values[z]}}</div>
+    </div>
+    </span>
+ </ons-card>   
+ <ons-card>
+   <ons-list *ngFor="let value of labels ; index as z">
+     <ons-list-header>{{value}}</ons-list-header>
+     <span *ngFor="let s of attendees ; index as y">
+     <ons-list-item *ngIf="s[(eventA.structure[1].rows[sum].field)]==value" >
+       {{s.lastname}}
+     </ons-list-item>   
+     </span>  
+   </ons-list> 
+ </ons-card>  

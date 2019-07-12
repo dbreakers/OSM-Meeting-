@@ -83,7 +83,7 @@ get_count(l){
 get_undecided(l){
    var count = 0;
  for ( var i = 0; i < this.event.items.length; i++ ) {
-   if (this.event.items[i].attending == "Invited") {
+   if ((this.event.items[i].attending == "Invited")||(this.event.items[i].attending == "Show in Parent Portal")) {
      if((this.event.items[i].patrolid==-2&&(l==true)))
         { count++; }
      if((this.event.items[i].patrolid>-1&&(l==false)))
