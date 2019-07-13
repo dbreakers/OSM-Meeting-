@@ -20,9 +20,9 @@
    <ons-list *ngFor="let value of labels ; index as z">
      <ons-list-header>{{value}}</ons-list-header>
      <span *ngFor="let s of attendees ; index as y">
-     <ons-list-item>{{s.lastname}} {{s.firstname}}</ons-list-item>  
-     <ons-list-item *ngIf="s[(eventA.structure[1].rows[sum].field)]==value" >
-      <b> {{s.lastname}} </b>
+     <!--<ons-list-item>{{s.lastname}} {{s.firstname}}</ons-list-item>  -->
+     <ons-list-item *ngIf="s[(eventA.structure[1].rows[sum].field)].trim()==value" >
+      <b>{{s.firstname}} {{s.lastname}} </b>
      </ons-list-item>   
      </span>  
    </ons-list> 
