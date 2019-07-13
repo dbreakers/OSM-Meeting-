@@ -8,7 +8,8 @@
  <p>
  <ons-select id="choose-sel" (change)="editSelects($event)" id="selectfield" modifier="underbar">
     <option value="{{z}}" *ngFor="let value of eventA.structure[1].rows ; index as z" >      
-    {{eventA.structure[1].rows[z].name}}
+      <ons-icon style="color: green;" icon="fa-coins"  *ngIf="value.field.substring(0, 1) == 'p'"></ons-icon><ons-icon icon="fa-info-circle"  style="color: blue;" *ngIf="value.field.substring(0, 1) != 'p'"></ons-icon>
+    {{eventA.structure[1].rows[z].name}} {{value.field}}
     </option>
     </ons-select></p> 
     
