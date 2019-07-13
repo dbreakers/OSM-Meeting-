@@ -23,7 +23,7 @@
       
       <div class="center">{{att.firstname}} {{att.lastname}}</div>
       <div class="expandable-content">
-        <ons-list modifier="inset">
+       <!-- <ons-list modifier="inset">
         <ons-list-header>Extra Info</ons-list-header>
         <ons-list-item modifier="chevron longdivider" (click)="goto_scoutcard($event,att);" > <ons-icon icon="fa-user"></ons-icon>&nbsp;Contact Details</ons-list-item>  
           <span *ngFor="let value of eventA.structure[1].rows ; index as z">
@@ -31,7 +31,22 @@
                 <span class="list-item__subtitle">{{value.name}}</span><span class="list-item__title"><ons-icon style="color: green;" icon="fa-coins"  *ngIf="value.field.substring(0, 1) == 'p'"></ons-icon><ons-icon icon="fa-info-circle"  style="color: blue;" *ngIf="value.field.substring(0, 1) != 'p'"></ons-icon>&nbsp;{{att[value.field]}}</span></ons-list-item>
          </span> 
          
-        </ons-list>
+        </ons-list>-->
+        
+
+
+        <div  class="table" style="padding-top: 10px; height: 40px;" (click)="goto_scoutcard($event,att);">
+                <div class="table_row4"><ons-icon icon="fa-user"></ons-icon></div>
+                <div class="table_row3">Goto Contact Details for {{att.firstname}}</div>
+        </div>  
+        <span *ngFor="let value of eventA.structure[1].rows ; index as z">
+          <div  class="table"  *ngIf="value.field != 'info'">
+        <div class="table_row4"><ons-icon style="color: green;" icon="fa-coins"  *ngIf="value.field.substring(0, 1) == 'p'"></ons-icon><ons-icon icon="fa-info-circle"  style="color: blue;" *ngIf="value.field.substring(0, 1) != 'p'"></ons-icon></div>
+        <div class="table_row3">{{att[value.field]}}</div>
+         <div class="table_row4">&nbsp;</div>
+        <div class="table_row2">{{value.name}}</div>
+    </div>
+        </span>
       </div>  
       </ons-list-item>
       </div>
@@ -41,7 +56,7 @@
       
       <div class="center">{{att.firstname}} {{att.lastname}}</div>
       <div class="expandable-content">
-        <ons-list modifier="inset">
+       <!-- <ons-list modifier="inset">
         <ons-list-header>Extra Info</ons-list-header>
         <ons-list-item modifier="chevron longdivider" (click)="goto_scoutcard($event,att);" > <ons-icon icon="fa-user"></ons-icon>&nbsp;Contact Details</ons-list-item>  
           <span *ngFor="let value of eventA.structure[1].rows ; index as z">
@@ -49,7 +64,21 @@
                 <span class="list-item__subtitle">{{value.name}}</span><span class="list-item__title"><ons-icon style="color: green;" icon="fa-coins"  *ngIf="value.field.substring(0, 1) == 'p'"></ons-icon><ons-icon icon="fa-info-circle"  style="color: blue;" *ngIf="value.field.substring(0, 1) != 'p'"></ons-icon>&nbsp;{{att[value.field]}}</span></ons-list-item>
          </span> 
          
-        </ons-list>
+
+        </ons-list>-->
+
+        <div  class="table" style="padding-top: 10px; height: 40px;" (click)="goto_scoutcard($event,att);">
+                <div class="table_row4"><ons-icon icon="fa-user"></ons-icon></div>
+                <div class="table_row3">Goto Contact Details for {{att.firstname}}</div>
+        </div>  
+        <span *ngFor="let value of eventA.structure[1].rows ; index as z">
+          <div  class="table"  *ngIf="value.field != 'info'">
+        <div class="table_row4"><ons-icon style="color: green;" icon="fa-coins"  *ngIf="value.field.substring(0, 1) == 'p'"></ons-icon><ons-icon icon="fa-info-circle"  style="color: blue;" *ngIf="value.field.substring(0, 1) != 'p'"></ons-icon></div>
+        <div class="table_row3">{{att[value.field]}}</div>
+         <div class="table_row4">&nbsp;</div>
+        <div class="table_row2">{{value.name}}</div>
+    </div>
+        </span>  
        </div>
       </ons-list-item> 
       </div>
