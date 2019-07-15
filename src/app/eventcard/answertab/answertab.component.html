@@ -1,3 +1,15 @@
+<ons-speed-dial id="speed" position="bottom right" direction="up">
+		<ons-fab  >
+			<ons-icon icon="fa-clipboard-list"></ons-icon>
+		</ons-fab>
+    <ons-speed-dial-item (click)="make_PDF()" >
+			<ons-icon icon="fa-file-pdf"></ons-icon>
+		</ons-speed-dial-item>
+		<ons-speed-dial-item (click)="summary(1)" >
+			<ons-icon icon="fa-file-alt"></ons-icon>
+		</ons-speed-dial-item>
+	</ons-speed-dial>
+
 <ons-card>
     <span class="head">{{eventA.name}}</span>  
  <!-- <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span> -->
