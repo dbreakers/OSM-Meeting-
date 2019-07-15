@@ -44,6 +44,7 @@ export class AttendancetabComponent implements OnInit {
  group_label = ["Gender","Swim 50m","Patrol","Role","Age"];
  group_seg = 1;
  target: boolean = false;
+ notamember = 0;
  //members = new Array;
 // member_image = "";
 
@@ -70,6 +71,7 @@ get_count(l){
    var count = 0;
  for ( var i = 0; i < this.event.items.length; i++ ) {
    if (this.event.items[i].attending == "Yes") {
+     
      if((this.event.items[i].patrolid==-2&&(l==true)))
         { count++; }
      if((this.event.items[i].patrolid>-1&&(l==false)))
@@ -92,7 +94,7 @@ get_undecided(l){
  }
  return count;
 //
-}
+}e
 
 get_total(il){
    var count = 0;
@@ -117,16 +119,21 @@ remain(count,total){
 
 collect_list() {
   this.attendees = []
+  this.notamember = 0;
   //this.target = document.getElementById("incl").checked;
   for ( var i = 0; i < this.event.items.length; i++ ) {
    if (this.event.items[i].attending == "Yes") {
      var m = this.members.find(o => o.member_id == this.event.items[i].scoutid);
+     if ((m != undefined)){
      if ((this.target)||(!this.target&&m.patrol_id>-1)){
       this.attendees.push(this.members.find(o => o.member_id == this.event.items[i].scoutid));      
       if (this.attendees[this.attendees.length-1].age_years >=18) {this.attendees[this.attendees.length-1].age_years="18+";}
     }
+     }  else { this.notamember += 1}
    }
   }
+
+ 
  // this.test = (this.create_array("7","34"))
   this.labels = Object.keys(this.test)
   this.values = Object.values(this.test)

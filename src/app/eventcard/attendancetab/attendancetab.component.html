@@ -85,7 +85,7 @@
     </ons-list>
   </ons-card>
   <ons-card>  
-  <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by {{group_label[group_seg]}}
+  <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by {{group_label[group_seg]}} <span *ngIf="notamember > 0">({{notamember}} former members are excluded from these totals)</span>
     <ons-segment #segment id="segment_summary" style="margin-top: 8px; width: 100%">
             <button (click)="update_summary()">
              <ons-icon icon="fa-venus-mars" size="15pt" style="padding-top: 5px;"></ons-icon></button>
