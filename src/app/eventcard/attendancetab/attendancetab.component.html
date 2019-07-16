@@ -21,7 +21,7 @@
     <div *ngFor="let att of event.items ; index as z">
       <ons-list-item expandable *ngIf="att.attending === 'Yes' && att.patrolid > -1" >
       
-      <div class="center">{{att.firstname}} {{att.lastname}}</div>
+      <div class="center"><span class="list-item__title">{{att.firstname}} {{att.lastname}}</span><span class="list-item__subtitle">{{getDetailAge(att)}}</span></div>
       <div class="expandable-content">
        <!-- <ons-list modifier="inset">
         <ons-list-header>Extra Info</ons-list-header>
