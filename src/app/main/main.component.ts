@@ -175,7 +175,7 @@ do_eventsA(e){
   this.globals.eventA = e;
 }
 
-do_Progs(p)
+do_progs(p)
 {
   this.globals.progs = p;
 }

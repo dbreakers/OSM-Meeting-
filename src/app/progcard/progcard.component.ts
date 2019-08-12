@@ -1,0 +1,1 @@
+// this.globals.progs.find(i => i.items[0].eveningid == 4282328)
