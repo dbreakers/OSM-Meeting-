@@ -175,6 +175,11 @@ do_eventsA(e){
   this.globals.eventA = e;
 }
 
+do_Progs(p)
+{
+  this.globals.progs = p;
+}
+
   section_data_return(data) {
     //alert("heelo");
     this.globals.sectiondata = data;
@@ -193,6 +198,8 @@ do_eventsA(e){
      this.globals.eventA = [];
      this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
     this.logonService.getEventsAData().subscribe(Events => this.do_events(Events));
+    this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
+    
     this.globals.eventsection=this.globals.mysection;
      }
   }

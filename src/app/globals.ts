@@ -16,6 +16,7 @@ export class Globals {
   sectiondata: any;
   event: Array<any>= [];
   eventA:  Array<any> = [];
+  progs:  Array<any> = [];
   eventsection: string = "";
   sectiondatasection: string = "";
   current_term: string  = "-1";
