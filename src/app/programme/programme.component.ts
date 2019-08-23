@@ -16,7 +16,7 @@ import { Globals } from '../globals';
 import {  DateformatService } from '../dateformatter';
 import * as ons from 'onsenui';
 import {  Sortservice } from '../sort';
-import { EventcardComponent } from '../eventcard/eventcard.component';
+import { ProgcardComponent } from '../progcard/progcard.component';
 
 @Component({
   selector: 'ons-page[programme]',
@@ -65,8 +65,8 @@ eventdates(s,e) {
   return subtitle
 }
 
-go(e,event){
-   this._navigator.element.pushPage(EventcardComponent, { data: { index: event.eventid } });
+go(e,prog){
+   this._navigator.element.pushPage(ProgcardComponent, { data: { index: prog.eveningid } });
 }
 
 ngOnInit() {

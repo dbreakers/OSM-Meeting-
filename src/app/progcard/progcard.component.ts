@@ -20,33 +20,29 @@ import { Globals } from '../globals';
 //import {  PhotoURLService } from '../photoUrl';
 //import { AttendancetabComponent } from './attendancetab/attendancetab.component';
 //import { AnswertabComponent } from './answertab/answertab.component';
-//import { SummarytabComponent } from './summarytab/summarytab.component';
+import { ProgSummarytabComponent } from './summarytab/summarytab.component';
 
 
 @Component({
   selector: 'ons-page[progcard]',
-  templateUrl: './eventcard.component.html',
-  styleUrls: ['./eventcard.component.css']
+  templateUrl: './progcard.component.html',
+  styleUrls: ['./progcard.component.css']
 })
 
 export class ProgcardComponent implements OnInit {
-    members = new Array;
-    eventd = new Object;
-    member_index = -1;
-    member_image = "";
-    member = "";
-    member_find="";
-    events_list =  new Array;
-    summarytab = SummarytabComponent;
-    attendancetab = AttendancetabComponent;
-    answertab = AnswertabComponent;
+    //members = new Array;
+    prog = new Object;
+    
+    summarytab = ProgSummarytabComponent;
+  //  attendancetab = AttendancetabComponent;
+  //  answertab = AnswertabComponent;
   constructor(
     private _params: Params, 
     private _navigator: OnsNavigator,
   private inj: Injector,
-  private sanitizer: DomSanitizer,
+  // private sanitizer: DomSanitizer,
     private globals: Globals,
-    private photoURL: PhotoURLService
+  //  private photoURL: PhotoURLService
   ) { }
 
 
@@ -54,7 +50,8 @@ export class ProgcardComponent implements OnInit {
   ngOnInit() { 
     if (this._params.data && this._params.data.index){
       // this.globals.progs.find(i => i.items[0].eveningid == 4282328)
-      this.globals.eventcard = this._params.data.index;
+      this.globals.progcard = this._params.data.index;
+      this.prog = this.globals.progs.find(i => i.items[0].eveningid == this.globals.progcard)
      //  this.event = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
      //  this.eventd = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
     }
