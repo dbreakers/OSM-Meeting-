@@ -43,7 +43,10 @@ timeformat(t) {
   h = h ? h : 12;
   return h + ':' + m + ' ' + ampm;}
 
-
+toggle(id){
+  var div=document.getElementById(id);
+  div.style.display = div.style.display == "none" ? "block" : "none";
+}
 eventdates(s,e) {
   var subtitle = "";
   if (e=="1970-01-01"){ e=null}
