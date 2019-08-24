@@ -50,6 +50,20 @@ event_option(eventid,s){
  return count;
 }
 
+event_option2(eventid,s,l){
+ var list = this.globals.event.find(f=>f.eventid==eventid);
+ var evt = this.globals.eventA.find(f=>f.eventid==eventid);
+ var count = 0;
+ for ( var i = 0; i < list.items.length; i++ ) {
+   if (list.items[i].attending == s) {
+   if ((l==0)&&(list.items[i].patrolid!=-2)) { count++; }
+   if ((l==1)&&(list.items[i].patrolid==-2)) { count++; }
+   }
+   
+ }
+ return count;
+}
+
 event_class(eventid){
   var el = this.event_limit(eventid);
   var c= this.event_option(eventid,"Yes");
@@ -67,6 +81,13 @@ event_limit(eventid){
   var event = this.globals.eventA.find(f=>f.eventid==eventid)
   if (event.hasOwnProperty("attendancelimit")) {
     return event.attendancelimit
+  } else return 0
+}
+
+event_limit_inc(eventid){
+  var event = this.globals.eventA.find(f=>f.eventid==eventid)
+  if (event.hasOwnProperty("limitincludesleaders")) {
+    return event.limitincludesleaders
   } else return 0
 }
 

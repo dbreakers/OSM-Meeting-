@@ -35,8 +35,26 @@
         <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
         <span class="right" >
            <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="signup(event.confdate) >= 0"></ons-icon>  
-         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>
-          &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>&nbsp;
+         <div class="ecount" *ngIf="event_limit_inc(event.eventid)==0">
+         <!--Total does not include LEaders-->
+         <div class="top_ecount">
+           <span class="notification {{event_class(event.eventid)}}">{{event_option2(event.eventid,"Yes",0)}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+         </div>
+         <div class="bot_ecount">
+           &amp;&nbsp;{{event_option2(event.eventid,"Yes",1)}}L
+         </div>    
+         </div>  
+         <div class="ecount" *ngIf="event_limit_inc(event.eventid)==1">
+         <!--Total does include LEaders-->
+         <div class="top_ecount">
+           <span class="notification {{event_class(event.eventid)}}">{{event_option2(event.eventid,"Yes",0)}}+{{event_option2(event.eventid,"Yes",1)}}L</span>
+         </div>
+         <div class="bot_ecount">
+           of {{event.attendancelimit}}
+         </div>    
+         </div>  
+     <!--     &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span> -->
         </span>
 </ons-list-item>
   </span>

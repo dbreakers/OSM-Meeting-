@@ -2,3 +2,7 @@
 .notifcation.red { background:  #e22e12;}
 .notifcation.amber { background: #ffe627;}
 .notifcation.green { background: #23a950;}
+.ecount { width: 50px; border-left: solid; border-width: 1px; padding-left: 5px}
+.bot_ecount {font-size: 12px;}
+.top_ecount {font-size: 12px;}
+.notification {border-radius: 0px;}
