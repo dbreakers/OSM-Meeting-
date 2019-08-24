@@ -49,6 +49,16 @@ timeformat(t) {
   h = h ? h : 12;
   return h + ':' + m + ' ' + ampm;}
 
+helpers(evening)
+{
+  var e = this.globals.progs.find(i => i.items[0].eveningid == evening);
+  var needed = e.items[0].parentsrequired;
+  var count = e.items[0].help.length;
+  if (needed == 0) return 0;
+  if ((needed != 0)&&(count==0)) return 1;
+  if ((needed != 0)&&(count<needed)) return 2;
+  if ((needed != 0)&&(count>=needed)) return 3;
+}
 
 eventdates(s,e) {
   var subtitle = "";

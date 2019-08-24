@@ -1,5 +1,19 @@
 <ons-card>
    <span class="head">{{prog.items[0].title}}</span>
+   <p><span class="list-item__subtitle">{{eventdates(prog.items[0].meetingdate,null)}}<span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></span></p>
+   <p>{{prog.items[0].notesforparents}}</p>
 </ons-card>     
 <ons-card>
+<p class="subhead">Leaders</p>
+<div *ngFor="let ldr of prog.items[0].unavailableleaders; index as i">
+  {{ldr.firstname}}&nbsp;{{ldr.lastname}} not Available
+</div>
+<div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div>     
+<p class="subhead">Parent Helpers</p>
+<div *ngIf="prog.items[0].help.length==0">No parents helping</div> 
+<div *ngFor="let ldr of prog.items[0].help; index as i">
+  <div (click)="go($event,ldr.scoutid);">Parents of <b>{{ldr.scout}}</b></div>
+</div>
+<div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) == 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more is needed</div>
+<div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) > 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more are needed</div>
 </ons-card>  
