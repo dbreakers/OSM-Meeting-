@@ -89,9 +89,29 @@ OnPaste_StripFormatting(e: ClipboardEvent) {
         }
 
     }
+adjust(a,v) {
+  var idx = this.globals.progs.findIndex(i => i.items[0].eveningid == a)
+  
+  var c = Number(this.globals.progs[idx].items[0].parentsrequired);
+  if ((c+v)>=0) {
+  this.globals.progs[idx].items[0].parentsrequired = c  + v;
+  }
+ // alert(idx);
+}
 
+removehelper(i,j) {
+
+  this.globals.progs[i].items[0].help.splice(j,1);
+}
+
+addhelper(i) {
+  var obj = {};
+obj["scout"] = "David";
+  this.globals.progs[i].items[0].help.push(obj);
+}
 alert(a) {   
-  alert(window.document.getElementById(a).innerText)  
+//  alert(window.document.getElementById(a).innerText)  
+ ons.notification.toast('Text Updated', {timeout: 2000});
 }
 
 go(e,prog){
