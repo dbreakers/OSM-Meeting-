@@ -24,12 +24,12 @@
   <ons-card>
     <p><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
- <span class="subhead">{{prog.items[0].parentsrequired}} helpers are needed</span>
- <span (click)="adjust(prog.items[0].eveningid,1)">&nbsp;<ons-icon icon="fa-plus-circle" size="24px"></ons-icon></span>&nbsp;<span><ons-icon icon="fa-minus-circle" size="24px" (click)="adjust(prog.items[0].eveningid,-1)"></ons-icon></span> 
+ <span class="butlab">{{prog.items[0].parentsrequired}} helpers are needed for this activity</span>
+ <span (click)="adjust(prog.items[0].eveningid,1)">&nbsp;<ons-icon icon="fa-plus-circle" size="24px" class="but"></ons-icon></span>&nbsp;<span><ons-icon icon="fa-minus-circle" size="24px" (click)="adjust(prog.items[0].eveningid,-1)" class="but"></ons-icon></span><br> 
   <span *ngFor="let parent of prog.items[0].help; index as j">
-    <div (click)="removehelper(i,j)" style="display:flex;"><div><ons-icon icon="fa-trash-alt" size="24px"></ons-icon></div><div>{{parent.scout}}</div></div>
+    <div (click)="removehelper(i,j)" style="display:flex;"><div><ons-icon icon="fa-trash-alt" size="24px" class="helper"></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
   </span>  
-  <div style="display:flex;" (click)="addhelper(i)"><div><ons-icon icon="fa-user-plus" size="24px"></ons-icon></div><div>Add another helper</div></div>
+  <div style="display:flex;" (click)="addhelper(i)"><div><ons-icon icon="fa-user-plus" size="24px" class="helper"></ons-icon></div><div class="helper">Add another helper <span *ngIf="( prog.items[0].parentsrequired - prog.items[0].help.length ) > 0">({{prog.items[0].parentsrequired - prog.items[0].help.length }} more needed)</span></div></div>
   <div  id="{{prog.items[0].eveningid}}" contenteditable="true" (blur)="alert(prog.items[0].eveningid)" (paste)="OnPaste_StripFormatting($event);">{{prog.items[0].notesforhelpingparents}}</div>
 
   </ons-card>
