@@ -7,10 +7,10 @@
 <span class="head">Adults</span>  
 <p class="subhead">Leaders</p>
 <div *ngFor="let ldr of prog.items[0].unavailableleaders; index as i">
-  {{ldr.firstname}}&nbsp;{{ldr.lastname}} not Available
+  {{ldr.firstname}}&nbsp;{{ldr.lastname}} not available
 </div>
 <div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div><br>
-<div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr">+</div></div> 
+<div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr"><div id="ln_plus">+</div><div style="display: none" id="ln_minus">-</div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].leaders != ''" class="theadb" id="ln">{{prog.items[0].leaders}}</div> 
 <p class="subhead">Parent Helpers ({{prog.items[0].parentsrequired}} needed)</p>
 <div *ngIf="prog.items[0].help.length==0">No parents helping</div> 
@@ -20,7 +20,7 @@
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) == 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more is needed</div>
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) > 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more are needed</div>
 <br>
-<div *ngIf="prog.items[0].notesforhelpingparents != null" class="theadp" (click)="toggle('pn')"><div  class="theadl">Parent Notes</div><div class="theadr">+</div></div> 
+<div *ngIf="prog.items[0].notesforhelpingparents != null" class="theadp" (click)="toggle('pn')"><div  class="theadl">Parent Notes</div><div class="theadr"><div id="pn_plus">+</div><div style="display: none" id="pn_minus">-</div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].notesforhelpingparents != null" class="theadb" id="pn">{{prog.items[0].notesforhelpingparents}}</div>
 </ons-card>
 <ons-card>

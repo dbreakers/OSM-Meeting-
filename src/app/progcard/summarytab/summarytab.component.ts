@@ -46,6 +46,11 @@ timeformat(t) {
 toggle(id){
   var div=document.getElementById(id);
   div.style.display = div.style.display == "none" ? "block" : "none";
+  var div=document.getElementById(id);
+    div=document.getElementById(id+"_minus");
+    div.style.display = div.style.display == "none" ? "block" : "none"; 
+       div=document.getElementById(id+"_plus");
+    div.style.display = div.style.display == "none" ? "block" : "none"; 
 }
 eventdates(s,e) {
   var subtitle = "";
