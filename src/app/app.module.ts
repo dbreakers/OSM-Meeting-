@@ -29,6 +29,7 @@ import { MedicalsummaryComponent } from './medicalsummary/medicalsummary.compone
 import { BirthdayComponent } from './birthday/birthday.component';
 import { LastcheckedComponent } from './lastchecked/lastchecked.component';
 import { GlobalsearchComponent } from './globalsearch/globalsearch.component';
+import { RostaComponent } from './rosta/rosta.component';
 import { SectionselectComponent } from './sectionselect/sectionselect.component';
 import { MainComponent } from './main/main.component';
 import { MedicalComponent } from './medical/medical.component';
@@ -45,8 +46,8 @@ import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
   ServiceWorkerModule.register('/ngsw-worker.js')],
-  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, ProgcardComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, ProgrammeComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AnswertabComponent, AttendancetabComponent, EventcardComponent, ProgSummarytabComponent ],
-  entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, ProgcardComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent,ProgSummarytabComponent],
+  declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, TermpickerComponent, ProgcardComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, ProgrammeComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AnswertabComponent, AttendancetabComponent, EventcardComponent, ProgSummarytabComponent, RostaComponent ],
+  entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, RegisterComponent,GlobalsearchComponent, ProgcardComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent,ProgSummarytabComponent, RostaComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ Globals ]

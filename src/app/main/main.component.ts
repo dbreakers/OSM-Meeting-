@@ -17,6 +17,7 @@ import { MedicalComponent } from '../medical/medical.component';
 import { ProgrammeComponent } from '../programme/programme.component';
 import {GlobalsearchComponent} from '../globalsearch/globalsearch.component';
 import {EventsComponent} from '../events/events.component';
+import {RostaComponent} from '../rosta/rosta.component';
 import {LastcheckedComponent} from '../lastchecked/lastchecked.component';
 import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
@@ -46,6 +47,7 @@ export class MainComponent implements OnInit {
   program =ProgrammeComponent;
   medical = MedicalComponent;
   events = EventsComponent;
+  rosta = RostaComponent;
   globalsearch = GlobalsearchComponent;
   sectionselect = SectionselectComponent;
   birthday = BirthdayComponent;
