@@ -3,3 +3,13 @@
 .helper { padding: 5px;}
 .but { color: #00a794; }
 .butlab { font-weight: 600;}
+.wrapper {
+  position: relative;
+}
+#infoi {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  padding-right: 15px;
+}
