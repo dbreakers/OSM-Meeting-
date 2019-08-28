@@ -18,13 +18,13 @@
        
       <h2>Rosta</h2>
      
-    
+
 
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
   <ons-card>
     <p><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
-  <div contenteditable="true">{{prog.items[0].notesforhelpingparents}}</div>
+  <div  id="{{prog.items[0].eveningid}}" contenteditable="true" (blur)="alert(prog.items[0].eveningid)" (paste)="OnPaste_StripFormatting($event);">{{prog.items[0].notesforhelpingparents}}</div>
 
   </ons-card>
   </span>    

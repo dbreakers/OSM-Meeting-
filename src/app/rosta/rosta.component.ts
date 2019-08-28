@@ -26,6 +26,7 @@ import { ProgcardComponent } from '../progcard/progcard.component';
 
 export class RostaComponent implements OnInit {
 
+  _onPaste_StripFormatting_IEPaste = false;
  
 constructor(
     private inj: Injector,
@@ -63,6 +64,34 @@ eventdates(s,e) {
     subtitle = subtitle + ")"; 
   }
   return subtitle
+}
+
+OnPaste_StripFormatting(e: ClipboardEvent) {
+
+        if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+            e.preventDefault();
+            var text = e.originalEvent.clipboardData.getData('text/plain');
+            window.document.execCommand('insertText', false, text);
+        }
+        else if (e.clipboardData && e.clipboardData.getData) {
+            e.preventDefault();
+            var text = e.clipboardData.getData('text/plain');
+            window.document.execCommand('insertText', false, text);
+        }
+        else if (window.clipboardData && window.clipboardData.getData) {
+            // Stop stack overflow
+            if (!_onPaste_StripFormatting_IEPaste) {
+                _onPaste_StripFormatting_IEPaste = true;
+                e.preventDefault();
+                window.document.execCommand('ms-pasteTextOnly', false);
+            }
+            _onPaste_StripFormatting_IEPaste = false;
+        }
+
+    }
+
+alert(a) {   
+  alert(window.document.getElementById(a).innerText)  
 }
 
 go(e,prog){
