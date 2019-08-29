@@ -20,6 +20,20 @@ export class LogonService {
   constructor(private http: HttpClient,
     private globals: Globals) { }
 
+update_parents_text(ptext:string,section,evening): Observable<any>
+{
+    let authURL = this.configUrl + "osmpath=ext/programme/&action=editEveningParts";
+      var obj = {};
+    obj["notesforhelpingparents"] = ptext;
+    let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+    body = body.set('sectionid', section);
+    body = body.set('eveningid', evening);
+    body = body.set('parts',JSON.stringify(obj)) 
+    return this.http.post<Security>(authURL, body, httpOptions).pipe(catchError(error => of(error))) 
+} 
+
   doLogon(user: string, password: string): Observable<Security> {
     let authURL = this.configUrl + "?osmpath=users.php&action=authorise";
     let body = new HttpParams();
