@@ -13,6 +13,8 @@ import {
 } from 'ngx-onsenui';
 
 import { HttpClientModule }    from '@angular/common/http';
+
+//import {HttpClientModule} from 'ngx-http-client';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';

@@ -16,6 +16,7 @@ import { Globals } from '../globals';
 import {  DateformatService } from '../dateformatter';
 import * as ons from 'onsenui';
 import {  Sortservice } from '../sort';
+import { LogonService } from '../logon.service';
 import { ProgcardComponent } from '../progcard/progcard.component';
 
 @Component({
@@ -33,6 +34,7 @@ constructor(
     private globals: Globals,
     private sorting: Sortservice,
     private _navigator: OnsNavigator,
+    private logonService: LogonService, 
     private dateFormat: DateformatService) { }
 
  openMenu() {
@@ -113,6 +115,15 @@ alert(a) {
 //  alert(window.document.getElementById(a).innerText)  
  ons.notification.toast('Text Updated', {timeout: 2000});
 }
+
+update_text(a) {
+//this.logonService.update_parents_text
+this.logonService.update_parents_text(window.document.getElementById(a).innerText,a).subscribe(Security=> this.alert(Security));
+
+//doLogon(username2,password2).subscribe(Security=> this.post_logon(Security));
+
+}
+//update_parents_text(ptext:string,section,evening)
 
 go(e,prog){
    this._navigator.element.pushPage(ProgcardComponent, { data: { index: prog.eveningid } });

@@ -10,11 +10,13 @@
     "@angular/platform-browser": "7.2.9",
     "@angular/platform-browser-dynamic": "7.2.9",
     "@angular/router": "7.2.9",
-    "@angular/service-worker": "^7.2.13",
+    "@angular/service-worker": "7.2.15",
     "core-js": "2.6.5",
+    "ngx-http-client": "1.0.0-beta.5",
     "ngx-onsenui": "7.0.0",
     "onsenui": "2.10.6",
     "rxjs": "6.4.0",
+    "rxjs-compat": "^6.5.2",
     "zone.js": "0.8.29"
   },
   "scripts": {

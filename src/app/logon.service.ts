@@ -3,6 +3,7 @@ import { Security } from './security';
 //import { SECURITY } from './mock-security';
 import { Observable, forkJoin, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 
@@ -10,28 +11,28 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
 
-
 @Injectable({
   providedIn: 'root',
 })
+
 
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
     private globals: Globals) { }
 
-update_parents_text(ptext:string,section,evening): Observable<any>
+update_parents_text(ptext:string,evening): Observable<any>
 {
-    let authURL = this.configUrl + "osmpath=ext/programme/&action=editEveningParts";
+    let authURL = this.configUrl + "?osmpath=ext/programme/&action=editEveningParts";
       var obj = {};
     obj["notesforhelpingparents"] = ptext;
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
-    body = body.set('sectionid', section);
+    body = body.set('sectionid', this.globals.mysection);
     body = body.set('eveningid', evening);
-    body = body.set('parts',JSON.stringify(obj)) 
-    return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error))) 
+    body = body.set('parts',(JSON.stringify(obj))) 
+    return this.http.post(authURL, body, httpOptions)   //.pipe(catchError(error => of(error))) 
 } 
 
   doLogon(user: string, password: string): Observable<Security> {
@@ -52,6 +53,7 @@ update_parents_text(ptext:string,section,evening): Observable<any>
 
     return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body, httpOptions), this.http.post(fullURL3, body, httpOptions))
   }
+
 
 getSectionData(sectionid, term): Observable<any> {
     let fullURL = this.configUrl + "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid="+sectionid+"&archived=n"; //Flexi
