@@ -31,7 +31,7 @@ update_parents_text(ptext:string,section,evening): Observable<any>
     body = body.set('sectionid', section);
     body = body.set('eveningid', evening);
     body = body.set('parts',JSON.stringify(obj)) 
-    return this.http.post<Security>(authURL, body, httpOptions).pipe(catchError(error => of(error))) 
+    return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error))) 
 } 
 
   doLogon(user: string, password: string): Observable<Security> {
