@@ -3,7 +3,7 @@ import { Security } from './security';
 //import { SECURITY } from './mock-security';
 import { Observable, forkJoin, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
+import {CustomURLEncoder} from './urlencoder.component';
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 
@@ -15,7 +15,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 
-
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
@@ -26,13 +25,14 @@ update_parents_text(ptext:string,evening): Observable<any>
     let authURL = this.configUrl + "?osmpath=ext/programme/&action=editEveningParts";
       var obj = {};
     obj["notesforhelpingparents"] = ptext;
-    let body = new HttpParams();
+    let body = new HttpParams({encoder: new CustomURLEncoder() });
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
     body = body.set('sectionid', this.globals.mysection);
     body = body.set('eveningid', evening);
     body = body.set('parts',(JSON.stringify(obj))) 
-    return this.http.post(authURL, body, httpOptions)   //.pipe(catchError(error => of(error))) 
+    return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error)))
+    
 } 
 
   doLogon(user: string, password: string): Observable<Security> {
