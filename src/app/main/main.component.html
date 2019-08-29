@@ -82,9 +82,11 @@
           <div class="member_name">Terms</div>
          </div> 
       </div>
-      
+   <span *ngIf="access.permissions.hasOwnProperty('empty')==true">You have no access to this srction</span>
+
+     
     
       </div>
-    </div>
+           </div>
     </ons-page>
    

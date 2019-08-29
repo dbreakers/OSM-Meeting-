@@ -37,6 +37,7 @@ import * as ons from 'onsenui';
 })
 
 export class MainComponent implements OnInit {
+  access = "";
   members = new Array;
   matches =  new Object;
   counter = 0.
@@ -203,6 +204,7 @@ do_progs(p)
     this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
     
     this.globals.eventsection=this.globals.mysection;
+    this.access = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);
      }
   }
 }
