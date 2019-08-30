@@ -20,6 +20,7 @@ export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
     private globals: Globals) { }
+    
 
 update_parents_text(ptext:string,evening): Observable<any>
 {

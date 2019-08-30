@@ -111,6 +111,7 @@ addhelper(i) {
 obj["scout"] = "David";
   this.globals.progs[i].items[0].help.push(obj);
 }
+
 alert(a) {   
 //  alert(window.document.getElementById(a).innerText)  
  ons.notification.toast('Text Updated', {timeout: 2000});
