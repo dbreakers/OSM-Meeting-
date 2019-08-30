@@ -7,6 +7,7 @@ import {CustomURLEncoder} from './urlencoder.component';
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
