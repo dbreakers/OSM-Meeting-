@@ -22,17 +22,16 @@ export class LogonService {
     private globals: Globals) { }
     
 
-update_parents_text(ptext:string,evening): Observable<any>
+update_parents(pobject,evening): Observable<any>
 {
     let authURL = this.configUrl + "?osmpath=ext/programme/&action=editEveningParts";
-      var obj = {};
-    obj["notesforhelpingparents"] = ptext;
+     
     let body = new HttpParams({encoder: new CustomURLEncoder() });
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
     body = body.set('sectionid', this.globals.mysection);
     body = body.set('eveningid', evening);
-    body = body.set('parts',(JSON.stringify(obj))) 
+    body = body.set('parts',(JSON.stringify(pobject))) 
     return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error)))
     
 } 

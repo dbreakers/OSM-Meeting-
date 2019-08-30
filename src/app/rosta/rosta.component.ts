@@ -97,6 +97,11 @@ adjust(a,v) {
   var c = Number(this.globals.progs[idx].items[0].parentsrequired);
   if ((c+v)>=0) {
   this.globals.progs[idx].items[0].parentsrequired = c  + v;
+  //{"parentsrequired":1}
+  var obj = {};
+    obj["parentsrequired"] = this.globals.progs[idx].items[0].parentsrequired;
+this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Counter"));
+
   }
  // alert(idx);
 }
@@ -112,14 +117,16 @@ obj["scout"] = "David";
   this.globals.progs[i].items[0].help.push(obj);
 }
 
-alert(a) {   
+alert(a,t) {   
 //  alert(window.document.getElementById(a).innerText)  
- ons.notification.toast('Text Updated', {timeout: 2000});
+ ons.notification.toast(t+' Updated', {timeout: 2000});
 }
 
 update_text(a) {
 //this.logonService.update_parents_text
-this.logonService.update_parents_text(window.document.getElementById(a).innerText,a).subscribe(Security=> this.alert(Security));
+ var obj = {};
+    obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
+this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
 
 //doLogon(username2,password2).subscribe(Security=> this.post_logon(Security));
 
