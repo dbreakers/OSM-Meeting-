@@ -17,3 +17,13 @@
   font-size: 24pt;
   color: #7413dc;
 }
+.longtext[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
+    font-style: italic;
+}
+
+.longtext[placeholder]:empty:focus:before {
+    content: "";
+}
+.longtext {border:solid; padding: 5px; font-size: 10pt;}
