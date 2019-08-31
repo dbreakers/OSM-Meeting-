@@ -125,11 +125,22 @@ add_active() {
   var div = document.getElementById("myDropdown");
   var a = div.getElementsByTagName("a");
   var count = 0;
+  var member = {}
   for (var i = 0; i < a.length; i++) {
      var txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       count = count + 1;
-    }  
+     }  
+  }
+  if (count==1){
+   for (var i = 0; i < this.members.length; i++) {
+   var name = this.members[i].first_name+" "+this.members[i].last_name;
+   if (name.toUpperCase().indexOf(filter) > -1) {
+     member = this.members[i];
+    // count = count + 1;
+   }
+ }
+ if(this.globals.progs[0].items[0].help.find(i => i.scoutid==member.member_id)!=undefined) { count=0}
   }
   if (count == 1) {return true} else {return false}
 }
@@ -191,9 +202,6 @@ sellist(o) {
  }
 
 addhelper(i) {
-//  var obj = {};
-//obj["scout"] = "David";
-//  this.globals.progs[i].items[0].help.push(obj);
 var input = document.getElementById("myInput");
 input.value = "";
   this.filterFunction();
@@ -203,28 +211,22 @@ this.sellist(1);
 }
 
 alert(a,t) {   
-//  alert(window.document.getElementById(a).innerText)  
  ons.notification.toast(t+' Updated', {timeout: 2000});
 }
 
 update_text(a) {
-//this.logonService.update_parents_text
 
  var obj = {};
     obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
 
-//doLogon(username2,password2).subscribe(Security=> this.post_logon(Security));
-
 }
-//update_parents_text(ptext:string,section,evening)
 
 go(e,prog){
    this._navigator.element.pushPage(ProgcardComponent, { data: { index: prog.eveningid } });
 }
 
 ngOnInit() {
- // this.globals.eventA.sort(this.sorting.compareValuesArray(["startdate"],"desc"))
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 }
 }
