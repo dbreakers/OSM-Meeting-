@@ -28,7 +28,8 @@ import { ProgcardComponent } from '../progcard/progcard.component';
 export class RostaComponent implements OnInit {
 
   _onPaste_StripFormatting_IEPaste = false;
- 
+ members = new Array;
+
 constructor(
     private inj: Injector,
     private globals: Globals,
@@ -115,6 +116,9 @@ addhelper(i) {
   var obj = {};
 obj["scout"] = "David";
   this.globals.progs[i].items[0].help.push(obj);
+  document
+  .getElementById('dialog')
+  .show();
 }
 
 alert(a,t) {   
@@ -140,6 +144,6 @@ go(e,prog){
 
 ngOnInit() {
  // this.globals.eventA.sort(this.sorting.compareValuesArray(["startdate"],"desc"))
-
+this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 }
 }

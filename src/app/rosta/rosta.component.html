@@ -37,3 +37,26 @@
 
 </div><!--List-->
     </ons-page>
+<ons-dialog animation="default" cancelable id="dialog" style="width:100%; height:100%">
+    <div class="dialog-mask"></div>
+      <div class="dialog">
+        <div class="dialog-container" style="height: 200px;">
+          <ons-page>
+            <ons-toolbar>
+              <div class="center">Name</div>
+            </ons-toolbar>
+            <div class="content">
+              <div style="text-align: center">
+                <p>This is just an example.</p>
+                <br>
+                <div style="max-height: 300px;
+  overflow-y: scroll;"><div *ngFor="let member of members; index as i">
+                  {{member.first_name}}&nbsp;{{member.last_name}}
+                </div>  </div>
+                <ons-button (click)="dialog.hide()">Close</ons-button>
+              </div>
+            </div>
+          </ons-page>
+        </div>
+      </div>
+  </ons-dialog>
