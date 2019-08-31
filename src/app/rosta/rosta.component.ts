@@ -184,9 +184,11 @@ var  filter = input.value.toUpperCase();
 
 
 sellist(o) {
-  var element = docuemnt.getElementbyId("myDropdown");
-  if (o==1) {element.style.display = "none";} else {element.style.display = "";}
+
+ var dd = document.getElementById('myDropdown');
+ if (o==1) {dd.style.display = "none";} else {dd.style.display = "";}
  }
+
 addhelper(i) {
 //  var obj = {};
 //obj["scout"] = "David";
