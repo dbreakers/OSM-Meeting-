@@ -36,6 +36,27 @@ update_parents(pobject,evening): Observable<any>
     
 } 
 
+mod_parents(opt,scout,evening,date): Observable<any>
+{
+
+    let authURL = this.configUrl + "?osmpath=ext/programme/&action=deleteParentFromEvening";   
+    let body = new HttpParams({encoder: new CustomURLEncoder() });
+    if (opt==2) {
+    let authURL = this.configUrl + "?osmpath=ext/programme/&action=addParentToEvening";  
+    body = body.set('date', date);
+    
+    }   
+    
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+    body = body.set('sectionid', this.globals.mysection);
+    body = body.set('eveningid', evening);
+    body = body.set('scoutid', scout);
+     
+    return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error)))
+  
+}
+
   doLogon(user: string, password: string): Observable<Security> {
     let authURL = this.configUrl + "?osmpath=users.php&action=authorise";
     let body = new HttpParams();

@@ -109,8 +109,8 @@ this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security
 }
 
 removehelper(i,j) {
-
   this.globals.progs[i].items[0].help.splice(j,1);
+ this.logonService.mod_parents(1,member.member_id.toString(),this.globals.progs[i].items[0].eveningid,this.globals.progs[i].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
 }
 
 clickmember(a) {
@@ -173,6 +173,8 @@ var  filter = input.value.toUpperCase();
    obj["scoutid"] = member.member_id.toString();
    obj["scout"] = member.first_name+" "+member.last_name;
    this.globals.progs[this.selected_meeting].items[0].help.push(obj);
+//this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
+   this.logonService.mod_parents(1,member.member_id.toString(),this.globals.progs[this.selected_meeting].items[0].eveningid,this.globals.progs[this.selected_meeting].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
    if (cl==1){
    document.getElementById('dialog').hide();
    } else {
