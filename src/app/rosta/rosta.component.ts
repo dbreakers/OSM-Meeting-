@@ -185,8 +185,8 @@ var  filter = input.value.toUpperCase();
 
 sellist(o) {
 
- var dd = document.getElementById('myDropdown');
- if (o==1) {dd.style.display = "none";} else {dd.style.display = "";}
+// var dd = document.getElementById('myDropdown');
+// if (o==1) {dd.style.display = "none";} else {dd.style.display = "";}
  }
 
 addhelper(i) {
@@ -197,6 +197,7 @@ var input = document.getElementById("myInput");
 input.value = "";
   this.filterFunction();
 this.selected_meeting = i;
+this.sellist(1); 
   document.getElementById('dialog').show();
 }
 

@@ -14,7 +14,7 @@
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
-   
+
         <div class="content">
        
    <div class="wrapper"><h2>Rosta</h2>     
@@ -43,18 +43,27 @@
         <div class="dialog-container" style="height: 100%">
           <ons-page>
             <ons-toolbar>
-              <div class="center">Select a Helper</div>
+              <div class="center">Select a Helper</div><div class="right">
+        <ons-toolbar-button (click)="click_close()">
+          <ons-icon icon="fa-times"></ons-icon>
+        </ons-toolbar-button>
+      </div>
             </ons-toolbar>
             <div class="content">
               <div style="text-align: left; padding: 20px;">
-                Select a member
+               
+                Select a member<br>
                 <input (blur)="sellist(1)" (focus)="sellist(0)" type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()">
               
                 <div  id="myDropdown" class="dropdown-content"><a *ngFor="let member of members; index as i" (click)="clickmember(member)">
                   {{member.first_name}} {{member.last_name}}
                 </a>  </div>
-                
-                <div  class="footer"><div class="footer"><ons-button (click)="click_close()">Close</ons-button>&nbsp;<ons-button (click)="click_add(1)" *ngIf='add_active()'>Add</ons-button><ons-button (click)="dialog.hide()" disabled="true" *ngIf='!add_active()'>Add</ons-button>&nbsp;<ons-button (click)="dialog.hide()" disabled="true" *ngIf='!add_active()'>Add and Continue</ons-button><ons-button (click)="click_add(0)" *ngIf='add_active()'>Add and Continue</ons-button></div></div>
+                 <div *ngIf="selected_meeting!=-1" style="">
+                 Currently Selected:
+                <div style="padding:5px; display: flex; flex-wrap: wrap;"><span *ngFor="let parent of globals.progs[selected_meeting].items[0].help; index as j">
+    <div   class="tag"><div (click)="removehelper(selected_meeting,j)"><ons-icon icon="fa-times" style="padding:5px" ></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
+  </span> </div></div>
+                <div  class="footer"><div class="footer">&nbsp;<ons-button (click)="click_add(1)" *ngIf='add_active()'>Add</ons-button><ons-button (click)="dialog.hide()" disabled="true" *ngIf='!add_active()'>Add</ons-button>&nbsp;<ons-button (click)="dialog.hide()" disabled="true" *ngIf='!add_active()'>Add and Continue</ons-button><ons-button (click)="click_add(0)" *ngIf='add_active()'>Add and Continue</ons-button></div></div>
               </div>
             </div>
           </ons-page>
