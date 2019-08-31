@@ -50,10 +50,10 @@
                 Select a member
                 <input type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()">
               
-                <div  id="myDropdown" class="dropdown-content"><a *ngFor="let member of members; index as i" (click)="clickmember(member.scoutid)">
-                  {{member.first_name}}&nbsp;{{member.last_name}}
+                <div  id="myDropdown" class="dropdown-content"><a *ngFor="let member of members; index as i" (click)="clickmember(member)">
+                  {{member.first_name}} {{member.last_name}}
                 </a>  </div>
-                <div  class="footer"><div class="footer"><ons-button (click)="dialog.hide()">Close</ons-button>&nbsp;<ons-button (click)="dialog.hide()">Add</ons-button></div></div>
+                <div  class="footer"><div class="footer"><ons-button (click)="dialog.hide()">Close</ons-button>&nbsp;<ons-button (click)="dialog.hide()" *ngIf='add_active()'>Add</ons-button><ons-button (click)="dialog.hide()" disabled="true" *ngIf='!add_active()'>Add</ons-button></div></div>
               </div>
             </div>
           </ons-page>

@@ -112,6 +112,27 @@ removehelper(i,j) {
   this.globals.progs[i].items[0].help.splice(j,1);
 }
 
+clickmember(a) {
+  var input = document.getElementById("myInput");
+  input.value = a.first_name+" "+a.last_name;
+  this.filterFunction();
+}
+
+add_active() {
+  var input = document.getElementById("myInput");
+  var filter = input.value.toUpperCase();
+  var div = document.getElementById("myDropdown");
+  var a = div.getElementsByTagName("a");
+  var count = 0;
+  for (var i = 0; i < a.length; i++) {
+     var txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      count = count + 1;
+    }  
+  }
+  if (count == 1) {return true} else {return false}
+}
+
 filterFunction() {
   var input, filter, ul, li, a, i, div;
   input = document.getElementById("myInput");
@@ -127,6 +148,8 @@ filterFunction() {
     }
 }
 }
+
+
 
 addhelper(i) {
   var obj = {};
