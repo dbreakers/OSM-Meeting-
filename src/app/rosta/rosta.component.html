@@ -60,7 +60,7 @@
                  <div *ngIf="selected_meeting!=-1" style="margin: 5px;">
                  {{globals.progs[selected_meeting].items[0].help.length}} currently Selected:
                 <div style="padding:5px; display: flex; flex-wrap: wrap;"><span *ngFor="let parent of globals.progs[selected_meeting].items[0].help; index as j">
-    <div   class="tag"><div (click)="removehelper(selected_meeting,j)"><ons-icon icon="fa-times" style="padding:5px" ></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
+    <div   class="tag"><div class="rotate" (click)="removehelper(selected_meeting,j)"><ons-icon icon="fa-times" style="padding:5px" ></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
   </span> </div></div>
                 
               </div>
