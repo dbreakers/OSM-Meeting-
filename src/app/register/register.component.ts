@@ -145,12 +145,14 @@ compareValues(key, order='asc') {
   }
  
   ngOnInit() {
+    if (this._params) {
     if (this._params.data && this._params.data.date){
       regdate = this._params.data.date
     }
     if (this._params.data && this._params.data.meeting){
       regmeeting = this._params.data.meeting
     }
+  }
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );

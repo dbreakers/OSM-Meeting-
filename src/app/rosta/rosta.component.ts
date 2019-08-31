@@ -140,7 +140,8 @@ add_active() {
     // count = count + 1;
    }
  }
- if(this.globals.progs[0].items[0].help.find(i => i.scoutid==member.member_id)!=undefined) { count=0}
+
+ if(this.globals.progs[this.selected_meeting].items[0].help.find(i => i.scoutid==member.member_id)!=undefined) { count=0}
   }
   if (count == 1) {return true} else {return false}
 }
