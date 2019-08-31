@@ -28,7 +28,7 @@
     content: "";
 }
 .longtext {border:solid; padding: 5px; font-size: 10pt;}
-.dialog { width:90%; height: 90%}
+.dialog { width:90%; height: 70%}
 
 .dropdown-content a {
   color: black;
@@ -40,9 +40,9 @@
  
 }
 #myDropdown { max-height: 250px;
-  overflow-y: scroll; width: 80%}
+  overflow-y: scroll; width: 70%}
 .dropdown-content a:hover {background-color: #00a794;}
-#myInput {width: 80%; font-size:large;}
+#myInput {width: 70%; font-size:large;}
 .footer {    position: absolute;
     bottom: 10px;
     right: 0;
