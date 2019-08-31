@@ -29,6 +29,7 @@ export class RostaComponent implements OnInit {
 
   _onPaste_StripFormatting_IEPaste = false;
  members = new Array;
+ selected_meeting = -1;
 
 constructor(
     private inj: Injector,
@@ -155,7 +156,7 @@ click_close() {
   .hide();
 }
 
-click_add() {
+click_add(cl) {
 var count = 0;
 var member = {};  
 var input = document.getElementById("myInput");
@@ -169,9 +170,15 @@ var  filter = input.value.toUpperCase();
  }
  if (count==1) {
    var obj = {};
+   obj["scoutid"] = member.member_id.toString();
    obj["scout"] = member.first_name+" "+member.last_name;
-   obj["scoutid"] = member.member_id;
-   this.globals.progs[i].items[0].help.push(obj);
+   this.globals.progs[this.selected_meeting].items[0].help.push(obj);
+   if (cl==1){
+   document.getElementById('dialog').hide();
+   } else {
+     input.value= "";
+     this.filterFunction();
+   }
  }   
 }
 
@@ -179,6 +186,10 @@ addhelper(i) {
 //  var obj = {};
 //obj["scout"] = "David";
 //  this.globals.progs[i].items[0].help.push(obj);
+var input = document.getElementById("myInput");
+input.value = "";
+  this.filterFunction();
+this.selected_meeting = i;
   document.getElementById('dialog').show();
 }
 
