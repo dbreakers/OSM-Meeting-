@@ -42,7 +42,7 @@
 #myDropdown { max-height: 250px;
   overflow-y: scroll; width: 80%}
 .dropdown-content a:hover {background-color: #00a794;}
-#myInput {width: 80%; font-size:24pt;}
+#myInput {width: 80%; font-size:large;}
 .footer {    position: absolute;
     bottom: 10px;
     right: 0;
