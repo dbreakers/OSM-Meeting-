@@ -108,9 +108,9 @@ this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security
  // alert(idx);
 }
 
-removehelper(i,j) {
-  this.globals.progs[i].items[0].help.splice(j,1);
- this.logonService.mod_parents(1,member.member_id.toString(),this.globals.progs[i].items[0].eveningid,this.globals.progs[i].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
+removehelper(i,j) {  
+ this.logonService.mod_parents(2,this.globals.progs[i].items[0].help[j].scoutid,this.globals.progs[i].items[0].eveningid,this.globals.progs[i].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
+this.globals.progs[i].items[0].help.splice(j,1);
 }
 
 clickmember(a) {
@@ -186,7 +186,6 @@ var  filter = input.value.toUpperCase();
 
 
 sellist(o) {
-
 // var dd = document.getElementById('myDropdown');
 // if (o==1) {dd.style.display = "none";} else {dd.style.display = "";}
  }

@@ -41,8 +41,8 @@ mod_parents(opt,scout,evening,date): Observable<any>
 
     let authURL = this.configUrl + "?osmpath=ext/programme/&action=deleteParentFromEvening";   
     let body = new HttpParams({encoder: new CustomURLEncoder() });
-    if (opt==2) {
-    let authURL = this.configUrl + "?osmpath=ext/programme/&action=addParentToEvening";  
+    if (opt==1) {
+    authURL = this.configUrl + "?osmpath=ext/programme/&action=addParentToEvening";  
     body = body.set('date', date);
     
     }   
