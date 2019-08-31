@@ -32,13 +32,11 @@
     <span *ngIf="member.patrol==''">No Patrol</span>  
     <span *ngIf="member.patrol!=''">{{member.patrol}}</span>
     </div>  
-    <div class="member_outer" (click)="go($event,member);">
+    <div class="member_outer" (click)="go($event,member);" id="{{member.member_id}}">
     <div class="member_inner">
       
     <div class="member_box" *ngIf="null!=member.photo_guid">  
-     <!-- <span class="notification" *ngIf="member.patrol_role_level==2">PL</span> 
-      <span class="notification" *ngIf="member.patrol_role_level==1">APL</span> 
-      <span class="notification" *ngIf="member.patrol_role_level==3">SPL</span>-->
+     
       <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> 
       <div class="member_initial"  >
          
@@ -46,9 +44,7 @@
     </div>
     </div>
     <div class="member_box" *ngIf="null==member.photo_guid">
-     <!-- <span class="notification" *ngIf="member.patrol_role_level==2">PL</span> 
-      <span class="notification" *ngIf="member.patrol_role_level==1">APL</span> 
-      <span class="notification" *ngIf="member.patrol_role_level==3">SPL</span> -->
+     
           <span class="notification" *ngIf="section_has_roles()==true">{{globals.patrolroles[globals.config[0][globals.mysection].section_type][member.patrol_role_level]}}</span> 
     <div class="member_initial"  >{{member.first_name.substring(0,1)}}<span *ngIf="no_matches(member.first_name)!=1">{{member.last_name.substring(0,1)}}</span>
      </div> 

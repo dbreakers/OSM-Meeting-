@@ -29,6 +29,8 @@ export class RegisterComponent implements OnInit {
   matches =  new Object;
   counter = 0.
   lastclick=""
+  regdate = ""
+  regmeeting = ""
   constructor(
     private inj: Injector,
     private globals: Globals,
@@ -42,6 +44,12 @@ section_has_roles()
   return this.globals.patrolroles.hasOwnProperty(this.globals.config[0][this.globals.mysection].section_type);
   } else 
   { return false}
+}
+
+select_section()
+{
+var scouts =  document.getElementsByClassName("pulse");
+//for (var i = 0; i < scouts.length; i++) {console.log(scouts[i].id)}
 }
 
 compareValuesArray(key, order='asc') {
@@ -130,14 +138,19 @@ compareValues(key, order='asc') {
     } else
     {
       event.currentTarget.classList.remove("selected");
-    event.currentTarget.classList.remove("pulse");
+      event.currentTarget.classList.remove("pulse");
       this.counter = this.counter-1; 
       this.lastclick="";
       }
   }
  
   ngOnInit() {
-
+    if (this._params.data && this._params.data.date){
+      regdate = this._params.data.date
+    }
+    if (this._params.data && this._params.data.meeting){
+      regmeeting = this._params.data.meeting
+    }
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
