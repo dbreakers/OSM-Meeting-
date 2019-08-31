@@ -124,6 +124,7 @@ alert(a,t) {
 
 update_text(a) {
 //this.logonService.update_parents_text
+
  var obj = {};
     obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
