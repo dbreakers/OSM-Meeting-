@@ -149,15 +149,37 @@ filterFunction() {
 }
 }
 
-
-
-addhelper(i) {
-  var obj = {};
-obj["scout"] = "David";
-  this.globals.progs[i].items[0].help.push(obj);
+click_close() {
   document
   .getElementById('dialog')
-  .show();
+  .hide();
+}
+
+click_add() {
+var count = 0;
+var member = {};  
+var input = document.getElementById("myInput");
+var  filter = input.value.toUpperCase();
+ for (var i = 0; i < this.members.length; i++) {
+   var name = this.members[i].first_name+" "+this.members[i].last_name;
+   if (name.toUpperCase().indexOf(filter) > -1) {
+     member = this.members[i];
+     count = count + 1;
+   }
+ }
+ if (count==1) {
+   var obj = {};
+   obj["scout"] = member.first_name+" "+member.last_name;
+   obj["scoutid"] = member.member_id;
+   this.globals.progs[i].items[0].help.push(obj);
+ }   
+}
+
+addhelper(i) {
+//  var obj = {};
+//obj["scout"] = "David";
+//  this.globals.progs[i].items[0].help.push(obj);
+  document.getElementById('dialog').show();
 }
 
 alert(a,t) {   
