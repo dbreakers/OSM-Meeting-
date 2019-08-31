@@ -58,7 +58,7 @@
                 <div  id="myDropdown" class="dropdown-content"><a *ngFor="let member of members; index as i" (click)="clickmember(member)">
                   {{member.first_name}} {{member.last_name}}
                 </a>  </div>
-                 <div *ngIf="selected_meeting!=-1" style="">
+                 <div *ngIf="selected_meeting!=-1" style="margin: 5px;">
                  Currently Selected:
                 <div style="padding:5px; display: flex; flex-wrap: wrap;"><span *ngFor="let parent of globals.progs[selected_meeting].items[0].help; index as j">
     <div   class="tag"><div (click)="removehelper(selected_meeting,j)"><ons-icon icon="fa-times" style="padding:5px" ></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
