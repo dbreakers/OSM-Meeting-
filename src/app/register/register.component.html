@@ -79,8 +79,12 @@
                
                 Select a member <br>
                 <ons-input placeholder="Type here" [(value)]="target" type="date"></ons-input>
-                {{target}}
-              </div>
+                {{target}} {{getnamefordate(target)}}
+              
+              <div class="week" *ngFor="let week of weeks; index as i ">
+                <div (click)="" class="day" *ngFor="let day of week; index as j">{{day.date.getDate()}}</div>
+               </div>  
+</div>
             </div>
           </ons-page>
         </div>

@@ -31,6 +31,8 @@ export class RegisterComponent implements OnInit {
   lastclick=""
   regdate = ""
   regmeeting = ""
+  weeks = [];
+
   constructor(
     private inj: Injector,
     private globals: Globals,
@@ -144,6 +146,43 @@ compareValues(key, order='asc') {
       }
   }
  
+getnamefordate(target){
+  var e = this.globals.eventA.find(i=>i.startdate==target)
+  
+  var p = this.globals.sectiondata[4].items.find(i=>i.meetingdate==target)
+  if (e!=undefined){return e.name}
+    if (p!=undefined){return p.title}
+  return 'Not a meeting or Event'
+}
+//
+generate_cal(date){
+  var days = new Array;
+  var c = new Date(date);
+  var caldate = new Date(c.getFullYear(),c.getMonth(),1,0,0,0)
+  while (caldate.getDay()!=0) {
+    caldate.setDate(caldate.getDate() - 1);
+  }   
+  var caldate2 = new Date(c.getFullYear(),c.getMonth()+1,0,0,0,0)
+  while (caldate2.getDay()!=6) {
+    caldate2.setDate(caldate.getDate() + 1);
+  }
+ var loop = caldate;
+ while (loop<=caldate2){
+   if (loop.getDay()==0)
+   {
+     days=[];
+   }
+   var d = new Object;
+   d.date = new Date(loop)
+   days.push(d);
+   if (loop.getDay()==6)
+   {
+     this.weeks.push(days)
+   }
+   loop.setDate(loop.getDate() + 1);
+ }
+}
+
   ngOnInit() {
     if (this._params) {
     if (this._params.data && this._params.data.date){
@@ -153,7 +192,8 @@ compareValues(key, order='asc') {
       regmeeting = this._params.data.meeting
     }
   }
-  this.target = '2008-10-01';
+  this.target = '2019-08-10';
+  this.generate_cal(this.target) 
   if (!this._params) {
      document.getElementById('dialog').show();
   }  

@@ -83,4 +83,6 @@ float: left;
   padding:10pt;
 }
 .dialog { width:90%; height: 70%}
+.day {border: solid; width: 100px;}
+.week {display: flex;}
 
