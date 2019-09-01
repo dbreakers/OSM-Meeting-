@@ -80,7 +80,7 @@
                 Select a member <br>
                 <ons-input placeholder="Type here" [(value)]="target" type="date"></ons-input>
                 {{target}} {{getnamefordate(target)}}
-              <div class="week"><div  class="day">Sun</div><div  class="day">Mon</div><div  class="day">Tue</div><div  class="day">Wed</div><div  class="day">Thu</div><div  class="day">Fri</div><div  class="day">Sat</div></div>
+              <div class="week"><div  class="day2">Sun</div><div  class="day2">Mon</div><div  class="day2">Tue</div><div  class="day2">Wed</div><div  class="day2">Thu</div><div  class="day2">Fri</div><div  class="day2">Sat</div></div>
               <div class="week" *ngFor="let week of weeks; index as i ">
                 <div  class="day" *ngFor="let day of week; index as j">{{day.date.getDate()}}</div>
                </div>  
