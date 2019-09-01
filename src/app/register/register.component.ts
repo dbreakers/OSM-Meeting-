@@ -153,6 +153,7 @@ compareValues(key, order='asc') {
       regmeeting = this._params.data.meeting
     }
   }
+  this.target = '2008-10-01';
   if (!this._params) {
      document.getElementById('dialog').show();
   }  
