@@ -82,7 +82,11 @@ float: left;
 .bottom-bar {
   padding:10pt;
 }
-.dialog { width:90%; height: 70%}
-.day {border: solid; width: 100px;}
+.dialog { width:90%; height: 90%}
+.day {border: solid;
+width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;}
 .week {display: flex;}
 
