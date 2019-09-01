@@ -78,12 +78,15 @@ mod_parents(opt,scout,evening,date): Observable<any>
 
 
 getSectionData(sectionid, term): Observable<any> {
+    let st = this.globals.config[1].find(i=>i.sectionid==sectionid)
     let fullURL = this.configUrl + "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid="+sectionid+"&archived=n"; //Flexi
     let fullURL2 = this.configUrl + "?osmpath=ext/members/contact/grid/&action=getMembers"; // Members
     let fullURL3 = this.configUrl + "?osmpath=ext/settings/patrols/&action=get&sectionid="+sectionid; //Patrols
     let fullURL4 = this.configUrl + "?osmpath=ext/events/summary/&action=get&sectionid="+sectionid+"&termid="+term; //Events
     let fullURL5 = this.configUrl + "?osmpath=ext/programme/&action=getProgrammeSummary&sectionid="+sectionid+"&termid="+term; //Programme
-    let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; //Programme
+    let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; // access
+    let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st;
+    let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st+"&nototal=true";
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
@@ -92,7 +95,7 @@ getSectionData(sectionid, term): Observable<any> {
     body2 = body2.set('userid', this.globals.userid);
     body2 = body2.set('section_id', sectionid);
     body2 = body2.set('term_id', term);
-    return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body2, httpOptions), this.http.post(fullURL3, body, httpOptions),this.http.post(fullURL4, body, httpOptions),this.http.post(fullURL5, body, httpOptions),this.http.post(fullURL6, body, httpOptions));
+    return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body2, httpOptions), this.http.post(fullURL3, body, httpOptions),this.http.post(fullURL4, body, httpOptions),this.http.post(fullURL5, body, httpOptions),this.http.post(fullURL6, body, httpOptions),this.http.post(fullURL7, body, httpOptions),this.http.post(fullURL8, body, httpOptions));
   }
 
 getEventAData(event): Observable<any> {
