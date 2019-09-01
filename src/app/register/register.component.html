@@ -62,3 +62,27 @@
       </div>
     </div>
     </ons-page>
+    <ons-dialog animation="default" cancelable id="dialog" >
+    <div class="dialog-mask"></div>
+      <div class="dialog">
+        <div class="dialog-container" style="height: 100%">
+          <ons-page>
+            <ons-toolbar>
+              <div class="center">Select a Date</div><div class="right">
+        <ons-toolbar-button (click)="click_close()">
+          <ons-icon icon="fa-times"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+            </ons-toolbar>
+            <div class="content">
+              <div style="text-align: left; padding: 20px;">
+               
+                Select a member <br>
+                
+                
+              </div>
+            </div>
+          </ons-page>
+        </div>
+      </div>
+  </ons-dialog>
