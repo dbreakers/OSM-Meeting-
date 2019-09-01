@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
   regdate = ""
   regmeeting = ""
   weeks = [];
+  monthnames= ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
   constructor(
     private inj: Injector,
@@ -145,37 +146,42 @@ compareValues(key, order='asc') {
       this.lastclick="";
       }
   }
+
+getmonth(t) { return new Date(t).getMonth()}
  
 getnamefordate(target){
+this.generate_cal(target)
   var e = this.globals.eventA.find(i=>i.startdate==target)
   
   var p = this.globals.sectiondata[4].items.find(i=>i.meetingdate==target)
   if (e!=undefined){return e.name}
     if (p!=undefined){return p.title}
   return 'Not a meeting or Event'
+
 }
 //
 generate_cal(date){
   var days = new Array;
+  this.weeks = [];
   var c = new Date(date);
   var caldate = new Date(c.getFullYear(),c.getMonth(),1,0,0,0)
-  while (caldate.getDay()!=0) {
+  while (caldate.getDay()!=1) {
     caldate.setDate(caldate.getDate() - 1);
   }   
   var caldate2 = new Date(c.getFullYear(),c.getMonth()+1,0,0,0,0)
-  while (caldate2.getDay()!=6) {
-    caldate2.setDate(caldate.getDate() + 1);
+  while (caldate2.getDay()!=0) {
+    caldate2.setDate(caldate2.getDate() + 1);
   }
  var loop = caldate;
  while (loop<=caldate2){
-   if (loop.getDay()==0)
+   if (loop.getDay()==1)
    {
      days=[];
    }
    var d = new Object;
    d.date = new Date(loop)
    days.push(d);
-   if (loop.getDay()==6)
+   if (loop.getDay()==0)
    {
      this.weeks.push(days)
    }

@@ -83,17 +83,18 @@ float: left;
   padding:10pt;
 }
 .dialog { width:90%; height: 90%}
-.day {border: solid;
+.day { 
 width: 100px;
 max-width: 50px;
+border-radius: 50%;
     height: 50px;
     line-height: 50px;
     text-align: center;}
-    .day2 {border: solid;
+    .day2 { 
 width: 100px;
 
 max-width: 50px;    
     
     text-align: center;}
-.week {display: flex;}
-
+.week {display: flex; max-width: 350px;}
+.day:hover {background: #00a794}
