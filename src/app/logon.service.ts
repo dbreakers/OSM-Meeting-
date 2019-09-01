@@ -76,7 +76,6 @@ mod_parents(opt,scout,evening,date): Observable<any>
     return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body, httpOptions), this.http.post(fullURL3, body, httpOptions))
   }
 
-
 getSectionData(sectionid, term): Observable<any> {
     let st = this.globals.config[1].find(i=>i.sectionid==sectionid)
     let fullURL = this.configUrl + "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid="+sectionid+"&archived=n"; //Flexi
