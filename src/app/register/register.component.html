@@ -77,13 +77,13 @@
             <div class="content">
               <div style="text-align: left; padding: 20px;">
                
-                Select a member <br>
-                <ons-input placeholder="Type here" [(value)]="target" type="date"></ons-input>
-                {{target}} {{getnamefordate(target)}}<br>
+                <div>Date: 
+                <input id="targetdate" placeholder="Type here"  type="date" (input)="generate_cal2(target)" (blur)="generate_cal2(target)"></div><br>
+               {{getnamefordate(target)}}<br>
                {{monthnames[getmonth(target)]}}
               <div class="week"><div  class="day2">Mon</div><div  class="day2">Tue</div><div  class="day2">Wed</div><div  class="day2">Thu</div><div  class="day2">Fri</div><div  class="day2">Sat</div><div  class="day2">Sun</div></div>
               <div class="week" *ngFor="let week of weeks; index as i ">
-                <div  class="day" *ngFor="let day of week; index as j">{{day.date.getDate()}}</div>
+                <div  (click)="set_target(day.date)" class="day" *ngFor="let day of week; index as j">{{day.date.getDate()}}</div>
                </div>  
 </div>
             </div>

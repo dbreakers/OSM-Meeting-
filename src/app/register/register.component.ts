@@ -27,7 +27,8 @@ import * as ons from 'onsenui';
 export class RegisterComponent implements OnInit {
   members = new Array;
   matches =  new Object;
-  counter = 0.
+  target = "";
+  counter = 0;
   lastclick=""
   regdate = ""
   regmeeting = ""
@@ -150,16 +151,24 @@ compareValues(key, order='asc') {
 getmonth(t) { return new Date(t).getMonth()}
  
 getnamefordate(target){
-this.generate_cal(target)
-  var e = this.globals.eventA.find(i=>i.startdate==target)
+//this.generate_cal(target)
+var targetd = new Date(target).toISOString()
+                    .split("T")[0];;
+//var target2 = targetd.getFullYear() +"-"+ (targetd.getMonth()+1) +"-"+targetd.getDate();
+  var e = this.globals.eventA.find(i=>i.startdate==targetd)
   
-  var p = this.globals.sectiondata[4].items.find(i=>i.meetingdate==target)
+  var p = this.globals.sectiondata[4].items.find(i=>i.meetingdate==targetd)
   if (e!=undefined){return e.name}
     if (p!=undefined){return p.title}
   return 'Not a meeting or Event'
 
 }
 //
+generate_cal2(t) {
+   var i = document.getElementById("targetdate");
+   this.target = new Date(i.value) 
+this.generate_cal(this.target);
+}
 generate_cal(date){
   var days = new Array;
   this.weeks = [];
@@ -189,6 +198,14 @@ generate_cal(date){
  }
 }
 
+set_target(d) {
+  this.target =  d.toISOString()
+                    .split("T")[0];;;
+  //this.generate_cal(this.target) 
+  var input = document.getElementById("targetdate")
+  input.value = this.target;
+}
+
   ngOnInit() {
     if (this._params) {
     if (this._params.data && this._params.data.date){
@@ -198,8 +215,13 @@ generate_cal(date){
       regmeeting = this._params.data.meeting
     }
   }
-  this.target = '2019-08-10';
+  var nowdate = new Date
+  
+  this.target =  nowdate.toISOString()
+                    .split("T")[0];;;
   this.generate_cal(this.target) 
+  var input = document.getElementById("targetdate")
+  input.value = this.target;
   if (!this._params) {
      document.getElementById('dialog').show();
   }  
