@@ -167,7 +167,9 @@ var targetd = new Date(target).toISOString()
 generate_cal2(t) {
    var i = document.getElementById("targetdate");
    this.target = new Date(i.value) 
+ if (this.target!="Invalid Date"){  
 this.generate_cal(this.target);
+ }
 }
 generate_cal(date){
   var days = new Array;
