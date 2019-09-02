@@ -165,34 +165,41 @@ var targetd = new Date(target).toISOString()
   return 'Not a meeting or Event'
 }
 
+
 generate_cal2(t) {
    var i = document.getElementById("targetdate");
-   this.target = new Date(i.value) 
- if (this.target!="Invalid Date"){  
-this.generate_cal(this.target);
+   var d = new Date(i.value) 
+if (d != "Invalid Date"){  
+this.yearselect = d.getFullYear();
+this.monthselect = d.getMonth();
+this.dayselect = d.getDay();
+this.generate_cal(this.yearselect, this.monthselect-1,this.dayselect) 
  
  }
 }
 
 adjustcal(s) {
-  var i = document.getElementById("targetdate");
-   this.target = new Date(i.value) 
- if (this.target!="Invalid Date"){  
-this.target = new Date(this.target.getFullYear(),this.target.getMonth()+s,this.target.getDate(),12,0,0)
-i.value = this.target.toISOString()
-                    .split("T")[0];
-this.generate_cal(this.target);
- }
+ // var i = document.getElementById("targetdate");
+ //  this.target = new Date(i.value) 
+ //if (this.target!="Invalid Date"){  
+//this.target = new Date(this.target.getFullYear(),this.target.getMonth()+s,this.target.getDate(),12,0,0)
+//i.value = this.target.toISOString().split("T")[0];
+//this.generate_cal(this.target);
+this.monthselect = this.monthselect + s;
+if (this.monthselect==-1) {this.monthselect=11; this.yearselect = this.yearselect-1}
+if (this.monthselect==12) {this.monthselect=0; this.yearselect = this.yearselect+1}
+this.generate_cal(this.yearselect, this.monthselect,this.dayselect) 
+// }
 }
-generate_cal(date){
+generate_cal(y,m,d){
   var days = new Array;
   this.weeks = [];
-  var c = new Date(date);
-  var caldate = new Date(c.getFullYear(),c.getMonth(),1,12,0,0)
+  //var c = new Date(date);
+  var caldate = new Date(y,m,d,1,12,0,0)
   while (caldate.getDay()!=1) {
     caldate.setDate(caldate.getDate() - 1);
   }   
-  var caldate2 = new Date(c.getFullYear(),c.getMonth()+1,0,12,0,0)
+  var caldate2 = new Date(y,m+1,0,12,0,0)
   while (caldate2.getDay()!=0) {
     caldate2.setDate(caldate2.getDate() + 1);
   }
@@ -234,11 +241,11 @@ set_target(d) {
   
   this.target =  nowdate.toISOString()
                     .split("T")[0];
-  this.yearselect = this.nowdate.getFullYear();
-  this.monthselect = this.nowdate.getMonth();
-  this.dayselect = this.nowdate.getDay();
+  this.yearselect = nowdate.getFullYear();
+  this.monthselect = nowdate.getMonth();
+  this.dayselect = nowdate.getDay();
   
-  this.generate_cal(this.target) 
+  this.generate_cal(this.yearselect, this.monthselect,this.dayselect) 
   var input = document.getElementById("targetdate")
   input.value = this.target;
   if (!this._params) {

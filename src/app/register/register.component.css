@@ -86,15 +86,26 @@ float: left;
 .day { 
 width: 100px;
 max-width: 50px;
-border-radius: 50%;
+
     height: 50px;
     line-height: 50px;
     text-align: center;}
     .day2 { 
 width: 100px;
-
+padding: 5px;
 max-width: 50px;    
     
     text-align: center;}
-.week {display: flex; max-width: 350px;}
-.day:hover {background: #00a794}
+.week {display: flex; max-width: 350px;background:lightgrey; color:black;}
+.week2 {display: flex; max-width: 350px; background:darkgrey; color:black;}
+.day:hover {background: #00a794; border-radius: 50%;}
+.monthbut {width: 10%}
+.month_head {
+  max-width: 350px;
+  display: flex;
+      height: 50px;
+    line-height: 50px;
+    background: #7413dc;
+    color: white;
+}
+.monthlab {width: 80%; padding-left: 10px}
