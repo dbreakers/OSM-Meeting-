@@ -161,13 +161,21 @@ var targetd = new Date(target).toISOString()
   if (e!=undefined){return e.name}
     if (p!=undefined){return p.title}
   return 'Not a meeting or Event'
-
 }
 
 generate_cal2(t) {
    var i = document.getElementById("targetdate");
    this.target = new Date(i.value) 
  if (this.target!="Invalid Date"){  
+this.generate_cal(this.target);
+ }
+}
+
+adjustcal(s) {
+  var i = document.getElementById("targetdate");
+   this.target = new Date(i.value) 
+ if (this.target!="Invalid Date"){  
+this.target = new Date(this.target.getFullYear(),this.target.getMonth()+1+s,this.target.getDate(),12,0,0)
 this.generate_cal(this.target);
  }
 }
