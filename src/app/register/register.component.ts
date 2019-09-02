@@ -175,7 +175,7 @@ adjustcal(s) {
   var i = document.getElementById("targetdate");
    this.target = new Date(i.value) 
  if (this.target!="Invalid Date"){  
-this.target = new Date(this.target.getFullYear(),this.target.getMonth()+1+s,this.target.getDate(),12,0,0)
+this.target = new Date(this.target.getFullYear(),this.target.getMonth()+s,this.target.getDate(),12,0,0)
 this.generate_cal(this.target);
  }
 }
