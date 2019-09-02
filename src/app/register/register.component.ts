@@ -34,7 +34,9 @@ export class RegisterComponent implements OnInit {
   regmeeting = ""
   weeks = [];
   monthnames= ["January","February","March","April","May","June","July","August","September","October","November","December"];
-
+  yearselect = 0;
+  monthselect = 0;
+  dayselect = 0; 
   constructor(
     private inj: Injector,
     private globals: Globals,
@@ -168,6 +170,7 @@ generate_cal2(t) {
    this.target = new Date(i.value) 
  if (this.target!="Invalid Date"){  
 this.generate_cal(this.target);
+ 
  }
 }
 
@@ -176,6 +179,8 @@ adjustcal(s) {
    this.target = new Date(i.value) 
  if (this.target!="Invalid Date"){  
 this.target = new Date(this.target.getFullYear(),this.target.getMonth()+s,this.target.getDate(),12,0,0)
+i.value = this.target.toISOString()
+                    .split("T")[0];
 this.generate_cal(this.target);
  }
 }
@@ -228,7 +233,11 @@ set_target(d) {
   var nowdate = new Date
   
   this.target =  nowdate.toISOString()
-                    .split("T")[0];;;
+                    .split("T")[0];
+  this.yearselect = this.nowdate.getFullYear();
+  this.monthselect = this.nowdate.getMonth();
+  this.dayselect = this.nowdate.getDay();
+  
   this.generate_cal(this.target) 
   var input = document.getElementById("targetdate")
   input.value = this.target;
