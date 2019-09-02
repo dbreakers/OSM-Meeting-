@@ -163,7 +163,7 @@ var targetd = new Date(target).toISOString()
   return 'Not a meeting or Event'
 
 }
-//
+
 generate_cal2(t) {
    var i = document.getElementById("targetdate");
    this.target = new Date(i.value) 
@@ -173,7 +173,7 @@ generate_cal(date){
   var days = new Array;
   this.weeks = [];
   var c = new Date(date);
-  var caldate = new Date(c.getFullYear(),c.getMonth(),1,,0,0)
+  var caldate = new Date(c.getFullYear(),c.getMonth(),1,12,0,0)
   while (caldate.getDay()!=1) {
     caldate.setDate(caldate.getDate() - 1);
   }   
