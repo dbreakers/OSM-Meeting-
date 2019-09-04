@@ -51,7 +51,9 @@ export class TermpickerComponent implements OnInit {
    section_data_return(data) {
     //alert("heelo");
   this.globals.sectiondata = data;
+  this.globals.eventsection = "";
   this._navigator.element.replacePage(MainComponent);
+
   }
 
 
