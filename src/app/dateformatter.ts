@@ -144,6 +144,24 @@ date_format_days_between(s,e) {
   return Math.round(difference_ms/one_day)+1; 
 }
 
+date_format_date_nd(d,ls) {
+   var today = new Date();
+   var date = new Date(d);
+   var inc_year = false;
+   if (d==today) { return "Today"} else
+    {
+      if (date.getFullYear()!=today.getFullYear()) { inc_year = true;}
+      var ss = "";
+      ss = ss + " " +date.getDate();
+      ss = ss + this.date_format_nth(date) + " ";
+      ss = ss + this.date_format_monthname(date,ls);
+      if (inc_year) { ss = ss +" "+date.getFullYear()}
+      return ss;
+    }
+ }    
+
+
+
  date_format_date(d,ls) {
    var today = new Date();
    var date = new Date(d);

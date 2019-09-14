@@ -30,6 +30,7 @@ export class RostaComponent implements OnInit {
   _onPaste_StripFormatting_IEPaste = false;
  members = new Array;
  selected_meeting = -1;
+progs_copy = [];
 
 constructor(
     private inj: Injector,
@@ -212,15 +213,24 @@ this.sellist(1);
 }
 
 alert(a,t) {   
- ons.notification.toast(t+' Updated', {timeout: 2000});
+ var original = this.progs_copy.find(i=>i.items[0].eveningid==a.eveningid)  
+if ((t=="Text") && (original!=undefined)) {
+  original.items[0].notesforhelpingparents = a.notesforhelpingparents;
+}
+ ons.notification.toast(t+' updated for meeting '+a.title, {timeout: 2000});
 }
 
 update_text(a) {
 
  var obj = {};
-    obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
+ obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
+ var original = this.progs_copy.find(i=>i.items[0].eveningid==a)
+ if (original != undefined) {
+ if (obj.notesforhelpingparents!=original.items[0].notesforhelpingparents){   
+   
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
-
+ }
+ }
 }
 
 go(e,prog){
@@ -229,5 +239,6 @@ go(e,prog){
 
 ngOnInit() {
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+this.progs_copy = this.globals.progs;
 }
 }

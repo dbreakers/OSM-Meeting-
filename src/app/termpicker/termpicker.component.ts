@@ -15,6 +15,7 @@ import {
 import { AppComponent } from '../app.component';
 import { MedicalcardComponent } from '../medicalcard/medicalcard.component';
 import { MainComponent } from '../main/main.component';
+import {  DateformatService } from '../dateformatter';
 import { LogonService } from '../logon.service';
 import { Globals } from '../globals';
 import * as ons from 'onsenui';
@@ -28,38 +29,31 @@ import {  Sortservice } from '../sort';
 export class TermpickerComponent implements OnInit {
   section = new Array;
   localterm = "";
+  termscopy = [];
+  localtermid = "";
 
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private globals: Globals,
     private sorting: Sortservice,
+    private dateFormat: DateformatService,
     private logonService: LogonService) { }
 
   push(event, index, i) {
-    
-  //  if (document.getElementById(this.localterm) != null) {
-     // document.getElementById(this.localterm).checked = false;
-  //  };
-  //  if (document.getElementById(index.sectionid) != null) {
-
-    //  document.getElementById(index.sectionid).checked = true;
- //   }
-    this.localterm = i;
-    
+    this.localterm = i;   
   }
 
    section_data_return(data) {
     //alert("heelo");
   this.globals.sectiondata = data;
   this.globals.eventsection = "";
+  this.logonService.setAPIvalues();
   this._navigator.element.replacePage(MainComponent);
 
   }
 
-
   select_term() {
     this.globals.current_term = this.localterm;
-//    this._navigator.element.replacePage(MainComponent);
   if (this.globals.current_term!='-1') {
    this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
   } else
@@ -71,16 +65,24 @@ export class TermpickerComponent implements OnInit {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
 
-
+  termdates(s,e) {
+    var subtitle = "From "+this.dateFormat.date_format_date_nd(s,false) +" to "+ this.dateFormat.date_format_date_nd(e,false)
+    return subtitle;
+  }
 
 
   ngOnInit() {
-  
+   
     if (!this.globals.configread) {
     //  this.logonService.getSectionConfig().subscribe(SectionConfig => this.section_config_return(SectionConfig));
-    } else { this.section = this.globals.config;
-    this.localterm = this.globals.current_term;
-    //this.section[2][this.globals.mysection].sort(this.sorting.compareValuesArray(["startdate"],"desc")) 
+    } else { 
+      this.section = this.globals.config;
+      this.localterm = this.globals.current_term;
+      this.localtermid = this.section[2][this.globals.mysection][this.localterm].termid;
+      this.termscopy = this.section[2][this.globals.mysection]
+      this.termscopy.sort(this.sorting.compareValuesArray(["startdate"],"desc")) ;
+      this.localterm = this.termscopy.findIndex(i=>i.termid==this.localtermid);
+      if (this.localterm != this.globals.current_term) {this.globals.current_term=this.localterm}
       }
     
   }

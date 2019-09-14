@@ -30,9 +30,6 @@ import { Security } from '../security';
 export class HomeComponent  {
  //var error_text: string;
  error_text = "";
- //error_text : string;
- 
- //security: Security;
 
   constructor(private _navigator: OnsNavigator, 
               private inj: Injector,
@@ -56,6 +53,7 @@ find_current_term() {
 
 section_data_return(data) {
   this.globals.sectiondata = data;
+  this.logonService.setAPIvalues();
   this._navigator.element.replacePage(MainComponent);
 }
 
@@ -87,7 +85,7 @@ section_config_return(s) {
     
   } else
   {
-    this.logonService.setAPIvalues()
+    
      this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
     //this._navigator.element.replacePage(MainComponent);}
 }

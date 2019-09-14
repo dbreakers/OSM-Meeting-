@@ -63,6 +63,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
   section_data_return(data) {
     //alert("heelo");
     this.globals.sectiondata = data;
+      this.logonService.setAPIvalues();
     this._navigator.element.replacePage(MainComponent);
   }
 
