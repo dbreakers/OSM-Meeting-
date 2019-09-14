@@ -15,7 +15,7 @@
 <p class="subhead">Parent Helpers ({{prog.items[0].parentsrequired}} needed)</p>
 <div *ngIf="prog.items[0].help.length==0">No parents helping</div> 
 <div *ngFor="let ldr of prog.items[0].help; index as i">
-  <div (click)="go($event,ldr.scoutid);">Parents of <b>{{ldr.scout}}</b></div>
+  <div (click)="go($event,ldr.scoutid);" class="parent_line"><ons-icon icon="fa-person"></ons-icon> of <b>{{ldr.scout}}</b></div>
 </div>
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) == 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more is needed</div>
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) > 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more are needed</div>

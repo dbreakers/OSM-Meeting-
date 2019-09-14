@@ -5,3 +5,4 @@
 .theadr  { width: 10%; text-align: right; font-size: 10pt;background:#00a794;color: white;padding: 2px;padding-right: 8px}
 .theadp  { display:flex}
 .theadb { border: solid; border-width: 1px; border-color:#7413dc; font-size:14pt; padding:5px;}
+.parent_line {padding-top: 10px; padding-bottom: 10px;}
