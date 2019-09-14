@@ -24,7 +24,7 @@
       </p>
         <div class="member_outer" (click)="loadPage(medical)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-ambulance"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" ><ons-icon icon="fa-ambulance"></ons-icon></div></div>
           <div class="member_name">Health</div>
          </div> 
       </div>
@@ -82,11 +82,13 @@
           <div class="member_name">Terms</div>
          </div> 
       </div>
-   <!--<span *ngIf="access.permissions.hasOwnProperty('empty')==true">You have no access to this srction</span>-->
 
      
     
       </div>
+      
+      <div *ngIf="globals.noaccess==true">You have no access to this srction</div>
+
            </div>
     </ons-page>
    

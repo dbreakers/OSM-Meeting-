@@ -45,6 +45,7 @@ export class AttendancetabComponent implements OnInit {
  group_seg = 1;
  target: boolean = false;
  notamember = 0;
+ att_list = 0;
  //members = new Array;
 // member_image = "";
 
@@ -76,8 +77,22 @@ eventdates(s,e) {
 get_count(l){
    var count = 0;
  for ( var i = 0; i < this.event.items.length; i++ ) {
-   if (this.event.items[i].attending == "Yes") {
+   if ((this.event.items[i].attending == "Yes" && this.att_list==0 )||(this.event.items[i].attending == "No" && this.att_list==1 )||((this.event.items[i].attending == "Invited" ||(this.event.items[i].attending == "Show in Parent Portal")) && this.att_list==2 )) {
      
+     if((this.event.items[i].patrolid==-2&&(l==true)))
+        { count++; }
+     if((this.event.items[i].patrolid>-1&&(l==false)))
+        { count++; }    
+   }
+ }
+ return count;
+//
+}
+
+get_no(l){
+   var count = 0;
+ for ( var i = 0; i < this.event.items.length; i++ ) {
+   if ((this.event.items[i].attending == "No")) {
      if((this.event.items[i].patrolid==-2&&(l==true)))
         { count++; }
      if((this.event.items[i].patrolid>-1&&(l==false)))
@@ -100,7 +115,9 @@ get_undecided(l){
  }
  return count;
 //
-}e
+}
+
+update_att(a){this.att_list=a }
 
 get_total(il){
    var count = 0;

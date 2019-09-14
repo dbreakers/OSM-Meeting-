@@ -26,7 +26,7 @@ import {SectionselectComponent} from '../sectionselect/sectionselect.component';
 import {BirthdayComponent} from '../birthday/birthday.component';
 import { Globals } from '../globals';
 import { LogonService } from '../logon.service';
-import {  PhotoURLService } from '../photoUrl';
+import { PhotoURLService } from '../photoUrl';
 import * as ons from 'onsenui';
 
 

@@ -72,7 +72,7 @@ mod_parents(opt,scout,evening,date): Observable<any>
     this.globals.eventsaccess = "";
     this.globals.programmeaccess = "";
     this.globals.registeraccess = "";
-
+    this.globals.noaccess = true;
     if (apiv!!=undefined) {
       if (!apiv.permissions.hasOwnProperty('empty')) {
         this.globals.memberaccess = apiv.permissions.member;
@@ -80,6 +80,7 @@ mod_parents(opt,scout,evening,date): Observable<any>
         this.globals.eventsaccess = apiv.permissions.events;
         this.globals.programmeaccess = apiv.permissions.programme;
         this.globals.registeraccess = apiv.permissions.register;
+        this.globals.noaccess = false;
       }
     }
   }

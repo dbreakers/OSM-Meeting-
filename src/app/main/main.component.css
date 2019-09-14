@@ -6,9 +6,12 @@
   vertical-align: middle;
   text-align: center;
   color: white; 
-  background-color: gray; 
+  background-color: #00a794; 
   font-size:25px;
 }
+
+.deact {
+  background-color:lightgrey;}
 
 .member_outer.selected .member_inner .member_initial {
   background-color: #7413dc;

@@ -25,6 +25,7 @@ export class Globals {
   eventsaccess: string = "";
   programmeaccess: string = "";
   registeraccess: string = "";
+  noaccess: boolean = true;
   sectionname: string = "No Section";
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
