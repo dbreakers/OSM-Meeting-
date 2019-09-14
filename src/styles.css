@@ -20,3 +20,8 @@ h2 {text-align: center;}
 .back-button__label {color: var(--scoutpurple)}
 .back-button__icon {fill:var(--scoutpurple)}
 :checked+.checkbox__checkmark:before {background: var(--scoutpurple);}
+@media only screen and (min-width: 600px) {
+.menu_sel  {
+   display: none;
+  }
+}
