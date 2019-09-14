@@ -64,7 +64,24 @@ mod_parents(opt,scout,evening,date): Observable<any>
     body = body.set('password', password);
     return this.http.post<Security>(authURL, body, httpOptions).pipe(catchError(error => of(error)))
   }
-
+  setAPIvalues() {
+    let apiv = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);
+    this.globals.memberaccess = "";
+    this.globals.badgeaccess = "";
+    this.globals.eventsaccess = "";
+    this.globals.programmeaccess = "";
+    this.globals.registeraccess = "";
+    if (apiv!!=undefined) {
+      if (!apiv.permissionsn.hasOwnProperty('empty')) {
+        this.globals.memberaccess = apiv.permissions.member;
+        this.globals.badgeaccess = apiv.permissions.badges;
+        this.globals.eventsaccess = apiv.permissions.events;
+        this.globals.programmeaccess = apiv.permissions.programme;
+        this.globals.registeraccess = apiv.permissions.register;
+      }
+    }
+    
+  }
   getSectionConfig(): Observable<any> {
     let fullURL = this.configUrl + "?osmpath=api.php&action=getSectionConfig";
     let fullURL2 = this.configUrl + "?osmpath=api.php&action=getUserRoles";

@@ -20,6 +20,11 @@ export class Globals {
   eventsection: string = "";
   sectiondatasection: string = "";
   current_term: string  = "-1";
+  memberaccess: string = "";
+  badgeaccess: string = "";
+  eventsaccess: string = "";
+  programmeaccess: string = "";
+  registeraccess: string = "";
   sectionname: string = "No Section";
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
