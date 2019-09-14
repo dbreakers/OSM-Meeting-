@@ -28,6 +28,15 @@
 	display: table-row-group;
 }
 
+.sticky {
+  background: white;
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+}
+
+
+
 .member_initial {
   display: table-cell;
   border-radius: 40px;
