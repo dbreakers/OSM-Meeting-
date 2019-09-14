@@ -28,6 +28,14 @@
 						Settings
 					</div>
 				</ons-list-item>
+        	<ons-list-item (click)="loadPage(checked)" tappable *ngIf="globals.configread==true">
+					<div class="left">
+						<ons-icon icon="fa-user-check" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Last Checked
+					</div>
+				</ons-list-item>
         <ons-list-item (click)="loadPage(medical)" tappable *ngIf="globals.configread==true">
 					<div class="left">
 						<ons-icon icon="fa-ambulance" class="list-item__icon"></ons-icon>

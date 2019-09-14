@@ -21,6 +21,7 @@ import {RostaComponent} from './rosta/rosta.component';
 import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
 import {BirthdayComponent} from './birthday/birthday.component';
+import { LastcheckedComponent} from './lastchecked/lastchecked.component';
 import { Globals } from './globals';
 import * as ons from 'onsenui';
 import {HostListener} from "@angular/core";
@@ -48,6 +49,7 @@ constructor(private globals: Globals ) { }
   events = EventsComponent;
   progs = ProgrammeComponent;
   rosta = RostaComponent;
+  checked = LastcheckedComponent;
   ons
 
   loadPage(page) {
