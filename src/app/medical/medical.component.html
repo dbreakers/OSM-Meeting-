@@ -31,6 +31,7 @@
 	</ons-speed-dial>
 
 	<div class="content">
+     <h2>Birthdays</h2>
      <ons-search-input id="text" placeholder="Filter by Name" [(value)]="namefilter" (keyup)="update_search($event,-1)" style="width:100%" ></ons-search-input>
 		<ons-segment #segment id="segment" style="width: 100%; margin-top: 8px;">
 			<button (click)="update_search($event,1)">All</button>

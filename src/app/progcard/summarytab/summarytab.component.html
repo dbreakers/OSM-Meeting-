@@ -1,7 +1,7 @@
 <ons-card>
    <span class="head">{{prog.items[0].title}}</span>
-   <p><span class="list-item__subtitle">{{eventdates(prog.items[0].meetingdate,null)}}<span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></span></p>
-   <p>{{prog.items[0].notesforparents}}</p>
+   <br><span class="list-item__subtitle">{{eventdates(prog.items[0].meetingdate,null)}}<span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></span>
+   <br>{{prog.items[0].notesforparents}}
 </ons-card>     
 <ons-card>
 <span class="head">Adults</span>  
@@ -20,8 +20,8 @@
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) == 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more is needed</div>
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) > 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more are needed</div>
 <br>
-<div *ngIf="prog.items[0].notesforhelpingparents != null" class="theadp" (click)="toggle('pn')"><div  class="theadl">Parent Notes</div><div class="theadr"><div id="pn_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="pn_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
-<div style="display: none" *ngIf="prog.items[0].notesforhelpingparents != null" class="theadb" id="pn">{{prog.items[0].notesforhelpingparents}}</div>
+<div *ngIf="prog.items[0].notesforhelpingparents != null && prog.items[0].notesforhelpingparents !=''" class="theadp" (click)="toggle('pn')"><div  class="theadl">Parent Notes</div><div class="theadr"><div id="pn_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="pn_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
+<div style="display: none" *ngIf="prog.items[0].notesforhelpingparents != null && prog.items[0].notesforhelpingparents !=''" class="theadb" id="pn">{{prog.items[0].notesforhelpingparents}}</div>
 </ons-card>
 <ons-card>
 <span class="head">Notes</span>
