@@ -182,7 +182,9 @@ create_array(custom,field)
 
 
 update_summary(){
+  if ( document.getElementById('segment_summary')!=null){
   var sum = document.getElementById('segment_summary').getActiveButtonIndex();
+  } else {sum = 0;}
   // ["Swim 50m","Gender","Patrol","Role","Age"]
   this.test =[];
   if (sum==1) {  this.test = (this.create_array("9","24258")) };  
@@ -193,6 +195,7 @@ update_summary(){
   this.labels = Object.keys(this.test)
   this.values = Object.values(this.test) 
   this.group_seg = sum;
+
 }
 
 
