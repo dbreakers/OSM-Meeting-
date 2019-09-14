@@ -24,7 +24,12 @@ width: 40px !important;
   margin: 0 auto;
   margin-top: 10px;
 }
-
+.sticky {
+  background: white;
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+}
 .member_name {color:black;text-align:center;font-size:10pt;padding:1pt;}
 .member_photo {
   width:60px;
