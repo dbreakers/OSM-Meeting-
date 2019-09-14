@@ -6,7 +6,7 @@ export class Globals {
   login: boolean = false;
   secret: string = "";
   userid: string = "";
-  mysection: string = "3320";
+  mysection: string = "33120";
   scoutcard: string = "";
   eventcard: string = "";
   application: string = "OSM Meeting+";
