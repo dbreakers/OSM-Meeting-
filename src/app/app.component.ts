@@ -15,7 +15,9 @@ import {
 import {HomeComponent} from './home/home.component';
 import {SectionselectComponent} from './sectionselect/sectionselect.component';
 import {EventsComponent} from './events/events.component';
+import {ProgrammeComponent} from './programme/programme.component';
 import {MainComponent} from './main/main.component';
+import {RostaComponent} from './rosta/rosta.component';
 import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
 import {BirthdayComponent} from './birthday/birthday.component';
@@ -44,6 +46,8 @@ constructor(private globals: Globals ) { }
   birthday = BirthdayComponent;
   globalsearch = GlobalsearchComponent;
   events = EventsComponent;
+  progs = ProgrammeComponent;
+  rosta = RostaComponent;
   ons
 
   loadPage(page) {

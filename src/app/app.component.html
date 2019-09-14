@@ -33,7 +33,7 @@
 						<ons-icon icon="fa-ambulance" class="list-item__icon"></ons-icon>
 					</div>
 					<div class="center">
-						Emergency Info
+						Health Info
 					</div>
 				</ons-list-item>
         <ons-list-item (click)="loadPage(globalsearch)" tappable *ngIf="globals.configread==true">
@@ -58,6 +58,22 @@
 					</div>
 					<div class="center">
 						Events
+					</div>
+				</ons-list-item>
+        <ons-list-item (click)="loadPage(progs)" tappable *ngIf="globals.progs.length>0" >
+					<div class="left">
+						<ons-icon icon="fa-cubes" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Programme
+					</div>
+				</ons-list-item>
+        <ons-list-item (click)="loadPage(rosta)" tappable *ngIf="globals.progs.length>0" >
+					<div class="left">
+						<ons-icon icon="fa-hands-helping" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Rosta
 					</div>
 				</ons-list-item>
       <ons-list-item (click)="logout(home)" tappable *ngIf="globals.configread==true">
