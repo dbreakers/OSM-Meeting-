@@ -49,6 +49,8 @@ export class AttendancetabComponent implements OnInit {
  //members = new Array;
 // member_image = "";
 
+
+
 getDetailAge(d) {
 var m = this.members.find(o => o.member_id == d.scoutid);
 if (m!=undefined){
