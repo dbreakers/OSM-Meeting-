@@ -12,7 +12,7 @@
 <div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div><br>
 <div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr"><div id="ln_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="ln_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].leaders != ''" class="theadb" id="ln">{{prog.items[0].leaders}}</div> 
-<p class="subhead"><span><ons-icon icon="fa-user-edit" size="24px" class="helper"></ons-icon></span>&nbsp;Parent Helpers <span *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length)>0">({{prog.items[0].parentsrequired - prog.items[0].help.length}} more needed)</span></p>
+<p (click)="go_rosta($event,prog);" class="subhead"><span><ons-icon icon="fa-user-edit" size="24px" class="helper"></ons-icon></span>&nbsp;Parent Helpers <span *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length)>0">({{prog.items[0].parentsrequired - prog.items[0].help.length}} more needed)</span></p>
 <div *ngIf="prog.items[0].help.length==0">No parents helping</div> 
 <div *ngFor="let ldr of prog.items[0].help; index as i">
   <div (click)="go($event,ldr.scoutid);" class="parent_line"><div><ons-icon icon="fa-user"></ons-icon>&nbsp;Parents of <b>{{ldr.scout}}</b>&nbsp;<ons-icon icon="fa-chevron-right"></ons-icon></div></div>

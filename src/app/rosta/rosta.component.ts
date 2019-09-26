@@ -238,6 +238,16 @@ go(e,prog){
 }
 
 ngOnInit() {
+    debugger;
+   if (this._params) {
+     debugger;
+    if (this._params.data && this._params.data.date){
+   //   regdate = this._params.data.date
+    }
+   // if (this._params.data && this._params.data.meeting){
+    //  regmeeting = this._params.data.meeting
+ //   }
+  }
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 this.progs_copy = this.globals.progs;
 }

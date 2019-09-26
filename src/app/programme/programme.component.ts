@@ -48,6 +48,22 @@ timeformat(t) {
   h = h ? h : 12;
   return h + ':' + m + ' ' + ampm;}
 
+helpers_notif(evening){
+  var e = this.globals.progs.find(i => i.items[0].eveningid == evening);
+  if (e != undefined) {
+  var needed = e.items[0].parentsrequired;
+  var count = e.items[0].help.length;
+  if (needed==0){return ""} else return count+"/"+needed;
+
+  } else return ""
+}
+
+
+leaders_not(evening) {
+  var e = this.globals.progs.find(i => i.items[0].eveningid == evening);
+  if (e != undefined) { return e.items[0].unavailableleaders.length;
+  } else return 0  
+}
 helpers(evening)
 {
   var e = this.globals.progs.find(i => i.items[0].eveningid == evening);

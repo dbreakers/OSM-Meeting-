@@ -17,6 +17,7 @@ import * as ons from 'onsenui';
 //import {DomSanitizer} from '@angular/platform-browser'
 import {  DateformatService } from '../../dateformatter';
 import { ScoutcardComponent } from '../../scoutcard/scoutcard.component';
+import { RostaComponent } from '../../rosta/rosta.component';
 
 @Component({
   selector: 'ons-page[summarytab]',
@@ -70,6 +71,12 @@ eventdates(s,e) {
 go(e,event){
    this._navigator.element.pushPage(ScoutcardComponent, { data: { index: event } });
 }
+
+go_rosta(e,event){
+    debugger;
+   this._navigator.element.pushPage(RostaComponent, { data: { index: event.items[0].eveningid  } });
+}
+
   
   ngOnInit() {
    this.prog = this.globals.progs.find(i => i.items[0].eveningid == this.globals.progcard)
