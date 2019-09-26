@@ -25,11 +25,19 @@
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
  <br> 
   <span *ngFor="let ldr of members; index as j">
-    <p *ngIf="ldr.patrol_id==-2">
-      <span >{{leader_present(ldr.member_id, prog)}}</span>
-
-      {{ldr.first_name}} {{ldr.last_name}}
-      </p>
+    <ons-list-item *ngIf="ldr.patrol_id==-2" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
+      <span class="left" >
+      <ons-icon *ngIf="leader_present(ldr.member_id,prog) " icon="fa-check-circle" size="50px" style="color: #00a794;" class="list-item__icon">
+        </ons-icon>
+        <ons-icon *ngIf="!leader_present(ldr.member_id,prog)" icon="fa-circle" size="50px" style="color: LightGray;" class="list-item__icon">
+        </ons-icon>
+      </span>
+    <span class="list-item__title">  
+           {{ldr.first_name}} {{ldr.last_name}}
+    </span>
+        
+  </ons-list-item> 
+   
   </span>  
   </ons-card>
   </span>    

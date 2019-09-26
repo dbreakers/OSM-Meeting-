@@ -232,13 +232,26 @@ update_text(a) {
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
  }}}
 
+absent(event,scout,prog,f,l){
+  var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
+  if (pres==undefined) {
+      var obj = {};
+   obj["member_id"] = scout;
+   obj["last_name"] = l;
+   obj["first_name"] = f;
+   prog.items[0].unavailableleaders.push(obj);
+  } else {
+    var pres = prog.items[0].unavailableleaders.findIndex(i=>i.member_id==scout);
+    prog.items[0].unavailableleaders.splice(pres,1);
+  }
+}
+
 leader_present(scout,prog) {
   if (prog != undefined) {
-  debugger;
   var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
-  if (pres==undefined) {return "No"} else {return "Yes"}
+  if (pres==undefined) {return true} else {return false}
   } else
-  return ""
+  return false
 }
 
 go(e,prog){
