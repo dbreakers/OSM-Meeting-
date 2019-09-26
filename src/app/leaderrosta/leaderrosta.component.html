@@ -35,35 +35,3 @@
   </span>    
 </div><!--List-->
     </ons-page>
-<ons-dialog animation="default" cancelable id="dialog" >
-    <div class="dialog-mask"></div>
-      <div class="dialog">
-        <div class="dialog-container" style="height: 100%">
-          <ons-page>
-            <ons-toolbar>
-              <div class="center">Select a Helper</div><div class="right">
-        <ons-toolbar-button (click)="click_close()">
-          <ons-icon icon="fa-times"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-            </ons-toolbar>
-            <div class="content">
-              <div style="text-align: left; padding: 20px;">
-               
-                Select a member <br>
-                <input (blur)="sellist(1)" (focus)="sellist(0)" type="text" placeholder="Search.." id="myInput" (keyup)="filterFunction()"><ons-icon icon="fa-plus-circle" size="24pt" style="padding:5px;color: #7413dc; font-size: 24px;" (click)="click_add(1)" *ngIf='add_active()'></ons-icon><ons-icon icon="fa-plus-circle" style="padding:5px; color:#7413dc;opacity: .3; font-size: 24px; "  size="24pt"  *ngIf='!add_active()'></ons-icon>&nbsp;<ons-icon icon="fa-user-plus" size="24pt" style="padding:5px;color: #7413dc; font-size: 24px;" (click)="click_add(0)" *ngIf='add_active()'></ons-icon><ons-icon icon="fa-user-plus" style="padding:5px; color:#7413dc;opacity: .3; font-size: 24px; "  size="24pt"  *ngIf='!add_active()'></ons-icon>              
-                <div  id="myDropdown" class="dropdown-content"><a *ngFor="let member of members; index as i" (click)="clickmember(member)">
-                  {{member.first_name}} {{member.last_name}}
-                </a>  </div>
-                 <div *ngIf="selected_meeting!=-1" style="margin: 5px;">
-                 {{globals.progs[selected_meeting].items[0].help.length}} currently Selected:
-                <div style="padding:5px; display: flex; flex-wrap: wrap;"><span *ngFor="let parent of globals.progs[selected_meeting].items[0].help; index as j">
-    <div   class="tag"><div class="rotate" (click)="removehelper(selected_meeting,j)"><ons-icon icon="fa-times" style="padding:5px" ></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
-  </span> </div></div>
-                
-              </div>
-            </div>
-          </ons-page>
-        </div>
-      </div>
-  </ons-dialog>

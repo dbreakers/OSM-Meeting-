@@ -28,7 +28,7 @@
     content: "";
 }
 .longtext {border:solid; padding: 5px; font-size: 10pt;}
-.dialog { width:90%; height: 70%}
+.dialog { width:90%; height: 90%}
 
 .dropdown-content a {
   color: black;
