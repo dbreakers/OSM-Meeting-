@@ -213,25 +213,12 @@ this.sellist(1);
   document.getElementById('dialog').show();
 }
 
-alert(a,t) {   
- var original = this.progs_copy.find(i=>i.items[0].eveningid==a.eveningid)  
-if ((t=="Text") && (original!=undefined)) {
-  original.items[0].notesforhelpingparents = a.notesforhelpingparents;
+
+
+
+alert(s,t) {
+  debugger;
 }
- ons.notification.toast(t+' updated for meeting '+a.title, {timeout: 2000});
-}
-
-update_text(a) {
-
- var obj = {};
- obj["notesforhelpingparents"] = window.document.getElementById(a).innerText;
- var original = this.progs_copy.find(i=>i.items[0].eveningid==a)
- if (original != undefined) {
- if (obj.notesforhelpingparents!=original.items[0].notesforhelpingparents){   
-   
-this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
- }}}
-
 absent(event,scout,prog,f,l){
   var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
   if (pres==undefined) {
@@ -240,9 +227,11 @@ absent(event,scout,prog,f,l){
    obj["last_name"] = l;
    obj["first_name"] = f;
    prog.items[0].unavailableleaders.push(obj);
+  this.logonService.update_att("13/09/2019",scout,"No").subscribe(Security=> this.alert(Security,"Counter"));
   } else {
     var pres = prog.items[0].unavailableleaders.findIndex(i=>i.member_id==scout);
     prog.items[0].unavailableleaders.splice(pres,1);
+     this.logonService.update_att("13/09/2019",scout,"Absent").subscribe(Security=> this.alert(Security,"Counter"));
   }
 }
 

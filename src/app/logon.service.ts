@@ -16,11 +16,29 @@ const httpOptions = {
   providedIn: 'root',
 })
 
+
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
     private globals: Globals) { }
     
+update_att(date,member,abs): Observable<any>{
+    let authURL = this.configUrl + "?osmpath=ext/members/attendance/&action=update&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+    let st = this.globals.config[1].find(i=>i.sectionid==this.globals.mysection) 
+    let body = new HttpParams({encoder: new CustomURLEncoder() });
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+    body = body.set('sectionid', this.globals.mysection);
+    body = body.set('section', st.section);
+    body = body.set('completedBadges',"[]")
+    body = body.set('customData',"[]")
+     body = body.set('selectedDate',date)
+    body = body.set('scouts','["'+member+'"]')
+    body = body.set('present',abs) 
+    return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error)))
+    
+} 
+
 
 update_parents(pobject,evening): Observable<any>
 {
