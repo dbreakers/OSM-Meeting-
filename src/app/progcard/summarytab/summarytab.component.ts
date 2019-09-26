@@ -25,7 +25,8 @@ import { RostaComponent } from '../../rosta/rosta.component';
   styleUrls: ['./summarytab.component.css']
 })
 export class ProgSummarytabComponent implements OnInit {
-
+members = new Array;
+member = "";
 prog : object;
 
   constructor(
@@ -68,9 +69,24 @@ eventdates(s,e) {
   return subtitle
 }
 
+parentname(s) {
+this.member = this.members.find(o => o.member_id == s);
+if ( this.member != null ) {
+var r =   this.member.custom_data[1][2];
+if (this.member.custom_data[1][3] != this.member.custom_data[2][3])
+{ r = r + " "+this.member.custom_data[1][3] }
+if (this.member.custom_data[2][2]!="") {
+r =r +" & " +this.member.custom_data[2][2] +" "+this.member.custom_data[2][3]
+}
+return r 
+} else { return "" }
+}
+
 go(e,event){
    this._navigator.element.pushPage(ScoutcardComponent, { data: { index: event } });
 }
+
+
 
 go_rosta(e,event){
    // debugger;
@@ -78,6 +94,8 @@ go_rosta(e,event){
 }
 
   ngOnInit() {
+   this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+   this.member = this.members.find(o => o.member_id == this.globals.scoutcard);
    this.prog = this.globals.progs.find(i => i.items[0].eveningid == this.globals.progcard)
    }
 
