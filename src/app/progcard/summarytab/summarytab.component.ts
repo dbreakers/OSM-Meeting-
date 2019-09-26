@@ -73,11 +73,10 @@ go(e,event){
 }
 
 go_rosta(e,event){
-    debugger;
+   // debugger;
    this._navigator.element.pushPage(RostaComponent, { data: { index: event.items[0].eveningid  } });
 }
 
-  
   ngOnInit() {
    this.prog = this.globals.progs.find(i => i.items[0].eveningid == this.globals.progcard)
    }

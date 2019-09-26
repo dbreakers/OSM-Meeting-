@@ -31,19 +31,20 @@ export class RostaComponent implements OnInit {
  members = new Array;
  selected_meeting = -1;
 progs_copy = [];
+singleprog=""
 
 constructor(
     private inj: Injector,
     private globals: Globals,
     private sorting: Sortservice,
     private _navigator: OnsNavigator,
+    private _params: Params, 
     private logonService: LogonService, 
     private dateFormat: DateformatService) { }
 
  openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
-
 
 timeformat(t) {
 
@@ -238,15 +239,14 @@ go(e,prog){
 }
 
 ngOnInit() {
-    debugger;
+//    debugger;
+  this.singleprog = "";
    if (this._params) {
-     debugger;
-    if (this._params.data && this._params.data.date){
-   //   regdate = this._params.data.date
+  //   debugger;
+    if (this._params.data && this._params.data.index){
+      this.singleprog = this._params.data.index;
     }
-   // if (this._params.data && this._params.data.meeting){
-    //  regmeeting = this._params.data.meeting
- //   }
+  
   }
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 this.progs_copy = this.globals.progs;

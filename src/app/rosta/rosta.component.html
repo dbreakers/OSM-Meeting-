@@ -15,13 +15,12 @@
       </div>
     </ons-toolbar>
 
-        <div class="content">
-       
+        <div class="content">    
    <div class="wrapper"><h2>Rosta</h2>     
    <div id="infoi"> <ons-icon icon="fa-ellipsis-v"></ons-icon></div></div>
      
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
-  <ons-card>
+  <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
     <p class="head2"><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
  <span class="butlab"><span (click)="adjust(prog.items[0].eveningid,-1)">&nbsp;<ons-icon icon="fa-minus-circle" size="24px" class="but"></ons-icon></span>&nbsp;<span class="helpcount">{{prog.items[0].parentsrequired}}</span>&nbsp;<span><ons-icon icon="fa-plus-circle" size="24px" (click)="adjust(prog.items[0].eveningid,1)" class="but"></ons-icon></span>&nbsp;helpers are needed for this activity</span>
