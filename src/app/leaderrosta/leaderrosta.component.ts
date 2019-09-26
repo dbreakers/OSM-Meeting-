@@ -25,7 +25,7 @@ import { ProgcardComponent } from '../progcard/progcard.component';
   styleUrls: ['./leaderrosta.component.css']
 })
 
-export class Leaderrosta implements OnInit {
+export class LeaderrostaComponent implements OnInit {
 
   _onPaste_StripFormatting_IEPaste = false;
  members = new Array;
@@ -230,8 +230,15 @@ update_text(a) {
  if (obj.notesforhelpingparents!=original.items[0].notesforhelpingparents){   
    
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
- }
-}
+ }}}
+
+leader_present(scout,prog) {
+  if (prog != undefined) {
+  debugger;
+  var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
+  if (pres==undefined) {return "No"} else {return "Yes"}
+  } else
+  return ""
 }
 
 go(e,prog){

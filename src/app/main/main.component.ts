@@ -23,6 +23,7 @@ import { AppComponent } from '../app.component';
 import { ScoutcardComponent } from '../scoutcard/scoutcard.component';
 import {RegisterComponent } from '../register/register.component';
 import {SectionselectComponent} from '../sectionselect/sectionselect.component';
+import {LeaderrostaComponent} from '../leaderrosta/leaderrosta.component';
 import {BirthdayComponent} from '../birthday/birthday.component';
 import { Globals } from '../globals';
 import { LogonService } from '../logon.service';
@@ -52,6 +53,7 @@ export class MainComponent implements OnInit {
   globalsearch = GlobalsearchComponent;
   sectionselect = SectionselectComponent;
   birthday = BirthdayComponent;
+  leaderrosta = LeaderrostaComponent;
   @ViewChild('navi') private navi: OnsNavigator;
 
   constructor(
