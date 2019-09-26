@@ -218,20 +218,22 @@ this.sellist(1);
 
 alert(s,t) {
   debugger;
+
 }
 absent(event,scout,prog,f,l){
   var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
+  var d = prog.items[0].meetingdate;
   if (pres==undefined) {
       var obj = {};
    obj["member_id"] = scout;
-   obj["last_name"] = l;
-   obj["first_name"] = f;
+   obj["lastname"] = l;
+   obj["firstname"] = f;
    prog.items[0].unavailableleaders.push(obj);
-  this.logonService.update_att("13/09/2019",scout,"No").subscribe(Security=> this.alert(Security,"Counter"));
+  this.logonService.update_att(d,scout,"No").subscribe(Security=> this.alert(Security,"Counter"));
   } else {
     var pres = prog.items[0].unavailableleaders.findIndex(i=>i.member_id==scout);
     prog.items[0].unavailableleaders.splice(pres,1);
-     this.logonService.update_att("13/09/2019",scout,"Absent").subscribe(Security=> this.alert(Security,"Counter"));
+     this.logonService.update_att(d,scout,"Absent").subscribe(Security=> this.alert(Security,"Counter"));
   }
 }
 
