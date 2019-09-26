@@ -231,7 +231,7 @@ update_text(a) {
    
 this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
  }
- }
+}
 }
 
 go(e,prog){
