@@ -246,7 +246,6 @@ ngOnInit() {
     if (this._params.data && this._params.data.index){
       this.singleprog = this._params.data.index;
     }
-  
   }
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 this.progs_copy = this.globals.progs;
