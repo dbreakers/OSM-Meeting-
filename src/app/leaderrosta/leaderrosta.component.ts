@@ -237,6 +237,7 @@ absent(event,scout,prog,f,l){
   }
 }
 
+
 leader_present(scout,prog) {
   if (prog != undefined) {
   var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
@@ -258,7 +259,15 @@ ngOnInit() {
       this.singleprog = this._params.data.index;
     }
   }
-this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
+this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => 
+this.globals.sectiondata[1].data[i]);
+  
+for( var i = 0; i < this.members.length; i++){ 
+   if ( this.members[i].patrol_id != -2) {
+     this.members.splice(i, 1); 
+     i--;
+   }
+}
 //this.progs_copy = this.globals.progs;
 }
 }
