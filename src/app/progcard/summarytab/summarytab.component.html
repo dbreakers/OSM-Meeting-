@@ -7,9 +7,11 @@
 <span class="head">Adults</span>  
 <p class="subhead">Leaders</p>
 <div *ngFor="let ldr of prog.items[0].unavailableleaders; index as i">
-  {{ldr.firstname}}&nbsp;{{ldr.lastname}} not available
+  <div *ngIf="i==0">The following Leaders are not available</div>
+  {{ldr.firstname}}&nbsp;{{ldr.lastname}}
 </div>
 <div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div><br>
+<p (click)="go_lrosta($event,prog);"><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Leaders </p>
 <div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr"><div id="ln_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="ln_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].leaders != ''" class="theadb" id="ln">{{prog.items[0].leaders}}</div> 
 <p  class="subhead">Parent Helpers </p>

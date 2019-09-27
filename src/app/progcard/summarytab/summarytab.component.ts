@@ -18,6 +18,7 @@ import * as ons from 'onsenui';
 import {  DateformatService } from '../../dateformatter';
 import { ScoutcardComponent } from '../../scoutcard/scoutcard.component';
 import { RostaComponent } from '../../rosta/rosta.component';
+import { LeaderrostaComponent } from '../../leaderrosta/leaderrosta.component';
 
 @Component({
   selector: 'ons-page[summarytab]',
@@ -91,6 +92,11 @@ go(e,event){
 go_rosta(e,event){
    // debugger;
    this._navigator.element.pushPage(RostaComponent, { data: { index: event.items[0].eveningid  } });
+}
+
+go_lrosta(e,event){
+   // debugger;
+   this._navigator.element.pushPage(LeaderrostaComponent, { data: { index: event.items[0].eveningid  } });
 }
 
   ngOnInit() {
