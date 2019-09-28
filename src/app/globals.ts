@@ -6,7 +6,7 @@ export class Globals {
   login: boolean = false;
   secret: string = "";
   userid: string = "";
-  mysection: string = "33120";
+  mysection: string = "3320";
   scoutcard: string = "";
   eventcard: string = "";
   application: string = "OSM Meeting+";
@@ -26,9 +26,11 @@ export class Globals {
   programmeaccess: string = "";
   registeraccess: string = "";
   noaccess: boolean = true;
+  loadprogs: boolean = false;
   sectionname: string = "No Section";
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
  beavers: ["","ALL","LL","SLL"]};
-      
+ loaded: Object = { progs: true, events: true, register: true}     
+ access: Object = { progs: true, events: true}     
 }

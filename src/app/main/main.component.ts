@@ -183,6 +183,7 @@ do_eventsA(e){
 do_progs(p)
 {
   this.globals.progs = p;
+  this.globals.loadprogs=true;
 }
 
   section_data_return(data) {

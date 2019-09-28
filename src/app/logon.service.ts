@@ -175,9 +175,9 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
- return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
+// return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
+return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))
 }  
-
 
 getProgsData(): Observable<any> {
  let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData(prog.eveningid))
