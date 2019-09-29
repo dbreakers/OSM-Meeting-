@@ -63,6 +63,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
   section_data_return(data) {
     //alert("heelo");
     this.globals.sectiondata = data;
+    this.globals.loaded.section = true;
       this.logonService.setAPIvalues();
     this._navigator.element.replacePage(MainComponent);
   }
@@ -77,6 +78,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
     this.globals.loaded.eventsA = false;
     this.globals.loaded.eventsL = false;
     this.globals.loaded.progs = false;
+    this.globals.loaded.section = false;
     var f = this.globals.config[1].find(obj => obj.sectionid == this.localsection);
     this.globals.sectionname = f.groupname + ":" + f.sectionname;
     if (this.globals.current_term != '-1') {
