@@ -22,7 +22,10 @@
       <p class="switchsec">
       <b>Section:</b>  {{globals.sectionname}}&nbsp;<ons-icon icon="fa-exchange-alt" (click)="loadPage(sectionselect)"></ons-icon>    
       </p>
-      <ons-card>
+      <ons-card *ngIf="globals.access.noaccess">
+        You have no access to this section. Find out more.
+      </ons-card>
+      <ons-card *ngIf="!globals.access.noaccess">
         Some Items are disabled. Find out more.
       </ons-card>  
         <div class="member_outer" (click)="loadPage(medical)">
@@ -99,8 +102,7 @@
     
       </div>
       
-      <div *ngIf="globals.noaccess==true">You have no access to this srction</div>
-
+      
            </div>
     </ons-page>
    
