@@ -32,6 +32,6 @@ export class Globals {
  cubs: ["","2er","6er","S6er"],
  beavers: ["","ALL","LL","SLL"]};
  loaded: Object = { progs: false, events: false, members: false, register: false, config: false}     
- access: Object = { progs: 0, events: 0, members: 0, register: 0}   
+ access: Object = { noaccess: false, progs: 0, events: 0, members: 0, register: 0}   
  errors: Object = { progs: false, events: false, members: false, register: false, config: false}  
 }
