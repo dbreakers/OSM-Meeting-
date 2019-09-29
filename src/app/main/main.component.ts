@@ -209,9 +209,17 @@ do_progs(p)
      if (this.globals.eventsection!=this.globals.mysection){
      this.globals.event = [];
      this.globals.eventA = [];
-     this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
+     if (!this.globals.access.noaccess) {
+            if (this.globals.access.events>0){
+             this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
     this.logonService.getEventsAData().subscribe(Events => this.do_events(Events));
-    this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
+            }
+            if (this.globals.access.progs>0){
+              this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
+            }
+            }
+    
+  
     
     this.globals.eventsection=this.globals.mysection;
     this.access = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);

@@ -62,7 +62,6 @@ constructor(private globals: Globals ) { }
   } 
 
 
-
   logout(page) {
     this.globals.secret="";
     this.globals.userid="";

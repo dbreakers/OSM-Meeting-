@@ -82,6 +82,13 @@ mod_parents(opt,scout,evening,date): Observable<any>
 
   setAPIvalues() {
     let apiv = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);  
+    this.globals.access.members = "";
+    this.globals.access.events = "";
+    this.globals.access.progs = "";
+    this.globals.access.register = "";
+    this.globals.access.badges = "";
+    this.globals.access.noaccess = true;
+    this.globals.access.progs = "";
     this.globals.memberaccess = "";
     this.globals.badgeaccess = "";
     this.globals.eventsaccess = "";
@@ -90,6 +97,12 @@ mod_parents(opt,scout,evening,date): Observable<any>
     this.globals.noaccess = true;
     if (apiv!!=undefined) {
       if (!apiv.permissions.hasOwnProperty('empty')) {
+        this.globals.access.members = apiv.permissions.member;;
+    this.globals.access.events =  apiv.permissions.events;
+    this.globals.access.progs = apiv.permissions.programme;
+    this.globals.access.register =apiv.permissions.register;
+    this.globals.access.badges = apiv.permissions.badges
+    this.globals.access.noaccess = false;
         this.globals.memberaccess = apiv.permissions.member;
         this.globals.badgeaccess = apiv.permissions.badges;
         this.globals.eventsaccess = apiv.permissions.events;
