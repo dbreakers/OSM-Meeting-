@@ -174,28 +174,34 @@ compareValues(key, order='asc') {
 
 do_events(e){
   this.globals.event = e;
+  this.globals.loaded.eventsL = true;
+if ( this.globals.loaded.eventsA   ) {this.globals.loaded.events = true}
 }
 
 do_eventsA(e){
   this.globals.eventA = e;
+  this.globals.loaded.eventsA = true;
+  if ( this.globals.loaded.eventsL ) {this.globals.loaded.events = true}
 }
 
 do_progs(p)
 {
   this.globals.progs = p;
   this.globals.loadprogs=true;
+  this.globals.loaded.progs = true;
+
 }
 
   section_data_return(data) {
     //alert("heelo");
-    this.globals.loaded.config = true;
+    this.globals.loaded.section = true;
     this.globals.sectiondata = data;
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
      this.matches = this.members.reduce( (acc, o) => (acc[o.first_name] = (acc[o.first_name] || 0)+1, acc), {} );
   }
-  ngOnInit() {
-    
+
+  ngOnInit() {  
    // this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))

@@ -71,6 +71,16 @@ constructor(private globals: Globals ) { }
     this.globals.event = [];
     this.globals.eventA = [];
     this.globals.eventsection = "";
+    for (var i=0; i< Object.keys(this.globals.loaded).length; i++) 
+    {
+    this.globals.loaded[Object.keys(this.globals.loaded)[i]] = false;
+    }
+    
+    for (var i=0; i< Object.keys(this.globals.errors).length; i++) 
+    {
+    this.globals.errors[Object.keys(this.globals.errors)[i]] = false;
+    }
+    
     this.menu.nativeElement.close();
     this.navi.nativeElement.resetToPage(page, { animation: 'fade' });
   }
