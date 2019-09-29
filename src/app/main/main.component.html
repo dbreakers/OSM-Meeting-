@@ -25,8 +25,8 @@
       <ons-card *ngIf="globals.access.noaccess">
         You have no access to this section. Find out more.
       </ons-card>
-      <ons-card *ngIf="!globals.access.noaccess">
-        Some Items are disabled. Find out more.
+      <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0)">
+        Some Items are disabled. Find out more.{{globals.access.events}}
       </ons-card>  
         <div class="member_outer" (click)="loadPage(medical)">
            <div class="member_inner">
@@ -58,9 +58,9 @@
           <div class="member_name">Last Check</div>
          </div> 
       </div>
-      <div class="member_outer" (click)="loadPage(events)" *ngIf="globals.event.length>0&&globals.eventA.length>0">
+      <div class="member_outer" (click)="loadPage(events)" >
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-cube"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial"  [class.deact]="globals.access.events==0 " ><ons-icon icon="fa-cube"></ons-icon></div></div>
           <div class="member_name">Events</div>
          </div> 
       </div>
