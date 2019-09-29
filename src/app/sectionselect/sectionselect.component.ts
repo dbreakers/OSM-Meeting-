@@ -68,7 +68,6 @@ export class SectionselectComponent implements OnInit, OnChanges {
     this._navigator.element.replacePage(MainComponent);
   }
 
-
   select_section() {
     this.globals.config = this.section;
     this.globals.configread = true;
