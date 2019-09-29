@@ -31,6 +31,7 @@ export class Globals {
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
  beavers: ["","ALL","LL","SLL"]};
- loaded: Object = { progs: true, events: true, register: true}     
- access: Object = { progs: true, events: true}     
+ loaded: Object = { progs: false, events: false, members: false, register: false, config: false}     
+ access: Object = { progs: 0, events: 0, members: 0, register: 0}   
+ errors: Object = { progs: false, events: false, members: false, register: false, config: false}  
 }

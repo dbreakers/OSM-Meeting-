@@ -78,7 +78,6 @@ section_config_return(s) {
         this.find_current_term();
       }
     }
-  
   if (found!=true)
   {
     this._navigator.element.replacePage(SectionselectComponent);

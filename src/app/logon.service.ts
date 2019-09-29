@@ -15,8 +15,6 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
@@ -38,7 +36,6 @@ update_att(date,member,abs): Observable<any>{
     return this.http.post(authURL, body, httpOptions).pipe(catchError(error => of(error)))
     
 } 
-
 
 update_parents(pobject,evening): Observable<any>
 {
@@ -103,6 +100,17 @@ mod_parents(opt,scout,evening,date): Observable<any>
     }
   }
 
+  has_http_errors(a) {
+  var e = false;  
+  for (var i=0; i < a.length; i++){
+    if (a[i].hasOwnProperty("isError")) {
+      e = true; i = a.length;
+    }
+  }
+  return e;
+  }
+
+
   getSectionConfig(): Observable<any> {
     let fullURL = this.configUrl + "?osmpath=api.php&action=getSectionConfig";
     let fullURL2 = this.configUrl + "?osmpath=api.php&action=getUserRoles";
@@ -111,7 +119,7 @@ mod_parents(opt,scout,evening,date): Observable<any>
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
 
-    return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body, httpOptions), this.http.post(fullURL3, body, httpOptions))
+    return forkJoin(this.http.post(fullURL, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )), this.http.post(fullURL2, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )), this.http.post(fullURL3, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )))
   }
 
 getSectionData(sectionid, term): Observable<any> {
@@ -132,8 +140,18 @@ getSectionData(sectionid, term): Observable<any> {
     body2 = body2.set('userid', this.globals.userid);
     body2 = body2.set('section_id', sectionid);
     body2 = body2.set('term_id', term);
-    return forkJoin(this.http.post(fullURL, body, httpOptions), this.http.post(fullURL2, body2, httpOptions), this.http.post(fullURL3, body, httpOptions),this.http.post(fullURL4, body, httpOptions),this.http.post(fullURL5, body, httpOptions),this.http.post(fullURL6, body, httpOptions),this.http.post(fullURL7, body, httpOptions),this.http.post(fullURL8, body, httpOptions));
+    return forkJoin(
+      this.http.post(fullURL, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )), 
+      this.http.post(fullURL2, body2, httpOptions).pipe(catchError(error => of({isError: true, error}) )), 
+      this.http.post(fullURL3, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+      this.http.post(fullURL4, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+      this.http.post(fullURL5, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+      this.http.post(fullURL6, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+      this.http.post(fullURL7, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+      this.http.post(fullURL8, body, httpOptions).pipe(catchError(error => of({isError: true, error}) ))
+      );
   }
+
 
 getEventAData(event): Observable<any> {
 let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getAttendance&eventid="+event;
@@ -166,7 +184,6 @@ getEventsData(): Observable<any> {
    let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid))
 return forkJoin(singleObservables);
 }
-
 //ext/programme/?action=getProgramme&eveningid=4327864&sectionid=3320&termid=349161
 
 getProgData(prog): Observable<any> {
