@@ -63,7 +63,10 @@
       </div>
       <div class="member_outer" (click)="loadPage(program)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon *ngIf="globals.loadprogs" icon="fa-cubes"></ons-icon><ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loadprogs"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial">
+          <ons-icon *ngIf="globals.loadprogs" icon="fa-cubes"></ons-icon>
+          <ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loadprogs"></ons-icon>
+          </div></div>
           <div class="member_name">Programme</div>
          </div> 
       </div>

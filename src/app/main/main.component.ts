@@ -188,6 +188,7 @@ do_progs(p)
 
   section_data_return(data) {
     //alert("heelo");
+    this.globals.loaded.config = true;
     this.globals.sectiondata = data;
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
