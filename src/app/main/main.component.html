@@ -26,7 +26,7 @@
         You have no access to this section. Find out more.
       </ons-card>
       <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0)">
-        Some Items are disabled. Find out more.{{globals.access.events}}
+        Some Items are disabled. Find out more.{{globals.access.progs}}
       </ons-card>  
         <div class="member_outer" (click)="loadPage(medical)">
            <div class="member_inner">
@@ -66,7 +66,7 @@
       </div>
       <div class="member_outer" (click)="loadPage(program)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial">
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.progs==0 ">
           <ons-icon *ngIf="globals.loadprogs" icon="fa-cubes"></ons-icon>
           <ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loadprogs"></ons-icon>
           </div></div>
