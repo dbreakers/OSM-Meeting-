@@ -19,6 +19,7 @@ const httpOptions = {
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
+  pr
     private globals: Globals) { }
     
 update_att(date,member,abs): Observable<any>{
