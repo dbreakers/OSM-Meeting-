@@ -37,6 +37,7 @@ import { SectionselectComponent } from './sectionselect/sectionselect.component'
 import { MainComponent } from './main/main.component';
 import { MedicalComponent } from './medical/medical.component';
 import { Globals } from './globals';
+import {DelayInterceptor} from './delay.service';
 import { EventtabComponent } from './scoutcard/eventtab/eventtab.component';
 import { PersontabComponent } from './scoutcard/persontab/persontab.component';
 import { EventcardComponent } from './eventcard/eventcard.component';
@@ -45,7 +46,7 @@ import { ProgSummarytabComponent } from './progcard/summarytab/summarytab.compon
 import { AnswertabComponent } from './eventcard/answertab/answertab.component';
 import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.component';
 //import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
   ServiceWorkerModule.register('/ngsw-worker.js')],
@@ -53,7 +54,7 @@ import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.
   entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, LeaderrostaComponent, RegisterComponent,GlobalsearchComponent, ProgcardComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent,ProgSummarytabComponent, RostaComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ Globals ]
+  providers: [ Globals, { provide: HTTP_INTERCEPTORS, useClass: DelayInterceptor, multi: true}]
 })
 
 export class AppModule {}

@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterce
 import {CustomURLEncoder} from './urlencoder.component';
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
-import {DelayInterceptor} from './delay';
+import {DelayInterceptor} from './delay.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
@@ -19,7 +19,6 @@ const httpOptions = {
 export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
-  pr
     private globals: Globals) { }
     
 update_att(date,member,abs): Observable<any>{

@@ -4,12 +4,16 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 
 // OBSERVABLES
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
+import { timer } from 'rxjs/observable/timer';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class DelayInterceptor implements HttpInterceptor {
+ 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(request);
-        return next.handle(request).delay(10000);
+       // console.log( new Date(), request.url );
+       return timer(2000).pipe(         // <== Wait 2 Seconds
+      switchMap( ()=> next.handle(request) )) 
     }
+    
 }
