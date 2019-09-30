@@ -6,8 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterce
 import {CustomURLEncoder} from './urlencoder.component';
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
-import { delay } from 'rxjs/internal/operators';
-import 'rxjs/add/operator/delay';
+import {DelayInterceptor} from './delay';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
@@ -16,12 +15,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 
-export class DelayInterceptor implements HttpInterceptor {
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(request);
-        return next.handle(request).delay(500);
-    }
-}
 
 export class LogonService {
   private configUrl = this.globals.proxyURL;
@@ -197,7 +190,7 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
- return this.http.post(fullURL,body,httpOptions).pipe(delay(500)).pipe(catchError(error => of(error)))
+ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
 }  
 
 getEventsData(): Observable<any> {
