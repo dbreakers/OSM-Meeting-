@@ -225,12 +225,14 @@ do_progs(p)
     
     this.globals.eventsection=this.globals.mysection;
     this.access = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);
+    if (this.globals.access.progs>0){
     if (this.globals.sectiondata[4].items.length==0) {
       this.globals.loaded.progs = true;
-    }
+    }}
+    if (this.globals.access.events>0){
     if  (this.globals.sectiondata[3].items.length==0) {
       this.globals.loaded.events = true;
-    }
+    }}
      }
   }
 }
