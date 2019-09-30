@@ -18,6 +18,7 @@ import { MedicalcardComponent } from '../medicalcard/medicalcard.component';
 import { MainComponent } from '../main/main.component';
 import { LogonService } from '../logon.service';
 import { Globals } from '../globals';
+import {  Sortservice } from '../sort';
 import * as ons from 'onsenui';
 
 @Component({
@@ -33,6 +34,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
   constructor(private _navigator: OnsNavigator,
     private inj: Injector,
     private globals: Globals,
+       private sorting: Sortservice,
     private logonService: LogonService) { }
 
   push(event, index) {
@@ -50,15 +52,16 @@ export class SectionselectComponent implements OnInit, OnChanges {
 
   find_current_term() {
     var current_term = -1;
+    
     if (this.globals.config[2].hasOwnProperty(this.globals.mysection)) {
+      this.globals.config[2][this.globals.mysection].sort(this.sorting.compareValuesArray(["startdate"],"desc")) ;
       for (var i = 0; i < this.globals.config[2][this.globals.mysection].length; i++) {
-        if (this.globals.config[2][this.globals.mysection][i].past == true) { current_term = i }
+        if (this.globals.config[2][this.globals.mysection][i].past == true) { current_term = i; i = this.globals.config[2][this.globals.mysection].length; }
       }
       var term = this.globals.config[2][this.globals.mysection][current_term].termid;
     }
-    this.globals.current_term = current_term;
+    this.globals.current_term = current_term; 
   }
-
 
   section_data_return(data) {
     //alert("heelo");

@@ -14,9 +14,9 @@
     "core-js": "2.6.5",
     "ngx-onsenui": "7.0.0",
     "onsenui": "2.10.6",
-    "pdfmake": "^0.1.58",
+    "pdfmake": "0.1.57",
     "rxjs": "6.4.0",
-    "rxjs-compat": "^6.5.2",
+    "rxjs-compat": "^6.5.3",
     "zone.js": "0.8.29"
   },
   "scripts": {
