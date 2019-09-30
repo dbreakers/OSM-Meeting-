@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Security } from './security';
 //import { SECURITY } from './mock-security';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable,  forkJoin,  of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterceptor,HttpHandler } from '@angular/common/http';
 import {CustomURLEncoder} from './urlencoder.component';
-import {map, catchError} from 'rxjs/operators';
+import {map, concatMap, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 //-import {DelayInterceptor} from './delay.service';
 import { timer } from 'rxjs/observable/timer';
