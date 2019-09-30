@@ -11,8 +11,8 @@ import { switchMap } from 'rxjs/operators';
 export class DelayInterceptor implements HttpInterceptor {
  
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       // console.log( new Date(), request.url );
-       return timer(2000).pipe(         // <== Wait 2 Seconds
+        console.log( new Date(), request.url );
+       return timer(5000).pipe(         // <== Wait 2 Seconds
       switchMap( ()=> next.handle(request) )) 
     }
     

@@ -6,7 +6,9 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterce
 import {CustomURLEncoder} from './urlencoder.component';
 import {map, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
-import {DelayInterceptor} from './delay.service';
+//-import {DelayInterceptor} from './delay.service';
+import { timer } from 'rxjs/observable/timer';
+import { switchMap } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
@@ -175,7 +177,7 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
  return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of("error")))
-}  
+ }  
 
 getEventsAData(): Observable<any> {
    let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventAData(event.eventid) )
@@ -190,6 +192,7 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
+  
  return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
 }  
 

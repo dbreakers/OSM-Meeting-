@@ -54,7 +54,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   entryComponents: [HomeComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, LeaderrostaComponent, RegisterComponent,GlobalsearchComponent, ProgcardComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent,ProgSummarytabComponent, RostaComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [ Globals, { provide: HTTP_INTERCEPTORS, useClass: DelayInterceptor, multi: true}]
+  providers: [ Globals ]
 })
 
 export class AppModule {}
