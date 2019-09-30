@@ -60,15 +60,18 @@
       </div>
       <div class="member_outer" (click)="loadPage(events)" >
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"  [class.deact]="globals.access.events==0 " ><ons-icon icon="fa-cube"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial"  [class.deact]="globals.access.events==0 " >
+            <ons-icon icon="fa-cube" *ngIf="globals.loaded.events||globals.access.events==0"></ons-icon>
+            <ons-icon icon="fa-spinner" spin="true" *ngIf="!globals.loaded.events&&globals.access.events>0" ></ons-icon>
+            </div></div>
           <div class="member_name">Events</div>
          </div> 
       </div>
       <div class="member_outer" (click)="loadPage(program)">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial" [class.deact]="globals.access.progs==0 ">
-          <ons-icon *ngIf="globals.loadprogs" icon="fa-cubes"></ons-icon>
-          <ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loadprogs"></ons-icon>
+          <ons-icon *ngIf="globals.loaded.progs||globals.access.progs==0" icon="fa-cubes"></ons-icon>
+          <ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loaded.progs&&globals.access.progs>0"></ons-icon>
           </div></div>
           <div class="member_name">Programme</div>
          </div> 
@@ -105,5 +108,6 @@
       
            </div>
     </ons-page>
+
     
    
