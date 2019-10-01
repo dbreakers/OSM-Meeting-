@@ -8,7 +8,7 @@ import {map, concatMap, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 //-import {DelayInterceptor} from './delay.service';
 import { timer } from 'rxjs/observable/timer';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap, mergeMap, toArray } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
@@ -179,9 +179,25 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
  return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of("error")))
  }  
 
+getEventAData2(event) {
+let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getAttendance&eventid="+event;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+//this.globals.current_term;
+ let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of("error")))
+ }  
+
 getEventsAData(): Observable<any> {
+ 
+    if (!this.slowhttp) { 
    let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventAData(event.eventid) )
-return forkJoin(singleObservables);
+return forkJoin(singleObservables); }else
+{ 
+   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventAData2(event.eventid) )
+return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray()); }
+
 }
 
 //https://www.onlinescoutmanager.co.uk/ext/events/event/?action=getStructureForEvent&sectionid=3320&eventid=23958
@@ -194,12 +210,29 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
     body = body.set('userid', this.globals.userid);
   
  return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
+}
+getEventData2(event) {
+let fullURL = this.configUrl +"?osmpath=ext/events/event/&action=getStructureForEvent&eventid="+event;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+ let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+  
+ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
 }  
 
 getEventsData(): Observable<any> {
  //  let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid) )
-   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid))
+  
+    if (!this.slowhttp) {
+      let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData(event.eventid))
 return forkJoin(singleObservables);
+ } else
+ {
+   let singleObservables = this.globals.sectiondata[3].items.map( event => this.getEventData2(event.eventid))
+  return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray());
+    }
+//return forkJoin(singleObservables);
 }
 //ext/programme/?action=getProgramme&eveningid=4327864&sectionid=3320&termid=349161
 
@@ -226,16 +259,15 @@ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isE
 f(x) { return x}
 
 getProgsData(): Observable<any> {
+   
  let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData2(prog.eveningid))
  if (!this.slowhttp) {
+   let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData(prog.eveningid))
 return forkJoin(singleObservables);
  } else
  {
-  var y = from(singleObservables).pipe(
-  mergeMap(param => this.fparam))
-);
-return y;
+   let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData2(prog.eveningid))
+  return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray());
     }
 }  
-
 }
