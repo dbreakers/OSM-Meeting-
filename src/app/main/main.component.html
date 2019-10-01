@@ -58,7 +58,7 @@
           <div class="member_name">Last Check</div>
          </div> 
       </div>
-      <div class="member_outer" (click)="loadPage(events)" >
+      <div class="member_outer" (click)="(globals.loaded.events&&globals.access.events>0)&&loadPage(events)" >
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"  [class.deact]="globals.access.events==0 " >
             <ons-icon icon="fa-cube" *ngIf="globals.loaded.events||globals.access.events==0"></ons-icon>
@@ -67,7 +67,7 @@
           <div class="member_name">Events</div>
          </div> 
       </div>
-      <div class="member_outer" (click)="loadPage(program)">
+      <div class="member_outer" (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(program)">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial" [class.deact]="globals.access.progs==0 ">
           <ons-icon *ngIf="globals.loaded.progs||globals.access.progs==0" icon="fa-cubes"></ons-icon>
