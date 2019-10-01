@@ -76,10 +76,13 @@
           <div class="member_name">Programme</div>
          </div> 
       </div>
-      <div class="member_outer" (click)="loadPage(rosta)">
+      <div class="member_outer" (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(rosta)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-hands-helping"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-hands-helping" *ngIf="globals.loaded.progs||globals.access.progs==0"></ons-icon>
+          <ons-icon spin="true" icon="fa-spinner" *ngIf="!globals.loaded.progs&&globals.access.progs>0"></ons-icon>
+          </div></div>
           <div class="member_name">Parent Rosta</div>
+          
          </div> 
       </div>
       <div class="member_outer" (click)="loadPage(leaderrosta)">
