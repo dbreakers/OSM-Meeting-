@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Security } from './security';
 //import { SECURITY } from './mock-security';
-import { Observable,  forkJoin,  of } from 'rxjs';
+import { Observable,  forkJoin,  of, from,  } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterceptor,HttpHandler } from '@angular/common/http';
 import {CustomURLEncoder} from './urlencoder.component';
 import {map, concatMap, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
 //-import {DelayInterceptor} from './delay.service';
 import { timer } from 'rxjs/observable/timer';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, mergeMap } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' })
 };
@@ -22,7 +22,7 @@ export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
     private globals: Globals) { }
-    
+ slowhttp = true;   
 update_att(date,member,abs): Observable<any>{
     let authURL = this.configUrl + "?osmpath=ext/members/attendance/&action=update&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
     let st = this.globals.config[1].find(i=>i.sectionid==this.globals.mysection) 
@@ -213,9 +213,29 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.co
 return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))  
 }  
 
+getProgData2(prog) {
+let fullURL = this.configUrl +"?osmpath=ext/programme/&action=getProgramme&eveningid="+prog;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+ let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+// return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
+return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))  
+}  
+
+f(x) { return x}
+
 getProgsData(): Observable<any> {
- let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData(prog.eveningid))
+ let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData2(prog.eveningid))
+ if (!this.slowhttp) {
 return forkJoin(singleObservables);
+ } else
+ {
+  var y = from(singleObservables).pipe(
+  mergeMap(param => this.fparam))
+);
+return y;
+    }
 }  
 
 }
