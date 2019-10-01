@@ -10,7 +10,7 @@
       </div>
     </ons-toolbar>
     <ons-bottom-toolbar>
-      Version&nbsp;{{globals.version}}
+      Version&nbsp;{{globals.version}}&nbsp;<span *ngIf="!globals.loaded.events&&globals.access.events>0"><ons-icon icon="fa-spinner" spin="true" ></ons-icon> Loading Events...</span>
 </ons-bottom-toolbar>
 
         <div class="content">
