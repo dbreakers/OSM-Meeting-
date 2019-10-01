@@ -22,7 +22,9 @@ export class LogonService {
   private configUrl = this.globals.proxyURL;
   constructor(private http: HttpClient,
     private globals: Globals) { }
- slowhttp = true;   
+
+ slowhttp = true;   // Use concatMap rather than forkJoin
+
 update_att(date,member,abs): Observable<any>{
     let authURL = this.configUrl + "?osmpath=ext/members/attendance/&action=update&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
     let st = this.globals.config[1].find(i=>i.sectionid==this.globals.mysection) 
