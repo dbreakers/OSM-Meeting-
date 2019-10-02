@@ -68,7 +68,7 @@
 						Events
 					</div>
 				</ons-list-item>
-        <ons-list-item (click)="loadPage(progs)" tappable *ngIf="globals.progs.length>0" >
+        <ons-list-item (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(progs)" tappable *ngIf="globals.access.progs>0&&globals.loaded.progs" >
 					<div class="left">
 						<ons-icon icon="fa-cubes" class="list-item__icon"></ons-icon>
 					</div>
@@ -76,7 +76,7 @@
 						Programme
 					</div>
 				</ons-list-item>
-        <ons-list-item (click)="loadPage(rosta)" tappable *ngIf="globals.progs.length>0" >
+        <ons-list-item (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(rosta)" tappable *ngIf="globals.access.progs>0&&globals.loaded.progs" >
 					<div class="left">
 						<ons-icon icon="fa-hands-helping" class="list-item__icon"></ons-icon>
 					</div>
