@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders, HttpParams, HttpEvent,HttpRequest, HttpInterce
 import {CustomURLEncoder} from './urlencoder.component';
 import {map, concatMap, catchError} from 'rxjs/operators';
 import { Globals } from './globals';
-//-import {DelayInterceptor} from './delay.service';
 import { timer } from 'rxjs/observable/timer';
 import { switchMap, mergeMap, toArray } from 'rxjs/operators';
 const httpOptions = {

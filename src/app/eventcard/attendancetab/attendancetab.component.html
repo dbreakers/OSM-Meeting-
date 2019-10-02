@@ -13,7 +13,7 @@
     <span *ngIf="eventA.attendancelimit != 0">
      There <span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0 ">are</span><span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 1">is</span> {{remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit)}} place<span *ngIf="remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) > 1 || remain(get_total(eventA.limitincludesleaders),eventA.attendancelimit) == 0">s</span> remaining.
     </span>
-    Currently {{get_count(false)}} member<span *ngIf="get_count(false) > 1 || get_count(false) == 0">s</span> and  {{get_count(true)}} leader<span *ngIf="get_count(true) > 1 || get_count(true) == 0">s</span> are attending.
+    Currently {{get_count_att(false)}} member<span *ngIf="get_count(false) > 1 || get_count(false) == 0">s</span> and  {{get_count_att(true)}} leader<span *ngIf="get_count(true) > 1 || get_count(true) == 0">s</span> are attending.
     <br><br>
     <p *ngIf="get_undecided(false) > 0">{{get_undecided(false)}} members and {{get_undecided(true)}} Leaders have not yet decided.</p> 
     <p *ngIf="get_no(false) > 0">{{get_no(false)}} members and {{get_no(true)}} Leaders are not attending.</p>

@@ -75,7 +75,23 @@ eventdates(s,e) {
   }
   return subtitle
 }
-  
+
+get_count_att(l){
+   var count = 0;
+ for ( var i = 0; i < this.event.items.length; i++ ) {
+   if (this.event.items[i].attending == "Yes"  ) {
+     
+     if((this.event.items[i].patrolid==-2&&(l==true)))
+        { count++; }
+     if((this.event.items[i].patrolid>-1&&(l==false)))
+        { count++; }    
+   }
+ }
+ return count;
+//
+}
+
+
 get_count(l){
    var count = 0;
  for ( var i = 0; i < this.event.items.length; i++ ) {

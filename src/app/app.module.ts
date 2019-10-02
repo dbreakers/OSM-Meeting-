@@ -37,7 +37,7 @@ import { SectionselectComponent } from './sectionselect/sectionselect.component'
 import { MainComponent } from './main/main.component';
 import { MedicalComponent } from './medical/medical.component';
 import { Globals } from './globals';
-import {DelayInterceptor} from './delay.service';
+
 import { EventtabComponent } from './scoutcard/eventtab/eventtab.component';
 import { PersontabComponent } from './scoutcard/persontab/persontab.component';
 import { EventcardComponent } from './eventcard/eventcard.component';
