@@ -32,6 +32,7 @@ export class LeaderrostaComponent implements OnInit {
  selected_meeting = -1;
 progs_copy = [];
 singleprog=""
+date_list = true;
 
 constructor(
     private inj: Injector,
@@ -71,6 +72,11 @@ eventdates(s,e) {
   }
   return subtitle
 }
+
+ switchdisplay() {
+   this.date_list = !this.date_list;
+   //  if (this.date_list==1) {this.date_list = 0;} else {this.grid_list = 1;} 
+      }
 
 OnPaste_StripFormatting(e: ClipboardEvent) {
 
