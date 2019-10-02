@@ -24,21 +24,21 @@
     <span *ngIf="date_list"> 
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
-    <p class="head2"><span class="head">{{prog.items[0].title}} ({{members.length-prog.items[0].unavailableleaders.length}} present)</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
-    <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
- <br> 
+    <p class="head2"><span class="head">{{prog.items[0].title}} ({{members.length-prog.items[0].unavailableleaders.length}}&nbsp;present)</span><br><b>{{eventdates(prog.items[0].meetingdate,null)}}
+    <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></b></p>
+ 
   <span *ngFor="let ldr of members; index as j">
   
-  <div  class="leaderline" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
-     <span class="left" >
+  <div  class="line_ldr" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
+     <div class="tick_ldr" >
       <ons-icon *ngIf="leader_present(ldr.member_id,prog) " icon="fa-check-circle" size="50px" style="color: #00a794;" class="list-item__icon">
         </ons-icon>
         <ons-icon *ngIf="!leader_present(ldr.member_id,prog)" icon="fa-circle" size="50px" style="color: LightGray;" class="list-item__icon">
         </ons-icon>
-      </span>
-    <span class="list-item__title">  
+      </div>
+    <div class="name_ldr">  
            {{ldr.first_name}} {{ldr.last_name}}
-    </span>
+    </div>
   </div>  
    
   </span>  
@@ -53,16 +53,18 @@
       
   <span *ngFor="let prog of globals.progs; index as i">
   
-  <div  class="leaderline" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
-     <span class="left" >
+  <div  class="line_ldr" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
+    <div class="tick_ldr" >
       <ons-icon *ngIf="leader_present(ldr.member_id,prog) " icon="fa-check-circle" size="50px" style="color: #00a794;" class="list-item__icon">
         </ons-icon>
         <ons-icon *ngIf="!leader_present(ldr.member_id,prog)" icon="fa-circle" size="50px" style="color: LightGray;" class="list-item__icon">
         </ons-icon>
-      </span>
-    <span class="list-item__title">  
-      <b>{{eventdates(prog.items[0].meetingdate,null)}}</b>&nbsp;:&nbsp;{{prog.items[0].title}}<br>
-        </span>
+    </div>
+    <div class="date_ldr">  
+    <b>{{eventdates(prog.items[0].meetingdate,null)}}</b>
+    </div>
+      <div class="title_ldr">{{prog.items[0].title}}</div>
+        
   </div>  
    
   </span>  

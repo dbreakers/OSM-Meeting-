@@ -61,3 +61,11 @@
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 .leaderline {height: 50px;}
+
+.tick_ldr{ width: 10%}
+.date_ldr { width: 40%}
+.title_ldr { width: 50%}
+.name_ldr { width: 90%}
+.line_ldr {display:flex;    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: solid;}
