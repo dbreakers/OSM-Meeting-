@@ -223,12 +223,13 @@ this.sellist(1);
 
 
 alert(s,t) {
-  debugger;
+ // debugger;
 
 }
 absent(event,scout,prog,f,l){
   var pres = prog.items[0].unavailableleaders.find(i=>i.member_id==scout);
   var d = prog.items[0].meetingdate;
+  if (this.globals.access.register>10){
   if (pres==undefined) {
       var obj = {};
    obj["member_id"] = scout;
@@ -240,6 +241,7 @@ absent(event,scout,prog,f,l){
     var pres = prog.items[0].unavailableleaders.findIndex(i=>i.member_id==scout);
     prog.items[0].unavailableleaders.splice(pres,1);
      this.logonService.update_att(d,scout,"Absent").subscribe(Security=> this.alert(Security,"Counter"));
+  }
   }
 }
 
