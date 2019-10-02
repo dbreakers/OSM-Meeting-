@@ -8,9 +8,9 @@
 		<ons-back-button>Back</ons-back-button>
 	</div>
       <div class="right menu_sel">
-        <ons-toolbar-button (click)="switchdisplay()">
-          <ons-icon style="color: 7413dc;" icon="fa-calendar-day" *ngIf="date_list"></ons-icon>
-          <ons-icon style="color: 7413dc;" icon="fa-user-ninja" *ngIf="!date_list"></ons-icon>
+        <ons-toolbar-button (click)="switchdisplay()" *ngIf="singleprog==''">
+          <ons-icon style="color: 7413dc;" icon="fa-calendar-day" *ngIf="!date_list"></ons-icon>
+          <ons-icon style="color: 7413dc;" icon="fa-user-ninja" *ngIf="date_list"></ons-icon>
         </ons-toolbar-button>  
         <ons-toolbar-button (click)="openMenu()">
           <ons-icon icon="fa-bars"></ons-icon>
@@ -21,10 +21,10 @@
         <div class="content">    
    <div class="wrapper"><h2>Leaders Attending</h2>     
    <div id="infoi"> <ons-icon icon="fa-ellipsis-v"></ons-icon></div></div>
-     
+    <span *ngIf="date_list"> 
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
-    <p class="head2"><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
+    <p class="head2"><span class="head">{{prog.items[0].title}} ({{members.length-prog.items[0].unavailableleaders.length}} present)</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
  <br> 
   <span *ngFor="let ldr of members; index as j">
@@ -43,6 +43,30 @@
    
   </span>  
   </ons-card>
-  </span>    
+  </span></span>
+  <span  *ngIf="!date_list">
+    <span  id="gridcontainer" *ngFor="let ldr of members; index as j">
+
+  <ons-card >
+    <p class="head2"><span class="head">{{ldr.first_name}} {{ldr.last_name}}</span></p>
+      
+      
+  <span *ngFor="let prog of globals.progs; index as i">
+  
+  <div  class="leaderline" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
+     <span class="left" >
+      <ons-icon *ngIf="leader_present(ldr.member_id,prog) " icon="fa-check-circle" size="50px" style="color: #00a794;" class="list-item__icon">
+        </ons-icon>
+        <ons-icon *ngIf="!leader_present(ldr.member_id,prog)" icon="fa-circle" size="50px" style="color: LightGray;" class="list-item__icon">
+        </ons-icon>
+      </span>
+    <span class="list-item__title">  
+      <b>{{eventdates(prog.items[0].meetingdate,null)}}</b>&nbsp;:&nbsp;{{prog.items[0].title}}<br>
+        </span>
+  </div>  
+   
+  </span>  
+  </ons-card>
+  </span>    </span>
 </div><!--List-->
     </ons-page>
