@@ -10,7 +10,7 @@
       </div>
     </ons-toolbar>
     <ons-bottom-toolbar>
-      <div style="display:flex"><div style="width:40%">Version&nbsp;{{globals.version}}</div><div style="width:60%"><span style="float:right" *ngIf="!globals.loaded.events||!globals.loaded.progs"><ons-icon icon="fa-spinner" spin="true" ></ons-icon> Loading <span *ngIf="!globals.loaded.progs" >Programme...</span><span *ngIf="globals.loaded.progs&&!globals.loaded.events">Events...</span></span></div></div>
+      <div style="display:flex"><div style="width:40%">Version&nbsp;{{globals.version}}</div><div style="width:60%"><span style="float:right" *ngIf="(!globals.loaded.events&&globals.access.events>0)||(!globals.loaded.progs&&globals.access.progs>0)"><ons-icon icon="fa-spinner" spin="true" ></ons-icon> Loading <span *ngIf="!globals.loaded.progs" >Programmes...</span><span *ngIf="globals.loaded.progs&&!globals.loaded.events">Events...</span></span></div></div>
 </ons-bottom-toolbar>
 
         <div class="content">
