@@ -14,6 +14,7 @@ import {
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HomeComponent} from './home/home.component';
 import {SectionselectComponent} from './sectionselect/sectionselect.component';
+import { TermpickerComponent } from './termpicker/termpicker.component';
 import {EventsComponent} from './events/events.component';
 import {ProgrammeComponent} from './programme/programme.component';
 import {MainComponent} from './main/main.component';
@@ -22,6 +23,7 @@ import {GlobalsearchComponent} from './globalsearch/globalsearch.component';
 import {MedicalComponent} from './medical/medical.component';
 import {BirthdayComponent} from './birthday/birthday.component';
 import { LastcheckedComponent} from './lastchecked/lastchecked.component';
+import {LeaderrostaComponent} from './leaderrosta/leaderrosta.component';
 import { Globals } from './globals';
 import * as ons from 'onsenui';
 import {HostListener} from "@angular/core";
@@ -43,12 +45,14 @@ constructor(private globals: Globals ) { }
   home = HomeComponent;
   cards = SectionselectComponent;
   main = MainComponent;
+  terms = TermpickerComponent;
   medical = MedicalComponent;
   birthday = BirthdayComponent;
   globalsearch = GlobalsearchComponent;
   events = EventsComponent;
   progs = ProgrammeComponent;
   rosta = RostaComponent;
+  lrosta = LeaderrostaComponent;
   checked = LastcheckedComponent;
   ons
 

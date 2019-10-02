@@ -20,12 +20,12 @@
 						Switch Sections
 					</div>
 				</ons-list-item>
-				<ons-list-item (click)="loadPage(main)" tappable *ngIf="globals.configread==true">
+				<ons-list-item (click)="loadPage(terms)" tappable *ngIf="globals.configread==true">
 					<div class="left">
-						<ons-icon icon="fa-cog" class="list-item__icon"></ons-icon>
+						<ons-icon icon="fa-calendar-check" class="list-item__icon"></ons-icon>
 					</div>
 					<div class="center">
-						Settings
+						Switch Terms
 					</div>
 				</ons-list-item>
         	<ons-list-item (click)="loadPage(checked)" tappable *ngIf="globals.configread==true">
@@ -82,6 +82,14 @@
 					</div>
 					<div class="center">
 						Rosta
+					</div>
+				</ons-list-item>
+         <ons-list-item (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(lrosta)" tappable *ngIf="globals.access.progs>0&&globals.loaded.progs" >
+					<div class="left">
+						<ons-icon icon="fa-users" class="list-item__icon"></ons-icon>
+					</div>
+					<div class="center">
+						Leaders Available
 					</div>
 				</ons-list-item>
       <ons-list-item (click)="logout(home)" tappable *ngIf="globals.configread==true">
