@@ -48,9 +48,10 @@
     <span  id="gridcontainer" *ngFor="let ldr of members; index as j">
 
   <ons-card >
-    <p class="head2"><span class="head">{{ldr.first_name}} {{ldr.last_name}}</span></p>
-      
-      
+    <div style="display:flex;" (click)="toggle_vis(ldr.member_id,$event)">
+    <div class="head2" style="width: 90%" ><span class="head">{{ldr.first_name}} {{ldr.last_name}}</span></div><div style="width: 10%"><span class="" id="{{ldr.member_id}}_expand"><ons-icon icon="fa-chevron-down"></ons-icon></span> <span class="hide" id="{{ldr.member_id}}_con"><ons-icon icon="fa-chevron-up"></ons-icon></span ></div>
+  </div>    
+  <div style="padding-top: 10px;" class="hide" id="{{ldr.member_id}}"  >    
   <span *ngFor="let prog of globals.progs; index as i">
   
   <div  class="line_ldr" (click)="absent($event,ldr.member_id,prog,ldr.first_name,ldr.last_name);">
@@ -67,7 +68,8 @@
         
   </div>  
    
-  </span>  
+  </span> 
+  </div> 
   </ons-card>
   </span>    </span>
 </div><!--List-->

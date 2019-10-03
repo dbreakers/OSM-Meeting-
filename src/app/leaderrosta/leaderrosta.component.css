@@ -69,3 +69,5 @@
 .line_ldr {display:flex;    padding-top: 10px;
     padding-bottom: 10px;
     border-top: solid;}
+
+.hide {display: none;}

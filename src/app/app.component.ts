@@ -54,6 +54,7 @@ constructor(private globals: Globals ) { }
   rosta = RostaComponent;
   lrosta = LeaderrostaComponent;
   checked = LastcheckedComponent;
+   
   ons
 
   loadPage(page) {

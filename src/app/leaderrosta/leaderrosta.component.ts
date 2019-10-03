@@ -57,6 +57,21 @@ timeformat(t) {
   h = h ? h : 12;
   return h + ':' + m + ' ' + ampm;}
 
+toggle_vis(id,e) {
+  console.log(id);
+ // debugger;
+ // var input = document.getElementById(id).classList.contains("hide");
+  if (document.getElementById(id).classList.contains("hide")) {
+    document.getElementById(id).classList.remove("hide")
+    document.getElementById(id+"_con").classList.remove("hide")
+    document.getElementById(id+"_expand").classList.add("hide")
+  } else { 
+    document.getElementById(id).classList.add("hide") 
+       document.getElementById(id+"_con").classList.add("hide")
+    document.getElementById(id+"_expand").classList.remove("hide")
+    }
+
+} 
 
 eventdates(s,e) {
   var subtitle = "";
