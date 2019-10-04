@@ -284,9 +284,9 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection;
 return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))  
 }  
 
-getQMData(list) {
+getQMData(list,sec) {
 let fullURL = this.configUrl +"?osmpath=ext/quartermaster/&action=getList&listid="+list;
-fullURL= fullURL+"&sectionid="+this.globals.mysection;
+fullURL= fullURL+"&sectionid="+sec;
  let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
@@ -294,16 +294,15 @@ fullURL= fullURL+"&sectionid="+this.globals.mysection;
 return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))  
 }  
 
-
 getQMListData(): Observable<any> {
   
  
  if (!this.slowhttp) {
-   let singleObservables = this.globals.sectiondata[8].data.map( list=> this.getQMData2(list.id))
+   let singleObservables = this.globals.sectiondata[8].data.map( list=> this.getQMData2(list.id,list.sectionid))
 return forkJoin(singleObservables);
  } else
  {
-   let singleObservables = this.globals.sectiondata[8].items.map( list => this.getQMData(list.id))
+   let singleObservables = this.globals.sectiondata[8].items.map( list => this.getQMData(list.id,list.sectionid))
   return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray());
     }
 }  
