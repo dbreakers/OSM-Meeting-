@@ -80,7 +80,9 @@ loadPage(page) {
   }
 
   
-
+do_QM(qm) {
+  this.globals.qm = qm;
+}
   
 do_events(e){
   this.globals.event = e;
@@ -128,6 +130,7 @@ do_progs(p)
             if (this.globals.access.progs>0){
               this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
             }
+            this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM));
             }
     
   
