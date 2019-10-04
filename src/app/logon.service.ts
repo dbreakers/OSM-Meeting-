@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { Security } from './security';
 //import { SECURITY } from './mock-security';
 import { Observable,  forkJoin,  of, from,  } from 'rxjs';
@@ -149,7 +149,7 @@ getSectionData(sectionid, term): Observable<any> {
     let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; // access
     let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st;
     let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st+"&nototal=true";
-     let fullURL9 = this.configUrl + "?ext/quartermaster/?action=getListOfLists&section=scouts&sectionid="+sectionid;
+     let fullURL9 = this.configUrl + "?osmpath=ext/quartermaster/?action=getListOfLists&section=scouts&sectionid="+sectionid;
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
