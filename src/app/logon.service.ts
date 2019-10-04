@@ -149,6 +149,7 @@ getSectionData(sectionid, term): Observable<any> {
     let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; // access
     let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st;
     let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st+"&nototal=true";
+     let fullURL9 = this.configUrl + "?ext/quartermaster/?action=getListOfLists&section=scouts&sectionid="+sectionid;
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
@@ -165,7 +166,8 @@ getSectionData(sectionid, term): Observable<any> {
       this.http.post(fullURL5, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
       this.http.post(fullURL6, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
       this.http.post(fullURL7, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
-      this.http.post(fullURL8, body, httpOptions).pipe(catchError(error => of({isError: true, error}) ))
+      this.http.post(fullURL8, body, httpOptions).pipe(catchError(error => of({isError: true, error}) )),
+       this.http.post(fullURL9, body, httpOptions).pipe(catchError(error => of({isError: true, error}) ))
       );
   }
 
