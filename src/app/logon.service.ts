@@ -295,7 +295,6 @@ return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isE
 }  
 
 getQMListData(): Observable<any> {
-  
  
  if (!this.slowhttp) {
    let singleObservables = this.globals.sectiondata[8].data.map( list=> this.getQMData2(list.id,list.sectionid))
