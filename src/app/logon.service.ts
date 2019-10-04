@@ -149,7 +149,7 @@ getSectionData(sectionid, term): Observable<any> {
     let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; // access
     let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st;
     let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st+"&nototal=true";
-     let fullURL9 = this.configUrl + "?osmpath=ext/quartermaster/?action=getListOfLists&section=scouts&sectionid="+sectionid;
+     let fullURL9 = this.configUrl + "?osmpath=ext/quartermaster/&action=getListOfLists&section=scouts&sectionid="+sectionid;
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
     body = body.set('userid', this.globals.userid);
@@ -263,8 +263,7 @@ f(x) { return x}
 
 getProgsData(): Observable<any> {
    
- let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData2(prog.eveningid))
- if (!this.slowhttp) {
+  if (!this.slowhttp) {
    let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData(prog.eveningid))
 return forkJoin(singleObservables);
  } else
@@ -273,4 +272,30 @@ return forkJoin(singleObservables);
   return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray());
     }
 }  
+
+getQMData(prog) {
+let fullURL = this.configUrl +"?osmpath=ext/programme/&action=getProgramme&eveningid="+prog;
+fullURL= fullURL+"&sectionid="+this.globals.mysection+"&termid="+this.globals.config[2][this.globals.mysection][this.globals.current_term].termid;
+ let body = new HttpParams();
+    body = body.set('secret', this.globals.secret);
+    body = body.set('userid', this.globals.userid);
+// return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of(error)))
+return this.http.post(fullURL,body,httpOptions).pipe(catchError(error => of({isError: true, error}) ))  
+}  
+
+
+getQMListData(): Observable<any> {
+  
+ 
+ if (!this.slowhttp) {
+   let singleObservables = this.globals.sectiondata[4].items.map( list=> this.getQMData(list.eveningid))
+return forkJoin(singleObservables);
+ } else
+ {
+   let singleObservables = this.globals.sectiondata[4].items.map( prog => this.getProgData2(prog.eveningid))
+  return from(singleObservables).pipe(  concatMap(param => this.f(param))).pipe(toArray());
+    }
+}  
+
+
 }
