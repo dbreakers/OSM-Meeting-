@@ -44,7 +44,7 @@ sortable_list = [];
       
        for(var i = 0; i < this.globals.qmlist.length; i++) {
          this.sortable_list.push(Object.keys(this.globals.qmlist[i].data.rows).map(key => {
-    this.globals.qmlist[i].data.rows[key].id = key; return this.globals.qmlist[i].data.rows[key];}));
+    this.globals.qmlist[i].data.rows[key].id = key;  return this.globals.qmlist[i].data.rows[key];}));
   
   this.sortable_list.sort(this.sorting.compareValuesArray(["1"],"desc"));
        }
