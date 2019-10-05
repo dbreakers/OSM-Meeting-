@@ -27,6 +27,7 @@ import {RegisterComponent } from '../register/register.component';
 import {SectionselectComponent} from '../sectionselect/sectionselect.component';
 import {LeaderrostaComponent} from '../leaderrosta/leaderrosta.component';
 import {BirthdayComponent} from '../birthday/birthday.component';
+import {QMListsComponent} from '../qmlists/qmlists.component';
 import { Globals } from '../globals';
 import { LogonService } from '../logon.service';
 import { PhotoURLService } from '../photoUrl';
@@ -55,6 +56,7 @@ export class MainComponent implements OnInit {
   globalsearch = GlobalsearchComponent;
   sectionselect = SectionselectComponent;
   birthday = BirthdayComponent;
+  qmlists = QMListsComponent;
   leaderrosta = LeaderrostaComponent;
   @ViewChild('navi') private navi: OnsNavigator;
 
@@ -83,7 +85,7 @@ loadPage(page) {
 
   
 do_QM(qm) {
-  this.globals.qm = qm;
+  this.globals.qmlist = qm;
   this.globals.loaded.qm = true;
 }
   

@@ -90,6 +90,12 @@
           <div class="member_name">Meeting<br>Leadership</div>
          </div> 
       </div>
+       <div class="member_outer" (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(qmlists)">
+           <div class="member_inner">
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.progs==0 "><ons-icon icon="fa-users" *ngIf="globals.loaded.progs||globals.access.progs==0"></ons-icon><ons-icon spin="true" icon="fa-compass" *ngIf="!globals.loaded.progs&&globals.access.progs>0"></ons-icon></div></div>
+          <div class="member_name">Meeting<br>Leadership</div>
+         </div> 
+      </div>
       <div class="member_outer" (click)="loadPage(sectionselect)">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial"><ons-icon icon="fa-exchange-alt"></ons-icon></div></div>

@@ -1,0 +1,29 @@
+<ons-page>
+	<ons-toolbar>
+		<div class="center">
+			{{globals.application}}
+		</div>
+    <div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+		<div class="right">
+
+			<ons-toolbar-button (click)="sortDialog.show()">
+				<ons-icon icon="fa-sort"></ons-icon>
+			</ons-toolbar-button>
+
+			<ons-toolbar-button  class="menu_sel" (click)="openMenu()">
+				<ons-icon icon="fa-bars"></ons-icon>
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+  
+  <div class="content">
+     <h2>QM List</h2>
+     <span *ngFor="let list of globals.qmlist; index as i">
+      <h1>{{list.data.list.name}}</h1> 
+        <span *ngFor="let items of list.data.rows | keyvalue; index as j">
+          <p>{{items.value[1]}}</p>
+        </span>  
+     </span>  
+  </div>   
