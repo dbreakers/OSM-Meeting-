@@ -12,6 +12,8 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from 'ngx-onsenui';
 
+import { Observable,  forkJoin,  of, from,  } from 'rxjs';
+
 import { TermpickerComponent } from '../termpicker/termpicker.component';
 import { MedicalComponent } from '../medical/medical.component';
 import { ProgrammeComponent } from '../programme/programme.component';
@@ -124,12 +126,14 @@ do_progs(p)
      this.globals.event = [];
      this.globals.eventA = [];
      if (!this.globals.access.noaccess) {
-            if (this.globals.access.events>0){
-             this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events));
-    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events));
+            if (!this.globals.loaded.events){
+              forkJoin(
+             this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events)),
+             this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs),
+    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events))));
             }
             if (this.globals.access.progs>0){
-              this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
+    //          this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
             }
             this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM));
             }

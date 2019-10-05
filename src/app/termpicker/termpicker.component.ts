@@ -47,7 +47,9 @@ export class TermpickerComponent implements OnInit {
     //alert("heelo");
   this.globals.sectiondata = data;
   this.globals.eventsection = "";
-
+  this.globals.event = [];
+  this.globals.eventA = [];
+  this.globals.progs = [];
   this.logonService.setAPIvalues();
    this.globals.loaded.events = false;
     this.globals.loaded.eventsA = false;
