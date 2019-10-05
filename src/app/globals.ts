@@ -19,7 +19,6 @@ export class Globals {
   progs:  Array<any> = [];
   qmlist:  Array<any> = [];
   eventsection: string = "";
-  sectiondatasection: string = "";
   current_term: string  = "-1";
   memberaccess: string = "";
   badgeaccess: string = "";
