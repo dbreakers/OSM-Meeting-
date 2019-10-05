@@ -13,9 +13,7 @@
 .deact {
   background-color:lightgrey;}
 
-.member_outer.selected .member_inner .member_initial {
-  background-color: #7413dc;
-}
+
 .member_box { 
  display: table;
   margin: 0 auto;
@@ -41,14 +39,9 @@
 
 
 .member_inner {
- /* background-color: red;
-width: 100px;
-height: 150px; */
 display: table-cell;
 float: left;
 }
-
-
 
 .notification {
   position: absolute;
