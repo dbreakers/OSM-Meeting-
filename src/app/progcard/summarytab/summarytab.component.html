@@ -11,7 +11,7 @@
   {{ldr.firstname}}&nbsp;{{ldr.lastname}}
 </div>
 <div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div>
-<p (click)="go_lrosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Leaders></b></p>
+<p (click)="go_lrosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Leaders</b></p>
 <div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr"><div id="ln_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="ln_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].leaders != ''" class="theadb" id="ln">{{prog.items[0].leaders}}</div> 
 <p  class="subhead">Parent Helpers </p>
