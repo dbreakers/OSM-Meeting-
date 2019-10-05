@@ -90,9 +90,9 @@
           <div class="member_name">Meeting<br>Leadership</div>
          </div> 
       </div>
-       <div class="member_outer" (click)="(globals.loaded.progs&&globals.access.progs>0)&&loadPage(qmlists)">
+       <div class="member_outer" (click)="(globals.loaded.qm&&globals.access.qm>0)&&loadPage(qmlists)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.progs==0 "><ons-icon icon="fa-boxes" *ngIf="globals.loaded.progs||globals.access.progs==0"></ons-icon><ons-icon spin="true" icon="fa-compass" *ngIf="!globals.loaded.progs&&globals.access.progs>0"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.qm==0 "><ons-icon icon="fa-boxes" *ngIf="globals.loaded.qm||globals.access.qm==0"></ons-icon><ons-icon spin="true" icon="fa-compass" *ngIf="!globals.loaded.qm&&globals.access.qm>0"></ons-icon></div></div>
           <div class="member_name">QM List</div>
          </div> 
       </div>

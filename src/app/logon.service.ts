@@ -102,18 +102,14 @@ mod_parents(opt,scout,evening,date): Observable<any>
     if (apiv!!=undefined) {
       if (!apiv.permissions.hasOwnProperty('empty')) {
         this.globals.access.members = apiv.permissions.member;;
-    this.globals.access.events =  apiv.permissions.events;
-    this.globals.access.progs = apiv.permissions.programme;
-    this.globals.access.register =apiv.permissions.register;
-    this.globals.access.badges = apiv.permissions.badges
-    this.globals.access.qm = apiv.permissions.quartermaster;
+    
+    this.globals.access.events =  (apiv.permissions.hasOwnProperty("events") ? apiv.permissions.events : 0)
+    this.globals.access.progs =  (apiv.permissions.hasOwnProperty("programme") ? apiv.permissions.programme : 0)
+    this.globals.access.register =  (apiv.permissions.hasOwnProperty("register") ? apiv.permissions.register : 0)
+     this.globals.access.badges =  (apiv.permissions.hasOwnProperty("badges") ? apiv.permissions.badges : 0)
+    this.globals.access.qm =  (apiv.permissions.hasOwnProperty("quartermaster") ? apiv.permissions.quartermaster : 0)
     this.globals.access.noaccess = false;
-    /*    this.globals.memberaccess = apiv.permissions.member;
-        this.globals.badgeaccess = apiv.permissions.badges;
-        this.globals.eventsaccess = apiv.permissions.events;
-        this.globals.programmeaccess = apiv.permissions.programme;
-        this.globals.registeraccess = apiv.permissions.register;
-        this.globals.noaccess = false; */
+   
       }
     }
   }

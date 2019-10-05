@@ -17,13 +17,15 @@
 			</ons-toolbar-button>
 		</div>
 	</ons-toolbar>
-  
+
   <div class="content">
      <h2>QM List</h2>
      <span *ngFor="let list of globals.qmlist; index as i">
-      <h1>{{list.data.list.name}}</h1> 
+    <ons-card>
+       <p class="head2"><span class="head">{{list.data.list.name}}</span></p> 
         <span *ngFor="let items of list.data.rows | keyvalue; index as j">
-          <p>{{items.value[1]}}</p>
-        </span>  
+          <div class="qmitem"><div class="item">{{items.value[1]}}</div><div class="itemq">{{items.value[6]}}</div></div>
+        </span>
+    </ons-card>     
      </span>  
   </div>   
