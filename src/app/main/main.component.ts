@@ -123,24 +123,25 @@ do_progs(p)
    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
     
      if (this.globals.eventsection!=this.globals.mysection){
-     this.globals.event = [];
-     this.globals.eventA = [];
+    
      if (!this.globals.access.noaccess) {
-            if (!this.globals.loaded.events){
-              forkJoin(
-             this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events)),
-             this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs)),
-    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events)),this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM)));
-            }
-            if (this.globals.access.progs>0){
-    //          this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
-            }
-            
-            }
+      var fj = [];
+      if ((!this.globals.loaded.events)&&(this.globals.access.events>0)){
+        fj.push( this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events)));
+        fj.push( this.logonService.getEventsAData().subscribe(Events => this.do_events(Events)));
+      }
+      if ((!this.globals.loaded.progs)&&(this.globals.access.progs>0)){
+        fj.push( this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs)));
+      }
+      fj.push(this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM)))
+      forkJoin(fj);
+              
+     }
+    }
     
   
     
-    this.globals.eventsection=this.globals.mysection;
+    // Deal with the scenario where we have access but no data
     this.access = this.globals.sectiondata[5].apis.find(i=>i.apiid==41);
     if (this.globals.access.progs>0){
     if (this.globals.sectiondata[4].items.length==0) {
@@ -152,4 +153,4 @@ do_progs(p)
     }}
      }
   }
-}
+
