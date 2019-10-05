@@ -106,13 +106,14 @@ mod_parents(opt,scout,evening,date): Observable<any>
     this.globals.access.progs = apiv.permissions.programme;
     this.globals.access.register =apiv.permissions.register;
     this.globals.access.badges = apiv.permissions.badges
+    this.globals.access.qm = apiv.permissions.quartermaster;
     this.globals.access.noaccess = false;
-        this.globals.memberaccess = apiv.permissions.member;
+    /*    this.globals.memberaccess = apiv.permissions.member;
         this.globals.badgeaccess = apiv.permissions.badges;
         this.globals.eventsaccess = apiv.permissions.events;
         this.globals.programmeaccess = apiv.permissions.programme;
         this.globals.registeraccess = apiv.permissions.register;
-        this.globals.noaccess = false;
+        this.globals.noaccess = false; */
       }
     }
   }
