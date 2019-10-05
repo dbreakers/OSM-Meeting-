@@ -140,15 +140,15 @@ mod_parents(opt,scout,evening,date): Observable<any>
   }
 
 getSectionData(sectionid, term): Observable<any> {
-    let st = this.globals.config[1].find(i=>i.sectionid==sectionid)
+    let st = this.globals.config[1].find(i=>i.sectionid==sectionid  )
     let fullURL = this.configUrl + "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid="+sectionid+"&archived=n"; //Flexi
     let fullURL2 = this.configUrl + "?osmpath=ext/members/contact/grid/&action=getMembers"; // Members
     let fullURL3 = this.configUrl + "?osmpath=ext/settings/patrols/&action=get&sectionid="+sectionid; //Patrols
     let fullURL4 = this.configUrl + "?osmpath=ext/events/summary/&action=get&sectionid="+sectionid+"&termid="+term; //Events
     let fullURL5 = this.configUrl + "?osmpath=ext/programme/&action=getProgrammeSummary&sectionid="+sectionid+"&termid="+term; //Programme
     let fullURL6 = this.configUrl + "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid="+sectionid; // access
-    let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st;
-    let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st+"&nototal=true";
+    let fullURL7 = this.configUrl + "?osmpath=ext/members/attendance/&action=structure&sectionid="+sectionid+"&termid="+term+"&section="+st.section;
+    let fullURL8 = this.configUrl + "?osmpath=ext/members/attendance/&action=get&sectionid="+sectionid+"&termid="+term+"&section="+st.section+"&nototal=true";
      let fullURL9 = this.configUrl + "?osmpath=ext/quartermaster/&action=getListOfLists&section=scouts&sectionid="+sectionid;
     let body = new HttpParams();
     body = body.set('secret', this.globals.secret);
