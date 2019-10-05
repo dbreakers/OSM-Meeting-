@@ -33,9 +33,10 @@ export class QMListsComponent implements OnInit {
     private globals: Globals,
   
     ) { }
-      do_it(a) {
-        debugger;
-      }
+      
+        openMenu() {
+    this.inj.get(AppComponent).menu.nativeElement.open();
+  }
       ngOnInit() {
       }
 }
