@@ -129,13 +129,13 @@ do_progs(p)
             if (!this.globals.loaded.events){
               forkJoin(
              this.logonService.getEventsData().subscribe(Events => this.do_eventsA(Events)),
-             this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs),
-    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events))));
+             this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs)),
+    this.logonService.getEventsAData().subscribe(Events => this.do_events(Events)),this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM)));
             }
             if (this.globals.access.progs>0){
     //          this.logonService.getProgsData().subscribe(Progs => this.do_progs(Progs));
             }
-            this.logonService.getQMListData().subscribe(QM=> this.do_QM(QM));
+            
             }
     
   
