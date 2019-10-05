@@ -122,7 +122,7 @@ do_progs(p)
    // this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
     
-     if (this.globals.eventsection!=this.globals.mysection){
+   //  if (this.globals.eventsection!=this.globals.mysection){
     
      if (!this.globals.access.noaccess) {
       var fj = [];
@@ -137,7 +137,7 @@ do_progs(p)
       forkJoin(fj);
               
      }
-    }
+  //  }
     
   
     

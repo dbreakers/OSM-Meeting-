@@ -74,7 +74,6 @@ constructor(private globals: Globals ) { }
     this.globals.config = [];
     this.globals.event = [];
     this.globals.eventA = [];
-    this.globals.eventsection = "";
     for (var i=0; i< Object.keys(this.globals.loaded).length; i++) 
     {
     this.globals.loaded[Object.keys(this.globals.loaded)[i]] = false;
