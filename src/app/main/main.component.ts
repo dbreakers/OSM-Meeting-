@@ -102,7 +102,7 @@ do_eventsA(e){
 do_progs(p)
 {
   this.globals.progs = p;
-  this.globals.loadprogs=true;
+ // this.globals.loadprogs=true;
   this.globals.loaded.progs = true;
  
 

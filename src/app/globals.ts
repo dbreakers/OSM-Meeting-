@@ -20,13 +20,13 @@ export class Globals {
   qmlist:  Array<any> = [];
  // eventsection: string = "";
   current_term: string  = "-1";
-  memberaccess: string = "";
-  badgeaccess: string = "";
-  eventsaccess: string = "";
-  programmeaccess: string = "";
-  registeraccess: string = "";
-  noaccess: boolean = true;
-  loadprogs: boolean = false;
+//  memberaccess: string = "";
+//  badgeaccess: string = "";
+//  eventsaccess: string = "";
+//  programmeaccess: string = "";
+//  registeraccess: string = "";
+//  noaccess: boolean = true;
+//  loadprogs: boolean = false;
   sectionname: string = "No Section";
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],

@@ -93,12 +93,12 @@ mod_parents(opt,scout,evening,date): Observable<any>
     this.globals.access.badges = "";
     this.globals.access.noaccess = true;
     this.globals.access.progs = "";
-    this.globals.memberaccess = "";
+   /* this.globals.memberaccess = "";
     this.globals.badgeaccess = "";
     this.globals.eventsaccess = "";
     this.globals.programmeaccess = "";
     this.globals.registeraccess = "";
-    this.globals.noaccess = true;
+    this.globals.noaccess = true; */
     if (apiv!!=undefined) {
       if (!apiv.permissions.hasOwnProperty('empty')) {
         this.globals.access.members = apiv.permissions.member;;
