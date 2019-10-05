@@ -22,10 +22,12 @@
      <h2>QM List</h2>
      <span *ngFor="let list of globals.qmlist; index as i">
     <ons-card>
-       <p class="head2"><span class="head">{{list.data.list.name}}{{i}}</span></p> 
-        <span *ngFor="let items of sortable_list[i]">
+       <p class="head2"><span class="head">{{list.data.list.name}}</span></p> 
+       <div class="list_of_items" *ngFor="let items of sortable_list[i]">
+       
           <div class="qmitem"><div class="item">{{items[1]}}</div><div class="itemq">{{items[6]}}</div></div>
-        </span>
+       
+       </div> 
     </ons-card>     
      </span>  
   </div>   

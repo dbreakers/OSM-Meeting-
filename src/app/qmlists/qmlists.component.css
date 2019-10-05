@@ -8,3 +8,6 @@
 }
 .item {width: 90%}
 .itemq {text-align: right; width: 10%}
+.list_of_items:last-child {
+border-bottom: solid;
+}
