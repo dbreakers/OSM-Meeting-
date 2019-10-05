@@ -81,6 +81,7 @@ export class SectionselectComponent implements OnInit, OnChanges {
     this.globals.loaded.eventsL = false;
     this.globals.loaded.progs = false;
     this.globals.loaded.section = false;
+    this.globals.loaded.qm = false;
     var f = this.globals.config[1].find(obj => obj.sectionid == this.localsection);
     this.globals.sectionname = f.groupname + ":" + f.sectionname;
     if (this.globals.current_term != '-1') {

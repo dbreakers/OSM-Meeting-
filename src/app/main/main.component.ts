@@ -82,6 +82,7 @@ loadPage(page) {
   
 do_QM(qm) {
   this.globals.qm = qm;
+  this.globals.loaded.qm = true;\
 }
   
 do_events(e){
