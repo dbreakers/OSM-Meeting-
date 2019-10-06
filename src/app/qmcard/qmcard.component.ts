@@ -13,7 +13,7 @@ import {
 } from "ngx-onsenui";
 
 import { AppComponent } from "../app.component";
-import {Dropbox} from 'dropbox';
+import { Dropbox } from "dropbox";
 import { Globals } from "../globals";
 import * as ons from "onsenui";
 import * as pdfMake from "pdfmake/build/pdfmake.js";
@@ -29,8 +29,11 @@ export class QMcardComponent implements OnInit {
   //sortable_list = [];
   QMitem = new Object();
   QMlist = new Object();
-  accessToken = "7hU8qdXO9HAAAAAAAAC8VPwLqOsa_xemA1P5pd6KVRUiDf4svT7fj8UetMDYNw-1" ;
-  images = new Object;
+  accessToken =
+    "7hU8qdXO9HAAAAAAAAC8VPwLqOsa_xemA1P5pd6KVRUiDf4svT7fj8UetMDYNw-1";
+  images = new Object();
+
+  dbx = new Dropbox({ accessToken: this.accessToken });
   constructor(
     private _navigator: OnsNavigator,
     private inj: Injector,
@@ -45,9 +48,24 @@ export class QMcardComponent implements OnInit {
 
   do_images(i) {
     this.images = i;
-    var image = new Image();
-    image.src="data:image/jpeg;base64,"+this.images.entries[0].thumbnail;
-    document.getElementById("test").appendChild(image)
+    for (var q = 0; q < this.images.entries.length; q++) {
+      var image = new Image();
+      image.src = "data:image/jpeg;base64," + this.images.entries[q].thumbnail;
+      document.getElementById("test").appendChild(image);
+    }
+  }
+
+  get_thumbs(r) {
+    var e = new Object();
+    e.entries = [];
+    for (var q = 0; q < r.entries.length; q++) {
+      var g = new Object();
+      g.path = r.entries[q].path_lower;
+      g.format = "jpeg";
+      g.size = "w32h32";
+      e.entries.push(g);
+    }
+    this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
   }
   ngOnInit() {
     if (this._params.data && this._params.data.list && this._params.data.id) {
@@ -58,14 +76,10 @@ export class QMcardComponent implements OnInit {
         this.QMitem = this.QMlist.data.rows[this._params.data.id];
       }
     }
- var dbx = new Dropbox({ accessToken:this.accessToken});
- dbx.filesListFolder({    path: ''  }).then(response => console.log(response))  
-dbx.filesGetThumbnailBatch({"entries":[{"path":"/New Haw Banner.pdf","format":{".tag":"jpeg"},"size":{".tag":"w32h32"}}]}).then(Events => this.do_images(Events))
- 
- 
 
+    //this.dbx.filesListFolder({    path: ''  }).then(response => console.log(response))
+    this.dbx
+      .filesListFolder({ path: "" })
+      .then(response => this.get_thumbs(response));
+  }
 }
-
-}
-  
- 
