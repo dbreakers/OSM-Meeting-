@@ -113,7 +113,7 @@ export class QMcardComponent implements OnInit {
           var acToken = gup(url, "access_token");
           var tokenType = gup(url, "token_type");
           var expiresIn = gup(url, "expires_in");
-           a = acToken; 
+           a = url;
           w.close();
 
           this.validateToken(acToken);
