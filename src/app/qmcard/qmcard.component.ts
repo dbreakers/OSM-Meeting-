@@ -32,6 +32,7 @@ export class QMcardComponent implements OnInit {
   accessToken = "";
   win: any;
   ac="";
+  $scope = "";
   REDIRECT = "https://scouttoolset.firebaseapp.com/auth";
 
   images = new Object();
@@ -96,7 +97,7 @@ export class QMcardComponent implements OnInit {
     var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
     var pollTimer = window.setInterval(function(w,r,a) {
-    var $scope = "";
+   
 
       try {
         console.log(w.document.URL);
