@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="qxf5tksolzymekf"></script>
 <ons-page>
 	<ons-toolbar>
 		<div class="center">
@@ -21,8 +22,13 @@
   <div class="content">
     
     <ons-card>
-       <p class="head2"><span class="head">{{QMitem[1]}}</span></p> 
-       
+       <p class="head2"><span class="head">{{QMitem[1]}}</span><br>{{QMlist.data.list.name}}</p>        
     </ons-card>     
-      
+    <ons-card *ngIf="QMitem.hasOwnProperty('2')&&QMitem[2] != ''">
+      {{QMitem[2]}} 
+    </ons-card>
+    <ons-card>
+      Quantity: {{QMitem[6]}} (Condition:{{QMitem[5]}})<br>
+      Broken: {{QMitem[7]}}<span *ngIf="!QMitem.hasOwnProperty('7')">0</span>
+    </ons-card>      
   </div>   
