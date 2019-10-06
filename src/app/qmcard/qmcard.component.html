@@ -1,0 +1,28 @@
+<ons-page>
+	<ons-toolbar>
+		<div class="center">
+			{{globals.application}}
+		</div>
+    <div class="left">
+		<ons-back-button>Back</ons-back-button>
+	</div>
+		<div class="right">
+
+			<ons-toolbar-button (click)="sortDialog.show()">
+				<ons-icon icon="fa-sort"></ons-icon>
+			</ons-toolbar-button>
+
+			<ons-toolbar-button  class="menu_sel" (click)="openMenu()">
+				<ons-icon icon="fa-bars"></ons-icon>
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+
+  <div class="content">
+    
+    <ons-card>
+       <p class="head2"><span class="head">{{QMitem[1]}}</span></p> 
+       
+    </ons-card>     
+      
+  </div>   

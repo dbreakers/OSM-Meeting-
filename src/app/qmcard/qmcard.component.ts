@@ -40,12 +40,12 @@ export class QMcardComponent implements OnInit {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
   ngOnInit() {
-   if (this._params.data && this._params.data.list&&this._params.data.item){
+   if (this._params.data && this._params.data.list&&this._params.data.id){
      this.QMlist = this.globals.qmlist.find(i=>i.data.list.id==this._params.data.list);
      if (this.QMlist!=undefined) {
-       this.QMitem = this.QMlist.data.rows[this._params.data.item];
+       this.QMitem = this.QMlist.data.rows[this._params.data.id];
      }
-   //  QMitem =;
+   
    }
     /*
     for (var i = 0; i < this.globals.qmlist.length; i++) {
