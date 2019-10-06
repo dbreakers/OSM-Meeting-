@@ -30,7 +30,7 @@ export class QMcardComponent implements OnInit {
   QMitem = new Object();
   QMlist = new Object();
   accessToken = "7hU8qdXO9HAAAAAAAAC8VPwLqOsa_xemA1P5pd6KVRUiDf4svT7fj8UetMDYNw-1" ;
-  //dbx = new Object;
+  images = new Object;
   constructor(
     private _navigator: OnsNavigator,
     private inj: Injector,
@@ -42,6 +42,13 @@ export class QMcardComponent implements OnInit {
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
+
+  do_images(i) {
+    this.images = i;
+    var image = new Image();
+    image.src="data:image/jpeg;base64,"+this.images.entries[0].thumbnail;
+    document.getElementById("test").appendChild(image)
+  }
   ngOnInit() {
     if (this._params.data && this._params.data.list && this._params.data.id) {
       this.QMlist = this.globals.qmlist.find(
@@ -52,9 +59,11 @@ export class QMcardComponent implements OnInit {
       }
     }
  var dbx = new Dropbox({ accessToken:this.accessToken});
- dbx.filesListFolder({    path: ''  }).then(response => console.log(response))   
- dbx.filesGetThumbnailBatch({    entries: [{  path: '"/new haw banner.pdf',size: 'w32h32', format: 'png'}]  
-});
+ dbx.filesListFolder({    path: ''  }).then(response => console.log(response))  
+dbx.filesGetThumbnailBatch({"entries":[{"path":"/New Haw Banner.pdf","format":{".tag":"jpeg"},"size":{".tag":"w32h32"}}]}).then(Events => this.do_images(Events))
+ 
+ 
+
 }
 
 }

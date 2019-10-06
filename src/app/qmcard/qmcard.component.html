@@ -22,7 +22,9 @@
   <div class="content">
     
     <ons-card>
-       <p class="head2"><span class="head">{{QMitem[1]}}</span><br>{{QMlist.data.list.name}}</p>        
+       <p class="head2"><span class="head">{{QMitem[1]}}</span><br>{{QMlist.data.list.name}}</p>
+       <div id="test"></div>
+          
     </ons-card>     
     <ons-card *ngIf="QMitem.hasOwnProperty('2')&&QMitem[2] != ''">
       {{QMitem[2]}} 
