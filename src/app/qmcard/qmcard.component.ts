@@ -30,10 +30,12 @@ export class QMcardComponent implements OnInit {
   QMitem = new Object();
   QMlist = new Object();
   accessToken = "";
+  win = "";
+  REDIRECT = "https://scouttoolset.firebaseapp.com/auth";
 
   images = new Object();
-
-  dbx = new Dropbox({ accessToken: this.accessToken });
+  dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
+  //dbx = new Dropbox({ accessToken: this.accessToken });
   constructor(
     private _navigator: OnsNavigator,
     private inj: Injector,
@@ -58,7 +60,7 @@ export class QMcardComponent implements OnInit {
   get_thumbs(r) {
     var e = new Object();
     e.entries = [];
-    for (var q = 0; q < r.entries.length&&q<10; q++) {
+    for (var q = 0; q < r.entries.length && q < 10; q++) {
       var g = new Object();
       g.path = r.entries[q].path_lower;
       g.format = "jpeg";
@@ -67,6 +69,19 @@ export class QMcardComponent implements OnInit {
     }
     this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
   }
+
+  validateToken(token) {}
+
+  //credits: http://www.netlobo.com/url_query_string_javascript.html
+  gup(url, name) {
+    name = name.replace(/[[]/, "[").replace(/[]]/, "]");
+    var regexS = "[?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    if (results == null) return "";
+    else return results[1];
+  }
+
   ngOnInit() {
     if (this._params.data && this._params.data.list && this._params.data.id) {
       this.QMlist = this.globals.qmlist.find(
@@ -77,9 +92,26 @@ export class QMcardComponent implements OnInit {
       }
     }
 
-    
-   // this.dbx
-   //   .filesListFolder({ path: "/Apps/OSM Meeting+/" })
-   //   .then(response => this.get_thumbs(response));
+    var authUrl = this.dbx.getAuthenticationUrl("http://scouttoolset.:8080/auth");
+    this.win = window.open(authUrl, "windowname1", "width=800, height=600");
+    var pollTimer = window.setInterval(function() {
+      try {
+        console.log(this.win.document.URL);
+        if (this.win.document.URL.indexOf(this.REDIRECT) != -1) {
+          window.clearInterval(pollTimer);
+          var url = this.win.document.URL;
+          var acToken = this.gup(url, "access_token");
+          var tokenType = this.gup(url, "token_type");
+          var expiresIn = this.gup(url, "expires_in");
+          this.win.close();
+
+          this.validateToken(acToken);
+        }
+      } catch (e) {}
+    }, 100);
   }
+
+  // this.dbx
+  //   .filesListFolder({ path: "/Apps/OSM Meeting+/" })
+  //   .then(response => this.get_thumbs(response));
 }
