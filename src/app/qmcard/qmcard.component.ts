@@ -33,7 +33,7 @@ export class QMcardComponent implements OnInit {
   win: any;
   ac="";
   $scope = "";
-  REDIRECT = "https://scouttoolset.firebaseapp.com/auth";
+  REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html";
 
   images = new Object();
   dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
@@ -94,7 +94,7 @@ export class QMcardComponent implements OnInit {
       }
     }
 
-    var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth");
+    var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth.html");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
     var pollTimer = window.setInterval(function(t,w,r,a) {
    
