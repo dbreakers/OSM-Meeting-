@@ -30,7 +30,7 @@ export class QMcardComponent implements OnInit {
   QMitem = new Object();
   QMlist = new Object();
   accessToken =
-    "7hU8qdXO9HAAAAAAAAC8VPwLqOsa_xemA1P5pd6KVRUiDf4svT7fj8UetMDYNw-1";
+    "7hU8qdXO9HAAAAAAAAC8V0omZ-VyzlbvBdqlFTbCGjH0Ot3aWxhaPRbc_0GB3ugU";
   images = new Object();
 
   dbx = new Dropbox({ accessToken: this.accessToken });
@@ -58,11 +58,11 @@ export class QMcardComponent implements OnInit {
   get_thumbs(r) {
     var e = new Object();
     e.entries = [];
-    for (var q = 0; q < r.entries.length; q++) {
+    for (var q = 0; q < r.entries.length&&q<10; q++) {
       var g = new Object();
       g.path = r.entries[q].path_lower;
       g.format = "jpeg";
-      g.size = "w32h32";
+      g.size = "w256h256";
       e.entries.push(g);
     }
     this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
@@ -79,7 +79,7 @@ export class QMcardComponent implements OnInit {
 
     //this.dbx.filesListFolder({    path: ''  }).then(response => console.log(response))
     this.dbx
-      .filesListFolder({ path: "" })
+      .filesListFolder({ path: "/Apps/OSM Meeting+/" })
       .then(response => this.get_thumbs(response));
   }
 }
