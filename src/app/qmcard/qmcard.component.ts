@@ -92,7 +92,7 @@ export class QMcardComponent implements OnInit {
       }
     }
 
-    var authUrl = this.dbx.getAuthenticationUrl("http://scouttoolset.:8080/auth");
+    var authUrl = this.dbx.getAuthenticationUrl("http://scouttoolsetfirebaseapp.com/auth");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
     var pollTimer = window.setInterval(function() {
       try {
