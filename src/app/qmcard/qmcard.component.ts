@@ -73,14 +73,21 @@ export class QMcardComponent implements OnInit {
   }
 
 do_drop() {
-  debugger;
+  //debugger;
+  this.accessToken = this.gup(this.$scope,"access_token")
+  //debugger;
+  this.dbx = new Dropbox({ accessToken: this.accessToken });
+  this.dbx
+     .filesListFolder({ path: "" })
+     .then(response => this.get_thumbs(response));
+  
 }
   validateToken(token) {}
 
-  //credits: http://www.netlobo.com/url_query_string_javascript.html
+  
   gup(url, name) {
     name = name.replace(/[[]/, "[").replace(/[]]/, "]");
-    var regexS = "[?&]" + name + "=([^&#]*)";
+    var regexS = "[#?&]" + name + "=([^&#]*)";
     var regex = new RegExp(regexS);
     var results = regex.exec(url);
     if (results == null) return "";
@@ -99,8 +106,7 @@ do_drop() {
     this.REDIRECT = window.document.URL+"auth.html"
     var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
-    var pollTimer = c(function(t,w,r,a) {
-   
+    var pollTimer =   window.setInterval(function(t,w,r,a) {
 
       try {
         console.log(w.document.URL);
