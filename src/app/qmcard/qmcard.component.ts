@@ -72,6 +72,9 @@ export class QMcardComponent implements OnInit {
     this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
   }
 
+do_drop() {
+  debugger;
+}
   validateToken(token) {}
 
   //credits: http://www.netlobo.com/url_query_string_javascript.html
@@ -93,10 +96,10 @@ export class QMcardComponent implements OnInit {
         this.QMitem = this.QMlist.data.rows[this._params.data.id];
       }
     }
-
-    var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth.html");
+    this.REDIRECT = window.document.URL+"auth.html"
+    var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
-    var pollTimer = window.setInterval(function(t,w,r,a) {
+    var pollTimer = c(function(t,w,r,a) {
    
 
       try {
@@ -109,7 +112,7 @@ export class QMcardComponent implements OnInit {
          // var expiresIn = gup(url, "expires_in");
            t.$scope = url;
           w.close();
-
+          t.do_drop();
        //   this.validateToken(acToken);
         }
       } catch (e) {}
