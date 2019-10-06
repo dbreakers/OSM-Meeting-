@@ -31,6 +31,7 @@ export class QMcardComponent implements OnInit {
   QMlist = new Object();
   accessToken = "";
   win: any;
+  ac="";
   REDIRECT = "https://scouttoolset.firebaseapp.com/auth";
 
   images = new Object();
@@ -94,21 +95,22 @@ export class QMcardComponent implements OnInit {
 
     var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
-    var pollTimer = window.setInterval(function(w) {
+    var pollTimer = window.setInterval(function(w,r,a) {
       try {
         console.log(w.document.URL);
-        if (w.document.URL.indexOf(this.REDIRECT) != -1) {
+        if (w.document.URL.indexOf(r) != -1) {
           window.clearInterval(pollTimer);
           var url = w.document.URL;
           var acToken = this.gup(url, "access_token");
           var tokenType = this.gup(url, "token_type");
           var expiresIn = this.gup(url, "expires_in");
+           a = acToken; 
           w.close();
 
           this.validateToken(acToken);
         }
       } catch (e) {}
-    }, 100, this.win);
+    }, 100, this.win, this.REDIRECT, this.ac);
   }
 
   // this.dbx
