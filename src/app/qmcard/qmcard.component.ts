@@ -109,7 +109,7 @@ export class QMcardComponent implements OnInit {
            $scope = url;
           w.close();
 
-          this.validateToken(acToken);
+       //   this.validateToken(acToken);
         }
       } catch (e) {}
     }, 100, this.win, this.REDIRECT, this.ac);
