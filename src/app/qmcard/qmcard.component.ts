@@ -26,8 +26,8 @@ import { Sortservice } from "../sort";
 })
 export class QMcardComponent implements OnInit {
   //sortable_list = [];
-  QMitem = new Object;
-  QMlist = new Object;
+  QMitem = new Object();
+  QMlist = new Object();
   constructor(
     private _navigator: OnsNavigator,
     private inj: Injector,
@@ -40,24 +40,13 @@ export class QMcardComponent implements OnInit {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
   ngOnInit() {
-   if (this._params.data && this._params.data.list&&this._params.data.id){
-     this.QMlist = this.globals.qmlist.find(i=>i.data.list.id==this._params.data.list);
-     if (this.QMlist!=undefined) {
-       this.QMitem = this.QMlist.data.rows[this._params.data.id];
-     }
-   
-   }
-    /*
-    for (var i = 0; i < this.globals.qmlist.length; i++) {
-      this.sortable_list.push(
-        Object.keys(this.globals.qmlist[i].data.rows).map(key => {
-          this.globals.qmlist[i].data.rows[key].id = key;
-          return this.globals.qmlist[i].data.rows[key];
-        })
+    if (this._params.data && this._params.data.list && this._params.data.id) {
+      this.QMlist = this.globals.qmlist.find(
+        i => i.data.list.id == this._params.data.list
       );
-
-      this.sortable_list.sort(this.sorting.compareValuesArray(["1"], "desc"));
+      if (this.QMlist != undefined) {
+        this.QMitem = this.QMlist.data.rows[this._params.data.id];
+      }
     }
-    */
   }
 }
