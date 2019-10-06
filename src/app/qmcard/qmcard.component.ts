@@ -29,8 +29,8 @@ export class QMcardComponent implements OnInit {
   //sortable_list = [];
   QMitem = new Object();
   QMlist = new Object();
-  accessToken =
-    "7hU8qdXO9HAAAAAAAAC8V0omZ-VyzlbvBdqlFTbCGjH0Ot3aWxhaPRbc_0GB3ugU";
+  accessToken = "";
+
   images = new Object();
 
   dbx = new Dropbox({ accessToken: this.accessToken });
@@ -78,8 +78,8 @@ export class QMcardComponent implements OnInit {
     }
 
     //this.dbx.filesListFolder({    path: ''  }).then(response => console.log(response))
-    this.dbx
-      .filesListFolder({ path: "/Apps/OSM Meeting+/" })
-      .then(response => this.get_thumbs(response));
+   // this.dbx
+   //   .filesListFolder({ path: "/Apps/OSM Meeting+/" })
+   //   .then(response => this.get_thumbs(response));
   }
 }
