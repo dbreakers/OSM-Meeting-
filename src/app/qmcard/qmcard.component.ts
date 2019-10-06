@@ -77,7 +77,7 @@ export class QMcardComponent implements OnInit {
       }
     }
 
-    //this.dbx.filesListFolder({    path: ''  }).then(response => console.log(response))
+    
    // this.dbx
    //   .filesListFolder({ path: "/Apps/OSM Meeting+/" })
    //   .then(response => this.get_thumbs(response));
