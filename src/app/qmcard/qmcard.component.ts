@@ -96,14 +96,23 @@ export class QMcardComponent implements OnInit {
     var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
     var pollTimer = window.setInterval(function(w,r,a) {
+    function  gup(url, name) {
+    name = name.replace(/[[]/, "[").replace(/[]]/, "]");
+    var regexS = "[?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    if (results == null) return "";
+    else return results[1];
+  }
+
       try {
         console.log(w.document.URL);
         if (w.document.URL.indexOf(r) != -1) {
           window.clearInterval(pollTimer);
           var url = w.document.URL;
-          var acToken = this.gup(url, "access_token");
-          var tokenType = this.gup(url, "token_type");
-          var expiresIn = this.gup(url, "expires_in");
+          var acToken = gup(url, "access_token");
+          var tokenType = gup(url, "token_type");
+          var expiresIn = gup(url, "expires_in");
            a = acToken; 
           w.close();
 
