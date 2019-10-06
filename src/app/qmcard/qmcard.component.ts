@@ -30,7 +30,7 @@ export class QMcardComponent implements OnInit {
   QMitem = new Object();
   QMlist = new Object();
   accessToken = "";
-  win = "";
+  win: any;
   REDIRECT = "https://scouttoolset.firebaseapp.com/auth";
 
   images = new Object();
