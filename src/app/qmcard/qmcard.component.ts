@@ -84,7 +84,6 @@ do_drop() {
 }
   validateToken(token) {}
 
-  
   gup(url, name) {
     name = name.replace(/[[]/, "[").replace(/[]]/, "]");
     var regexS = "[#?&]" + name + "=([^&#]*)";
