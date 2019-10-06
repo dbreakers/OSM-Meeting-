@@ -25,7 +25,7 @@
        <p class="head2"><span class="head">{{list.data.list.name}}</span></p> 
        <div class="list_of_items" *ngFor="let items of sortable_list[i]">
        
-          <div class="qmitem"><div class="item">{{items[1]}}</div><div class="itemq">{{items[6]}}</div></div>
+          <div class="qmitem" (click)="go_qmcard(items.list,items.id)"><div class="item">{{items[1]}}</div><div class="itemq">{{items[6]}}</div></div>
        
        </div> 
     </ons-card>     

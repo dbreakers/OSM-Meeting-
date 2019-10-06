@@ -13,7 +13,6 @@ import {
 } from "ngx-onsenui";
 
 import { AppComponent } from "../app.component";
-import { QMcardComponent } from "../qmcard/qmcard.component";
 import { Globals } from "../globals";
 import * as ons from "onsenui";
 import * as pdfMake from "pdfmake/build/pdfmake.js";
@@ -21,13 +20,14 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts.js";
 import { Sortservice } from "../sort";
 
 @Component({
-  selector: "ons-page[qmlist]",
-  templateUrl: "./qmlists.component.html",
-  styleUrls: ["./qmlists.component.css"]
+  selector: "ons-page[qmcard]",
+  templateUrl: "./qmcard.component.html",
+  styleUrls: ["./qmcard.component.css"]
 })
-export class QMListsComponent implements OnInit {
-  sortable_list = [];
-
+export class QMcardComponent implements OnInit {
+  //sortable_list = [];
+  QMitem = new Object;
+  QMlist = new Object;
   constructor(
     private _navigator: OnsNavigator,
     private inj: Injector,
@@ -36,23 +36,28 @@ export class QMListsComponent implements OnInit {
     private globals: Globals
   ) {}
 
-  go_qmcard(list,id){
-    this._navigator.element.pushPage(QMcardComponent, { data: { list: list, id: id } });
-  }
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
   ngOnInit() {
+   if (this._params.data && this._params.data.list&&this._params.data.item){
+     this.QMlist = this.globals.qmlist.find(i=>i.data.list.id==this._params.data.list);
+     if (this.QMlist!=undefined) {
+       this.QMitem = this.QMlist.data.rows[this._params.data.item];
+     }
+   //  QMitem =;
+   }
+    /*
     for (var i = 0; i < this.globals.qmlist.length; i++) {
       this.sortable_list.push(
         Object.keys(this.globals.qmlist[i].data.rows).map(key => {
           this.globals.qmlist[i].data.rows[key].id = key;
-          this.globals.qmlist[i].data.rows[key].list = this.globals.qmlist[i].data.list.id;
           return this.globals.qmlist[i].data.rows[key];
         })
       );
 
       this.sortable_list.sort(this.sorting.compareValuesArray(["1"], "desc"));
     }
+    */
   }
 }
