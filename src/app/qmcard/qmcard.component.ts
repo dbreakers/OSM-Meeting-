@@ -96,7 +96,7 @@ export class QMcardComponent implements OnInit {
 
     var authUrl = this.dbx.getAuthenticationUrl("https://scouttoolset.firebaseapp.com/auth");
     this.win = window.open(authUrl, "windowname1", "width=800, height=600");
-    var pollTimer = window.setInterval(function(w,r,a) {
+    var pollTimer = window.setInterval(function(t,w,r,a) {
    
 
       try {
@@ -107,13 +107,13 @@ export class QMcardComponent implements OnInit {
          // var acToken = gup(url, "access_token");
          // var tokenType = gup(url, "token_type");
          // var expiresIn = gup(url, "expires_in");
-           $scope = url;
+           t.$scope = url;
           w.close();
 
        //   this.validateToken(acToken);
         }
       } catch (e) {}
-    }, 100, this.win, this.REDIRECT, this.ac);
+    }, 100, this, this.win, this.REDIRECT, this.ac);
     
   
   }
