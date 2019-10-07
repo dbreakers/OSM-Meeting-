@@ -104,7 +104,7 @@ do_drop() {
     }
     this.REDIRECT = window.document.URL+"auth.html"
     var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
-    this.win = window.open(authUrl, "windowname1", "width=800, height=600");
+    this.win = window.open(authUrl, "_blank");//"windowname1", "width=800, height=600");
     var pollTimer =   window.setInterval(function(t,w,r,a) {
 
       try {
