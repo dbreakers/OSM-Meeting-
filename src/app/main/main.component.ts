@@ -109,7 +109,7 @@ export class MainComponent implements OnInit {
  var current_save = new Object;
  current_save.date = new Date()
  current_save.section = this.globals.mysection;
- current_save.name = this.globals.glo.sectionname;
+ current_save.name = this.globals.sectionname;
  if (ssets === null){
    this.saved_data = [];
    this.saved_data.push(current_save)
