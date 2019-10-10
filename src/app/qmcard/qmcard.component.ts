@@ -37,6 +37,7 @@ export class QMcardComponent implements OnInit {
 
   images = new Object();
   dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
+  
   //dbx = new Dropbox({ accessToken: this.accessToken });
   constructor(
     private _navigator: OnsNavigator,
@@ -80,6 +81,7 @@ do_drop() {
   this.dbx
      .filesListFolder({ path: "" })
      .then(response => this.get_thumbs(response));
+    
   
 }
   validateToken(token) {}
