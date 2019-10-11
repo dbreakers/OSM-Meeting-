@@ -51,7 +51,7 @@ import { AttendancetabComponent } from './eventcard/attendancetab/attendancetab.
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   imports: [OnsenModule, HttpClientModule, 
-  ServiceWorkerModule.register('@angular/service-worker/ngsw-worker.js')
+  ServiceWorkerModule.register('./node_modules/@angular/service-worker/ngsw-worker.js')
   ],
   declarations: [AppComponent, HomeComponent, PageNav1Component, SectionselectComponent, MedicalcardComponent, QMListsComponent, QMcardComponent, MainComponent, MedicalComponent, MedicalsummaryComponent, GlobalsearchComponent, ScoutcardComponent, LeaderrostaComponent, TermpickerComponent, ProgcardComponent, BirthdayComponent,RegisterComponent,EventsComponent,EventtabComponent, ProgrammeComponent, PersontabComponent,LastcheckedComponent, SummarytabComponent,AnswertabComponent, AttendancetabComponent, EventcardComponent, ProgSummarytabComponent, RostaComponent ],
   entryComponents: [HomeComponent,QMListsComponent, QMcardComponent, PageNav1Component, ProgrammeComponent, SectionselectComponent, MedicalcardComponent, MainComponent, MedicalComponent, LeaderrostaComponent, RegisterComponent,GlobalsearchComponent, ProgcardComponent, MedicalsummaryComponent,ScoutcardComponent, TermpickerComponent,BirthdayComponent,EventsComponent,EventtabComponent, AnswertabComponent, PersontabComponent,LastcheckedComponent,SummarytabComponent,AttendancetabComponent, EventcardComponent,ProgSummarytabComponent, RostaComponent],

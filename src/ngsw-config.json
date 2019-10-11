@@ -1,7 +1,7 @@
 {
   "index": "/index.html",
   "assetGroups": [{
-    "name": "OSM Meeting",
+    "name": "OSM Meeting+",
     "installMode": "prefetch",
     "resources": {
       "files": [
