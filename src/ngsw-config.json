@@ -17,6 +17,8 @@
     "name": "assets",
     "installMode": "lazy",
     "updateMode": "prefetch",
+    "serviceWorker": true,
+"ngswConfigPath": "src/ngsw-config.json",
     "resources": {
       "files": [
         "/assets/**"
