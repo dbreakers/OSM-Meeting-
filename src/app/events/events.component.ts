@@ -77,7 +77,7 @@ export class EventsComponent implements OnInit {
     if (direction==2){
       if (event.extra!="") { 
        var shar =  JSON.parse(event.extra)
-       if (shar.sharing.hasOwnProperty('Sharee'))
+       if (shar.sharing.hasOwnProperty('sharee'))
        return true 
         } else 
  {return false}
