@@ -12,7 +12,7 @@ import {
   HttpHandler
 } from "@angular/common/http";
 import { CustomURLEncoder } from "./urlencoder.component";
-import { map, concatMap, catchError } from "rxjs/operators";
+import { map, concatMap, catchError,tap } from "rxjs/operators";
 import { Globals } from "./globals";
 import { timer } from "rxjs/observable/timer";
 import { switchMap, mergeMap, toArray } from "rxjs/operators";
@@ -306,12 +306,8 @@ export class LogonService {
     body = body.set("userid", this.globals.userid);
     return this.http
       .post(fullURL, body, httpOptions)
-      .pipe(catchError(error => of("error")));
-  }
-
-do_events(e) {
-this.getEventSData(e).subscribe(r=> {return r})
-  }  //return e}
+      .pipe(tap(d=> d.event = event), catchError(error => of({ isError: true, error })));
+  } 
 
   getEventsSData(): Observable<any> {
     if (!this.slowhttp) {
@@ -321,10 +317,9 @@ this.getEventSData(e).subscribe(r=> {return r})
       return forkJoin(singleObservables);
     } else {
 let singleObservables = this.globals.sectiondata[3].items.map(event =>
-        this.do_events(event.eventid)
+        this.getEventSData2(event.eventid)
       );
       
-     
       return from(singleObservables)
         .pipe(concatMap(param => this.f(param)))
         .pipe(toArray());
