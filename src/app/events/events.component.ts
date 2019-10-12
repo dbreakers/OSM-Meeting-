@@ -39,7 +39,7 @@ export class EventsComponent implements OnInit {
   event_option(eventid, s) {
     var list = this.globals.event.find(f => f.eventid == eventid);
     var evt = this.globals.eventA.find(f => f.eventid == eventid);
-    var share = this.globals.eventS.find(f => f.eventid == eventid);
+    var share = this.globals.eventS.find(f => f.event == eventid);
     var count = 0;
     for (var i = 0; i < list.items.length; i++) {
       if (list.items[i].attending == s)
@@ -75,7 +75,7 @@ export class EventsComponent implements OnInit {
   event_option2(eventid, s, l) {
     var list = this.globals.event.find(f => f.eventid == eventid);
     var evt = this.globals.eventA.find(f => f.eventid == eventid);
-    var share = this.globals.eventS.find(f => f.eventid == eventid);
+    var share = this.globals.eventS.find(f => f.event == eventid);
     var count = 0;
     for (var i = 0; i < list.items.length; i++) {
       if (list.items[i].attending == s) {
@@ -88,6 +88,7 @@ export class EventsComponent implements OnInit {
       }
     }
     
+
     if ("Yes" == s) {
       for (var i = 0; i < share.items.length; i++) {
         if (share.items[i].sectionid != this.globals.mysection) {
