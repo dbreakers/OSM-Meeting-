@@ -46,6 +46,8 @@ export class AttendancetabComponent implements OnInit {
  target: boolean = false;
  notamember = 0;
  att_list = 0;
+ sharedA = new Object;
+ sharedS = new Object;
  //members = new Array;
 // member_image = "";
 
@@ -216,7 +218,6 @@ update_summary(){
 
 }
 
-
   ngOnInit() {
 //    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
  //   this.member = this.members.find(o => o.member_id === this.globals.scoutcard);
@@ -227,6 +228,8 @@ update_summary(){
  this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
  this.members = Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
  this.collect_list();
+ this.sharedA  = this.globals.eventS.find(e=> e.event == this.globals.eventcard)
+ this.sharedS  = this.globals.eventSS.find(e=> e.event == this.globals.eventcard)
   }
 
 }
