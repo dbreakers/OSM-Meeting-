@@ -80,29 +80,35 @@ export class MainComponent implements OnInit {
     this.globals.qmlist = qm;
     this.globals.loaded.qm = true;
   }
+  
+  do_events_loaded() {
+    if ((this.globals.loaded.eventsS)&(this.globals.loaded.eventsA)&(this.globals.loaded.eventsL)&(this.globals.loaded.eventsSS)) {
+      this.globals.loaded.events = true;
+    }
+  }
 
   do_events(e) {
     this.globals.event = e;
     this.globals.loaded.eventsL = true;
-    if ((this.globals.loaded.eventsS)&(this.globals.loaded.eventsA)) {
-      this.globals.loaded.events = true;
-    }
+   this.do_events_loaded()
   }
 
   do_eventsA(e) {
     this.globals.eventA = e;
     this.globals.loaded.eventsA = true;
-    if ((this.globals.loaded.eventsL)&(this.globals.loaded.eventsS)) {
-      this.globals.loaded.events = true;
-    }
+     this.do_events_loaded()
   }
 
    do_eventsS(e) {
     this.globals.eventS = e;
     this.globals.loaded.eventsS = true;
-    if ((this.globals.loaded.eventsL)&(this.globals.loaded.eventsA)) {
-      this.globals.loaded.events = true;
-    }
+     this.do_events_loaded()
+  }
+
+     do_eventsSS(e) {
+    this.globals.eventSS = e;
+    this.globals.loaded.eventsSS = true;
+     this.do_events_loaded()
   }
 
   do_progs(p) {
@@ -180,6 +186,11 @@ export class MainComponent implements OnInit {
           this.logonService
             .getEventsSData()
             .subscribe(Events => this.do_eventsS(Events))
+        );
+        fj.push(
+          this.logonService
+            .getEventsSSData()
+            .subscribe(Events => this.do_eventsSS(Events))
         );
       }
       if (!this.globals.loaded.progs && this.globals.access.progs > 0) {

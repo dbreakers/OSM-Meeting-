@@ -266,7 +266,64 @@ export class LogonService {
         .pipe(catchError(error => of({ isError: true, error })))
     );
   }
+// https://www.onlinescoutmanager.co.uk/ext/events/event/sharing/?action=getStatus&eventid=569888&sectionid=26965&_v=2
 
+getEventSSData(event): Observable<any> {
+    let fullURL =
+      this.configUrl +
+          "?osmpath=ext/events/event/sharing/&action=getStatus&eventid=" +
+      event;
+    fullURL =
+      fullURL +
+      "&sectionid=" +
+      this.globals.mysection +
+      "&_v2=2"; 
+      
+    //this.globals.current_term;
+    let body = new HttpParams();
+    body = body.set("secret", this.globals.secret);
+    body = body.set("userid", this.globals.userid);
+    return this.http
+      .post(fullURL, body, httpOptions)
+      .pipe(tap(d=> d.event = event),catchError(error => of("error")));
+  }
+  
+
+  getEventSSData2(event) {
+    let fullURL =
+      this.configUrl +
+      "?osmpath=ext/events/event/sharing/&action=getStatus&eventid=" +
+      event;
+    fullURL =
+      fullURL +
+      "&sectionid=" +
+      this.globals.mysection +
+     "&_v2=2";
+    //this.globals.current_term;
+    let body = new HttpParams();
+    body = body.set("secret", this.globals.secret);
+    body = body.set("userid", this.globals.userid);
+    return this.http
+      .post(fullURL, body, httpOptions)
+      .pipe(tap(d=> d.event = event), catchError(error => of({ isError: true, error })));
+  } 
+
+  getEventsSSData(): Observable<any> {
+    if (!this.slowhttp) {
+      let singleObservables = (this.globals.sectiondata[3].items.map(event =>
+        this.getEventSSData(event.eventid))
+              );
+      return forkJoin(singleObservables);
+    } else {
+let singleObservables = this.globals.sectiondata[3].items.map(event =>
+        this.getEventSSData2(event.eventid)
+      );
+      
+      return from(singleObservables)
+        .pipe(concatMap(param => this.f(param)))
+        .pipe(toArray());
+    }
+  }
 
   getEventSData(event): Observable<any> {
     let fullURL =
