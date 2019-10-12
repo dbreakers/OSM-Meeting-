@@ -63,14 +63,28 @@ export class EventsComponent implements OnInit {
     return count;
   }
 
-  is_shared(event) {
+  is_shared(event,direction) {
     /* if (event.extra!="") { 
  return  JSON.parse(event.extra).hasOwnProperty('sharing')
  } else 
  {return false} */
     var f = this.globals.eventSS.find(e => e.event == event.eventid);
+    if (direction==1){
+    if (f.hasOwnProperty('items')){
     return f.items.length - 1 > 1;
+    } else return false;
+    }
+    if (direction==2){
+      if (event.extra!="") { 
+       var shar =  JSON.parse(event.extra)
+       if (shar.sharing.hasOwnProperty('Sharee'))
+       return true 
+        } else 
+ {return false}
+    } else 
+ {return false}
   }
+
 
   event_option2(eventid, s, l) {
     var list = this.globals.event.find(f => f.eventid == eventid);
@@ -87,7 +101,7 @@ export class EventsComponent implements OnInit {
         }
       }
     }
-    
+
 
     if ("Yes" == s) {
       for (var i = 0; i < share.items.length; i++) {
