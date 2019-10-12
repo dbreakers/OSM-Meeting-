@@ -55,8 +55,8 @@ is_shared(event) {
  return  JSON.parse(event.extra).hasOwnProperty('sharing')
  } else 
  {return false} */
- var f  = this.globals.eventSS.find(e=> e.event == event)
- return f.items.length > 1;
+ var f  = this.globals.eventSS.find(e=> e.event == event.eventid)
+ return (f.items.length -1) > 1;
 }
 
 event_option2(eventid,s,l){
