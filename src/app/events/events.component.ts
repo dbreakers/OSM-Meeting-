@@ -50,6 +50,13 @@ event_option(eventid,s){
  return count;
 }
 
+is_shared(event) {
+ if (event.extra!="") { 
+ return  JSON.parse(event.extra).hasOwnProperty('sharing')
+ } else 
+ {return false} 
+}
+
 event_option2(eventid,s,l){
  var list = this.globals.event.find(f=>f.eventid==eventid);
  var evt = this.globals.eventA.find(f=>f.eventid==eventid);

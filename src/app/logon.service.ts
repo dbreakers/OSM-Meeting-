@@ -288,6 +288,8 @@ export class LogonService {
       .pipe(catchError(error => of("error")));
   }
 
+//https://www.onlinescoutmanager.co.uk/ext/events/event/sharing/?action=getAttendance&eventid=579164&sectionid=26965&_v=2
+
   getEventAData2(event) {
     let fullURL =
       this.configUrl +
@@ -495,5 +497,6 @@ export class LogonService {
         .pipe(toArray());
     }
   }
+  
   
 }

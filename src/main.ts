@@ -7,7 +7,7 @@ import { AppModule } from './app/app.module';
 if (environment.production) {
   enableProdMode();
 }
-enableProdMode();
+//enableProdMode();
 platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   // Ensure Angular destroys itself on hot reloads.
   if (window['ngRef']) {
