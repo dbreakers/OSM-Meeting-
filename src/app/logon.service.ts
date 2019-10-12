@@ -267,6 +267,71 @@ export class LogonService {
     );
   }
 
+
+  getEventSData(event): Observable<any> {
+    let fullURL =
+      this.configUrl +
+          "?osmpath=ext/events/event/sharing/&action=getAttendance&eventid=" +
+      event;
+    fullURL =
+      fullURL +
+      "&sectionid=" +
+      this.globals.mysection +
+      "&_v2=2"; 
+      
+    //this.globals.current_term;
+    let body = new HttpParams();
+    body = body.set("secret", this.globals.secret);
+    body = body.set("userid", this.globals.userid);
+    return this.http
+      .post(fullURL, body, httpOptions)
+      .pipe(catchError(error => of("error")));
+  }
+
+//https://www.onlinescoutmanager.co.uk/ext/events/event/sharing/?action=getAttendance&eventid=579164&sectionid=26965&_v=2
+
+  getEventSData2(event) {
+    let fullURL =
+      this.configUrl +
+      "?osmpath=ext/events/event/sharing/&action=getAttendance&eventid=" +
+      event;
+    fullURL =
+      fullURL +
+      "&sectionid=" +
+      this.globals.mysection +
+     "&_v2=2";
+    //this.globals.current_term;
+    let body = new HttpParams();
+    body = body.set("secret", this.globals.secret);
+    body = body.set("userid", this.globals.userid);
+    return this.http
+      .post(fullURL, body, httpOptions)
+      .pipe(catchError(error => of("error")));
+  }
+
+do_events(e) {
+this.getEventSData(e).subscribe(r=> {return r})
+  }  //return e}
+
+  getEventsSData(): Observable<any> {
+    if (!this.slowhttp) {
+      let singleObservables = (this.globals.sectiondata[3].items.map(event =>
+        this.getEventSData(event.eventid))
+              );
+      return forkJoin(singleObservables);
+    } else {
+let singleObservables = this.globals.sectiondata[3].items.map(event =>
+        this.do_events(event.eventid)
+      );
+      
+     
+      return from(singleObservables)
+        .pipe(concatMap(param => this.f(param)))
+        .pipe(toArray());
+    }
+  }
+
+
   getEventAData(event): Observable<any> {
     let fullURL =
       this.configUrl +
@@ -287,8 +352,6 @@ export class LogonService {
       .post(fullURL, body, httpOptions)
       .pipe(catchError(error => of("error")));
   }
-
-//https://www.onlinescoutmanager.co.uk/ext/events/event/sharing/?action=getAttendance&eventid=579164&sectionid=26965&_v=2
 
   getEventAData2(event) {
     let fullURL =

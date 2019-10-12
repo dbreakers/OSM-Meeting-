@@ -16,6 +16,7 @@ export class Globals {
   sectiondata: any;
   event: Array<any>= [];
   eventA:  Array<any> = [];
+  eventS:  Array<any> = [];
   progs:  Array<any> = [];
   qmlist:  Array<any> = [];
  // eventsection: string = "";
@@ -31,7 +32,7 @@ export class Globals {
   patrolroles: Object = {scouts:  ["","APL","PL","SPL"],explorers:  ["","APL","PL","SPL"],
  cubs: ["","2er","6er","S6er"],
  beavers: ["","ALL","LL","SLL"]};
- loaded: Object = { progs: false, events: false,  eventsL: false, eventsA: false, members: false, register: false, config: false, section: false, qm: false}     
+ loaded: Object = { progs: false, events: false,  eventsL: false, eventsA: false, eventsS: false, members: false, register: false, config: false, section: false, qm: false}     
  access: Object = { noaccess: true, badges: "",progs: "", events: "", members: "", register: "", qm: ""}   
  errors: Object = { progs: false, events: false, members: false, register: false, config: false, section: false}  
 }

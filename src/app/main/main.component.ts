@@ -84,7 +84,7 @@ export class MainComponent implements OnInit {
   do_events(e) {
     this.globals.event = e;
     this.globals.loaded.eventsL = true;
-    if (this.globals.loaded.eventsA) {
+    if ((this.globals.loaded.eventsS)&(this.globals.loaded.eventsA)) {
       this.globals.loaded.events = true;
     }
   }
@@ -92,7 +92,15 @@ export class MainComponent implements OnInit {
   do_eventsA(e) {
     this.globals.eventA = e;
     this.globals.loaded.eventsA = true;
-    if (this.globals.loaded.eventsL) {
+    if ((this.globals.loaded.eventsL)&(this.globals.loaded.eventsS)) {
+      this.globals.loaded.events = true;
+    }
+  }
+
+   do_eventsS(e) {
+    this.globals.eventS = e;
+    this.globals.loaded.eventsS = true;
+    if ((this.globals.loaded.eventsL)&(this.globals.loaded.eventsA)) {
       this.globals.loaded.events = true;
     }
   }
@@ -167,6 +175,11 @@ export class MainComponent implements OnInit {
           this.logonService
             .getEventsAData()
             .subscribe(Events => this.do_events(Events))
+        );
+        fj.push(
+          this.logonService
+            .getEventsSData()
+            .subscribe(Events => this.do_eventsS(Events))
         );
       }
       if (!this.globals.loaded.progs && this.globals.access.progs > 0) {
