@@ -285,10 +285,8 @@ export class LogonService {
     body = body.set("userid", this.globals.userid);
     return this.http
       .post(fullURL, body, httpOptions)
-      .pipe(catchError(error => of("error")));
+      .pipe(tap(d=> d.event = event),catchError(error => of("error")));
   }
-
-//https://www.onlinescoutmanager.co.uk/ext/events/event/sharing/?action=getAttendance&eventid=579164&sectionid=26965&_v=2
 
   getEventSData2(event) {
     let fullURL =
