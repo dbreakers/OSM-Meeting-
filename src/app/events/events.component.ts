@@ -51,10 +51,12 @@ event_option(eventid,s){
 }
 
 is_shared(event) {
- if (event.extra!="") { 
+/* if (event.extra!="") { 
  return  JSON.parse(event.extra).hasOwnProperty('sharing')
  } else 
- {return false} 
+ {return false} */
+ var f  = this.globals.eventSS.find(e=> e.event == event)
+ return f.items.length > 1;
 }
 
 event_option2(eventid,s,l){
