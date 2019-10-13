@@ -31,6 +31,7 @@ import { Globals } from "../globals";
 import { LogonService } from "../logon.service";
 import { PhotoURLService } from "../photoUrl";
 import * as ons from "onsenui";
+import { Dropbox } from "dropbox";
 
 @Component({
   selector: "ons-page[settings]",
@@ -56,6 +57,15 @@ export class MainComponent implements OnInit {
   birthday = BirthdayComponent;
   qmlists = QMListsComponent;
   leaderrosta = LeaderrostaComponent;
+  accessToken = "";
+  win: any;
+  ac="";
+  $scope = "";
+  REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html";
+
+  images = new Object();
+  dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
+  
   @ViewChild("navi") private navi: OnsNavigator;
 
   constructor(
@@ -115,6 +125,48 @@ export class MainComponent implements OnInit {
     this.globals.progs = p;
     // this.globals.loadprogs=true;
     this.globals.loaded.progs = true;
+  }
+
+  do_drop() {
+  //debugger;
+  this.accessToken = this.gup(this.$scope,"access_token")
+  localStorage.setItem("dropbox_token", this.accessToken);
+  //this.dbx = new Dropbox({ accessToken: this.accessToken });
+ /* this.dbx
+     .filesListFolder({ path: "" })
+     .then(response => this.get_thumbs(response));
+ */   
+  
+}
+  validateToken(token) {}
+
+  gup(url, name) {
+    name = name.replace(/[[]/, "[").replace(/[]]/, "]");
+    var regexS = "[#?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    if (results == null) return "";
+    else return results[1];
+  }
+
+  dropbox() {
+   this.REDIRECT = window.document.URL+"auth.html"
+    var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
+    this.win = window.open(authUrl, "_blank");//"windowname1", "width=800, height=600");
+    var pollTimer =   window.setInterval(function(t,w,r,a) {
+
+      try {
+      //  console.log(w.document.URL);
+        if (w.document.URL.indexOf(r) != -1) {
+          window.clearInterval(pollTimer);
+          var url = w.document.URL;
+    
+           t.$scope = url;
+          w.close();
+          t.do_drop();
+        }
+      } catch (e) {}
+    }, 100, this, this.win, this.REDIRECT, this.ac); 
   }
 
   download() {
