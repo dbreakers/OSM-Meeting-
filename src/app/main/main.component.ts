@@ -152,6 +152,7 @@ export class MainComponent implements OnInit {
   dropbox() {
    this.REDIRECT = window.document.URL+"auth.html"
     var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
+    if (this.accessToken=="") {
     this.win = window.open(authUrl, "_blank");//"windowname1", "width=800, height=600");
     var pollTimer =   window.setInterval(function(t,w,r,a) {
 
@@ -167,6 +168,20 @@ export class MainComponent implements OnInit {
         }
       } catch (e) {}
     }, 100, this, this.win, this.REDIRECT, this.ac); 
+    }
+    if (this.accessToken!="") {
+      ons.notification.confirm({
+      message: 'Remove COnnection to DropBox?',
+      cancelable: true,
+      callback: i => {
+        if (i == 1) {
+      localStorage.removeItem("dropbox_token")
+      this.accessToken = "";    
+        }
+      }
+    });
+     
+    }  
   }
 
   download() {
@@ -271,5 +286,6 @@ export class MainComponent implements OnInit {
         this.globals.loaded.events = true;
       }
     }
+    this.accessToken = localStorage.getItem("dropbox_token");
   }
 }

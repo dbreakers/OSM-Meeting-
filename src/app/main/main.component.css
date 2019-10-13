@@ -63,3 +63,10 @@ float: left;
 }
 
 .switchsec { margin-left: 10px;}
+
+.notification {
+  position: absolute;
+  margin: -15px;
+  font-size: 10pt;
+  background: #7413dc;
+}

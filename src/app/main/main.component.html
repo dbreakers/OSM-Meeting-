@@ -125,7 +125,9 @@
 
       <div class="member_outer" (click)="dropbox()">
            <div class="member_inner">
-          <div class="member_box"><div class="circle"><div class="member_initial"><ons-icon icon="fa-dropbox"></ons-icon></div></div></div>
+          <div class="member_box"><div class="circle"><div class="member_initial">
+            <span class="notification" *ngIf="accessToken!=''">&#10004;</span>
+            <ons-icon icon="fa-dropbox"></ons-icon></div></div></div>
           <div class="member_name">DropBox</div>
          </div> 
       </div>         
