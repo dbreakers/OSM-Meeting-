@@ -59,13 +59,13 @@ export class MainComponent implements OnInit {
   leaderrosta = LeaderrostaComponent;
   accessToken = "";
   win: any;
-  ac="";
+  ac = "";
   $scope = "";
   REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html";
 
   images = new Object();
   dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
-  
+
   @ViewChild("navi") private navi: OnsNavigator;
 
   constructor(
@@ -90,9 +90,14 @@ export class MainComponent implements OnInit {
     this.globals.qmlist = qm;
     this.globals.loaded.qm = true;
   }
-  
+
   do_events_loaded() {
-    if ((this.globals.loaded.eventsS)&(this.globals.loaded.eventsA)&(this.globals.loaded.eventsL)&(this.globals.loaded.eventsSS)) {
+    if (
+      this.globals.loaded.eventsS &
+      this.globals.loaded.eventsA &
+      this.globals.loaded.eventsL &
+      this.globals.loaded.eventsSS
+    ) {
       this.globals.loaded.events = true;
     }
   }
@@ -100,25 +105,25 @@ export class MainComponent implements OnInit {
   do_events(e) {
     this.globals.event = e;
     this.globals.loaded.eventsL = true;
-   this.do_events_loaded()
+    this.do_events_loaded();
   }
 
   do_eventsA(e) {
     this.globals.eventA = e;
     this.globals.loaded.eventsA = true;
-     this.do_events_loaded()
+    this.do_events_loaded();
   }
 
-   do_eventsS(e) {
+  do_eventsS(e) {
     this.globals.eventS = e;
     this.globals.loaded.eventsS = true;
-     this.do_events_loaded()
+    this.do_events_loaded();
   }
 
-     do_eventsSS(e) {
+  do_eventsSS(e) {
     this.globals.eventSS = e;
     this.globals.loaded.eventsSS = true;
-     this.do_events_loaded()
+    this.do_events_loaded();
   }
 
   do_progs(p) {
@@ -128,16 +133,15 @@ export class MainComponent implements OnInit {
   }
 
   do_drop() {
-  //debugger;
-  this.accessToken = this.gup(this.$scope,"access_token")
-  localStorage.setItem("dropbox_token", this.accessToken);
-  //this.dbx = new Dropbox({ accessToken: this.accessToken });
- /* this.dbx
+    //debugger;
+    this.accessToken = this.gup(this.$scope, "access_token");
+    localStorage.setItem("dropbox_token", this.accessToken);
+    //this.dbx = new Dropbox({ accessToken: this.accessToken });
+    /* this.dbx
      .filesListFolder({ path: "" })
      .then(response => this.get_thumbs(response));
- */   
-  
-}
+ */
+  }
   validateToken(token) {}
 
   gup(url, name) {
@@ -150,79 +154,83 @@ export class MainComponent implements OnInit {
   }
 
   dropbox() {
-   this.REDIRECT = window.document.URL+"auth.html"
+    this.REDIRECT = window.document.URL + "auth.html";
     var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
 
-    if (this.accessToken=="") {
-   //   ons.notification.alert('Dropbox logon will open in a new tab');
-   ons.notification.confirm({
-      message: 'DropBox logon will open in a new window',
-      buttonLabels: 'OK',
-      callback: i => {
-        
-     // localStorage.removeItem("dropbox_token")
-     // this.accessToken = "";    
-     
-    this.win = window.open(authUrl, "_blank");//"windowname1", "width=800, height=600");
-    var pollTimer =   window.setInterval(function(t,w,r,a) {
-
-      try {
-      //  console.log(w.document.URL);
-        if (w.document.URL.indexOf(r) != -1) {
-          window.clearInterval(pollTimer);
-          var url = w.document.URL;
-    
-           t.$scope = url;
-          w.close();
-          t.do_drop();
-        }
-      } catch (e) {}
-    }, 100, this, this.win, this.REDIRECT, this.ac); 
-       }
-      
-    });
-    }
-    if (this.accessToken!="") {
+    if (this.accessToken == "") {
+      //   ons.notification.alert('Dropbox logon will open in a new tab');
       ons.notification.confirm({
-      message: 'Remove connection to DropBox?',
-      cancelable: true,
-      callback: i => {
-        if (i == 1) {
-      localStorage.removeItem("dropbox_token")
-      this.accessToken = "";    
+        message: "DropBox logon will open in a new window",
+        buttonLabels: ["OK"],
+        callback: i => {
+          this.win = window.open(authUrl, "_blank"); 
+          var pollTimer = window.setInterval(
+            function(t, w, r, a) {
+              try {
+                //  console.log(w.document.URL);
+                if (w.document.URL.indexOf(r) != -1) {
+                  window.clearInterval(pollTimer);
+                  var url = w.document.URL;
+
+                  t.$scope = url;
+                  w.close();
+                  t.do_drop();
+                }
+              } catch (e) {}
+            },
+            100,
+            this,
+            this.win,
+            this.REDIRECT,
+            this.ac
+          );
         }
-      }
-    });
-     
-    }  
+      });
+    }
+    if (this.accessToken != "") {
+      ons.notification.confirm({
+        message: "Remove connection to DropBox?",
+        cancelable: true,
+        callback: i => {
+          if (i == 1) {
+            localStorage.removeItem("dropbox_token");
+            this.accessToken = "";
+          }
+        }
+      });
+    }
   }
 
   download() {
- localStorage.setItem(this.globals.mysection, JSON.stringify(this.globals));
- var ssets = localStorage.getItem("saved_sets");
- var current_save = new Object;
- current_save.date = new Date()
- current_save.section = this.globals.mysection;
- current_save.name = this.globals.sectionname;
- if (ssets === null){
-   this.saved_data = [];
-   this.saved_data.push(current_save)
- } else {
-   this.saved_data = JSON.parse(ssets);
-   var ms = this.globals.mysection
-   if (this.saved_data.findIndex(function(element) {
-      return element.section == ms;})>-1){
-   this.saved_data.splice(this.saved_data.findIndex(function(element) {
-      return element.section == ms;}),1)}
-    this.saved_data.push(current_save)
-
- }
- localStorage.setItem("saved_sets", JSON.stringify(this.saved_data));
-
+    localStorage.setItem(this.globals.mysection, JSON.stringify(this.globals));
+    var ssets = localStorage.getItem("saved_sets");
+    var current_save = new Object();
+    current_save.date = new Date();
+    current_save.section = this.globals.mysection;
+    current_save.name = this.globals.sectionname;
+    if (ssets === null) {
+      this.saved_data = [];
+      this.saved_data.push(current_save);
+    } else {
+      this.saved_data = JSON.parse(ssets);
+      var ms = this.globals.mysection;
+      if (
+        this.saved_data.findIndex(function(element) {
+          return element.section == ms;
+        }) > -1
+      ) {
+        this.saved_data.splice(
+          this.saved_data.findIndex(function(element) {
+            return element.section == ms;
+          }),
+          1
+        );
+      }
+      this.saved_data.push(current_save);
+    }
+    localStorage.setItem("saved_sets", JSON.stringify(this.saved_data));
   }
-  upload() {
-
-  }
+  upload() {}
 
   /* section_data_return(data) {
     //alert("heelo");
@@ -239,14 +247,13 @@ export class MainComponent implements OnInit {
   }*/
 
   ngOnInit() {
-   
     this.members = Object.keys(this.globals.sectiondata[1].data).map(
       i => this.globals.sectiondata[1].data[i]
     );
-     this.genders = this.members.reduce(
+    this.genders = this.members.reduce(
       (acc, o) => ((acc[o.gender] = (acc[o.gender] || 0) + 1), acc),
       {}
-    ); 
+    );
     //  if (this.globals.eventsection!=this.globals.mysection){
 
     if (!this.globals.access.noaccess) {
