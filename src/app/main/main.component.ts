@@ -171,7 +171,7 @@ export class MainComponent implements OnInit {
     }
     if (this.accessToken!="") {
       ons.notification.confirm({
-      message: 'Remove COnnection to DropBox?',
+      message: 'Remove onnection to DropBox?',
       cancelable: true,
       callback: i => {
         if (i == 1) {
