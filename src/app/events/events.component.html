@@ -17,8 +17,6 @@
         <div class="content">
        
       <h2>Events</h2>
-     
-    
 
   <ons-list>
   <span  id="gridcontainer" *ngFor="let event of list; index as i">
@@ -32,25 +30,25 @@
         <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
         <span class="right" >
           <div><div>  
-           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="event.signup >= 0" id ="signup(event.confdate) >= 0"></ons-icon>  
-         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="event.signup <0" id ="signup(event.confdate) < 0"></ons-icon>&nbsp;</div>
+           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="event.signup >= 0" ></ons-icon>  
+         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="event.signup <0" ></ons-icon>&nbsp;</div>
          <div *ngIf="event.shared" id ="is_shared(event,1)"><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon></div><div *ngIf="event.sharee" id="is_shared(event,2)"><ons-icon icon="fa-link" style="color: grey"></ons-icon></div></div>
-         <div class="ecount" *ngIf="event_limit_inc(event.eventid)==0">
+         <div class="ecount" *ngIf="event.eventlimitldr==0" id ="event_limit_inc(event.eventid)==0">
          <!--Total does not include LEaders-->
          <div class="top_ecount">
-           <span class="notification {{event_class(event.eventid)}}">{{event_option2(event.eventid,"Yes",0)}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span>
+           <span class="notification {{event.class}} _class(event.eventid)">{{event.count}}<span *ngIf="event_limit(event.eventid)>0">/{{event.eventlimit}}</span></span>
          </div>
          <div class="bot_ecount">
-           &amp;&nbsp;{{event_option2(event.eventid,"Yes",1)}}L
+           &amp;&nbsp;{{event.countL}}L
          </div>    
          </div>  
-         <div class="ecount" *ngIf="event_limit_inc(event.eventid)==1">
+         <div class="ecount" *ngIf="event.eventlimitldr==1">
          <!--Total does include LEaders-->
          <div class="top_ecount">
-           <span class="notification {{event_class(event.eventid)}}">{{event_option2(event.eventid,"Yes",0)}}+{{event_option2(event.eventid,"Yes",1)}}L</span>
+           <span class="notification {{event_class(event.eventid)}}">{{event.count}}+{{event.countL}}L</span>
          </div>
          <div class="bot_ecount">
-           of {{event.attendancelimit}}
+           of {{event.eventlimit}}
          </div>    
          </div>  
      <!--     &nbsp;<span class="notification {{event_class(event.eventid)}}">{{event_option(event.eventid,"Yes")}}<span *ngIf="event_limit(event.eventid)>0">/{{event.attendancelimit}}</span></span> -->
