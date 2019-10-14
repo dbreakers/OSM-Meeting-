@@ -21,22 +21,20 @@
     
 
   <ons-list>
-  <span  id="gridcontainer" *ngFor="let event of globals.eventA; index as i">
+  <span  id="gridcontainer" *ngFor="let event of list; index as i">
 <ons-list-item (click)="go($event,event);" modifier="chevron">
      
-        <span class="left">
-              
+        <span class="left">              
         </span>
         <span class="list-item__title">  
-          {{event.name}} 
-           
+          {{event.name}}   
           </span>
         <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
         <span class="right" >
           <div><div>  
-           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="signup(event.confdate) >= 0"></ons-icon>  
-         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="signup(event.confdate) < 0"></ons-icon>&nbsp;</div>
-         <div *ngIf="is_shared(event,1)"><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon></div><div *ngIf="is_shared(event,2)"><ons-icon icon="fa-link" style="color: grey"></ons-icon></div></div>
+           <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="event.signup >= 0" id ="signup(event.confdate) >= 0"></ons-icon>  
+         <ons-icon icon="fa-lock" style="color: grey;" *ngIf="event.signup <0" id ="signup(event.confdate) < 0"></ons-icon>&nbsp;</div>
+         <div *ngIf="event.shared" id ="is_shared(event,1)"><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon></div><div *ngIf="event.sharee" id="is_shared(event,2)"><ons-icon icon="fa-link" style="color: grey"></ons-icon></div></div>
          <div class="ecount" *ngIf="event_limit_inc(event.eventid)==0">
          <!--Total does not include LEaders-->
          <div class="top_ecount">

@@ -39,7 +39,7 @@ export class EventsComponent implements OnInit {
   }
 
   event_generate_summary() {
-  for (var i=0; i<this.globals.eventA; i++)
+  for (var i=0; i<this.globals.eventA.length; i++)
   {
     var list = this.globals.event.find(f => f.eventid == this.globals.eventA[i].eventid);
     var share = this.globals.eventS.find(f => f.event == this.globals.eventA[i].eventid);
@@ -47,10 +47,13 @@ export class EventsComponent implements OnInit {
     let evt = this.globals.eventA[i];
     var li = new Object;
     // Sharing
+    li.name = evt.name;
+    li.startdate = evt.startdate;
+    li.enddate = evt.enddate;
     li.eventid = evt.eventid;
     li.shared = false;
     if (shareS.hasOwnProperty('items')){
-    li.shared =  f.items.length - 1 > 1;
+    li.shared =  share.items.length - 1 > 1;
     }
     li.sharee = false;
     if (evt.extra!="") { 
@@ -59,7 +62,63 @@ export class EventsComponent implements OnInit {
        li.sharee = true 
         }
     }
-     
+    
+    li.count = 0;
+    li.countL = 0;
+    for (var j = 0; j < list.items.length; j++) {
+      if (list.items[j].attending == "Yes") {
+        if (list.items[j].patrolid != -2) {
+          li.countL++;
+        }
+        if (list.items[j].patrolid == -2) {
+          li.count++;
+        }
+      }
+    }
+    for (var j = 0; j < share.items.length; j++) {
+        if (share.items[j].sectionid != this.globals.mysection) {
+          if (share.items[j].patrolid != -2) {
+            li.countL++;
+          }
+          if (share.items[j].patrolid == -2) {
+            li.count++;
+          }
+        }
+    }
+   li.eventlimit = 0
+    if (evt.hasOwnProperty("attendancelimit")) {
+      li.eventlimit = evt.attendancelimit;
+    } 
+  li.eventlimitldr = 0;
+  if (evt.hasOwnProperty("limitincludesleaders")) {
+      li.eventlimitldr = evt.limitincludesleaders;
+    }
+  if (li.eventlimit ==0)
+    { li.class = "blue"} 
+  if (li.eventlimit !=0){
+    var p = li.count / li.eventlimit;
+      if (p <= 0.5) {
+        li.class = "green";
+      }
+      if (p > 0.5 && p < 0.75) {
+        li.class = "amber";
+      }
+
+      if (p >= 0.75) {
+        li.class = "red";
+      }
+  }
+
+
+  var d = new Date(evt.confdate);
+    var now2 = new Date();
+    var d2 = new Date(now2.getFullYear(), now2.getMonth(), now2.getDate());
+    var diff = (d.getTime() - d2.getTime()) / 1000;
+    diff /= 60 * 60 * 24;
+    // return Math.abs(Math.round(diff));
+    li.signup = Math.round(diff);
+
+  this.list.push(li);
   }
 }
   
@@ -219,7 +278,9 @@ export class EventsComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
+    this.event_generate_summary();
     this.globals.eventA.sort(
       this.sorting.compareValuesArray(["startdate"], "desc")
     );
