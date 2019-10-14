@@ -50,6 +50,7 @@ export class EventsComponent implements OnInit {
     li.name = evt.name;
     li.startdate = evt.startdate;
     li.enddate = evt.enddate;
+    li.dates = this.eventdates(evt.startdate,evt.enddate)
     li.eventid = evt.eventid;
     li.shared = false;
     if (shareS.hasOwnProperty('items')){

@@ -27,7 +27,7 @@
         <span class="list-item__title">  
           {{event.name}}   
           </span>
-        <span class="list-item__subtitle">{{eventdates(event.startdate,event.enddate)}}</span>
+        <span class="list-item__subtitle">{{event.dates}}</span>
         <span class="right" >
           <div><div>  
            <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="event.signup >= 0" ></ons-icon>  
