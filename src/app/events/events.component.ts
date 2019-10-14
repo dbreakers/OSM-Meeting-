@@ -32,9 +32,37 @@ export class EventsComponent implements OnInit {
     private dateFormat: DateformatService
   ) {}
 
+  list= [];
+
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
+
+  event_generate_summary() {
+  for (var i=0; i<this.globals.eventA; i++)
+  {
+    var list = this.globals.event.find(f => f.eventid == this.globals.eventA[i].eventid);
+    var share = this.globals.eventS.find(f => f.event == this.globals.eventA[i].eventid);
+    var shareS = this.globals.eventSS.find(f => f.event == this.globals.eventA[i].eventid);
+    let evt = this.globals.eventA[i];
+    var li = new Object;
+    // Sharing
+    li.eventid = evt.eventid;
+    li.shared = false;
+    if (shareS.hasOwnProperty('items')){
+    li.shared =  f.items.length - 1 > 1;
+    }
+    li.sharee = false;
+    if (evt.extra!="") { 
+       var shar =  JSON.parse(evt.extra)
+       if (shar.sharing.hasOwnProperty('sharee')) {
+       li.sharee = true 
+        }
+    }
+     
+  }
+}
+  
 
   event_option(eventid, s) {
     var list = this.globals.event.find(f => f.eventid == eventid);
