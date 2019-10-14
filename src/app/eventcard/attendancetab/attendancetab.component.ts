@@ -48,6 +48,7 @@ export class AttendancetabComponent implements OnInit {
  att_list = 0;
  sharedA = new Object;
  sharedS = new Object;
+
  //members = new Array;
 // member_image = "";
 
@@ -89,6 +90,16 @@ get_count_att(l){
         { count++; }    
    }
  }
+ for (var i = 0; i < this.sharedA.items.length; i++) {
+        if (this.sharedA.items[i].sectionid != this.globals.mysection) {
+          if (l != true && this.sharedA.items[i].patrolid != -2) {
+            count++;
+          }
+          if (l == true && this.sharedA.items[i].patrolid == -2) {
+            count++;
+          }
+        }
+      }
  return count;
 //
 }
