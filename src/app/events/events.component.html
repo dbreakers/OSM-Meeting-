@@ -32,7 +32,7 @@
           <div><div>  
            <ons-icon icon="fa-lock-open" style="color: limegreen;" *ngIf="event.signup >= 0" ></ons-icon>  
          <ons-icon icon="fa-lock" style="color: grey;" *ngIf="event.signup <0" ></ons-icon>&nbsp;</div>
-         <div *ngIf="event.shared" ><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon></div><div *ngIf="event.sharee" ><ons-icon icon="fa-link" style="color: grey"></ons-icon></div></div>
+         <div *ngIf="event.shared" style="padding-top:2px;"><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon></div><div *ngIf="event.sharee" style="padding-top:2px;"><ons-icon icon="fa-link" style="color: grey"></ons-icon></div></div>
          <div class="ecount" *ngIf="event.eventlimitldr==0" >
          <!--Total does not include LEaders-->
          <div class="top_ecount">
