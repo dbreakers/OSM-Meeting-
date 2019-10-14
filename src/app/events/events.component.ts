@@ -68,20 +68,20 @@ export class EventsComponent implements OnInit {
     for (var j = 0; j < list.items.length; j++) {
       if (list.items[j].attending == "Yes") {
         if (list.items[j].patrolid != -2) {
-          li.countL++;
+          li.count++;
         }
         if (list.items[j].patrolid == -2) {
-          li.count++;
+          li.countL++;
         }
       }
     }
     for (var j = 0; j < share.items.length; j++) {
         if (share.items[j].sectionid != this.globals.mysection) {
           if (share.items[j].patrolid != -2) {
-            li.countL++;
+            li.count++;
           }
           if (share.items[j].patrolid == -2) {
-            li.count++;
+            li.countL++;
           }
         }
     }
