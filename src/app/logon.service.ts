@@ -610,5 +610,5 @@ let singleObservables = this.globals.sectiondata[3].items.map(event =>
     }
   }
   
-  
+  // 
 }
