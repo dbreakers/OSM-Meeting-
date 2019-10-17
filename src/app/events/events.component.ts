@@ -89,7 +89,27 @@ export class EventsComponent implements OnInit {
    li.eventlimit = 0
     if (evt.hasOwnProperty("attendancelimit")) {
       li.eventlimit = evt.attendancelimit;
-    } 
+    }
+
+   if (shareS.hasOwnProperty('items')){
+    if (li.shared) {
+     li.eventlimit = 0; 
+     debugger;
+     for (var j = 0; j < shareS.items.length; j++) { 
+       if (shareS.items[j].hasOwnProperty('sectionid')){
+       li.eventlimit = li.eventlimit + shareS.items[j].attendancelimit;
+       }
+      }
+    }
+   }
+//Maximum Share limit
+    if (evt.extra!="") { 
+       var shar =  JSON.parse(evt.extra)
+       if (shar.sharing.mlimit>0)  
+        {li.eventlimit =shar.sharing.maxlimit}
+    }
+
+    
   li.eventlimitldr = 0;
   if (evt.hasOwnProperty("limitincludesleaders")) {
       li.eventlimitldr = evt.limitincludesleaders;
