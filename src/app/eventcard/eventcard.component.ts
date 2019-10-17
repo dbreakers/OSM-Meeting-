@@ -66,6 +66,7 @@ open(n) {
     if (this._params.data && this._params.data.index){
       this.globals.eventcard = this._params.data.index;
        this.event = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
+       
      //  this.eventd = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
     }
  }  

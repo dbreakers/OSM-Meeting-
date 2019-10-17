@@ -26,6 +26,8 @@ import { MedicalComponent } from '../../medical/medical.component';
 })
 export class SummarytabComponent implements OnInit {
 
+
+
   constructor(
     private sanitizer: DomSanitizer, 
     private globals: Globals,
@@ -35,6 +37,9 @@ export class SummarytabComponent implements OnInit {
  
   event : object;
   eventA : object;
+  eventS : object;
+  shared = false;
+  sharee = false;
 
   eventdates(s) {
   var subtitle = "";
@@ -91,6 +96,19 @@ var t = 0;
   ngOnInit() {
    this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
    this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
+    this.eventS = this.globals.eventSS.find(f=>f.event==this.globals.eventcard)
+
+    this.shared = false;
+    this.sharee = false;
+    if (this.eventS.hasOwnProperty('items')){
+    this.shared =  this.eventS.items.length - 1;
+    }
+    if (this.eventA.extra!="") { 
+       var shar =  JSON.parse(this.eventA.extra)
+       if (shar.sharing.hasOwnProperty('sharee')) {
+       this.sharee = true 
+        }
+    }
   }
 
 }
