@@ -256,6 +256,18 @@ update_summary(){
        this.sharee = true 
         }
     }
+  this.li.total_leaders_mysec = 0;
+  this.li.total_members_mysec = 0;
+  this.li.total_leaders_othersec = 0;
+  this.li.total_members_othersec = 0;
+  this.li.maxplaces = 0;
+  this.li.maxplaces_incldr = false;
+  this.li.remain = 0;
+  
+  } else
+  {
+
+  } 
 }
 
 }
