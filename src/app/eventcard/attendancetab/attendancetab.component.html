@@ -2,7 +2,7 @@
     <span class="head">{{eventA.name}}</span>  
  <!-- <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span> -->
 </ons-card>     
-  <ons-card>
+  <ons-card >
     <p class="card_title"><ons-icon   icon="fa-users" ></ons-icon>&nbsp;Attendance</p>
     <span *ngIf="eventA.attendancelimit == 0 ">
     There is no attendance limit for this event.  
@@ -75,12 +75,17 @@
       </div>
     </ons-list>
   </ons-card>
-  <ons-card *ngIf="att_list==0&&((sharedS.items.length-1)>1)">
-   <p class="card_title"><ons-icon   icon="fa-share-alt" ></ons-icon>&nbsp;Shared Attendees</p>   
+
+  <!-- SHARED ATTENDANCE-->
+  
+  <ons-card *ngIf="shared>1">
+   <p class="card_title"><ons-icon   icon="fa-users" ></ons-icon>&nbsp;Shared Attendance</p>
+
    <div *ngFor="let att of sharedA.items ; index as z">
      <div *ngIf="att.sectionid!=globals.mysection">{{att.firstname}}&nbsp;{{att.lastname}}</div> 
    </div>   
   </ons-card>  
+  <!-- ATTENDEE GROUPED -->
   <ons-card *ngIf="att_list==0">  
   <ons-icon icon="fa-layer-group"></ons-icon>&nbsp;Attendees grouped by {{group_label[group_seg]}} <span *ngIf="notamember > 0">({{notamember}} former members are excluded from these totals)</span>
     <ons-segment #segment id="segment_summary" style="margin-top: 8px; width: 100%">

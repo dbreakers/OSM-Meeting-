@@ -49,9 +49,10 @@ export class AttendancetabComponent implements OnInit {
  att_list = 0;
  sharedA = new Object;
  sharedS = new Object;
+ shar = new Object;
  shared = 0;
  sharee = false;
-
+ li = new Object;
  //members = new Array;
 // member_image = "";
 
@@ -232,11 +233,9 @@ update_summary(){
 
 }
 
+
   ngOnInit() {
-//    this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
- //   this.member = this.members.find(o => o.member_id === this.globals.scoutcard);
-  //  this.cardTitle = this.member.first_name+" "+this.member.last_name;
-   // this.member_image = this.get_photo_url(this.member);
+ 
  this.event = this.globals.event.find(f=>f.eventid==this.globals.eventcard)
  this.eventA = this.globals.eventA.find(f=>f.eventid==this.globals.eventcard)
  this.event.items.sort(this.sorting.compareValuesArray(["lastname"],"asc"))
@@ -245,13 +244,15 @@ update_summary(){
  this.sharedA  = this.globals.eventS.find(e=>e.event==this.globals.eventcard)
  this.sharedS = this.globals.eventSS.find(e=>e.event==this.globals.eventcard)
  this.shared = 0;
-    this.sharee = false;
-    if (this.eventS.hasOwnProperty('items')){
+ this.sharee = false;
+ this.shar = {};
+ 
+  if (this.sharedS.hasOwnProperty('items')){
     this.shared =  this.sharedS.items.length - 1;
     }
     if (this.eventA.extra!="") { 
-       var shar =  JSON.parse(this.eventA.extra)
-       if (shar.sharing.hasOwnProperty('sharee')) {
+       this.shar =  JSON.parse(this.eventA.extra)
+       if (this.shar.sharing.hasOwnProperty('sharee')) {
        this.sharee = true 
         }
     }

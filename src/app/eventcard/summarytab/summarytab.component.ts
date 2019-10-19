@@ -101,7 +101,7 @@ var t = 0;
     this.shared = false;
     this.sharee = false;
     if (this.eventS.hasOwnProperty('items')){
-    this.shared =  this.eventS.items.length - 1;
+    this.shared =  this.eventS.items.length - 2;
     }
     if (this.eventA.extra!="") { 
        var shar =  JSON.parse(this.eventA.extra)

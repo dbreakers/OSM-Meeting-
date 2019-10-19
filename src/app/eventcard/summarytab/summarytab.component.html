@@ -19,7 +19,7 @@
   <br>
   <p *ngIf="eventA.location != ''"><ons-icon icon="fa-map-marker-alt"></ons-icon>&nbsp;{{eventA.location}}</p>
   <p *ngIf="signup(eventA.confdate) == 0"><ons-icon icon="fa-exclamation-circle" style="color:red;"></ons-icon>&nbsp;Signup for this event closes today</p>
-  <p *ngIf="signup(eventA.confdate) > 0"><ons-icon icon="fa-check-circle" style="color:green;"></ons-icon>&nbsp;Signup for this event closes in {{signup(eventA.confdate)}} day<span *ngIf="signup(eventA.confdate) > 1">s</span> on {{eventdates(eventA.confdate)}}.</p>
+  <p *ngIf="signup(eventA.confdate) > 0"><ons-icon icon="fa-check-circle" style="color:green;"></ons-icon>&nbsp;Signup closes in {{signup(eventA.confdate)}} day<span *ngIf="signup(eventA.confdate) > 1">s</span> on {{eventdates(eventA.confdate)}}.</p>
   <p *ngIf="(signup(eventA.confdate) < 0) && (eventA.confdate != '1970-01-01')"><ons-icon icon="fa-times-circle" style="color:red;"></ons-icon>&nbsp;Signup closed  on {{eventdates(eventA.confdate)}}.</p>
   <p *ngIf="invites_sent(true) == 0"><ons-icon icon="fa-exclamation-circle" style="color:red;"></ons-icon>&nbsp;No invites sent<p>
   <p *ngIf="shared>1"><ons-icon icon="fa-share-alt" style="color: grey"></ons-icon> You have shared this event with {{shared}} sections</p>
