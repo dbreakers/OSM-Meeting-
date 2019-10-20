@@ -301,12 +301,12 @@ update_summary(){
       if (this.event.items[j].attending == "Yes") {
         if (this.event.items[j].patrolid != -2) {
           this.li.total_members_mysec++
-        } else { this.li.total_leaders_mysec++ }
-        
+        } else { this.li.total_leaders_mysec++ }        
       }
     }
     if (this.eventA.hasOwnProperty("attendancelimit")) {
       this.li.maxplaces = this.eventA.attendancelimit;
+      this.li.maxplaces_incldr = this.eventA.limitincludesleaders
     }
     if (this.sharee) {
        
