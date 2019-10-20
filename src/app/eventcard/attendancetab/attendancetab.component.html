@@ -1,7 +1,13 @@
 <ons-card>
     <span class="head">{{eventA.name}}</span>  
  <!-- <span class="subhead">{{eventdates(eventA.startdate,eventA.enddate)}}</span> -->
-</ons-card>     
+</ons-card>
+<ons-card>
+ <span *ngIf="shared||sharee"> 
+ <span *ngIf="li.maxplaces_share>0">There is a shared total of {{li.maxplaces_share}} places available for this event<span *ngIf="li.maxplaces>0">, your section has limit of {{li.maxplaces}} places</span>.</span>
+ <span *ngIf="li.maxplaces_share==0">There is no shared maximum for this event<span *ngIf="li.maxplaces>0"> but your section has limit of {{li.maxplaces}} places</span>.</span>
+ </span>   
+</ons-card>       
   <ons-card >
     <p class="card_title"><ons-icon   icon="fa-users" ></ons-icon>&nbsp;Attendance</p>
     

@@ -308,11 +308,11 @@ update_summary(){
     if (this.eventA.hasOwnProperty("attendancelimit")) {
       this.li.maxplaces = this.eventA.attendancelimit;
     }
-    if (this.shar.hasOwnProperty('sharing')) {
-       if (this.shar.sharing.hasOwnProperty('maxlimit')) {
-      this.li.maxplaces_share = this.shar.sharing.maxlimit;
+    if (this.sharee) {
+       
+      this.li.maxplaces_share = this.eventA._shared_event_overall_limit;
       this.li.maxplaces_incldr_share = this.shar.sharing.limitleaders
-        }
+        
     }
   }  
 }
