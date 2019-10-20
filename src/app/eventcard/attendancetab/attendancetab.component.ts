@@ -34,25 +34,28 @@ export class AttendancetabComponent implements OnInit {
     private sorting: Sortservice,
     private photoURL: PhotoURLService) {  }
 // members = new Array;
- cardTitle: string = 'Custom Card';
+ 
  event : object;
  eventA: object;
+ sharedA = new Object;
+ sharedS = new Object;
+ 
  attendees = new Array;
  members = new Array;
  test = new Array;
-  labels = new Array;
-   values = new Array;
+ labels = new Array;
+ values = new Array;
+
  group_label = ["Gender","Swim 50m","Patrol","Role","Age"];
  group_seg = 1;
  target: boolean = false;
  notamember = 0;
  att_list = 0;
- sharedA = new Object;
- sharedS = new Object;
  shar = new Object;
  shared = 0;
  sharee = false;
  li = new Object;
+ //list= [];
  //members = new Array;
 // member_image = "";
 
@@ -246,29 +249,72 @@ update_summary(){
  this.shared = 0;
  this.sharee = false;
  this.shar = {};
- 
+ if (this.eventA.extra!="") { 
+       this.shar =  JSON.parse(this.eventA.extra)
+ }      
   if (this.sharedS.hasOwnProperty('items')){
     this.shared =  this.sharedS.items.length - 1;
     }
-    if (this.eventA.extra!="") { 
-       this.shar =  JSON.parse(this.eventA.extra)
+  if (this.shar.hasOwnProperty('sharing')) {
        if (this.shar.sharing.hasOwnProperty('sharee')) {
        this.sharee = true 
         }
     }
-  if(this.shared>1) {
+
   this.li.total_leaders_mysec = 0;
   this.li.total_members_mysec = 0;
   this.li.total_leaders_othersec = 0;
   this.li.total_members_othersec = 0;
   this.li.maxplaces = 0;
   this.li.maxplaces_incldr = false;
+  this.li.maxplaces_share = 0;
+  this.li.maxplaces_incldr_share = false;
   this.li.remain = 0;
+  
+  if(this.shared>1) {
+    for (var j = 0; j < this.sharedA.items.length; j++) {
+      var isldr = (this.sharedA.items[j].patrolid == -2)
+      var ismy = (this.sharedA.items[j].sectionid == this.globals.mysection) 
+      if (isldr) {
+          ismy ?  this.li.total_leaders_mysec++ : this.li.total_leaders_othersec++;
+      } else {
+          ismy ?  this.li.total_members_mysec++ : this.li.total_members_othersec++;  
+      } 
 
-  } else
-  {
+    }
+    if (this.eventA.hasOwnProperty("attendancelimit")) {
+      this.li.maxplaces = this.eventA.attendancelimit;
+    }
+    if (this.shar.sharing.limit>0)  
+        {this.li.maxplaces_share = this.shar.sharing.limit}
+    
+    if (this.eventA.hasOwnProperty("attendancelimit")) {
+      this.li.maxplaces = this.eventA.attendancelimit;
+    }
+    if (this.li.maxplaces>this.li.maxplaces_share)
+    {this.li.maxplaces = this.li.maxplaces_share}
+    //this.li.maxplaces_incldr_share = this.shar.sharing.limitleaders
 
-  } 
+  } else {
+  // Not Shared (so Sharee or nothing)   
+   for (var j = 0; j < this.event.items.length; j++) {
+      if (this.event.items[j].attending == "Yes") {
+        if (this.event.items[j].patrolid != -2) {
+          this.li.total_members_mysec++
+        } else { this.li.total_leaders_mysec++ }
+        
+      }
+    }
+    if (this.eventA.hasOwnProperty("attendancelimit")) {
+      this.li.maxplaces = this.eventA.attendancelimit;
+    }
+    if (this.shar.hasOwnProperty('sharing')) {
+       if (this.shar.sharing.hasOwnProperty('maxlimit')) {
+      this.li.maxplaces_share = this.shar.sharing.maxlimit;
+      this.li.maxplaces_incldr_share = this.shar.sharing.limitleaders
+        }
+    }
+  }  
 }
 
 }
