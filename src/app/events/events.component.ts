@@ -66,7 +66,8 @@ export class EventsComponent implements OnInit {
     
     li.count = 0;
     li.countL = 0;
-    for (var j = 0; j < list.items.length; j++) {
+    if (!li.shared) {
+   for (var j = 0; j < list.items.length; j++) {
       if (list.items[j].attending == "Yes") {
         if (list.items[j].patrolid != -2) {
           li.count++;
@@ -75,16 +76,17 @@ export class EventsComponent implements OnInit {
           li.countL++;
         }
       }
-    }
+    } 
+  }
     for (var j = 0; j < share.items.length; j++) {
-        if (share.items[j].sectionid != this.globals.mysection) {
+       // if (share.items[j].sectionid != this.globals.mysection) {
           if (share.items[j].patrolid != -2) {
             li.count++;
           }
           if (share.items[j].patrolid == -2) {
             li.countL++;
           }
-        }
+       // }
     }
    li.eventlimit = 0
     if (evt.hasOwnProperty("attendancelimit")) {
