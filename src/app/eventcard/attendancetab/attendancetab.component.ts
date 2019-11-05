@@ -315,7 +315,7 @@ update_summary(){
         
     }
   }
-  li.remain =   0
+  li.remain =   0;
 }
 
 }
