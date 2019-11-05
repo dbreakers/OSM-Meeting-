@@ -59,7 +59,7 @@ section_data_return(data) {
 
 section_config_return(s) {
   this.globals.configread = true;
-  this.globals.loaded.config = true;
+  this.global s.loaded.config = true;
     this.globals.config = s;
     var found = false;
     for (var i = 0; i < this.globals.config[1].length; i++) {
