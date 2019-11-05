@@ -61,6 +61,7 @@ export class MainComponent implements OnInit {
   win: any;
   ac = "";
   $scope = "";
+  save_set = [];
   REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html";
 
   images = new Object();
@@ -200,6 +201,10 @@ export class MainComponent implements OnInit {
       });
     }
   }
+  upload_now(j) {
+this.globals = localStorage.getItem(saved_data[j].section)
+//localStorage.setItem(this.globals.mysection, JSON.stringify(this.globals));
+  }
 
   download() {
     localStorage.setItem(this.globals.mysection, JSON.stringify(this.globals));
@@ -229,9 +234,11 @@ export class MainComponent implements OnInit {
       this.saved_data.push(current_save);
     }
     localStorage.setItem("saved_sets", JSON.stringify(this.saved_data));
-  }
-  upload() {}
 
+  }
+  upload() {
+     document.getElementById('dialog').show();
+  }
   /* section_data_return(data) {
     //alert("heelo");
     this.globals.loaded.section = true;
@@ -307,5 +314,13 @@ export class MainComponent implements OnInit {
       }
     }
     this.accessToken = localStorage.getItem("dropbox_token");
+    var ssets = localStorage.getItem("saved_sets");
+   
+    if (ssets === null) {
+      this.saved_data = [];
+    } else {
+      this.saved_data = JSON.parse(ssets);
+    }
+    
   }
 }

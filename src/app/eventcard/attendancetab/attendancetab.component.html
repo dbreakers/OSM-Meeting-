@@ -5,7 +5,7 @@
 <ons-card>
  <span *ngIf="shared||sharee"> 
  <span *ngIf="li.maxplaces_share>0">There is a shared total of {{li.maxplaces_share}} place<span *ngIf="li.maxplaces_share>1">s</span> available for this event<span *ngIf="li.maxplaces>0"><span *ngIf="li.maxplaces_incldr_share==1"> including leaders</span>, your section has limit of {{li.maxplaces}} places<span *ngIf="li.maxplaces_incldr==1"> including leaders</span></span>.</span>
- <span *ngIf="li.maxplaces_share==0">There is no shared maximum for this event<span *ngIf="li.maxplaces>0"> but your section has limit of {{li.maxplaces}} place<span *ngIf="li.maxplaces">s</span><span *ngIf="li.maxplaces_incldr==1"> including leaders</span></span>.</span>
+ <span *ngIf="li.maxplaces_share==0">There is no shared maximum for this event<span *ngIf="li.maxplaces>0"> but your section has limit of {{li.maxplaces}} place<span *ngIf="li.maxplaces>1">s</span><span *ngIf="li.maxplaces_incldr==1"> including leaders</span></span>.</span>
  <span *ngIf="shared"><span *ngIf="li.maxplaces_share>0"><p> There are {{li.maxplaces_share-li.total_leaders_mysec-total_members_mysec-total_leaders_othersec-total_members_othersec}} places remaining.</p></span></span> <span *ngIf="sharee"><span *ngIf="li.maxplaces>0"><p> You have {{li.maxplaces - li.total_leaders_mysec - li.total_members_mysec}} places remaining.</p></span></span>   
  </span>
  <span *ngIf="!shared&&!sharee">

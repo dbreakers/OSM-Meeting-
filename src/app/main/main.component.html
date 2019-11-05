@@ -116,7 +116,7 @@
          </div> 
       </div>
 
-       <div class="member_outer" (click)="uploadPage()">
+       <div class="member_outer" (click)="upload()">
            <div class="member_inner">
           <div class="member_box"><div class="circle"><div class="member_initial"><ons-icon icon="fa-upload"></ons-icon></div></div></div>
           <div class="member_name">Upload</div>
@@ -137,6 +137,35 @@
       
            </div>
     </ons-page>
-
+<ons-dialog animation="default" cancelable id="dialog" >
+    <div class="dialog-mask"></div>
+      <div class="dialog">
+        <div class="dialog-container" style="height: 100%">
+          <ons-page>
+            <ons-toolbar>
+              <div class="center">Upload Saved Data</div><div class="right">
+        <ons-toolbar-button (click)="click_close()">
+          <ons-icon icon="fa-times"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+            </ons-toolbar>
+            <div class="content">
+              <div style="text-align: left; padding: 20px;">
+               
+                Select Saved Data <br>
+                <ons-list *ngFor="let save of saved_data; index as j">
+                <ons-list-header *ngIf="(j==0)">Saved Data</ons-list-header>
+<ons-list-item (click)="upload_now(j)" >
+  <span class="list-item__title">{{save.name}}</span>
+        <span class="list-item__subtitle">{{save.date}}</span>
+</ons-list-item>   
+                </ons-list>
+                
+              </div>
+            </div>
+          </ons-page>
+        </div>
+      </div>
+  </ons-dialog>
     
    
