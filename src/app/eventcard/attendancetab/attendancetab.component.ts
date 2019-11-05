@@ -314,7 +314,8 @@ update_summary(){
       this.li.maxplaces_incldr_share = this.shar.sharing.limitleaders
         
     }
-  }  
+  }
+  li.remain  
 }
 
 }
