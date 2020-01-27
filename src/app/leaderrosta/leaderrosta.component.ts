@@ -90,7 +90,6 @@ eventdates(s,e) {
 
  switchdisplay() {
    this.date_list = !this.date_list;
-   //  if (this.date_list==1) {this.date_list = 0;} else {this.grid_list = 1;} 
       }
 
 OnPaste_StripFormatting(e: ClipboardEvent) {
