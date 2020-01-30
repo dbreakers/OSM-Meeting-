@@ -58,7 +58,7 @@ section_data_return(data) {
 }
 
 section_API_return(api) {
-  
+  this.logonService.setAPIvalues2(api);
    this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
 }
 
