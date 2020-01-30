@@ -178,8 +178,25 @@ export class LogonService {
     );
   }
 
+  getAPIdata(sectionid): Observable<any> {
+    let fullURL =
+      this.configUrl +
+      "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid=" +
+      sectionid; // access
+      let body = new HttpParams();
+    body = body.set("secret", this.globals.secret);
+    body = body.set("userid", this.globals.userid);
+
+      return forkJoin(
+      this.http
+        .post(fullURL, body, httpOptions)
+        .pipe(catchError(error => of({ isError: true, error }))))
+  }
+
   getSectionData(sectionid, term): Observable<any> {
     let st = this.globals.config[1].find(i => i.sectionid == sectionid);
+    let blankingURL = 
+      this.configUrl + "?osmpath=api.php&action=getSectionConfig"
     let fullURL =
       this.configUrl +
       "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid=" +
