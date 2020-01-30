@@ -104,7 +104,12 @@ export class LogonService {
   }
 
   setAPIvalues() {
-    let apiv = this.globals.sectiondata[5].apis.find(i => i.apiid == 41);
+let apiv = this.globals.sectiondata[5].apis.find(i => i.apiid == 41);
+this.setAPIvalues2(apiv);
+  }
+
+  setAPIvalues2(apiv) {
+    
     this.globals.access.members = "";
     this.globals.access.events = "";
     this.globals.access.progs = "";

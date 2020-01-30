@@ -57,6 +57,11 @@ section_data_return(data) {
   this._navigator.element.replacePage(MainComponent);
 }
 
+section_API_return(api) {
+  
+   this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+}
+
 section_config_return(s) {
   this.globals.configread = true;
   this.globals.loaded.config = true;
@@ -86,8 +91,8 @@ section_config_return(s) {
   } else
   {
     
-     this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
-    //this._navigator.element.replacePage(MainComponent);}
+  //   this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+  this.logonService.getAPIdata(this.globals.mysection).subscribe(SectionConfig => this.section_API_return(SectionConfig));
 }
 }
   post_logon(api_return : any)
