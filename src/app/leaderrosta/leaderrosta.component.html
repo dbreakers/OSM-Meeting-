@@ -7,14 +7,16 @@
       <div class="left">
 		<ons-back-button>Back</ons-back-button>
 	</div>
-      <div class="right menu_sel">
+      <div class="right">
         <ons-toolbar-button (click)="switchdisplay()" *ngIf="singleprog==''">
           <ons-icon style="color: 7413dc;" icon="fa-calendar-day" *ngIf="!date_list"></ons-icon>
           <ons-icon style="color: 7413dc;" icon="fa-user-ninja" *ngIf="date_list"></ons-icon>
-        </ons-toolbar-button>  
+        </ons-toolbar-button>
+        <div class="menu_sel">  
         <ons-toolbar-button (click)="openMenu()">
           <ons-icon icon="fa-bars"></ons-icon>
         </ons-toolbar-button>
+        </div>
       </div>
     </ons-toolbar>
 

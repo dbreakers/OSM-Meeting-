@@ -292,5 +292,6 @@ for( var i = 0; i < this.members.length; i++){
 }
  this.members.sort(this.sorting.compareValuesArray(["last_name"],"as"))
 //this.progs_copy = this.globals.progs;
+ons.notification.toast('Hello, world!', {timeout: 2000});
 }
 }

@@ -219,12 +219,19 @@ this.setAPIvalues2(apiv);
       sectionid +
       "&termid=" +
       term; //Events
+    if ( this.globals.access.events < 10 ) {
+      fullURL4 = blankingURL;
+    }
+
     let fullURL5 =
       this.configUrl +
       "?osmpath=ext/programme/&action=getProgrammeSummary&sectionid=" +
       sectionid +
       "&termid=" +
       term; //Programme
+      if  (this.globals.access.progs < 10 ){
+      fullURL4 = blankingURL;
+    }
     let fullURL6 =
       this.configUrl +
       "?osmpath=ext/settings/access/&action=getAPIAccess&sectionid=" +

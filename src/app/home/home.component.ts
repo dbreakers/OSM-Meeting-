@@ -59,7 +59,6 @@ section_data_return(data) {
 
 section_API_return(api) {
   let apiv = api[0].apis.find(i => i.apiid == 41);
-
   this.logonService.setAPIvalues2(apiv);
    this.logonService.getSectionData(this.globals.mysection,this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
 }
