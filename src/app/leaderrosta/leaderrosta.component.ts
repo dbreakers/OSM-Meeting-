@@ -93,7 +93,7 @@ eventdates(s,e) {
       }
 
 OnPaste_StripFormatting(e: ClipboardEvent) {
-
+/*
         if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
             e.preventDefault();
             var text = e.originalEvent.clipboardData.getData('text/plain');
@@ -114,9 +114,10 @@ OnPaste_StripFormatting(e: ClipboardEvent) {
             _onPaste_StripFormatting_IEPaste = false;
         }
 
+  */
     }
 adjust(a,v) {
-  var idx = this.globals.progs.findIndex(i => i.items[0].eveningid == a)
+/*  var idx = this.globals.progs.findIndex(i => i.items[0].eveningid == a)
   
   var c = Number(this.globals.progs[idx].items[0].parentsrequired);
   if ((c+v)>=0) {
@@ -128,21 +129,26 @@ this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security
 
   }
  // alert(idx);
+*/
 }
 
 removehelper(i,j) {  
+ /*
  this.logonService.mod_parents(2,this.globals.progs[i].items[0].help[j].scoutid,this.globals.progs[i].items[0].eveningid,this.globals.progs[i].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
 this.globals.progs[i].items[0].help.splice(j,1);
+
+*/
 }
 
 clickmember(a) {
-  var input = document.getElementById("myInput");
+/*  var input = document.getElementById("myInput");
   input.value = a.first_name+" "+a.last_name;
   this.filterFunction();
+*/
 }
 
 add_active() {
-  var input = document.getElementById("myInput");
+ /* var input = document.getElementById("myInput");
   var filter = input.value.toUpperCase();
   var div = document.getElementById("myDropdown");
   var a = div.getElementsByTagName("a");
@@ -161,6 +167,7 @@ add_active() {
      member = this.members[i];
     // count = count + 1;
    }
+   */
  }
 
  if(this.globals.progs[this.selected_meeting].items[0].help.find(i => i.scoutid==member.member_id)!=undefined) { count=0}
@@ -169,7 +176,7 @@ add_active() {
 }
 
 filterFunction() {
-  var input, filter, ul, li, a, i, div;
+/*  var input, filter, ul, li, a, i, div;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   div = document.getElementById("myDropdown");
@@ -182,6 +189,7 @@ filterFunction() {
       a[i].style.display = "none";
     }
 }
+*/
 }
 
 click_close() {
@@ -189,7 +197,7 @@ click_close() {
   .getElementById('dialog')
   .hide();
 }
-
+/*
 click_add(cl) {
 var count = 0;
 var member = {};  
@@ -218,13 +226,13 @@ var  filter = input.value.toUpperCase();
  }   
 }
 
-
+*/
 sellist(o) {
 // var dd = document.getElementById('myDropdown');
 // if (o==1) {dd.style.display = "none";} else {dd.style.display = "";}
  }
 
-addhelper(i) {
+/*addhelper(i) {
 var input = document.getElementById("myInput");
 input.value = "";
   this.filterFunction();
@@ -234,7 +242,7 @@ this.sellist(1);
 }
 
 
-
+*/
 
 alert(s,t) {
  // debugger;
@@ -292,6 +300,8 @@ for( var i = 0; i < this.members.length; i++){
 }
  this.members.sort(this.sorting.compareValuesArray(["last_name"],"as"))
 //this.progs_copy = this.globals.progs;
-ons.notification.toast('Hello, world!', {timeout: 2000});
+if (this.globals.access.register<20) {
+ons.notification.toast("Check API Access if you want to update this data", {timeout: 2000});
+}
 }
 }
