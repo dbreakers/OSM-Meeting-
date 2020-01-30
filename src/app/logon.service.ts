@@ -207,12 +207,21 @@ this.setAPIvalues2(apiv);
       "?osmpath=ext/members/flexirecords/&action=getFlexiRecords&sectionid=" +
       sectionid +
       "&archived=n"; //Flexi
+    if (this.globals.access.members<10) {
+      fullURL = blankingURL;
+    }
     let fullURL2 =
       this.configUrl + "?osmpath=ext/members/contact/grid/&action=getMembers"; // Members
+      if (this.globals.access.members<10) {
+      fullURL2 = blankingURL;
+    }
     let fullURL3 =
       this.configUrl +
       "?osmpath=ext/settings/patrols/&action=get&sectionid=" +
       sectionid; //Patrols
+      if (this.globals.access.members<10) {
+      fullURL3 = blankingURL;
+    }
     let fullURL4 =
       this.configUrl +
       "?osmpath=ext/events/summary/&action=get&sectionid=" +
@@ -230,7 +239,7 @@ this.setAPIvalues2(apiv);
       "&termid=" +
       term; //Programme
       if  (this.globals.access.progs < 10 ){
-      fullURL4 = blankingURL;
+      fullURL5 = blankingURL;
     }
     let fullURL6 =
       this.configUrl +
@@ -244,6 +253,9 @@ this.setAPIvalues2(apiv);
       term +
       "&section=" +
       st.section;
+      if (this.globals.access.register<10) {
+      fullURL7 = blankingURL;
+    }
     let fullURL8 =
       this.configUrl +
       "?osmpath=ext/members/attendance/&action=get&sectionid=" +
@@ -253,10 +265,16 @@ this.setAPIvalues2(apiv);
       "&section=" +
       st.section +
       "&nototal=true";
+      if (this.globals.access.register<10) {
+      fullURL8 = blankingURL;
+    }
     let fullURL9 =
       this.configUrl +
       "?osmpath=ext/quartermaster/&action=getListOfLists&section=scouts&sectionid=" +
       sectionid;
+    if (this.globals.access.qm<10) {
+      fullURL7 = blankingURL;
+    }  
     let body = new HttpParams();
     body = body.set("secret", this.globals.secret);
     body = body.set("userid", this.globals.userid);
