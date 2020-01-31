@@ -28,7 +28,7 @@
       <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0||globals.access.qm==0||globals.access.members==0)">
         Some Items are disabled. Find out more.{{globals.access.progs}}
       </ons-card>  
-        <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(medical)">
+        <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(medical)&&!">
            <div class="member_inner">
           <div class="member_box"><div class="member_initial" ><ons-icon icon="fa-ambulance"></ons-icon></div></div>
           <div class="member_name">Health</div>
