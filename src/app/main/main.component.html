@@ -25,7 +25,7 @@
       <ons-card *ngIf="globals.access.noaccess">
         You have no access to this section. Find out more.
       </ons-card>
-      <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0||)">
+      <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0||globals.access.qm==0||globals.access.members==0)">
         Some Items are disabled. Find out more.{{globals.access.progs}}
       </ons-card>  
         <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(medical)">
