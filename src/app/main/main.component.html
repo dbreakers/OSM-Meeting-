@@ -28,33 +28,33 @@
       <ons-card *ngIf="!globals.access.noaccess && (globals.access.events==0||globals.access.progs==0||globals.access.qm==0||globals.access.members==0)">
         Some Items are disabled. Find out more.{{globals.access.progs}}
       </ons-card>  
-        <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(medical)&&!">
+        <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(medical)&&!globals.access.noaccess">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial" ><ons-icon icon="fa-ambulance"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.members==0 "><ons-icon icon="fa-ambulance"></ons-icon></div></div>
           <div class="member_name">Health</div>
          </div> 
       </div>
       <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(globalsearch)">   
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-search"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.members==0 "><ons-icon icon="fa-search"></ons-icon></div></div>
           <div class="member_name">Global</div>
          </div> 
       </div>
       <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(birthday)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-birthday-cake"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.members==0 "><ons-icon icon="fa-birthday-cake"></ons-icon></div></div>
           <div class="member_name">Birthdays</div>
          </div> 
       </div>
       <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(register)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-user-clock"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.members==0 "><ons-icon icon="fa-user-clock"></ons-icon></div></div>
           <div class="member_name">Register</div>
          </div> 
       </div>
       <div class="member_outer" (click)="(globals.access.members>0)&&loadPage(lastcheck)">
            <div class="member_inner">
-          <div class="member_box"><div class="member_initial"><ons-icon icon="fa-user-check"></ons-icon></div></div>
+          <div class="member_box"><div class="member_initial" [class.deact]="globals.access.members==0 "><ons-icon icon="fa-user-check"></ons-icon></div></div>
           <div class="member_name">Last Check</div>
          </div> 
       </div>
