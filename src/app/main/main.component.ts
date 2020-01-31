@@ -294,9 +294,11 @@ this.globals = localStorage.getItem(saved_data[j].section)
             .subscribe(Progs => this.do_progs(Progs))
         );
       }
+      if (this.globals.access.qm > 0) {
       fj.push(
         this.logonService.getQMListData().subscribe(QM => this.do_QM(QM))
       );
+      }
       forkJoin(fj);
     }
     //  }
