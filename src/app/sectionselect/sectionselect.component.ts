@@ -71,6 +71,12 @@ export class SectionselectComponent implements OnInit, OnChanges {
     this._navigator.element.replacePage(MainComponent);
   }
 
+  section_api(api,section,term) {
+    let apiv = api[0].apis.find(i => i.apiid == 41);
+  this.logonService.setAPIvalues2(apiv);
+    this.logonService.getSectionData(section, term).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+  }
+
   select_section() {
     this.globals.config = this.section;
     this.globals.configread = true;
@@ -89,8 +95,12 @@ export class SectionselectComponent implements OnInit, OnChanges {
     var f = this.globals.config[1].find(obj => obj.sectionid == this.localsection);
     this.globals.sectionname = f.groupname + ":" + f.sectionname;
     if (this.globals.current_term != '-1') {
-    this.logonService.getSectionData(this.globals.mysection, this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
-    } else {this.logonService.getSectionData(this.globals.mysection, '-1').subscribe(SectionConfig => this.section_data_return(SectionConfig));}
+     this.logonService.getAPIdata(this.globals.mysection).subscribe(apidata=>this.section_api(apidata,this.globals.mysection, this.globals.config[2][this.globals.mysection][this.globals.current_term].termid)) 
+    //this.logonService.getSectionData(this.globals.mysection, this.globals.config[2][this.globals.mysection][this.globals.current_term].termid).subscribe(SectionConfig => this.section_data_return(SectionConfig));
+    } else {
+      this.logonService.getAPIdata(this.globals.mysection).subscribe(apidata=>this.section_api(apidata,this.globals.mysection, -1) );
+      //this.logonService.getSectionData(this.globals.mysection, '-1').subscribe(SectionConfig => this.section_data_return(SectionConfig));
+      }
 
 
   }
