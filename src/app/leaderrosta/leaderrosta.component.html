@@ -23,9 +23,10 @@
         <div class="content">    
    <div class="wrapper"><h2>Leaders Attending</h2>     
    <div id="infoi"> <ons-icon icon="fa-ellipsis-v"></ons-icon></div></div>
+     <ons-card *ngIf="globals.sectiondata[4].items.length==0">No programme for the selected term</ons-card>
     <span *ngIf="date_list"> 
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
-  <ons-card *ngIf="globals.sectiondata[4].items.length==0">No programme for the selected term</ons-card>   
+    
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
     <p class="head2"><span class="head">{{prog.items[0].title}} ({{members.length-prog.items[0].unavailableleaders.length}}&nbsp;present)</span><br><b>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></b></p>
