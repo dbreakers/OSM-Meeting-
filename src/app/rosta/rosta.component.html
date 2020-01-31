@@ -18,7 +18,7 @@
         <div class="content">    
    <div class="wrapper"><h2>Rosta</h2>     
    <div id="infoi"> <ons-icon icon="fa-ellipsis-v"></ons-icon></div></div>
-     
+   <ons-card *ngIf="globals.sectiondata[4].items.length==0">No programme for the selected term</ons-card>   
   <span  id="gridcontainer" *ngFor="let prog of globals.progs; index as i">
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
     <p class="head2"><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
