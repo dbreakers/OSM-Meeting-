@@ -215,6 +215,9 @@ this.sellist(1);
 }
 
 alert(a,t) {   
+ if (t=="Helper") {
+   a.title = this.progs_copy[this.selected_meeting].items[0].title;
+ } 
  var original = this.progs_copy.find(i=>i.items[0].eveningid==a.eveningid)  
 if ((t=="Text") && (original!=undefined)) {
   original.items[0].notesforhelpingparents = a.notesforhelpingparents;
@@ -250,7 +253,7 @@ ngOnInit() {
   }
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 this.progs_copy = this.globals.progs;
-if (this.globals.access.register<20) {
+if (this.globals.access.progs<20) {
 ons.notification.toast("Check API Access if you want to update this data", {timeout: 2000});
 this.editallowed = false;
 }

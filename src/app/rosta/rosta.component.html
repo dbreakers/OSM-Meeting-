@@ -29,8 +29,8 @@
     <div *ngIf="this.editallowed==true"  style="display:flex;"><div *ngIf="this.editallowed==true" (click)="removehelper(i,j)"><ons-icon *ngIf="this.editallowed==true" icon="fa-trash-alt" size="24px" class="helper"></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
   </span>  
   <div style="display:flex;"  (click)="addhelper(i)"><div><ons-icon *ngIf="this.editallowed==true" icon="fa-user-plus" size="24px" class="helper"></ons-icon></div><div  class="helper"><span  *ngIf="this.editallowed==true">Add another helper </span><span *ngIf="( prog.items[0].parentsrequired - prog.items[0].help.length ) > 0"><b>({{prog.items[0].parentsrequired - prog.items[0].help.length }} more needed)</b></span></div></div>
-  <div  id="{{prog.items[0].eveningid}}" class="longtext" contenteditable="true" placeholder="Enter a parents text..." (blur)="update_text(prog.items[0].eveningid)" (paste)="OnPaste_StripFormatting($event);">{{prog.items[0].notesforhelpingparents}}</div>
-  
+  <div *ngIf="this.editallowed==true" id="{{prog.items[0].eveningid}}" class="longtext" contenteditable="true" placeholder="Enter a parents text..." (blur)="update_text(prog.items[0].eveningid)" (paste)="OnPaste_StripFormatting($event);">{{prog.items[0].notesforhelpingparents}}</div>
+  <div *ngIf="this.editallowed!=true" id="{{prog.items[0].eveningid}}" class="longtext"  placeholder="No parents text..." >{{prog.items[0].notesforhelpingparents}}</div>
 
   </ons-card>
   </span>    
