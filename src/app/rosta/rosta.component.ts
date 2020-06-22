@@ -32,6 +32,7 @@ export class RostaComponent implements OnInit {
  selected_meeting = -1;
 progs_copy = [];
 singleprog=""
+editallowed = true;
 
 constructor(
     private inj: Injector,
@@ -166,7 +167,7 @@ filterFunction() {
 
 click_close() {
   document
-  .getElementById('dialog')
+  .getElementById('dialog_rosta')
   .hide();
 }
 
@@ -190,7 +191,7 @@ var  filter = input.value.toUpperCase();
 //this.logonService.update_parents(obj,a).subscribe(Security=> this.alert(Security,"Text"));
    this.logonService.mod_parents(1,member.member_id.toString(),this.globals.progs[this.selected_meeting].items[0].eveningid,this.globals.progs[this.selected_meeting].items[0].meetingdate).subscribe(Security=> this.alert(Security,"Helper"));
    if (cl==1){
-   document.getElementById('dialog').hide();
+   document.getElementById('dialog_rosta').hide();
    } else {
      input.value= "";
      this.filterFunction();
@@ -210,7 +211,7 @@ input.value = "";
   this.filterFunction();
 this.selected_meeting = i;
 this.sellist(1); 
-  document.getElementById('dialog').show();
+  document.getElementById('dialog_rosta').show();
 }
 
 alert(a,t) {   
@@ -249,5 +250,10 @@ ngOnInit() {
   }
 this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
 this.progs_copy = this.globals.progs;
+if (this.globals.access.register<20) {
+ons.notification.toast("Check API Access if you want to update this data", {timeout: 2000});
+this.editallowed = false;
+}
+
 }
 }

@@ -23,12 +23,12 @@
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
     <p class="head2"><span class="head">{{prog.items[0].title}}</span><br>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></p>
- <span class="butlab"><span (click)="adjust(prog.items[0].eveningid,-1)">&nbsp;<ons-icon icon="fa-minus-circle" size="24px" class="but"></ons-icon></span>&nbsp;<span class="helpcount">{{prog.items[0].parentsrequired}}</span>&nbsp;<span><ons-icon icon="fa-plus-circle" size="24px" (click)="adjust(prog.items[0].eveningid,1)" class="but"></ons-icon></span>&nbsp;helpers are needed for this activity</span>
+ <span class="butlab"><span (click)="adjust(prog.items[0].eveningid,-1)" *ngIf="editallowed">&nbsp;<ons-icon *ngIf="this.editallowed==true" icon="fa-minus-circle" size="24px" class="but"></ons-icon></span>&nbsp;<span class="helpcount">{{prog.items[0].parentsrequired}}</span>&nbsp;<span><ons-icon *ngIf="this.editallowed==true" icon="fa-plus-circle" size="24px" (click)="adjust(prog.items[0].eveningid,1)" class="but"></ons-icon></span>&nbsp;helpers are needed for this activity</span>
  <br> 
   <span *ngFor="let parent of prog.items[0].help; index as j">
-    <div  style="display:flex;"><div (click)="removehelper(i,j)"><ons-icon icon="fa-trash-alt" size="24px" class="helper"></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
+    <div *ngIf="this.editallowed==true"  style="display:flex;"><div *ngIf="this.editallowed==true" (click)="removehelper(i,j)"><ons-icon *ngIf="this.editallowed==true" icon="fa-trash-alt" size="24px" class="helper"></ons-icon></div><div class="helper">{{parent.scout}}</div></div>
   </span>  
-  <div style="display:flex;" (click)="addhelper(i)"><div><ons-icon icon="fa-user-plus" size="24px" class="helper"></ons-icon></div><div class="helper">Add another helper <span *ngIf="( prog.items[0].parentsrequired - prog.items[0].help.length ) > 0"><b>({{prog.items[0].parentsrequired - prog.items[0].help.length }} more needed)</b></span></div></div>
+  <div style="display:flex;"  (click)="addhelper(i)"><div><ons-icon *ngIf="this.editallowed==true" icon="fa-user-plus" size="24px" class="helper"></ons-icon></div><div  class="helper"><span  *ngIf="this.editallowed==true">Add another helper </span><span *ngIf="( prog.items[0].parentsrequired - prog.items[0].help.length ) > 0"><b>({{prog.items[0].parentsrequired - prog.items[0].help.length }} more needed)</b></span></div></div>
   <div  id="{{prog.items[0].eveningid}}" class="longtext" contenteditable="true" placeholder="Enter a parents text..." (blur)="update_text(prog.items[0].eveningid)" (paste)="OnPaste_StripFormatting($event);">{{prog.items[0].notesforhelpingparents}}</div>
   
 
@@ -37,7 +37,7 @@
 
 </div><!--List-->
     </ons-page>
-<ons-dialog animation="default" cancelable id="dialog" >
+<ons-dialog animation="default" cancelable id="dialog_rosta" >
     <div class="dialog-mask"></div>
       <div class="dialog">
         <div class="dialog-container" style="height: 100%">
