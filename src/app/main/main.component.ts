@@ -238,11 +238,11 @@ this.globals = localStorage.getItem(saved_data[j].section)
   }
 
   click_close() {
-     document.getElementById('dialogupload').hide();
+     document.getElementById('dialog_upload').hide();
 
   }
   upload() {
-     document.getElementById('dialogupload').show();
+     document.getElementById('dialog_upload').show();
   }
   /* section_data_return(data) {
     //alert("heelo");
