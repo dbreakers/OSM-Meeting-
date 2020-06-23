@@ -249,7 +249,7 @@ set_target(d) {
   var input = document.getElementById("targetdate")
   input.value = this.target;
   if (!this._params) {
-     document.getElementById('dialog').show();
+     document.getElementById('dialogregdate').show();
   }  
     this.members =  Object.keys(this.globals.sectiondata[1].data).map(i => this.globals.sectiondata[1].data[i]);
      this.members.sort(this.compareValuesArray(["patrol","patrol_role_level","age_years","age_months"],"desc"))
