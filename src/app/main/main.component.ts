@@ -236,8 +236,13 @@ this.globals = localStorage.getItem(saved_data[j].section)
     localStorage.setItem("saved_sets", JSON.stringify(this.saved_data));
 
   }
+
+  click_close() {
+     document.getElementById('dialogupload').hide();
+
+  }
   upload() {
-     document.getElementById('dialog').show();
+     document.getElementById('dialogupload').show();
   }
   /* section_data_return(data) {
     //alert("heelo");
