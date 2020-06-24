@@ -71,7 +71,8 @@ export class SectionselectComponent implements OnInit, OnChanges {
       if (this._navigator.element.pages.length>1)
       {
         
- this._navigator.element.popPage(); } else {
+ this._navigator.element.resetToPage(MainComponent);
+      } else {
     this._navigator.element.replacePage(MainComponent);
  }
   }
