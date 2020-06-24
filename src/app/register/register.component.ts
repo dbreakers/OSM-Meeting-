@@ -195,10 +195,13 @@ generate_cal(y,m,d){
   var days = new Array;
   this.weeks = [];
   //var c = new Date(date);
-  var caldate = new Date(y,m,d,1,12,0,0)
+  var caldate = new Date(y,m,1,1,12,0,0) 
+  if (caldate.getDay()!=1) {
+  //var caldate = new Date(y,m,1,1,12,0,0)
   while (caldate.getDay()!=1) {
     caldate.setDate(caldate.getDate() - 1);
-  }   
+   }   
+}
   var caldate2 = new Date(y,m+1,0,12,0,0)
   while (caldate2.getDay()!=0) {
     caldate2.setDate(caldate2.getDate() + 1);
