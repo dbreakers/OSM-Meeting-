@@ -68,7 +68,12 @@ export class SectionselectComponent implements OnInit, OnChanges {
     this.globals.sectiondata = data;
     this.globals.loaded.section = true;
       this.logonService.setAPIvalues();
+      if (this._navigator.element.pages.length>1)
+      {
+        
+ this._navigator.element.popPage(); } else {
     this._navigator.element.replacePage(MainComponent);
+ }
   }
 
   section_api(api,section,term) {
