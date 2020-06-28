@@ -53,8 +53,10 @@ export class QMcardComponent implements OnInit {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
 testreturn(e)
-{
-  var url = URL.createObjectURL(e.fileBlob)
+{var URL = window.URL || window.webkitURL;
+var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
+  var url = URLcreateObjectURL(e.fileBlob)
+  
   document.getElementById("pdf_preview").setAttribute("src",url)
   console.log(e);
 }
