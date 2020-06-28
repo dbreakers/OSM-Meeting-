@@ -29,7 +29,7 @@
     
   <ons-card *ngIf="singleprog=='' || prog.items[0].eveningid==singleprog">
     <p class="head2"><span class="head">{{prog.items[0].title}}<!-- ({{members.length-prog.items[0].unavailableleaders.length}}&nbsp;present)--></span>
-    <br><b>{{members.length-prog.items[0].unavailableleaders.length}}&nbsp; leaders a and <span *ngIf="prog.items[0].help.length!=0">{{prog.items[0].help.length}}</span> <span *ngIf="prog.items[0].help.length==0">no</span> parent<span *ngIf="prog.items[0].help.length==0||prog.items[0].help.length>1">s</span></b><br>
+    <br><b>{{members.length-prog.items[0].unavailableleaders.length}}&nbsp; leaders and <span *ngIf="prog.items[0].help.length!=0">{{prog.items[0].help.length}}</span> <span *ngIf="prog.items[0].help.length==0">no</span> parent<span *ngIf="prog.items[0].help.length==0||prog.items[0].help.length>1">s</span></b><br>
     <br><b>{{eventdates(prog.items[0].meetingdate,null)}}
     <span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></b></p>
  
