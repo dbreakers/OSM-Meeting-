@@ -24,7 +24,12 @@
     <ons-card>
        <p class="head2"><span class="head">{{QMitem[1]}}</span><br>{{QMlist.data.list.name}}</p>
        <div id="test"></div> <!-- insert images -->
-          
+       <span (click)="uploadFile()">Add a new Dropbox File</span>
+            <form onSubmit="return uploadFile()">
+       
+      <input type="file" id="file-upload" capture="camera"/>
+      <button type="submit">Submit</button>
+    </form>
     </ons-card>     
     <ons-card *ngIf="QMitem.hasOwnProperty('2')&&QMitem[2] != ''">
       {{QMitem[2]}} 
