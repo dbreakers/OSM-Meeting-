@@ -33,7 +33,7 @@ export class QMcardComponent implements OnInit {
   win: any;
   ac="";
   $scope = "";
-  REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html";
+  REDIRECT = "https://scouttoolset.firebaseapp.com/auth.html"; 
 
   images = new Object();
   dbx = new Dropbox({ clientId: "qxf5tksolzymekf" });
@@ -63,8 +63,29 @@ export class QMcardComponent implements OnInit {
  uploadFile() {
  var x=document.getElementById('file-upload');
     x.click();
-    x.addEventListener('change',uploadFile2())
+    x.addEventListener('change', (e) => {this.uploadFile2(e)})
  }
+
+ uploadFile3() {
+     var results = document.getElementById('test');
+            results.appendChild(document.createTextNode('File uploaded!'));
+         var results = document.getElementById('test');
+        // results.innerHTML="";      
+  //    this.dbx
+  //   .filesListFolder({ path: "" })
+  //   .then(response => this.get_thumbs(response));
+   var fileInput = document.getElementById('file-upload');
+      var file = fileInput.files[0];
+   var e = new Object();
+            e.entries = [];
+            var g = new Object();
+            g.path =  '/' + file.name;
+            g.format = "jpeg";
+            g.size = "w256h256"; 
+            e.entries.push(g);
+            this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
+ }
+
  uploadFile2() {
 const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
      // var ACCESS_TOKEN = this.globals.dbx_token;
@@ -75,22 +96,7 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
       
       if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
         this.dbx.filesUpload({path: '/' + file.name, contents: file})
-          .then(response => {
-            var results = document.getElementById('test');
-            results.appendChild(document.createTextNode('File uploaded!'));
-          //  this.do_drop();
-          }
-            /* var results = document.getElementById('test');
-            var e = new Object();
-            e.entries = [];
-            var g = new Object();
-            g.path =  '/' + file.name;
-            g.format = "jpeg";
-            g.size = "w256h256"; 
-            e.entries.push(g);
-            this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
-            */
-          )
+          .then((response) => { this.uploadFile3(response)})
           .catch(function(error) {
             console.error(error);
           });
