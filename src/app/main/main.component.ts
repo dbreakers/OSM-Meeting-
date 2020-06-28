@@ -321,6 +321,7 @@ this.globals = localStorage.getItem(saved_data[j].section)
       }
     }
     this.accessToken = localStorage.getItem("dropbox_token");
+    this.globals.dbx_token = this.accessToken;
     var ssets = localStorage.getItem("saved_sets");
    
     if (ssets === null) {
