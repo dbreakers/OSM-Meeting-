@@ -63,6 +63,9 @@ export class QMcardComponent implements OnInit {
  uploadFile() {
  var x=document.getElementById('file-upload');
     x.click();
+    x.addEventListener('change',uploadFile2())
+ }
+ uploadFile2() {
 const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
      // var ACCESS_TOKEN = this.globals.dbx_token;
      // var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
