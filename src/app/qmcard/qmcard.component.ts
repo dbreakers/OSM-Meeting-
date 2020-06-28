@@ -57,13 +57,14 @@ testreturn(e)
   var url = URL.createObjectURL(e.fileBlob)
   document.getElementById("pdf_preview").setAttribute("src",url)
   console.log(e);
-
 }
 
   do_preview(n,e){
    document.getElementById('qmcarddialog').show();
    var path = n.currentTarget.getAttribute("id");
-   this.dbx.filesGetPreview({path: path}).then(e=>{this.testreturn(e)}); 
+  this.dbx.filesGetPreview({path: path}).then(e=>{this.testreturn(e)}); 
+
+ // this.dbx.filesDownload({path: path}).then(e=>{this.testreturn(e)}); 
   }
 
   do_images(i) {
