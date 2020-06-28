@@ -55,7 +55,7 @@ export class QMcardComponent implements OnInit {
 testreturn(e)
 {var URL = window.URL || window.webkitURL;
 var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
-  var url = URLcreateObjectURL(e.fileBlob)
+  var url = createObjectURL(e.fileBlob)
   
   document.getElementById("pdf_preview").setAttribute("src",url)
   console.log(e);
