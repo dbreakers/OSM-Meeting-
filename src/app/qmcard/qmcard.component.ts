@@ -74,7 +74,15 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
           .then(function(response) {
             var results = document.getElementById('test');
             results.appendChild(document.createTextNode('File uploaded!'));
-            console.log(response);
+            var e = new Object();
+            e.entries = [];
+            var g = new Object();
+            g.path = r.entries[q].path_lower;
+            g.format = "jpeg";
+            g.size = "w256h256";
+            e.entries.push(g);
+            this.dbx.filesGetThumbnailBatch(e).then(function (Events) {return _this.do_images(Events); })
+            
           })
           .catch(function(error) {
             console.error(error);
@@ -118,6 +126,7 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
         task.then(function(result) {
           var results = document.getElementById('results');
           results.appendChild(document.createTextNode('File uploaded!'));
+        
         }).catch(function(error) {
           console.error(error);
         });
