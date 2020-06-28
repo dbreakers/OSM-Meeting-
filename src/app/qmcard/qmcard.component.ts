@@ -5,6 +5,7 @@ import {
   Params,
   OnInit,
   OnChanges,
+  Renderer2,
   OnsSplitterSide,
   OnsNavigator,
   OnsenModule,
@@ -43,12 +44,26 @@ export class QMcardComponent implements OnInit {
     private _navigator: OnsNavigator,
     private inj: Injector,
     private sorting: Sortservice,
+    private renderer: Renderer2,
     private _params: Params,
     private globals: Globals
   ) {}
 
   openMenu() {
     this.inj.get(AppComponent).menu.nativeElement.open();
+  }
+testreturn(e)
+{
+  var url = URL.createObjectURL(e.fileBlob)
+  document.getElementById("pdf_preview").setAttribute("src",url)
+  console.log(e);
+
+}
+
+  do_preview(n,e){
+   document.getElementById('qmcarddialog').show();
+   var path = n.currentTarget.getAttribute("id");
+   this.dbx.filesGetPreview({path: path}).then(e=>{this.testreturn(e)}); 
   }
 
   do_images(i) {
@@ -59,9 +74,13 @@ export class QMcardComponent implements OnInit {
       image.title = this.images.entries[q].metadata.name;
       image.longDesc = this.images.entries[q].metadata.name;
       var newDiv = document.createElement("div"); 
+      newDiv.setAttribute("id",this.images.entries[q].metadata.path_lower)
+   this.renderer.listen(newDiv, 'click', (e) => {this.do_preview(e)});
+      
       newDiv.appendChild(image);
       newDiv.setAttribute("class","qmimage")
       document.getElementById("test").appendChild(newDiv);
+     // document.getElementById("image"+q).onclick(this.images.entries[q].metadata.name;);
     }
   }
 
