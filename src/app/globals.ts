@@ -7,6 +7,7 @@ export class Globals {
   secret: string = "";
   userid: string = "";
   mysection: string = "3329";
+  dbx_token: string="";
   scoutcard: string = "";
   eventcard: string = "";
   application: string = "OSM Meeting+";

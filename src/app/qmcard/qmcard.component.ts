@@ -77,6 +77,7 @@ do_drop() {
   //debugger;
   this.accessToken = this.gup(this.$scope,"access_token")
   //debugger;
+  this.globals.dbx_token = this.accessToken;
   this.dbx = new Dropbox({ accessToken: this.accessToken });
   this.dbx
      .filesListFolder({ path: "" })
@@ -104,6 +105,7 @@ do_drop() {
         this.QMitem = this.QMlist.data.rows[this._params.data.id];
       }
     }
+    if (this.globals.dbx_token=="") {
     this.REDIRECT = window.document.URL+"auth.html"
     var authUrl = this.dbx.getAuthenticationUrl(this.REDIRECT);
     this.win = window.open(authUrl, "_blank");//"windowname1", "width=800, height=600");
@@ -124,7 +126,13 @@ do_drop() {
         }
       } catch (e) {}
     }, 100, this, this.win, this.REDIRECT, this.ac);
-    
+    } else {
+      this.accessToken = this.globals.dbx_token;
+this.dbx = new Dropbox({ accessToken: this.accessToken });
+  this.dbx
+     .filesListFolder({ path: "" })
+     .then(response => this.get_thumbs(response));
+    }
   
   }
 
