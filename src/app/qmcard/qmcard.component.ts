@@ -56,7 +56,12 @@ export class QMcardComponent implements OnInit {
     for (var q = 0; q < this.images.entries.length; q++) {
       var image = new Image();
       image.src = "data:image/jpeg;base64," + this.images.entries[q].thumbnail;
-      document.getElementById("test").appendChild(image);
+      image.title = this.images.entries[q].metadata.name;
+      image.longDesc = this.images.entries[q].metadata.name;
+      var newDiv = document.createElement("div"); 
+      newDiv.appendChild(image);
+      newDiv.setAttribute("class","qmimage")
+      document.getElementById("test").appendChild(newDiv);
     }
   }
 
@@ -150,8 +155,12 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
 
   get_thumbs(r) {
     var e = new Object();
+   
+
+    var s = 0; 
+    while (s < r.entries.length){
     e.entries = [];
-    for (var q = 0; q < r.entries.length && q < 10; q++) {
+    for (var q = s; q < r.entries.length && q-s < 10; q++) {
       var g = new Object();
       g.path = r.entries[q].path_lower;
       g.format = "jpeg";
@@ -159,6 +168,8 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
       e.entries.push(g);
     }
     this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
+    s = s + 10;
+    }
   }
 
 do_drop() {
