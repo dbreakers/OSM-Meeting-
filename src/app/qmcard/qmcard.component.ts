@@ -61,7 +61,8 @@ export class QMcardComponent implements OnInit {
   }
 
  uploadFile() {
-
+ var x=document.getElementById('file-upload');
+    x.click();
 const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
      // var ACCESS_TOKEN = this.globals.dbx_token;
      // var dbx = new Dropbox.Dropbox({ accessToken: ACCESS_TOKEN });
@@ -71,19 +72,22 @@ const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
       
       if (file.size < UPLOAD_FILE_SIZE_LIMIT) { // File is smaller than 150 Mb - use filesUpload API
         this.dbx.filesUpload({path: '/' + file.name, contents: file})
-          .then(function(response) {
+          .then(response => {
             var results = document.getElementById('test');
             results.appendChild(document.createTextNode('File uploaded!'));
+          //  this.do_drop();
+          }
+            /* var results = document.getElementById('test');
             var e = new Object();
             e.entries = [];
             var g = new Object();
-            g.path = r.entries[q].path_lower;
+            g.path =  '/' + file.name;
             g.format = "jpeg";
-            g.size = "w256h256";
+            g.size = "w256h256"; 
             e.entries.push(g);
-            this.dbx.filesGetThumbnailBatch(e).then(function (Events) {return _this.do_images(Events); })
-            
-          })
+            this.dbx.filesGetThumbnailBatch(e).then(Events => this.do_images(Events));
+            */
+          )
           .catch(function(error) {
             console.error(error);
           });

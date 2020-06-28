@@ -6,7 +6,7 @@ export class Globals {
   login: boolean = false;
   secret: string = "";
   userid: string = "";
-  mysection: string = "3329";
+  mysection: string = "3320";
   dbx_token: string="";
   scoutcard: string = "";
   eventcard: string = "";

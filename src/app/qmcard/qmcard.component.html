@@ -27,8 +27,8 @@
        <span (click)="uploadFile()">Add a new Dropbox File</span>
             <form onSubmit="return uploadFile()">
        
-      <input type="file" id="file-upload" capture="camera"/>
-      <button type="submit">Submit</button>
+      <input type="file" id="file-upload" capture="camera" style="display:none"/>
+      
     </form>
     </ons-card>     
     <ons-card *ngIf="QMitem.hasOwnProperty('2')&&QMitem[2] != ''">
