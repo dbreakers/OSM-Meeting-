@@ -11,3 +11,4 @@
 .list_of_items:last-child {
 border-bottom: solid;
 }
+.hide {display: none;}

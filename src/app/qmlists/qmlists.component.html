@@ -22,12 +22,22 @@
      <h2>QM List</h2>
      <span *ngFor="let list of globals.qmlist; index as i">
     <ons-card>
-       <p class="head2"><span class="head">{{list.data.list.name}}</span></p> 
+      <div style="display:flex;" (click)="expand(list.data.list.id,$event)">
+        <div class="head2" style="width: 90%" > <p class="head2"><span class="head">{{list.data.list.name}}</span></p> </div>
+        <div style="width: 10%">
+          <span class="" id="{{list.data.list.id}}_expand">
+        <ons-icon icon="fa-chevron-down"></ons-icon></span> 
+        <span class="hide" id="{{list.data.list.id}}_con"><ons-icon icon="fa-chevron-up"></ons-icon></span >
+        </div>
+      </div>
+      <div style="padding-top: 10px;" class="hide" id="{{list.data.list.id}}"  >
+       <span *ngIf="sortable_list[i].length==0">No items in this list</span>   
        <div class="list_of_items" *ngFor="let items of sortable_list[i]">
        
           <div class="qmitem" (click)="go_qmcard(items.list,items.id)"><div class="item">{{items[1]}}</div><div class="itemq">{{items[6]}}</div></div>
        
        </div> 
+       </div>
     </ons-card>     
      </span>  
   </div>   
