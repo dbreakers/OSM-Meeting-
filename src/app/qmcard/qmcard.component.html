@@ -23,8 +23,10 @@
     
     <ons-card>
        <p class="head2"><span class="head">{{QMitem[1]}}</span><br>{{QMlist.data.list.name}}</p>
-       <div id="test"></div> <!-- insert images -->
-       <span (click)="uploadFile()">Add a new Dropbox File</span>
+      <div style="width:100%">
+       <div id="test" class="qmgrid" ></div>
+       </div> <!-- insert images -->
+       <span (click)="uploadFile()"><ons-icon icon="fa-plus-square" ></ons-icon>&nbsp;<b>Add a new Dropbox File</b></span>
             <form onSubmit="return uploadFile()">
        
       <input type="file" id="file-upload" capture="camera" style="display:none"/>

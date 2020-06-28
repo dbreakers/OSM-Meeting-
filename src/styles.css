@@ -2,6 +2,13 @@
 :root {
   --scoutpurple: #7413dc; 
 }
+.qmimage { float: left; 
+  padding: 10px;
+  position: relative;  
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;}
 :checked+.segment__button {  background-color: #00a794; color: white !important}
 ons-speed-dial-item.fab { background-color: #7413dc; color: white !important}
 button.fab, button.fab:active, ons-fab.fab:active, ons-fab.fab { background-color:  #7413dc; color: white !important }
