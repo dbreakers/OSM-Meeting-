@@ -53,12 +53,24 @@ export class QMcardComponent implements OnInit {
     this.inj.get(AppComponent).menu.nativeElement.open();
   }
 testreturn(e)
-{var URL = window.URL || window.webkitURL;
-var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
+{
+ // var URL = window.URL || window.webkitURL;
+//var createObjectURL = URL.createObjectURL || webkitURL.createObjectURL;
   var url = webkitURL.createObjectURL(e.fileBlob)
   
   document.getElementById("pdf_preview").setAttribute("src",url)
+
+  var link = document.createElement('a');
+  link.href = url;
+  link.download="file.pdf";
+  link.click();
   console.log(e);
+//  var reader = new FileReader();
+ 
+//reader.onload = function(e){
+//  window.location.href = reader.result;
+//}
+/reader.readAsDataURL(e.fileBlob);
 }
 
   do_preview(n,e){
