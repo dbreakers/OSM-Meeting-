@@ -1,7 +1,7 @@
 .member_photo {border-radius: 50px; width: 75px; height: 75px;} 
 .member_header {align-content: center;    
      width: 100px; float: left;}
-.member_name {    color: #7413dc;
+.member_name {    color: var(--scoutpurple);
     font-weight: bolder; width: 75%; font-size: 20pt; }    
 .header_block {height: 100%; overflow: auto;}
 .detailcard_left {
@@ -10,7 +10,7 @@
 .detailcard_right {
  font-weight: 100;
 }
-.card_title { color: #7413dc; font-size: 16pt; font-weight: 600; }
+.card_title { color: var(--scoutpurple); font-size: 16pt; font-weight: 600; }
 .comm_button { font-size: 20px; padding: 2px;}
 .comm_div { color: white;font-size: 15pt;float: left;
     height: 25pt;

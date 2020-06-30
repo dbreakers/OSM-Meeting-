@@ -1,4 +1,4 @@
-.head { color: #7413dc; font-size: 16pt; font-weight: 600; margin-top: 0px;}
+.head { color: var(--scoutpurple); font-size: 16pt; font-weight: 600; margin-top: 0px;}
 .head2 { margin-top: 0px;} 
 .qmitem { 
   display: flex;

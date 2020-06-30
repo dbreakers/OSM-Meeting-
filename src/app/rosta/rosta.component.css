@@ -1,8 +1,8 @@
-.head { color: #7413dc; font-size: 16pt; font-weight: 600; margin-top: 0px;}
+.head { color: var(--scoutpurple); font-size: 16pt; font-weight: 600; margin-top: 0px;}
 .head2 { margin-top: 0px;} 
-.subhead { font-size: 10pt;color: #7413dc;}
+.subhead { font-size: 10pt;color: var(--scoutpurple);}
 .helper { padding: 5px;}
-.but { color: #00a794; }
+.but { color: var(--scoutteal); }
 .butlab { font-weight: 600;}
 .wrapper {
   position: relative;
@@ -16,7 +16,7 @@
 }
 .helpcount {
   font-size: 24pt;
-  color: #7413dc;
+  color: var(--scoutpurple);
 }
 .longtext[placeholder]:empty:before {
     content: attr(placeholder);
@@ -41,7 +41,7 @@
 }
 #myDropdown { max-height: 250px;
   overflow-y: scroll; width: 70%}
-.dropdown-content a:hover {background-color: #00a794;}
+.dropdown-content a:hover {background-color: var(--scoutteal);}
 #myInput {width: 70%; font-size:large;}
 .footer {    position: absolute;
     bottom: 10px;
