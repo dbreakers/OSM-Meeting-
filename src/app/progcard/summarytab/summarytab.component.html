@@ -2,23 +2,27 @@
    <span class="head">{{prog.items[0].title}}</span>
    <br><span class="list-item__subtitle">{{eventdates(prog.items[0].meetingdate,null)}}<span *ngIf="prog.items[0].starttime != '00:00:00'"> from {{timeformat(prog.items[0].starttime)}}</span><span *ngIf="prog.items[0].endtime != '00:00:00'"> until {{timeformat(prog.items[0].endtime)}}</span></span>
    <br>{{prog.items[0].notesforparents}}
-</ons-card>     
+</ons-card>      
 <ons-card>
-<span class="head">Adults</span>  
+<span class="head">Adults </span>  
 <p class="subhead">Leaders</p>
+<p (click)="go_lrosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Attendance</b></p>
 <div *ngFor="let ldr of prog.items[0].unavailableleaders; index as i">
-  <div *ngIf="i==0">The following Leaders are not available</div>
-  {{ldr.firstname}}&nbsp;{{ldr.lastname}}
+ <ons-list-header *ngIf="i==0">Unavailable Leaders</ons-list-header>
+ <ons-list-item> {{ldr.firstname}}&nbsp;{{ldr.lastname}}</ons-list-item>
 </div>
 <div *ngIf="prog.items[0].unavailableleaders.length==0">All leaders present</div>
-<p (click)="go_lrosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Leaders</b></p>
+
 <div *ngIf="prog.items[0].leaders != ''" class="theadp" (click)="toggle('ln')"><div  class="theadl">Leader Notes</div><div class="theadr"><div id="ln_plus"><ons-icon icon="fa-plus-square" size="24px" class="helper"></ons-icon></div><div style="display: none" id="ln_minus"><ons-icon icon="fa-minus-square" size="24px" class="helper"></ons-icon></div></div></div> 
 <div style="display: none" *ngIf="prog.items[0].leaders != ''" class="theadb" id="ln">{{prog.items[0].leaders}}</div> 
 <p  class="subhead">Parent Helpers </p>
+
+<p (click)="go_rosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Helpers <span *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length)>0">({{prog.items[0].parentsrequired - prog.items[0].help.length}} more needed)</span></b></p>
 <div *ngIf="prog.items[0].help.length==0">No parents helping</div> 
-<br *ngIf="prog.items[0].help.length>0">
+<!--<br *ngIf="prog.items[0].help.length>0">-->
 <div *ngFor="let ldr of prog.items[0].help; index as i">
-  <ons-list-header *ngIf="i==0">Parents {{prog.items[0].help.length}} of {{prog.items[0].parentsrequired}} needed</ons-list-header>
+  <!--<ons-list-header *ngIf="i==0">Parents {{prog.items[0].help.length}} of {{prog.items[0].parentsrequired}} needed</ons-list-header>-->
+  <ons-list-header *ngIf="i==0">Helpers</ons-list-header>
   <ons-list-item (click)="go($event,ldr.scoutid);" modifier="chevron">
     <span class="list-item__title">  
           {{ldr.scout}}
@@ -26,7 +30,7 @@
         <span class="list-item__subtitle">{{parentname(ldr.scoutid)}}</span>
   </ons-list-item>  
 </div>
-<p (click)="go_rosta($event,prog);"><b><ons-icon icon="fa-user-edit"  class="helper"></ons-icon>&nbsp;Update Helpers <span *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length)>0">({{prog.items[0].parentsrequired - prog.items[0].help.length}} more needed)</span></b></p>
+
 <!--<div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) == 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more is needed</div>
 <div *ngIf="(prog.items[0].parentsrequired - prog.items[0].help.length) > 1">{{prog.items[0].parentsrequired - prog.items[0].help.length}} more are needed</div>-->
 <br>
