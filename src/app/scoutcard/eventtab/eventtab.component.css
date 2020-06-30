@@ -18,7 +18,7 @@
     margin-right: 5pt;
     border-radius: 25%;}
 .wa { background-color: #25D366;}
-.sms {background-color: blue;}
+.sms {background-color: var(--scoutdakblue);}
 .phone {background-color: black;}
 .email {color: var(--scoutred);}
 .table{ display: flex; flex-wrap: wrap;}
