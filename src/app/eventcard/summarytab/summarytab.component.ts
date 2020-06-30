@@ -68,7 +68,7 @@ eventtime(t){
   var ampm = h >= 12 ? 'pm' : 'am';
   h = h % 12
   h = h ? h : 12;
-  return h + ':' + m + ' ' + ampm;
+  return h + ':' + m + ampm;
 }
 
 signup(date) {

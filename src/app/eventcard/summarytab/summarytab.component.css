@@ -1,2 +1,7 @@
 .head { color:var(--scoutpurple); font-size: 16pt; font-weight: 600;}
 .subhead { font-size: 10pt;}
+.iconpad { width: 40px;}
+.iconred {color: var(--scoutred)}
+.icongreen {color: var(--scoutgreen)}
+.icongrey {color: grey;}
+.dateflex { display: flex;}
