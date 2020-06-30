@@ -1,6 +1,6 @@
 .head { color: var(--scoutpurple); font-size: 16pt; font-weight: 600; margin-top: 0px;}
 .head2 { margin-top: 0px;} 
-.subhead { font-size: 10pt;color: var(--scoutpurple)
+.subhead { font-size: 10pt;color: var(--scoutpurple);}
 .helper { padding: 5px;}
 .but { color: var(--scoutteal); }
 .butlab { font-weight: 600;}
