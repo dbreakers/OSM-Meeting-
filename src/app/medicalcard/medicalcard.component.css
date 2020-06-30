@@ -5,6 +5,6 @@ p.allergy{ font-weight: bold; clear:left;}
 .member_photo {border-radius: 50px; width: 75px; height: 75px;} 
 .member_header {align-content: center;    
      width: 100px; float: left;}
-.member_name {    color: #7413dc;
+.member_name {    color: var(--scoutpurple);
     font-weight: bolder; width: 75%; font-size: 20pt; }    
 .header_block {overflow: auto;}

@@ -2,12 +2,12 @@
 .name {float: left; width: 75%}
 .photo {float: left; width: 60px;}
 .detail_stuff {clear: left; width: 100%; }
-.member_name {    color: #7413dc;
+.member_name {    color: var(--scoutpurple);
     font-weight: bolder;}    
-.header {background-color:#00a794; color: white; font-weight: 600; }
+.header {background-color:var(--scoutteal); color: white; font-weight: 600; }
 p.medical{ font-weight: bold;}
 p.dietary{ font-weight: bold;}
 p.other{ font-weight: bold;}
 p.allergy{ font-weight: bold;}
 span.sbold {font-weight: bold;}
-.card_header { background-color: #00a794;}
+.card_header { background-color: var(--scoutteal);}

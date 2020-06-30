@@ -47,7 +47,7 @@ float: left;
   position: absolute;
   margin: -5px;
   font-size: 10pt;
-  background: #7413dc;
+  background: var(--scoutpurple);
 }
 
 .bottom-bar {
@@ -68,5 +68,5 @@ float: left;
   position: absolute;
   margin: -15px;
   font-size: 10pt;
-  background: #7413dc;
+  background: var(--scoutpurple);
 }
