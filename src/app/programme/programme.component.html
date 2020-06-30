@@ -35,12 +35,14 @@
           </span>
         <span class="list-item__subtitle">{{eventdates(prog.meetingdate,null)}}<span *ngIf="prog.starttime != '00:00:00'"> from {{timeformat(prog.starttime)}}</span><span *ngIf="prog.endtime != '00:00:00'"> until {{timeformat(prog.endtime)}}</span></span>
         <span class="right" >
-           <ons-icon icon="fa-user-minus"  style="color: darkgrey;padding: 10px;padding-right: 0px;" class="helper" *ngIf="leaders_not(prog.eveningid)>0"></ons-icon>
-           <span style="margin-right: 15px;" class="notification not_style" *ngIf="leaders_not(prog.eveningid)>0">{{leaders_not(prog.eveningid)}}</span>
-          <ons-icon icon="fa-hands-helping" style="color: limegreen;" class="helper" *ngIf="helpers(prog.eveningid)==3"></ons-icon>
-          <ons-icon icon="fa-hands-helping" style="color: orange;" class="helper" *ngIf="helpers(prog.eveningid)==2"></ons-icon>
-          <ons-icon icon="fa-hands-helping" style="color: red;" class="helper" *ngIf="helpers(prog.eveningid)==1"></ons-icon>
-          <span class="notification not_style" *ngIf="helpers_notif(prog.eveningid)!=''">{{helpers_notif(prog.eveningid)}}</span>
+          <div style="margin-right: 10px;"><div> 
+           <ons-icon icon="fa-user-slash"  style="color: darkgrey;text-align: center;"   *ngIf="leaders_not(prog.eveningid)>0"></ons-icon></div>
+           <div style="text-align: center;"><span   *ngIf="leaders_not(prog.eveningid)>0">{{leaders_not(prog.eveningid)}}</span></div></div>
+          <div><div  style="text-align: center;">
+          <ons-icon icon="fa-hands-helping" style="color: limegreen;"   *ngIf="helpers(prog.eveningid)==3"></ons-icon>
+          <ons-icon icon="fa-hands-helping" style="color: orange;"  *ngIf="helpers(prog.eveningid)==2"></ons-icon>
+          <ons-icon icon="fa-hands-helping" style="color: red;"  *ngIf="helpers(prog.eveningid)==1"></ons-icon></div><div>
+          <span   *ngIf="helpers_notif(prog.eveningid)!=''">{{helpers_notif(prog.eveningid)}}</span></div></div>
         </span>
 </ons-list-item>
   </span>
