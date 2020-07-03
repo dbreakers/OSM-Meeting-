@@ -70,7 +70,7 @@ testreturn(e)
 //reader.onload = function(e){
 //  window.location.href = reader.result;
 //}
-/reader.readAsDataURL(e.fileBlob);
+//reader.readAsDataURL(e.fileBlob);
 }
 
   do_preview(n,e){
